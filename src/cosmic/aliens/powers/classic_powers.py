@@ -127,27 +127,6 @@ class Feline(AlienPower):
 
 
 @dataclass
-class Siren(AlienPower):
-    """
-    Siren - Lure ships.
-    As defense, after alliances, you may force one offensive ally
-    to send their ships to the warp instead of joining the attack.
-    """
-    name: str = field(default="Siren", init=False)
-    description: str = field(
-        default="Force one offensive ally's ships to warp.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-    usable_as: List[PlayerRole] = field(
-        default_factory=lambda: [PlayerRole.DEFENSE],
-        init=False
-    )
-
-
-@dataclass
 class Horde(AlienPower):
     """
     Horde - Overwhelming numbers.
@@ -227,12 +206,10 @@ class Vulture(AlienPower):
 # Register all powers
 AlienRegistry.register(Fodder())
 AlienRegistry.register(Grief())
-AlienRegistry.register(Will())
 AlienRegistry.register(Pincushion())
 AlienRegistry.register(Jester())
 AlienRegistry.register(Roach())
 AlienRegistry.register(Feline())
-AlienRegistry.register(Siren())
 AlienRegistry.register(Horde())
 AlienRegistry.register(Phantom())
 AlienRegistry.register(Diplomat())
