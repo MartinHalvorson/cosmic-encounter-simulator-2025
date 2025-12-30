@@ -620,8 +620,17 @@ class Game:
 
             # Defense lands on offense planet
             def_ships = self.defense_ships.get(self.defense.name, 0)
-            off_planet = self._rng.choice(self.offense.home_planets)
-            off_planet.add_ships(self.defense.name, def_ships)
+            if self.offense.home_planets:
+                off_planet = self._rng.choice(self.offense.home_planets)
+                off_planet.add_ships(self.defense.name, def_ships)
+
+            # Return ally ships to their colonies
+            for ally in self.offense_allies:
+                ally_ships = self.offense_ships.get(ally.name, 0)
+                ally.return_ships_to_colonies(ally_ships, ally.home_planets)
+            for ally in self.defense_allies:
+                ally_ships = self.defense_ships.get(ally.name, 0)
+                ally.return_ships_to_colonies(ally_ships, ally.home_planets)
 
             # Deal success hooks
             for player in [self.offense, self.defense]:
@@ -629,16 +638,34 @@ class Game:
                     player.alien.on_deal_success(self, player, self.defense if player == self.offense else self.offense)
         else:
             self._log("Deal failed!")
-            # Both lose ships
+            # Per the rules: both main players lose 3 ships to the warp
+            # (not all ships in the encounter)
+            failed_deal_penalty = 3
+
+            for main_player in [self.offense, self.defense]:
+                ships_to_lose = min(failed_deal_penalty, main_player.total_ships_in_play(self.planets))
+                if ships_to_lose > 0:
+                    # Handle power modifications (like Zombie)
+                    actual_ships = ships_to_lose
+                    if main_player.alien and main_player.power_active:
+                        actual_ships = main_player.alien.on_ships_to_warp(
+                            self, main_player, ships_to_lose, "failed_deal"
+                        )
+                    if actual_ships > 0:
+                        main_player.get_ships_from_colonies(actual_ships, self.planets, exclude_last_ship=False)
+                        main_player.send_ships_to_warp(actual_ships)
+
+            # Return all ships in the encounter (they weren't lost, just not used)
+            # Ships from gate go back to colonies
             for name, count in self.offense_ships.items():
                 player = self.get_player_by_name(name)
-                if player:
-                    player.send_ships_to_warp(count)
+                if player and player != self.offense:  # Allies return normally
+                    player.return_ships_to_colonies(count, player.home_planets)
 
             for name, count in self.defense_ships.items():
                 player = self.get_player_by_name(name)
-                if player:
-                    player.send_ships_to_warp(count)
+                if player and player != self.defense:  # Allies return normally
+                    player.return_ships_to_colonies(count, player.home_planets)
 
             # Deal failure hooks
             for player in [self.offense, self.defense]:
