@@ -8,3 +8,5 @@ from .card_powers import *  # noqa: F401, F403
 from .special_powers import *  # noqa: F401, F403
 from .expansion_powers import *  # noqa: F401, F403
 from .more_powers import *  # noqa: F401, F403
+from .advanced_powers import *  # noqa: F401, F403
+from .classic_powers import *  # noqa: F401, F403

@@ -260,6 +260,39 @@ class AIStrategy(ABC):
         """
         pass
 
+    # ========== Defensive Ally Rewards ==========
+
+    def choose_ally_reward(
+        self,
+        game: "Game",
+        player: "Player",
+        ships_committed: int
+    ) -> str:
+        """
+        Choose reward type when winning as a defensive ally.
+
+        Per rules: For each ship committed, defensive allies can either:
+        - Draw one card from the rewards deck, OR
+        - Retrieve one ship from the warp
+
+        Args:
+            game: Current game state
+            player: The allied player
+            ships_committed: Number of ships the ally committed
+
+        Returns:
+            "cards" or "ships" indicating the reward type
+        """
+        # Default: prefer cards if hand is weak, ships if warp is full
+        if player.ships_in_warp >= 5 and len(player.hand) >= 6:
+            return "ships"
+        elif len(player.hand) < 4:
+            return "cards"
+        elif player.ships_in_warp >= 3:
+            return "ships"
+        else:
+            return "cards"
+
     # ========== Utility Methods ==========
 
     def get_hand_strength(self, player: "Player") -> float:

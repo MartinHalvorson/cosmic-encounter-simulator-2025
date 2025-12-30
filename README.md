@@ -1155,6 +1155,65 @@ python update_stats.py --sort power --order asc
 
 </details>
 
+
+<!-- SIMULATION_RESULTS_START -->
+
+## Simulation Results
+
+**Total Games Simulated:** 813
+**Solo Victories:** 789
+**Shared Victories:** 24
+**Average Game Length:** 5.2 turns
+**Last Updated:** 2025-12-30T17:55:04
+
+### Alien Power Rankings (by ELO)
+
+| Rank | Alien | ELO | Win Rate | Games | Solo Wins | Shared |
+|------|-------|-----|----------|-------|-----------|--------|
+| 1 | Machine | 1363 | 58.5% | 41 | 24 | 0 |
+| 2 | Mutant | 1362 | 39.1% | 23 | 9 | 0 |
+| 3 | Disease | 1347 | 45.2% | 31 | 13 | 1 |
+| 4 | Mimic | 1320 | 36.7% | 30 | 10 | 1 |
+| 5 | Parasite | 1295 | 44.1% | 34 | 13 | 2 |
+| 6 | Reincarnator | 1295 | 29.2% | 24 | 6 | 1 |
+| 7 | Tripler | 1291 | 32.1% | 28 | 9 | 0 |
+| 8 | Fido | 1289 | 34.5% | 29 | 9 | 1 |
+| 9 | Symbiote | 1289 | 43.2% | 37 | 15 | 1 |
+| 10 | Crystal | 1284 | 37.9% | 29 | 11 | 0 |
+| 11 | Assassin | 1283 | 30.4% | 23 | 6 | 1 |
+| 12 | Macron | 1280 | 37.5% | 32 | 12 | 0 |
+| 13 | Sheriff | 1276 | 32.3% | 31 | 10 | 0 |
+| 14 | Clone | 1274 | 31.4% | 35 | 11 | 0 |
+| 15 | Butler | 1274 | 40.0% | 35 | 13 | 1 |
+| 16 | Oracle | 1274 | 34.5% | 29 | 9 | 1 |
+| 17 | Patriot | 1261 | 38.2% | 34 | 13 | 0 |
+| 18 | Shadow | 1257 | 40.5% | 37 | 14 | 1 |
+| 19 | Cudgel | 1253 | 39.0% | 41 | 15 | 1 |
+| 20 | Dictator | 1251 | 31.2% | 32 | 9 | 1 |
+| 21 | Warrior | 1250 | 25.0% | 28 | 7 | 0 |
+| 22 | Tick-Tock | 1243 | 35.0% | 40 | 14 | 0 |
+| 23 | Philanthropist | 1239 | 31.6% | 38 | 12 | 0 |
+| 24 | Yin | 1233 | 31.6% | 38 | 12 | 0 |
+| 25 | Vox | 1230 | 30.8% | 39 | 12 | 0 |
+| 26 | Pacifist | 1224 | 30.3% | 33 | 10 | 0 |
+| 27 | Void | 1223 | 23.5% | 34 | 8 | 0 |
+| 28 | Human | 1221 | 23.5% | 34 | 7 | 1 |
+| 29 | Pickpocket | 1220 | 35.0% | 40 | 12 | 2 |
+| 30 | Amoeba | 1219 | 32.4% | 37 | 12 | 0 |
+| 31 | Thief | 1216 | 26.3% | 38 | 10 | 0 |
+| 32 | Calculator | 1216 | 28.9% | 38 | 10 | 1 |
+| 33 | Spiff | 1214 | 28.6% | 42 | 12 | 0 |
+| 34 | Crone | 1213 | 22.6% | 31 | 6 | 1 |
+| 35 | Kamikazee | 1213 | 22.9% | 35 | 8 | 0 |
+| 36 | Reserve | 1210 | 27.3% | 44 | 12 | 0 |
+| 37 | Trader | 1207 | 30.3% | 33 | 9 | 1 |
+| 38 | Gambler | 1207 | 18.8% | 32 | 6 | 0 |
+| 39 | Loser | 1202 | 28.9% | 38 | 11 | 0 |
+| 40 | Genius | 1201 | 27.8% | 36 | 9 | 1 |
+| ... | *50 more aliens* | ... | ... | ... | ... | ... |
+
+<!-- SIMULATION_RESULTS_END -->
+
 ## Legacy Version
 
 The original 2016 simulator is preserved in `Simulator.py` and `main.py` for reference.

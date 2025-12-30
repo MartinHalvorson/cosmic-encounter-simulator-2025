@@ -604,11 +604,23 @@ class Game:
                     )
                 player.send_ships_to_warp(ships_to_warp)
 
-        # Defensive allies get rewards
+        # Defensive allies get rewards (choice: cards OR ships from warp)
         for ally in self.defense_allies:
             reward_count = self.defense_ships.get(ally.name, 0)
-            rewards = self.rewards_deck.draw_multiple(reward_count)
-            ally.add_cards(rewards)
+            ally_ai = ally.ai_strategy or BasicAI()
+            reward_choice = ally_ai.choose_ally_reward(self, ally, reward_count)
+
+            if reward_choice == "cards":
+                # Draw cards from rewards deck
+                rewards = self.rewards_deck.draw_multiple(reward_count)
+                ally.add_cards(rewards)
+                self._log(f"{ally.name} draws {reward_count} reward cards")
+            else:
+                # Retrieve ships from warp
+                retrieved = ally.retrieve_ships_from_warp(reward_count)
+                ally.return_ships_to_colonies(retrieved, ally.home_planets)
+                self._log(f"{ally.name} retrieves {retrieved} ships from warp")
+
             # Return ally ships to colonies
             ally.return_ships_to_colonies(reward_count, ally.home_planets)
 
