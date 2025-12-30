@@ -4,7 +4,7 @@ A comprehensive simulation of the board game Cosmic Encounter, designed to analy
 
 ## Features
 
-- **68 Alien Powers** implemented with proper game mechanics
+- **90 Alien Powers** implemented with proper game mechanics
 - **Multiple AI Strategies**: Random, Basic, and Strategic AI for realistic gameplay
 - **Full Game Flow**: All 8 encounter phases (Start Turn, Regroup, Destiny, Launch, Alliance, Planning, Reveal, Resolution)
 - **Comprehensive Statistics**: Win rates, game length analysis, CSV/JSON export
@@ -97,14 +97,14 @@ src/cosmic/
 ├── planet.py         # Planet and colony mechanics
 ├── types.py          # Type definitions and enums
 ├── cards/            # Card system (Cosmic, Destiny, Rewards decks)
-├── aliens/           # 68 alien power implementations
+├── aliens/           # 90 alien power implementations
 ├── ai/               # AI strategies (Random, Basic, Strategic)
 └── simulation/       # Simulation runner and statistics
 ```
 
-## Implemented Alien Powers (68)
+## Implemented Alien Powers (90)
 
-Amoeba, Altruist, Antimatter, Assassin, Butler, Calculator, Changeling, Chosen, Chronos, Citadel, Claw, Clone, Crone, Cudgel, Dictator, Disease, Empath, Ethic, Fido, Filch, Gambler, Genius, Ghoul, Giver, Grudge, Hacker, Healer, Human, Kamikazee, Leviathan, Loser, Machine, Macron, Masochist, Mirror, Mite, Mutant, Negator, Observer, Oracle, Pacifist, Parasite, Pentaform, Philanthropist, Pickpocket, Reincarnator, Remora, Reserve, Seeker, Shadow, Sheriff, Silencer, Sniveler, Sorcerer, Spiff, Surge, Symbiote, Tick-Tock, Trader, Tripler, Vacuum, Virus, Visionary, Void, Warpish, Warrior, Yin, Zombie
+Altruist, Amoeba, Antimatter, Assassin, Barbarian, Boomerang, Brute, Butler, Calculator, Changeling, Chosen, Chronos, Citadel, Claw, Clone, Crone, Crystal, Cudgel, Deuce, Dictator, Disease, Dragon, Empath, Ethic, Fido, Filch, Fury, Gambler, Genius, Ghoul, Giver, Grudge, Hacker, Hate, Healer, Human, Kamikazee, Laser, Leviathan, Loser, Machine, Macron, Masochist, Mimic, Mirror, Mite, Mutant, Negator, Nightmare, Observer, Oracle, Pacifist, Parasite, Patriot, Pentaform, Philanthropist, Pickpocket, Pirate, Poison, Rage, Reincarnator, Remora, Reserve, Sage, Scout, Seeker, Shadow, Sheriff, Silencer, Sniveler, Sorcerer, Spiff, Surge, Symbiote, Thief, Tick-Tock, Trader, Tripler, Tyrant, Underdog, Vacuum, Virus, Visionary, Void, Vox, Warlock, Warpish, Warrior, Yin, Zombie
 
 ## Game Rules Reference
 
@@ -1154,6 +1154,65 @@ python update_stats.py --sort power --order asc
 ```
 
 </details>
+
+
+<!-- SIMULATION_RESULTS_START -->
+
+## Simulation Results
+
+**Total Games Simulated:** 2,500
+**Solo Victories:** 2,463
+**Shared Victories:** 37
+**Average Game Length:** 5.0 turns
+**Last Updated:** 2025-12-30T17:51:46
+
+### Alien Power Rankings (by ELO)
+
+| Rank | Alien | ELO | Win Rate | Games | Solo Wins | Shared |
+|------|-------|-----|----------|-------|-----------|--------|
+| 1 | Machine | 626 | 56.6% | 113 | 63 | 1 |
+| 2 | Parasite | 622 | 50.0% | 126 | 63 | 0 |
+| 3 | Pacifist | 514 | 33.8% | 151 | 50 | 1 |
+| 4 | Assassin | 505 | 23.6% | 140 | 33 | 0 |
+| 5 | Mutant | 490 | 32.4% | 142 | 45 | 1 |
+| 6 | Leviathan | 487 | 22.4% | 107 | 24 | 0 |
+| 7 | Chronos | 485 | 26.2% | 122 | 32 | 0 |
+| 8 | Macron | 483 | 27.8% | 126 | 35 | 0 |
+| 9 | Grudge | 460 | 24.2% | 132 | 30 | 2 |
+| 10 | Pentaform | 458 | 25.2% | 119 | 27 | 3 |
+| 11 | Filch | 445 | 21.7% | 138 | 30 | 0 |
+| 12 | Tripler | 443 | 28.8% | 139 | 40 | 0 |
+| 13 | Seeker | 436 | 21.8% | 124 | 27 | 0 |
+| 14 | Dictator | 431 | 17.2% | 122 | 21 | 0 |
+| 15 | Tick-Tock | 429 | 22.1% | 131 | 29 | 0 |
+| 16 | Clone | 429 | 23.4% | 124 | 29 | 0 |
+| 17 | Reserve | 429 | 18.5% | 108 | 19 | 1 |
+| 18 | Antimatter | 427 | 21.2% | 137 | 27 | 2 |
+| 19 | Mirror | 424 | 21.9% | 128 | 28 | 0 |
+| 20 | Underdog | 420 | 27.7% | 112 | 30 | 1 |
+| 21 | Disease | 418 | 29.1% | 141 | 41 | 0 |
+| 22 | Poison | 411 | 16.0% | 94 | 14 | 1 |
+| 23 | Human | 410 | 26.9% | 134 | 35 | 1 |
+| 24 | Hacker | 408 | 23.4% | 137 | 30 | 2 |
+| 25 | Sage | 408 | 20.8% | 96 | 20 | 0 |
+| 26 | Gambler | 407 | 20.3% | 148 | 29 | 1 |
+| 27 | Vox | 406 | 25.0% | 100 | 24 | 1 |
+| 28 | Dragon | 405 | 24.5% | 110 | 25 | 2 |
+| 29 | Healer | 404 | 22.5% | 142 | 32 | 0 |
+| 30 | Ghoul | 403 | 29.7% | 145 | 43 | 0 |
+| 31 | Negator | 402 | 22.4% | 143 | 31 | 1 |
+| 32 | Tyrant | 401 | 22.7% | 110 | 25 | 0 |
+| 33 | Symbiote | 401 | 25.0% | 148 | 37 | 0 |
+| 34 | Pickpocket | 399 | 30.1% | 136 | 40 | 1 |
+| 35 | Mimic | 398 | 19.2% | 99 | 19 | 0 |
+| 36 | Visionary | 397 | 21.4% | 126 | 27 | 0 |
+| 37 | Pirate | 397 | 24.0% | 121 | 29 | 0 |
+| 38 | Philanthropist | 395 | 22.2% | 144 | 31 | 1 |
+| 39 | Warlock | 394 | 23.5% | 98 | 22 | 1 |
+| 40 | Sorcerer | 392 | 20.7% | 121 | 24 | 1 |
+| ... | *50 more aliens* | ... | ... | ... | ... | ... |
+
+<!-- SIMULATION_RESULTS_END -->
 
 ## Legacy Version
 

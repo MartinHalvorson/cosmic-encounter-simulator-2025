@@ -196,6 +196,57 @@ class AIStrategy(ABC):
         """
         pass
 
+    # ========== Reinforcement Cards ==========
+
+    def select_reinforcement_cards(
+        self,
+        game: "Game",
+        player: "Player",
+        is_offense: bool,
+        current_total: int,
+        opponent_total: int
+    ) -> List["Card"]:
+        """
+        Select reinforcement cards to play after encounter cards are revealed.
+
+        Args:
+            game: Current game state
+            player: The player selecting reinforcements
+            is_offense: Whether the player is offense
+            current_total: Player's current combat total
+            opponent_total: Opponent's current combat total
+
+        Returns:
+            List of reinforcement cards to play (can be empty)
+        """
+        # Default: play reinforcements if losing
+        from ..cards.base import ReinforcementCard
+        reinforcements = [c for c in player.hand if isinstance(c, ReinforcementCard)]
+
+        if not reinforcements:
+            return []
+
+        # If winning, don't play reinforcements
+        if current_total > opponent_total:
+            return []
+
+        # If losing, play reinforcements to try to win
+        cards_to_play = []
+        deficit = opponent_total - current_total + 1  # Need to beat, not just tie (unless Yin)
+
+        # Sort by value ascending to use smallest cards first
+        reinforcements.sort(key=lambda c: c.value)
+
+        total_boost = 0
+        for card in reinforcements:
+            if total_boost < deficit:
+                cards_to_play.append(card)
+                total_boost += card.value
+            else:
+                break
+
+        return cards_to_play
+
     # ========== Second Encounter ==========
 
     @abstractmethod

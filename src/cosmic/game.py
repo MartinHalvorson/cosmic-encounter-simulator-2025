@@ -10,7 +10,7 @@ from .types import GamePhase, GameConfig, Side, PlayerRole, Color, ShipCount
 from .player import Player
 from .planet import Planet
 from .cards import CosmicDeck, DestinyDeck, RewardsDeck
-from .cards.base import Card, EncounterCard, AttackCard, NegotiateCard, MorphCard
+from .cards.base import Card, EncounterCard, AttackCard, NegotiateCard, MorphCard, ReinforcementCard
 from .aliens import AlienRegistry, AlienPower
 from .ai.basic_ai import BasicAI
 
@@ -498,7 +498,7 @@ class Game:
                         self, player, def_ships, Side.DEFENSE
                     )
 
-        # Calculate totals
+        # Calculate base totals before reinforcements
         off_total = off_value + off_ships
         def_total = def_value + def_ships
 
@@ -514,8 +514,28 @@ class Game:
                         self, player, def_total, Side.DEFENSE
                     )
 
-        self._log(f"Offense total: {off_total} ({off_value} + {sum(self.offense_ships.values())} ships)")
-        self._log(f"Defense total: {def_total} ({def_value} + {sum(self.defense_ships.values())} ships)")
+        # Allow reinforcement cards to be played
+        off_reinforcements = self._get_reinforcements(self.offense, self.offense_allies, True, off_total, def_total)
+        def_reinforcements = self._get_reinforcements(self.defense, self.defense_allies, False, def_total, off_total)
+
+        off_reinforce_bonus = sum(c.value for c in off_reinforcements)
+        def_reinforce_bonus = sum(c.value for c in def_reinforcements)
+
+        off_total += off_reinforce_bonus
+        def_total += def_reinforce_bonus
+
+        if off_reinforcements:
+            for card in off_reinforcements:
+                self._log(f"Offense plays {card}")
+                self.cosmic_deck.discard(card)
+
+        if def_reinforcements:
+            for card in def_reinforcements:
+                self._log(f"Defense plays {card}")
+                self.cosmic_deck.discard(card)
+
+        self._log(f"Offense total: {off_total} ({off_value} + {sum(self.offense_ships.values())} ships{f' + {off_reinforce_bonus} reinforcement' if off_reinforce_bonus else ''})")
+        self._log(f"Defense total: {def_total} ({def_value} + {sum(self.defense_ships.values())} ships{f' + {def_reinforce_bonus} reinforcement' if def_reinforce_bonus else ''})")
 
         # Check for Loser/Antimatter
         reverse_winner = False
@@ -673,6 +693,50 @@ class Game:
                     player.alien.on_deal_failure(self, player, self.defense if player == self.offense else self.offense)
 
         self._discard_encounter_cards()
+
+    def _get_reinforcements(
+        self,
+        main_player: Player,
+        allies: List[Player],
+        is_offense: bool,
+        current_total: int,
+        opponent_total: int
+    ) -> List[ReinforcementCard]:
+        """
+        Get reinforcement cards from main player and allies.
+
+        Per rules: Main player plays first, then allies can add reinforcements.
+        Each side totals their reinforcements before comparing.
+        """
+        all_reinforcements = []
+
+        # Main player selects reinforcements
+        ai = main_player.ai_strategy or BasicAI()
+        main_reinforcements = ai.select_reinforcement_cards(
+            self, main_player, is_offense, current_total, opponent_total
+        )
+
+        for card in main_reinforcements:
+            if card in main_player.hand:
+                main_player.remove_card(card)
+                all_reinforcements.append(card)
+
+        # Allies can also play reinforcements
+        updated_total = current_total + sum(c.value for c in all_reinforcements)
+
+        for ally in allies:
+            ally_ai = ally.ai_strategy or BasicAI()
+            ally_reinforcements = ally_ai.select_reinforcement_cards(
+                self, ally, is_offense, updated_total, opponent_total
+            )
+
+            for card in ally_reinforcements:
+                if card in ally.hand:
+                    ally.remove_card(card)
+                    all_reinforcements.append(card)
+                    updated_total += card.value
+
+        return all_reinforcements
 
     def _give_compensation(self, receiver: Player, giver: Player) -> None:
         """Give compensation to player who played negotiate."""
