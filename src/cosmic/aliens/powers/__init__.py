@@ -47,3 +47,6 @@ from .alliance_powers import *  # noqa: F401, F403
 from .weather_powers import *  # noqa: F401, F403
 from .trap_powers import *  # noqa: F401, F403
 from .territory_powers import *  # noqa: F401, F403
+from .ancient_powers import *  # noqa: F401, F403
+from .void_powers import *  # noqa: F401, F403
+from .champion_powers import *  # noqa: F401, F403
