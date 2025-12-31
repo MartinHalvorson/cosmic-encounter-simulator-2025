@@ -36,8 +36,7 @@ class CardShark(AlienPower):
         self,
         game: "Game",
         player: "Player",
-        role: PlayerRole,
-        as_offense: bool
+        as_main_player: bool
     ) -> None:
         """Draw extra cards on win."""
         if not player.power_active:
@@ -169,7 +168,7 @@ class Doubler(AlienPower):
             return base_total
         # Double 50% of the time when advantageous
         if random.random() < 0.5 and base_total > 20:
-            return base_total + (base_total - player.ships_committed)
+            return base_total * 2
         return base_total
 
 
