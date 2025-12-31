@@ -278,6 +278,9 @@ class GameConfig:
     use_tech: bool = False
     use_hazards: bool = False
     use_space_stations: bool = False  # Cosmic Incursion expansion
+    use_lux: bool = False  # Cosmic Odyssey expansion (currency system)
+    use_rifts: bool = False  # Cosmic Odyssey expansion (trap cards)
+    starting_lux: int = 5  # Lux each player starts with
     max_turns: int = 200  # Prevent infinite games
     seed: Optional[int] = None  # For reproducibility
     required_aliens: Optional[List[str]] = None  # Aliens that must be in the game
