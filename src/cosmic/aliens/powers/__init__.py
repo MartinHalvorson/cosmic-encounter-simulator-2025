@@ -12,3 +12,4 @@ from .advanced_powers import *  # noqa: F401, F403
 from .classic_powers import *  # noqa: F401, F403
 from .exotic_powers import *  # noqa: F401, F403
 from .legendary_powers import *  # noqa: F401, F403
+from .cosmic_powers import *  # noqa: F401, F403
