@@ -1706,6 +1706,83 @@ class Tortoise(AlienPower):
     shell_cards: int = field(default=0, init=False)
 
 
+@dataclass
+class Nanny(AlienPower):
+    """
+    Nanny - Power of Consequences.
+    Official FFG rules: When not main player, motivate players with negotiate cards.
+    Players in timeout cannot participate. Collect discarded negotiates.
+    """
+    name: str = field(default="Nanny", init=False)
+    description: str = field(default="Give negotiates with consequences; collect discards.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+
+@dataclass
+class Pretender(AlienPower):
+    """
+    Pretender - Power to Take Over.
+    Official FFG rules: As offense after destiny, swap seats with any player.
+    Powers move with you, everything else stays.
+    """
+    name: str = field(default="Pretender", init=False)
+    description: str = field(default="Swap seats with another player; keep your power.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.DESTINY, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+    usable_as: List[PlayerRole] = field(
+        default_factory=lambda: [PlayerRole.OFFENSE],
+        init=False
+    )
+
+
+@dataclass
+class Perfectionist(AlienPower):
+    """
+    Perfectionist - Power to Be Finicky.
+    Official FFG rules: When receiving cards, reject unwanted ones and draw replacements.
+    Stack rejected cards for later use.
+    """
+    name: str = field(default="Perfectionist", init=False)
+    description: str = field(default="Reject cards when drawing; get replacements.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.CONSTANT, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    rejected_cards: int = field(default=0, init=False)
+
+
+@dataclass
+class Particle(AlienPower):
+    """
+    Particle - Power of Quantum Entanglement.
+    Official FFG rules: As offense/ally when landing, entangle planets.
+    Ships must stay balanced between entangled planets.
+    """
+    name: str = field(default="Particle", init=False)
+    description: str = field(default="Entangle planets; balance ships between them.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    entangled_pairs: List[Any] = field(default_factory=list, init=False)
+
+
+@dataclass
+class TheCult(AlienPower):
+    """
+    The Cult - Power of Allegiance.
+    Official FFG rules: Offer opponents membership. Members share wins,
+    can't ally against each other. Both members in combat = all cards become negotiates.
+    """
+    name: str = field(default="TheCult", init=False)
+    description: str = field(default="Recruit members; all members share wins.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+    members: List[str] = field(default_factory=list, init=False)
+
+
 # Register Cosmic Eons aliens
 AlienRegistry.register(Anarchist())
 AlienRegistry.register(AssistantAlien())
@@ -1719,8 +1796,13 @@ AlienRegistry.register(Hypochondriac())
 AlienRegistry.register(Klutz())
 AlienRegistry.register(Maven())
 AlienRegistry.register(Moocher())
+AlienRegistry.register(Nanny())
 AlienRegistry.register(Oligarch())
 AlienRegistry.register(PackRat())
+AlienRegistry.register(Particle())
 AlienRegistry.register(Peddler())
+AlienRegistry.register(Perfectionist())
+AlienRegistry.register(Pretender())
 AlienRegistry.register(Surgeon())
+AlienRegistry.register(TheCult())
 AlienRegistry.register(Tortoise())

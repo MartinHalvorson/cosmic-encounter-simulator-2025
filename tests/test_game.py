@@ -355,5 +355,72 @@ class TestTwoPlayerVariant:
         assert "Macron" in all_powers
 
 
+class TestRewardsDeck:
+    """Tests for the rewards deck mechanics."""
+
+    def test_rewards_deck_initialized(self):
+        """Game should have a rewards deck."""
+        config = GameConfig(num_players=4, seed=42)
+        game = Game(config=config)
+        game.setup()
+
+        assert game.rewards_deck is not None
+        assert game.rewards_deck.cards_remaining() > 0
+
+    def test_rewards_deck_has_various_card_types(self):
+        """Rewards deck should have different card types."""
+        from cosmic.cards.rewards_deck import RewardsDeck
+        from cosmic.cards.base import AttackCard, NegotiateCard, ReinforcementCard
+
+        deck = RewardsDeck()
+
+        # Draw all cards and check types
+        card_types = set()
+        for _ in range(deck.cards_remaining()):
+            card = deck.draw()
+            card_types.add(type(card).__name__)
+
+        assert "AttackCard" in card_types
+        assert "NegotiateCard" in card_types
+        assert "ReinforcementCard" in card_types
+
+    def test_rewards_deck_reshuffles(self):
+        """Rewards deck should reshuffle when empty."""
+        from cosmic.cards.rewards_deck import RewardsDeck
+
+        deck = RewardsDeck()
+        initial_count = deck.cards_remaining()
+
+        # Draw all cards
+        cards = []
+        for _ in range(initial_count):
+            cards.append(deck.draw())
+
+        # Discard them
+        for card in cards:
+            deck.discard(card)
+
+        # Now deck should reshuffle on draw
+        card = deck.draw()
+        assert card is not None
+
+    def test_rewards_deck_has_high_value_attacks(self):
+        """Rewards deck should have high value attack cards."""
+        from cosmic.cards.rewards_deck import RewardsDeck
+        from cosmic.cards.base import AttackCard
+
+        deck = RewardsDeck()
+
+        # Find max attack value
+        max_value = 0
+        for _ in range(deck.cards_remaining()):
+            card = deck.draw()
+            if isinstance(card, AttackCard):
+                max_value = max(max_value, card.value)
+            deck.discard(card)
+
+        assert max_value >= 20  # Rewards deck has high value cards
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
