@@ -597,11 +597,11 @@ class TheMeek(AlienPower):
     The Meek - Power to Win by Losing (Cosmic Odyssey).
     You have the power to inherit. Instead of advancing when you win,
     you only advance when you lose. Winning actually lowers your score.
-    You win when you have 5 losses (not 5 colonies).
+    You win when you have 8 losses (increased from 5 for balance).
     """
     name: str = field(default="The Meek", init=False)
     description: str = field(
-        default="Win by losing - victories decrease score, losses advance you.",
+        default="Win by losing - victories decrease score, 8 losses wins.",
         init=False
     )
     timing: PowerTiming = field(default=PowerTiming.CONSTANT, init=False)
@@ -638,7 +638,8 @@ class TheMeek(AlienPower):
         player: "Player"
     ) -> bool:
         """Check if The Meek has won through losses."""
-        return player.power_active and self.loss_count >= 5
+        # Requires 8 losses (increased from 5 for balance)
+        return player.power_active and self.loss_count >= 8
 
 
 @dataclass

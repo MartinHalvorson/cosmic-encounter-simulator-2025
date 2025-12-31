@@ -4175,17 +4175,6 @@
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
-    "BlackHole": {
-      "name": "BlackHole",
-      "games_played": 100076,
-      "games_won": 24631,
-      "win_rate": 24.61,
-      "solo_wins": 23899,
-      "shared_wins": 732,
-      "elo_rating": 100,
-      "peak_elo": 1511.7,
-      "avg_colonies": 3.81
-    },
     "Climber": {
       "name": "Climber",
       "games_played": 101758,
@@ -9589,14 +9578,14 @@
     },
     "Blackhole": {
       "name": "Blackhole",
-      "games_played": 1542,
-      "games_won": 346,
-      "win_rate": 22.44,
-      "solo_wins": 333,
-      "shared_wins": 13,
-      "elo_rating": 100,
-      "peak_elo": 1500.0,
-      "avg_colonies": 3.82
+      "games_played": 101618,
+      "games_won": 24977,
+      "solo_wins": 24232,
+      "shared_wins": 745,
+      "elo_rating": 100.0,
+      "peak_elo": 1511.7,
+      "avg_colonies": 3.8101517447696276,
+      "win_rate": 24.58
     },
     "Deceiver": {
       "name": "Deceiver",

@@ -182,6 +182,17 @@ class CumulativeStats:
     # ELO calculator
     _elo_calc: EloCalculator = field(default_factory=EloCalculator, repr=False)
 
+    def _normalize_alien_name(self, name: str) -> str:
+        """Normalize alien name to prevent duplicates from case differences."""
+        # Use the original name but ensure consistent lookup
+        # This handles cases like "BlackHole" vs "Blackhole"
+        normalized = name.strip()
+        # Check if a case-insensitive match already exists
+        for existing_name in self.alien_stats.keys():
+            if existing_name.lower() == normalized.lower():
+                return existing_name
+        return normalized
+
     def record_game(
         self,
         alien_map: Dict[str, str],  # player_name -> alien_name
@@ -193,6 +204,9 @@ class CumulativeStats:
         errored: bool = False
     ) -> None:
         """Record a single game result."""
+        # Normalize alien names to prevent duplicates
+        alien_map = {k: self._normalize_alien_name(v) for k, v in alien_map.items()}
+
         self.total_games += 1
         self.total_turns += turn_count
 
