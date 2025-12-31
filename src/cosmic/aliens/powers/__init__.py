@@ -152,3 +152,4 @@ from .final_powers import *  # noqa: F401, F403
 from .art_powers import *  # noqa: F401, F403
 from .literature_powers import *  # noqa: F401, F403
 from .film_powers import *  # noqa: F401, F403
+from .bonus_extended_powers import *  # noqa: F401, F403

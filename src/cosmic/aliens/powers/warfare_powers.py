@@ -76,7 +76,7 @@ class Rampart(AlienPower):
 
     def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active and side == Side.DEFENSE:
-            if game.target_planet and game.target_planet.owner == player:
+            if game.defense_planet and game.defense_planet.owner == player:
                 return base_total + 4
         return base_total
 

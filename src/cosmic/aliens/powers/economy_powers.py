@@ -49,7 +49,7 @@ class Tycoon(AlienPower):
     def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active:
             home_colonies = sum(1 for p in game.planets
-                               if p.owner == player and player.name in p.ship_counts)
+                               if p.owner == player and p.has_colony(player.name))
             return base_total + (home_colonies * 2)
         return base_total
 
