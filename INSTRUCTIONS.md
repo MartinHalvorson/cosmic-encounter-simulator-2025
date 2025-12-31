@@ -650,3 +650,53 @@ From official FFG rules and BoardGameGeek:
 5. Improve 2-player variant rules
 6. Run large simulation batches (100k+ games)
 7. Regular commits and pushes
+
+**Session 21 Progress:**
+- **1000+ ALIENS MILESTONE REACHED!**
+- **Added Machine Powers (15 aliens):**
+  - Automaton (+2), Clockwork (extra encounter), Cyborg (+1/ship)
+  - Android, Robot, Processor, Mainframe, Server, Database
+  - Terminal, Scanner, Sensor, Network, Interface, Generator (+3 home)
+- **Added Beast Powers (15 aliens):**
+  - Wolf (+1/ally ship), Bear (+4 defense), Eagle (+3 attack)
+  - Lion (win ties), Serpent, Spider, Shark, Hawk, Raven, Crow
+  - Fox, Owl, Turtle, Rhino (+5 first), Scorpion
+- **Added Spirit Powers (15 aliens):**
+  - Ghost (artifact immunity), Wraith (win ties, extra loss), Specter (-2)
+  - Poltergeist, Shade, Spirit (+1/warp ship), Banshee, Revenant
+  - Apparition, Soul, Ethereal, Haunt, Eidolon, Phantom_Alt, Ghostly
+- **Added Royal Powers (15 aliens):**
+  - King (+4 most colonies), Duke (+1/ally), Count (+2/home defending)
+  - Earl (+3 attack), Marquis (+4 defense), Viscount, Knight, Princess
+  - Heir, Noble (win ties), Squire, Page, Courtier, Herald_Alt, Steward (+1/home)
+- **Added Ocean Powers (15 aliens):**
+  - Kraken, Leviathan (+5 home defense), Octopus (8 ships)
+  - Whale (double ships), Dolphin, Jellyfish, Seahorse, Eel (-3)
+  - Coral (+1/colony), Siren, Crab, Anglerfish, Starfish, Clam, Seal
+- **Added Sky Powers (15 aliens):**
+  - Cloud, Storm_Alt, Wind_Alt, Thunder (+4 first), Lightning_Alt
+  - Rainbow, Sunset (+3 second), Fog, Haze, Aurora, Comet
+  - Meteor_Alt, Star_Alt, Moon_Alt, Eclipse
+- **Added Gem Powers (15 aliens):**
+  - Diamond, Ruby (+3 attack), Sapphire (+3 defense), Emerald
+  - Amethyst, Topaz, Opal, Pearl (+1/card), Jade, Onyx (win ties)
+  - Quartz (+2), Garnet, Turquoise, Crystal_Alt, Obsidian
+- **Added Music Powers (15 aliens):**
+  - Conductor, Drummer, Singer, Composer, Harmonist (+2/ally)
+  - Soloist (+4 no allies), Pianist, Violinist (+2 defense), Trumpeter
+  - Cellist, Flutist (+2 attack), Bard, Rhythm (+1/encounter), Melody, Symphony
+- **Added Profession Powers (15 aliens):**
+  - Banker (+1/card), Lawyer, Doctor_Alt, Teacher, Engineer_Alt (+2 home)
+  - Architect, Scientist_Alt, Pilot, Merchant_Alt, Artist, Judge (win ties)
+  - Farmer (+1/home), Miner_Alt, Chef, Detective
+- **Added Emotion Powers (15 aliens):**
+  - Rage (+5 attack), Fear_Alt, Joy (+1/ally), Sorrow, Hope, Despair (-3)
+  - Pride (+3 leading), Envy, Greed_Alt, Love, Hate (+4 nemesis)
+  - Calm, Anxiety (+2 trailing), Courage (+3 outnumbered), Trust (+2 allies)
+- **Fixed Coral alien bug:** Changed `game.all_planets` to `game.planets`
+- **1093 alien powers now implemented!**
+- **20.8+ million cumulative games simulated**
+- **Simulation speed:** ~700+ games/second
+- **All tests passing (122 unit tests)**
+- **Tournament Mode, Swiss tournaments, Monte Carlo estimation implemented**
+- **Synergy/Counter matrix analysis available**

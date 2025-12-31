@@ -486,12 +486,18 @@ class Game:
         """Handle the destiny phase."""
         self.phase = GamePhase.DESTINY
 
-        # Draw destiny
-        destiny_card = self.destiny_deck.draw(self.offense)
-        self.defense = destiny_card.player
-        self.destiny_deck.discard(destiny_card)
-
-        self._log(f"Destiny: {self.defense.name}")
+        # 2-player mode: offense chooses target (no destiny deck)
+        if self.config.two_player_mode and self.config.two_player_choose_target:
+            # In 2-player, offense can only attack the other player
+            other_players = [p for p in self.players if p != self.offense]
+            self.defense = other_players[0] if other_players else self.offense
+            self._log(f"Target: {self.defense.name}")
+        else:
+            # Draw destiny
+            destiny_card = self.destiny_deck.draw(self.offense)
+            self.defense = destiny_card.player
+            self.destiny_deck.discard(destiny_card)
+            self._log(f"Destiny: {self.defense.name}")
 
         # Power hooks (can redirect destiny)
         for player in self.players:
@@ -1197,10 +1203,17 @@ class Game:
 
     def _check_game_end(self) -> None:
         """Check if any player has won the game."""
+        # Use reduced colonies for 2-player mode
+        colonies_needed = (
+            self.config.two_player_colonies_to_win
+            if self.config.two_player_mode
+            else self.config.colonies_to_win
+        )
+
         for player in self.players:
-            # Standard win: 5 foreign colonies
+            # Standard win: colonies (5 for standard, 4 for 2-player)
             colonies = player.count_foreign_colonies(self.planets)
-            if colonies >= self.config.colonies_to_win:
+            if colonies >= colonies_needed:
                 if player not in self.winners:
                     self.winners.append(player)
                     self._log(f"{player.name} wins with {colonies} colonies!")
