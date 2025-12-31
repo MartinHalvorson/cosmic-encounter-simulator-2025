@@ -285,3 +285,18 @@ From official FFG rules and BoardGameGeek:
   - F tier: 0 powers
 - **Gini coefficient: 0.053** (low inequality)
 - **Win rate std dev: 3.65%**
+
+### Session 5 Progress (2025-12-30) - Rule Accuracy
+- **Verified official FFG rules for core alien powers:**
+  - Fixed Zombie: Now saves only ONE ship per loss event (official rules)
+  - Verified Macron: One ship as offense/ally, counts as 4
+  - Verified Virus: Multiplies ships × card value
+  - Verified Machine: Extra encounters while holding encounter cards
+  - Verified Parasite: Join any encounter uninvited
+  - Verified Oracle: Opponent reveals card first
+  - Verified Sorcerer: Swap encounter cards
+  - Verified Trader: Swap hands before card selection
+  - Verified Human: +4 to total, auto-wins if zapped
+- **259 alien powers now implemented**
+- **5+ million cumulative games simulated**
+- Research sources: [Cosmic Encounter Wiki](https://cosmicencounter.fandom.com), [BoardGameGeek](https://boardgamegeek.com)
