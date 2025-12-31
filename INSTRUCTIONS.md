@@ -371,3 +371,43 @@ From official FFG rules and BoardGameGeek:
 - **276 alien powers now implemented!**
 - **7,029,979+ cumulative games simulated**
 - Complete coverage of FFG base + Incursion + Conflict expansions
+
+### Session 10 Progress (2025-12-30) - Major Alien Expansion
+- **Added Dominion Powers (21 new aliens):**
+  - Admiral, Autocrat (Emperor renamed), Baron, Chieftain, Commander
+  - Despot, Dictator, Governor, Imperator, Lord, Marshal, Monarch (King renamed)
+  - Noble, Overseer (Overlord renamed), Potentate, Prince, Regent
+  - Sovereign, Sultan, Tsar, Viceroy
+- **Added Nature Powers (12 new aliens):**
+  - Avalanche, Blizzard, Earthquake, Flood, Hurricane, Lightning
+  - Meteor, Storm, Tide, Tornado, Tsunami, Volcano
+- **Added Tech Powers (25 new aliens):**
+  - Android, Automaton, Clockwork, Cyborg, Database, Drone
+  - Factory, Generator, Interface, Mainframe, Network, Processor
+  - Radar, Robot, Scanner, Sensor, Server, Terminal, Turret, Virus_Alt
+- **Added Space Powers (18 new aliens):**
+  - Asteroid, BlackHole, Comet, Constellation, Cosmos, Eclipse
+  - Galaxy, Nebula, Nova, Orbit, Pulsar, Quasar, Satellite
+  - Singularity, Solar, Star, Supernova, Wormhole
+- **Enhanced Destiny Deck:**
+  - Added wild cards per FFG official rules (2 per game)
+  - Wild cards let offense choose any other player
+- **Fixed Planet Selection Bug:**
+  - Basic AI now handles edge case when defense has no home planets
+- **353 alien powers implemented**
+- **7,290,000+ cumulative games simulated**
+
+### Session 11 Progress (2025-12-30) - 400+ Aliens Milestone
+- **Added Mythical Powers (26 new aliens):**
+  - Centaur, Chimera, Cyclops, Djinn, Fairy, Giant, Gnome, Griffin
+  - Harpy, Hydra, Kraken, Leprechaun, Manticore, Medusa, Mermaid
+  - Minotaur, Nymph, Ogre, Pegasus, Phoenix_Alt, Sphinx, Troll
+  - Unicorn, Vampire, Werewolf, Yeti
+- **Added Military Powers (26 new aliens):**
+  - Airborne, Artillery, Battalion, Blockade, Bunker, Commando
+  - Conscript, Corps, Division, Draft, Flanker, Garrison, Infantry
+  - Marine, Militia, Ordnance, Outpost, Patrol, Platoon, Recon
+  - Regiment, Siege, Sniper, Squadron, Tank, Trench
+- **405 alien powers now implemented!**
+- **7,390,000+ cumulative games simulated**
+- Simulation speed: ~450 games/second
