@@ -129,7 +129,7 @@ class TacticalAI(AIStrategy):
             return max(attack_cards, key=lambda c: c.value)
         if negotiate_cards:
             return negotiate_cards[0]
-        raise ValueError("No encounter cards available")
+        return None
 
     def _select_high_risk_card(
         self,
@@ -142,7 +142,7 @@ class TacticalAI(AIStrategy):
             return max(attack_cards, key=lambda c: c.value)
         if negotiate_cards:
             return negotiate_cards[0]
-        raise ValueError("No encounter cards available")
+        return None
 
     def _select_optimal_card(
         self,
@@ -164,7 +164,7 @@ class TacticalAI(AIStrategy):
         if not attack_cards:
             if negotiate_cards:
                 return negotiate_cards[0]
-            raise ValueError("No encounter cards available")
+            return None
 
         # Estimate opponent's likely card value
         opp_expected_value = self._estimate_opponent_card(game, is_offense)
