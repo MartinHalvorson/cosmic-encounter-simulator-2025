@@ -514,9 +514,40 @@ From official FFG rules and BoardGameGeek:
 - **9,000,000+ cumulative games simulated**
 - Simulation speed: ~370-400 games/second
 
+### Session 16 Progress (2025-12-31) - Official FFG Expansions Complete
+- **Added 10 Cosmic Storm aliens:**
+  - Arcade, Bride, Grumpus, Mouth, Neighbor, Outlaw
+  - Porcupine, Sloth, Squee, Swindler
+- **Added 22 Cosmic Eons aliens:**
+  - Anarchist, Assistant, BleedingHeart, Coward, Crusher, EvilTwin
+  - FireDancer, Hunger, Hypochondriac, Klutz, Maven, Moocher
+  - Nanny, Oligarch, PackRat, Particle, Peddler, Perfectionist
+  - Pretender, Surgeon, TheCult, Tortoise
+- **Added 15 Cosmic Dominion aliens:**
+  - Angler, Daredevil, Explorer, Greenhorn, Host, Joker, Lizard
+  - Love, Mesmer, Mirage, Muckraker, Tourist, Voyager, Whirligig, YinYang
+- **Fixed bugs in new alien implementations:**
+  - Arcade: Fixed offense_total/defense_total calculation
+  - Neighbor: Fixed planet system reference
+  - Porcupine: Fixed total estimation for power activation
+- **721+ alien powers now implemented!**
+- **9,100,000+ cumulative games simulated**
+- Simulation speed: ~285-340 games/second
+
+### Session 17 Progress (2025-12-31) - Speed and Luck Powers
+- **Added 15 Speed Powers aliens:**
+  - Blitz, Chaser, Dasher, Express, Hasty, Quicken, Racer
+  - Rapid, Runner, Rusher, Speeder, Sprint, Streaker, Swift, Velocity
+- **Added 16 Luck Powers aliens:**
+  - Blessed, Chancy, Charmed, Cursed, Destined, Fated, Fortunate
+  - Jinxed, Lotto, Lucky_Alt, Odds, Omen, Probability, Risk, Serendipity, Wager
+- **752 alien powers now implemented!**
+- **9,150,000+ cumulative games simulated**
+- Simulation speed: ~290 games/second
+
 ### Final Project Summary (Updated):
-- **685+ unique alien powers** across 40+ power category files
-- **9+ million simulated games** with comprehensive statistics
+- **752 unique alien powers** across 42 power category files
+- **9.15+ million simulated games** with comprehensive statistics
 - **5 AI personality types**: Basic, Aggressive, Cautious, Opportunistic, Social, Adaptive
 - **Complete game mechanics**: Encounter phases, destiny, alliances, reinforcements, flares
 - **Tech cards, Hazard deck, Artifact system** from expansions
@@ -524,3 +555,4 @@ From official FFG rules and BoardGameGeek:
 - **Head-to-head matchup analysis** for specific alien comparisons
 - **Wild card destiny mechanics** per FFG rules
 - **2-6 player support** with proper scaling
+- **Official FFG expansions covered**: Base, Incursion, Conflict, Alliance, Storm, Eons, Dominion
