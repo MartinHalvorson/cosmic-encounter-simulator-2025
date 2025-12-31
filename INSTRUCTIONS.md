@@ -1126,11 +1126,31 @@ From official FFG rules and BoardGameGeek:
 - **Updated cumulative stats:**
   - Total games: 21.4M+
   - Simulation runs: 36
-- **Current alien count: 2152**
+- **Current alien count: 2610**
 - **All 189 tests passing**
 - **Fixed property access bugs:**
   - economy_powers.py: Use has_colony() instead of ship_counts dict
   - warfare_powers.py: Use defense_planet instead of target_planet
-- **Added bonus_extended_powers.py (19 aliens)**
+  - academia_powers.py: Use game.current_turn instead of turn_number
+- **Added new power files:**
+  - bonus_extended_powers.py (19 aliens)
+  - academia_powers.py (20 aliens: Professor, Student, Researcher, etc.)
+  - beverage_powers.py (auto-generated)
+  - martial_powers.py (auto-generated)
+- **Added analysis tools:**
+  - BalanceAnalyzer for power tier analysis (z-scores, balance tiers)
+  - SynergyAnalyzer for ally combination tracking
+  - suggest_synergies() for thematic recommendations
+- **Ran 150k+ additional simulations:**
+  - Total games: 21.5M+
+  - Simulation runs: 37+
+  - Speed: ~300 games/second
+
+**Session 27 Final Status:**
+- 2610 alien powers registered
+- 189 tests passing
+- 21.5M+ games simulated
+- Balance analysis identifies 20 overpowered and 2 underpowered aliens
+- Alternate win aliens (Lizard, Anarchist, The Meek) flagged for balancing
 
 **Previous Session Accomplishments:**
