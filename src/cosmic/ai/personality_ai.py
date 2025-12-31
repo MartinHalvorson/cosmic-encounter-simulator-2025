@@ -786,3 +786,784 @@ class AdaptiveAI(AIStrategy):
         if position == 'contending' and len(cards) >= 3:
             return True
         return False
+
+
+@dataclass
+class VengefulAI(AIStrategy):
+    """
+    Vengeful AI that remembers grudges and targets enemies.
+
+    Traits:
+    - Tracks players who attacked them
+    - Prioritizes attacking grudge targets
+    - Fights hard against grudge targets
+    - Less likely to ally with enemies
+    - Remembers across encounters
+    """
+    name: str = field(default="VengefulAI", init=False)
+    _rng: random.Random = field(default_factory=random.Random)
+    grudges: Dict[str, int] = field(default_factory=dict)  # Player name -> grudge level
+
+    def record_attack(self, attacker_name: str) -> None:
+        """Record when someone attacks us."""
+        self.grudges[attacker_name] = self.grudges.get(attacker_name, 0) + 1
+
+    def get_grudge(self, player_name: str) -> int:
+        """Get grudge level against a player."""
+        return self.grudges.get(player_name, 0)
+
+    def select_encounter_card(
+        self,
+        game: "Game",
+        player: "Player",
+        is_offense: bool
+    ) -> "EncounterCard":
+        """Play best cards against grudge targets."""
+        opponent = game.defense if is_offense else game.offense
+        grudge_level = self.get_grudge(opponent.name) if opponent else 0
+
+        attack_cards = player.get_attack_cards()
+
+        if grudge_level >= 2 and attack_cards:
+            # High grudge - play best card
+            return max(attack_cards, key=lambda c: c.value)
+        elif grudge_level >= 1 and attack_cards:
+            # Some grudge - play above average
+            sorted_cards = sorted(attack_cards, key=lambda c: c.value, reverse=True)
+            return sorted_cards[min(1, len(sorted_cards)-1)]
+        elif attack_cards:
+            # No grudge - play medium card
+            sorted_cards = sorted(attack_cards, key=lambda c: c.value)
+            return sorted_cards[len(sorted_cards) // 2]
+
+        cards = player.get_encounter_cards()
+        return cards[0] if cards else None
+
+    def select_ships_for_encounter(
+        self,
+        game: "Game",
+        player: "Player",
+        max_ships: int
+    ) -> int:
+        """Commit more ships against grudge targets."""
+        opponent = game.defense if game.offense == player else game.offense
+        grudge_level = self.get_grudge(opponent.name) if opponent else 0
+
+        base_ships = max(2, max_ships - 1)
+        if grudge_level >= 2:
+            return max_ships  # Go all in against enemies
+        elif grudge_level >= 1:
+            return min(max_ships, base_ships + 1)
+        return base_ships
+
+    def decide_alliance_invitation(
+        self,
+        game: "Game",
+        player: "Player",
+        potential_allies: List["Player"],
+        as_offense: bool
+    ) -> List["Player"]:
+        """Don't invite grudge targets as allies."""
+        non_enemies = [p for p in potential_allies if self.get_grudge(p.name) < 2]
+        if len(non_enemies) >= 2:
+            return self._rng.sample(non_enemies, 2)
+        return non_enemies
+
+    def decide_alliance_response(
+        self,
+        game: "Game",
+        player: "Player",
+        offense: "Player",
+        defense: "Player",
+        invited_by_offense: bool,
+        invited_by_defense: bool
+    ) -> Optional["Side"]:
+        """Side against grudge targets."""
+        from ..types import Side
+
+        offense_grudge = self.get_grudge(offense.name)
+        defense_grudge = self.get_grudge(defense.name)
+
+        # Always fight against high grudge targets
+        if invited_by_defense and offense_grudge >= 2:
+            return Side.DEFENSE
+        if invited_by_offense and defense_grudge >= 2:
+            return Side.OFFENSE
+
+        # Otherwise prefer side with lower grudge
+        if invited_by_offense and invited_by_defense:
+            if offense_grudge < defense_grudge:
+                return Side.OFFENSE
+            else:
+                return Side.DEFENSE
+
+        if invited_by_offense:
+            return Side.OFFENSE
+        if invited_by_defense:
+            return Side.DEFENSE
+        return None
+
+    def select_ally_ships(
+        self,
+        game: "Game",
+        player: "Player",
+        max_ships: int
+    ) -> int:
+        """Commit ships based on grudges."""
+        opponent = game.defense if game.offense != player else game.offense
+        if opponent and self.get_grudge(opponent.name) >= 2:
+            return max_ships  # Want enemy to lose
+        return max(2, max_ships - 1)
+
+    def select_attack_planet(
+        self,
+        game: "Game",
+        player: "Player",
+        defense: "Player"
+    ) -> "Planet":
+        """Attack grudge targets more aggressively."""
+        planets = defense.home_planets
+        if not planets:
+            return None
+
+        grudge_level = self.get_grudge(defense.name)
+        if grudge_level >= 1:
+            # Attack their strongest planet - hurt them most
+            return max(planets, key=lambda p: p.get_ships(defense.name))
+        else:
+            # Normal attack - weakest planet
+            return min(planets, key=lambda p: p.get_ships(defense.name))
+
+    def negotiate_deal(
+        self,
+        game: "Game",
+        player: "Player",
+        opponent: "Player"
+    ) -> Optional[Dict[str, Any]]:
+        """Don't deal with high grudge targets."""
+        grudge = self.get_grudge(opponent.name)
+        if grudge >= 2:
+            return None  # No deals with enemies
+        if grudge >= 1:
+            # Grudge but willing to deal for cards
+            return {"type": "card_trade", "cards": 2}
+        return {"type": "colony_swap"}
+
+    def should_use_power(
+        self,
+        game: "Game",
+        player: "Player",
+        context: Dict[str, Any]
+    ) -> bool:
+        """Always use power against grudge targets."""
+        return True
+
+    def want_second_encounter(
+        self,
+        game: "Game",
+        player: "Player"
+    ) -> bool:
+        """Take second encounter against grudge targets."""
+        cards = player.get_encounter_cards()
+        return len(cards) >= 2
+
+
+@dataclass
+class KingmakerAI(AIStrategy):
+    """
+    Kingmaker AI that prevents leaders from winning.
+
+    Traits:
+    - Always targets the player closest to winning
+    - Allies against leaders
+    - Plays defensively against weak players
+    - Will sacrifice own progress to stop leaders
+    """
+    name: str = field(default="KingmakerAI", init=False)
+    _rng: random.Random = field(default_factory=random.Random)
+
+    def _get_leader(self, game: "Game", exclude: "Player" = None) -> Optional["Player"]:
+        """Find the player closest to winning."""
+        best_player = None
+        best_colonies = -1
+
+        for p in game.players:
+            if p == exclude:
+                continue
+            colonies = p.count_foreign_colonies(game.planets)
+            if colonies > best_colonies:
+                best_colonies = colonies
+                best_player = p
+
+        return best_player if best_colonies >= 3 else None
+
+    def select_encounter_card(
+        self,
+        game: "Game",
+        player: "Player",
+        is_offense: bool
+    ) -> "EncounterCard":
+        """Play hardest against leaders."""
+        opponent = game.defense if is_offense else game.offense
+        leader = self._get_leader(game, player)
+
+        attack_cards = player.get_attack_cards()
+        negotiate_cards = player.get_negotiate_cards()
+
+        if opponent == leader and attack_cards:
+            # Fighting the leader - go all out
+            return max(attack_cards, key=lambda c: c.value)
+        elif opponent != leader:
+            # Not fighting leader - conserve
+            if negotiate_cards and self._rng.random() < 0.4:
+                return negotiate_cards[0]
+            if attack_cards:
+                sorted_cards = sorted(attack_cards, key=lambda c: c.value)
+                return sorted_cards[0]  # Play lowest
+
+        cards = player.get_encounter_cards()
+        return cards[0] if cards else None
+
+    def select_ships_for_encounter(
+        self,
+        game: "Game",
+        player: "Player",
+        max_ships: int
+    ) -> int:
+        """Max ships against leaders."""
+        opponent = game.defense if game.offense == player else game.offense
+        leader = self._get_leader(game, player)
+
+        if opponent == leader:
+            return max_ships
+        return max(1, max_ships - 2)
+
+    def decide_alliance_invitation(
+        self,
+        game: "Game",
+        player: "Player",
+        potential_allies: List["Player"],
+        as_offense: bool
+    ) -> List["Player"]:
+        """Invite allies to fight leader."""
+        leader = self._get_leader(game, player)
+        opponent = game.defense if as_offense else game.offense
+
+        if opponent == leader:
+            # Fighting leader - invite everyone
+            return list(potential_allies)
+        return []
+
+    def decide_alliance_response(
+        self,
+        game: "Game",
+        player: "Player",
+        offense: "Player",
+        defense: "Player",
+        invited_by_offense: bool,
+        invited_by_defense: bool
+    ) -> Optional["Side"]:
+        """Side against the leader."""
+        from ..types import Side
+        leader = self._get_leader(game, player)
+
+        if leader == offense and invited_by_defense:
+            return Side.DEFENSE
+        if leader == defense and invited_by_offense:
+            return Side.OFFENSE
+
+        # Otherwise random
+        if invited_by_defense:
+            return Side.DEFENSE
+        if invited_by_offense:
+            return Side.OFFENSE
+        return None
+
+    def select_ally_ships(
+        self,
+        game: "Game",
+        player: "Player",
+        max_ships: int
+    ) -> int:
+        """Max ships when fighting leader."""
+        leader = self._get_leader(game, player)
+        opponent = game.defense if game.offense != player else game.offense
+
+        if opponent == leader:
+            return max_ships
+        return 1
+
+    def select_attack_planet(
+        self,
+        game: "Game",
+        player: "Player",
+        defense: "Player"
+    ) -> "Planet":
+        """Target leader's weakest spot."""
+        planets = defense.home_planets
+        if not planets:
+            return None
+
+        leader = self._get_leader(game, player)
+        if defense == leader:
+            # Attack weakest to guarantee victory
+            return min(planets, key=lambda p: p.get_ships(defense.name))
+        return self._rng.choice(planets)
+
+    def negotiate_deal(
+        self,
+        game: "Game",
+        player: "Player",
+        opponent: "Player"
+    ) -> Optional[Dict[str, Any]]:
+        """Don't give leaders colonies."""
+        leader = self._get_leader(game, player)
+        if opponent == leader:
+            return None  # No deals with leaders
+        return {"type": "colony_swap"}
+
+    def should_use_power(
+        self,
+        game: "Game",
+        player: "Player",
+        context: Dict[str, Any]
+    ) -> bool:
+        """Always use power against leaders."""
+        return True
+
+    def want_second_encounter(
+        self,
+        game: "Game",
+        player: "Player"
+    ) -> bool:
+        """Second encounter if not helping leader win."""
+        cards = player.get_encounter_cards()
+        return len(cards) >= 2
+
+
+@dataclass
+class BlufferAI(AIStrategy):
+    """
+    Bluffer AI that uses deception and misdirection.
+
+    Traits:
+    - Sometimes plays weak cards to appear vulnerable
+    - Uses negotiate cards strategically
+    - Varies ship commitment unpredictably
+    - Makes opponents guess their strength
+    """
+    name: str = field(default="BlufferAI", init=False)
+    _rng: random.Random = field(default_factory=random.Random)
+
+    def select_encounter_card(
+        self,
+        game: "Game",
+        player: "Player",
+        is_offense: bool
+    ) -> "EncounterCard":
+        """Unpredictable card selection."""
+        attack_cards = player.get_attack_cards()
+        negotiate_cards = player.get_negotiate_cards()
+        morph_cards = [c for c in player.get_encounter_cards()
+                      if hasattr(c, 'card_type') and c.card_type == 'morph']
+
+        # Bluff chance - play unexpectedly
+        if self._rng.random() < 0.3:
+            # 30% chance to bluff
+            if attack_cards and len(attack_cards) >= 3:
+                # Play lowest card as a bluff
+                return min(attack_cards, key=lambda c: c.value)
+            if negotiate_cards:
+                return negotiate_cards[0]
+
+        # Morph cards are great for bluffing
+        if morph_cards and self._rng.random() < 0.4:
+            return morph_cards[0]
+
+        # Normal play
+        if attack_cards:
+            # Mix of high and medium cards
+            if self._rng.random() < 0.5:
+                return max(attack_cards, key=lambda c: c.value)
+            else:
+                sorted_cards = sorted(attack_cards, key=lambda c: c.value)
+                return sorted_cards[len(sorted_cards) // 2]
+
+        cards = player.get_encounter_cards()
+        return cards[0] if cards else None
+
+    def select_ships_for_encounter(
+        self,
+        game: "Game",
+        player: "Player",
+        max_ships: int
+    ) -> int:
+        """Vary ship commitment to be unpredictable."""
+        # Randomly commit between 1 and max
+        return self._rng.randint(1, max_ships)
+
+    def decide_alliance_invitation(
+        self,
+        game: "Game",
+        player: "Player",
+        potential_allies: List["Player"],
+        as_offense: bool
+    ) -> List["Player"]:
+        """Sometimes invite many, sometimes none."""
+        if self._rng.random() < 0.3:
+            return []  # No allies - bluff confidence
+        if self._rng.random() < 0.5:
+            return list(potential_allies)  # All allies - bluff weakness
+
+        count = self._rng.randint(1, min(2, len(potential_allies)))
+        if count > 0:
+            return self._rng.sample(potential_allies, count)
+        return []
+
+    def decide_alliance_response(
+        self,
+        game: "Game",
+        player: "Player",
+        offense: "Player",
+        defense: "Player",
+        invited_by_offense: bool,
+        invited_by_defense: bool
+    ) -> Optional["Side"]:
+        """Random alliance decisions."""
+        from ..types import Side
+
+        if invited_by_offense and invited_by_defense:
+            return self._rng.choice([Side.OFFENSE, Side.DEFENSE])
+        if invited_by_offense:
+            return Side.OFFENSE if self._rng.random() > 0.3 else None
+        if invited_by_defense:
+            return Side.DEFENSE if self._rng.random() > 0.3 else None
+        return None
+
+    def select_ally_ships(
+        self,
+        game: "Game",
+        player: "Player",
+        max_ships: int
+    ) -> int:
+        """Unpredictable ally commitment."""
+        return self._rng.randint(1, max_ships)
+
+    def select_attack_planet(
+        self,
+        game: "Game",
+        player: "Player",
+        defense: "Player"
+    ) -> "Planet":
+        """Random planet to be unpredictable."""
+        planets = defense.home_planets
+        if not planets:
+            return None
+        return self._rng.choice(planets)
+
+    def negotiate_deal(
+        self,
+        game: "Game",
+        player: "Player",
+        opponent: "Player"
+    ) -> Optional[Dict[str, Any]]:
+        """Unpredictable dealing."""
+        if self._rng.random() < 0.4:
+            return None  # Bluff that we want to fight
+        if self._rng.random() < 0.5:
+            return {"type": "card_trade", "cards": self._rng.randint(1, 3)}
+        return {"type": "colony_swap"}
+
+    def should_use_power(
+        self,
+        game: "Game",
+        player: "Player",
+        context: Dict[str, Any]
+    ) -> bool:
+        """Sometimes don't use power to bluff."""
+        return self._rng.random() > 0.2  # 80% use power
+
+    def want_second_encounter(
+        self,
+        game: "Game",
+        player: "Player"
+    ) -> bool:
+        """Randomly take second encounter."""
+        cards = player.get_encounter_cards()
+        if len(cards) < 2:
+            return False
+        return self._rng.random() > 0.4
+
+
+@dataclass
+class MinimalistAI(AIStrategy):
+    """
+    Minimalist AI focused on efficiency and resource preservation.
+
+    Traits:
+    - Wins with minimum resources
+    - Never over-commits ships or cards
+    - Extremely conservative play
+    - Only takes calculated risks
+    """
+    name: str = field(default="MinimalistAI", init=False)
+    _rng: random.Random = field(default_factory=random.Random)
+
+    def select_encounter_card(
+        self,
+        game: "Game",
+        player: "Player",
+        is_offense: bool
+    ) -> "EncounterCard":
+        """Play the minimum card that wins."""
+        attack_cards = player.get_attack_cards()
+        negotiate_cards = player.get_negotiate_cards()
+
+        # Estimate opponent's likely strength
+        opponent = game.defense if is_offense else game.offense
+        opp_ships = 4  # Assume 4 ships
+        opp_avg_card = 8  # Assume average card
+        estimated_opp = opp_ships + opp_avg_card
+
+        # Calculate our ships
+        my_ships = 1  # Minimum commitment
+
+        if attack_cards:
+            sorted_cards = sorted(attack_cards, key=lambda c: c.value)
+            # Find minimum card that beats estimate
+            for card in sorted_cards:
+                if card.value + my_ships > estimated_opp:
+                    return card
+            # If none sufficient, still play lowest
+            return sorted_cards[0]
+
+        if negotiate_cards:
+            return negotiate_cards[0]
+
+        cards = player.get_encounter_cards()
+        return cards[0] if cards else None
+
+    def select_ships_for_encounter(
+        self,
+        game: "Game",
+        player: "Player",
+        max_ships: int
+    ) -> int:
+        """Always commit minimum ships (1)."""
+        return 1
+
+    def decide_alliance_invitation(
+        self,
+        game: "Game",
+        player: "Player",
+        potential_allies: List["Player"],
+        as_offense: bool
+    ) -> List["Player"]:
+        """Don't invite allies - don't share wins."""
+        return []
+
+    def decide_alliance_response(
+        self,
+        game: "Game",
+        player: "Player",
+        offense: "Player",
+        defense: "Player",
+        invited_by_offense: bool,
+        invited_by_defense: bool
+    ) -> Optional["Side"]:
+        """Only ally if clear benefit with low risk."""
+        from ..types import Side
+
+        # Check if offense likely to win big
+        offense_colonies = offense.count_foreign_colonies(game.planets)
+        if invited_by_offense and offense_colonies >= 3:
+            return Side.OFFENSE  # Bandwagon on leader
+
+        # Defense is safer
+        if invited_by_defense:
+            return Side.DEFENSE
+
+        return None
+
+    def select_ally_ships(
+        self,
+        game: "Game",
+        player: "Player",
+        max_ships: int
+    ) -> int:
+        """Minimum ships as ally."""
+        return 1
+
+    def select_attack_planet(
+        self,
+        game: "Game",
+        player: "Player",
+        defense: "Player"
+    ) -> "Planet":
+        """Attack weakest planet for guaranteed win."""
+        planets = defense.home_planets
+        if not planets:
+            return None
+
+        return min(planets, key=lambda p: p.get_ships(defense.name))
+
+    def negotiate_deal(
+        self,
+        game: "Game",
+        player: "Player",
+        opponent: "Player"
+    ) -> Optional[Dict[str, Any]]:
+        """Accept deals to save resources."""
+        return {"type": "one_colony"}  # Just get a colony, no reciprocation needed
+
+    def should_use_power(
+        self,
+        game: "Game",
+        player: "Player",
+        context: Dict[str, Any]
+    ) -> bool:
+        """Only use power when necessary."""
+        return True  # Powers are free
+
+    def want_second_encounter(
+        self,
+        game: "Game",
+        player: "Player"
+    ) -> bool:
+        """Only second encounter if well-positioned."""
+        cards = player.get_encounter_cards()
+        if len(cards) < 4:
+            return False
+
+        # Only if we have plenty of resources
+        my_colonies = player.count_foreign_colonies(game.planets)
+        return my_colonies >= 3  # Close to winning
+
+
+@dataclass
+class ChaosAI(AIStrategy):
+    """
+    Chaos AI with unpredictable, random decisions.
+
+    Traits:
+    - Completely random card selection
+    - Random ship commitment
+    - Random alliance decisions
+    - Makes games unpredictable
+    """
+    name: str = field(default="ChaosAI", init=False)
+    _rng: random.Random = field(default_factory=random.Random)
+
+    def select_encounter_card(
+        self,
+        game: "Game",
+        player: "Player",
+        is_offense: bool
+    ) -> "EncounterCard":
+        """Random card selection."""
+        cards = player.get_encounter_cards()
+        if cards:
+            return self._rng.choice(cards)
+        return None
+
+    def select_ships_for_encounter(
+        self,
+        game: "Game",
+        player: "Player",
+        max_ships: int
+    ) -> int:
+        """Random ship commitment."""
+        return self._rng.randint(1, max_ships)
+
+    def decide_alliance_invitation(
+        self,
+        game: "Game",
+        player: "Player",
+        potential_allies: List["Player"],
+        as_offense: bool
+    ) -> List["Player"]:
+        """Random alliance invitations."""
+        if not potential_allies:
+            return []
+
+        # Random number of allies
+        count = self._rng.randint(0, len(potential_allies))
+        if count > 0:
+            return self._rng.sample(potential_allies, count)
+        return []
+
+    def decide_alliance_response(
+        self,
+        game: "Game",
+        player: "Player",
+        offense: "Player",
+        defense: "Player",
+        invited_by_offense: bool,
+        invited_by_defense: bool
+    ) -> Optional["Side"]:
+        """Random alliance response."""
+        from ..types import Side
+
+        options = [None]
+        if invited_by_offense:
+            options.append(Side.OFFENSE)
+        if invited_by_defense:
+            options.append(Side.DEFENSE)
+
+        return self._rng.choice(options)
+
+    def select_ally_ships(
+        self,
+        game: "Game",
+        player: "Player",
+        max_ships: int
+    ) -> int:
+        """Random ally ships."""
+        return self._rng.randint(1, max_ships)
+
+    def select_attack_planet(
+        self,
+        game: "Game",
+        player: "Player",
+        defense: "Player"
+    ) -> "Planet":
+        """Random planet selection."""
+        planets = defense.home_planets
+        if not planets:
+            return None
+        return self._rng.choice(planets)
+
+    def negotiate_deal(
+        self,
+        game: "Game",
+        player: "Player",
+        opponent: "Player"
+    ) -> Optional[Dict[str, Any]]:
+        """Random deal decision."""
+        options = [
+            None,
+            {"type": "colony_swap"},
+            {"type": "card_trade", "cards": self._rng.randint(1, 3)},
+            {"type": "one_colony"}
+        ]
+        return self._rng.choice(options)
+
+    def should_use_power(
+        self,
+        game: "Game",
+        player: "Player",
+        context: Dict[str, Any]
+    ) -> bool:
+        """Random power use."""
+        return self._rng.random() > 0.3
+
+    def want_second_encounter(
+        self,
+        game: "Game",
+        player: "Player"
+    ) -> bool:
+        """Random second encounter decision."""
+        cards = player.get_encounter_cards()
+        if len(cards) < 1:
+            return False
+        return self._rng.random() > 0.5

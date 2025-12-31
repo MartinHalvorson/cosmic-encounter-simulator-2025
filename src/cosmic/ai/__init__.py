@@ -12,6 +12,11 @@ from .personality_ai import (
     OpportunisticAI,
     SocialAI,
     AdaptiveAI,
+    VengefulAI,
+    KingmakerAI,
+    BlufferAI,
+    MinimalistAI,
+    ChaosAI,
 )
 
 __all__ = [
@@ -24,4 +29,9 @@ __all__ = [
     "OpportunisticAI",
     "SocialAI",
     "AdaptiveAI",
+    "VengefulAI",
+    "KingmakerAI",
+    "BlufferAI",
+    "MinimalistAI",
+    "ChaosAI",
 ]

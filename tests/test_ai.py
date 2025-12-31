@@ -227,5 +227,189 @@ class TestAIGameCompletion:
         assert completed == len(matchups)
 
 
+class TestPersonalityAIs:
+    """Test personality-based AI strategies."""
+
+    def test_aggressive_ai_commits_max_ships(self):
+        """Aggressive AI should commit maximum ships."""
+        from cosmic.ai.personality_ai import AggressiveAI
+
+        config = GameConfig(num_players=4, seed=42)
+        game = Game(config=config)
+        game.setup()
+
+        ai = AggressiveAI()
+        ai._rng.seed(42)
+        player = game.players[0]
+        game.offense = player
+        game.defense = game.players[1]
+
+        ships = ai.select_ships_for_encounter(game, player, max_ships=4)
+        assert ships == 4  # Always max
+
+    def test_cautious_ai_commits_fewer_ships(self):
+        """Cautious AI should commit fewer ships."""
+        from cosmic.ai.personality_ai import CautiousAI
+
+        config = GameConfig(num_players=4, seed=42)
+        game = Game(config=config)
+        game.setup()
+
+        ai = CautiousAI()
+        ai._rng.seed(42)
+        player = game.players[0]
+        game.offense = player
+        game.defense = game.players[1]
+
+        ships = ai.select_ships_for_encounter(game, player, max_ships=4)
+        assert ships <= 3  # Should be conservative
+
+    def test_minimalist_ai_commits_one_ship(self):
+        """Minimalist AI should commit only 1 ship."""
+        from cosmic.ai.personality_ai import MinimalistAI
+
+        config = GameConfig(num_players=4, seed=42)
+        game = Game(config=config)
+        game.setup()
+
+        ai = MinimalistAI()
+        player = game.players[0]
+        game.offense = player
+        game.defense = game.players[1]
+
+        ships = ai.select_ships_for_encounter(game, player, max_ships=4)
+        assert ships == 1
+
+    def test_vengeful_ai_tracks_grudges(self):
+        """Vengeful AI should track and use grudge information."""
+        from cosmic.ai.personality_ai import VengefulAI
+
+        ai = VengefulAI()
+        assert ai.get_grudge("TestPlayer") == 0
+
+        ai.record_attack("TestPlayer")
+        assert ai.get_grudge("TestPlayer") == 1
+
+        ai.record_attack("TestPlayer")
+        assert ai.get_grudge("TestPlayer") == 2
+
+    def test_kingmaker_ai_identifies_leader(self):
+        """Kingmaker AI should identify the leading player."""
+        from cosmic.ai.personality_ai import KingmakerAI
+
+        config = GameConfig(num_players=4, seed=42)
+        game = Game(config=config)
+        game.setup()
+
+        ai = KingmakerAI()
+        leader = ai._get_leader(game, game.players[0])
+        # Should return None if no one has 3+ colonies
+        # (at game start no one has foreign colonies)
+        assert leader is None
+
+    def test_chaos_ai_randomizes_decisions(self):
+        """Chaos AI should make random decisions."""
+        from cosmic.ai.personality_ai import ChaosAI
+
+        config = GameConfig(num_players=4, seed=42)
+        game = Game(config=config)
+        game.setup()
+
+        ai = ChaosAI()
+        player = game.players[0]
+        game.offense = player
+        game.defense = game.players[1]
+
+        # Run multiple times and check for variation
+        ship_counts = set()
+        for i in range(10):
+            ai._rng.seed(i)
+            ships = ai.select_ships_for_encounter(game, player, max_ships=4)
+            ship_counts.add(ships)
+
+        # Should have some variation (not all the same)
+        assert len(ship_counts) > 1
+
+    def test_social_ai_invites_all_allies(self):
+        """Social AI should invite all potential allies."""
+        from cosmic.ai.personality_ai import SocialAI
+
+        config = GameConfig(num_players=4, seed=42)
+        game = Game(config=config)
+        game.setup()
+
+        ai = SocialAI()
+        player = game.players[0]
+        potential_allies = game.players[2:]  # Not offense/defense
+
+        invited = ai.decide_alliance_invitation(game, player, potential_allies, as_offense=True)
+        assert len(invited) == len(potential_allies)
+
+
+class TestPersonalityAIGameCompletion:
+    """Test that games complete with various personality AIs."""
+
+    def test_games_complete_with_each_personality(self):
+        """Games should complete with each AI personality."""
+        from cosmic.ai.personality_ai import (
+            AggressiveAI, CautiousAI, OpportunisticAI, SocialAI,
+            AdaptiveAI, VengefulAI, KingmakerAI, BlufferAI,
+            MinimalistAI, ChaosAI
+        )
+
+        personalities = [
+            AggressiveAI, CautiousAI, OpportunisticAI, SocialAI,
+            AdaptiveAI, VengefulAI, KingmakerAI, BlufferAI,
+            MinimalistAI, ChaosAI
+        ]
+        completed = 0
+
+        for i, ai_class in enumerate(personalities):
+            config = GameConfig(
+                num_players=4,
+                seed=500 + i,
+                max_turns=75
+            )
+            game = Game(config=config)
+            game.setup()
+
+            # Assign AI to all players
+            ai = ai_class()
+            ai._rng.seed(i)
+            for player in game.players:
+                player.ai_strategy = ai
+
+            game.play()
+            completed += 1
+
+        assert completed == len(personalities)
+
+    def test_mixed_personality_games(self):
+        """Games with mixed AI personalities should complete."""
+        from cosmic.ai.personality_ai import (
+            AggressiveAI, CautiousAI, VengefulAI, KingmakerAI
+        )
+
+        completed = 0
+        for i in range(10):
+            config = GameConfig(
+                num_players=4,
+                seed=600 + i,
+                max_turns=100
+            )
+            game = Game(config=config)
+            game.setup()
+
+            # Assign different personalities
+            personalities = [AggressiveAI(), CautiousAI(), VengefulAI(), KingmakerAI()]
+            for j, player in enumerate(game.players):
+                player.ai_strategy = personalities[j % len(personalities)]
+
+            game.play()
+            completed += 1
+
+        assert completed == 10
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

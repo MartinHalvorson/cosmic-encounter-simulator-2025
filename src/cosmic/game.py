@@ -548,11 +548,27 @@ class Game:
         # Select cards
         off_ai = self.offense.ai_strategy or BasicAI()
         self.offense_card = off_ai.select_encounter_card(self, self.offense, True)
-        self.offense.remove_card(self.offense_card)
+        # Validate card is in hand (AI might return invalid card)
+        if self.offense_card and self.offense.has_card(self.offense_card):
+            self.offense.remove_card(self.offense_card)
+        else:
+            # Fallback: use first encounter card
+            encounter_cards = self.offense.get_encounter_cards()
+            if encounter_cards:
+                self.offense_card = encounter_cards[0]
+                self.offense.remove_card(self.offense_card)
 
         def_ai = self.defense.ai_strategy or BasicAI()
         self.defense_card = def_ai.select_encounter_card(self, self.defense, False)
-        self.defense.remove_card(self.defense_card)
+        # Validate card is in hand
+        if self.defense_card and self.defense.has_card(self.defense_card):
+            self.defense.remove_card(self.defense_card)
+        else:
+            # Fallback: use first encounter card
+            encounter_cards = self.defense.get_encounter_cards()
+            if encounter_cards:
+                self.defense_card = encounter_cards[0]
+                self.defense.remove_card(self.defense_card)
 
         # Select kicker cards (optional)
         if isinstance(self.offense_card, AttackCard):

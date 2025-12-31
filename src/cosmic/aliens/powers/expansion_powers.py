@@ -1424,3 +1424,303 @@ AlienRegistry.register(Porcupine())
 AlienRegistry.register(Sloth())
 AlienRegistry.register(Squee())
 AlienRegistry.register(Swindler())
+
+
+# =============================================================================
+# COSMIC EONS EXPANSION (30 aliens)
+# =============================================================================
+
+@dataclass
+class Anarchist(AlienPower):
+    """
+    Anarchist - Power of Chaos.
+    Official FFG rules: When you lose or fail a deal as main player,
+    reveal a rule disruption. Win when all 8 disruptions revealed.
+    """
+    name: str = field(default="Anarchist", init=False)
+    description: str = field(default="Disrupt rules on loss; win with 8 disruptions.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.LOSE_ENCOUNTER, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+    has_alternate_win: bool = field(default=True, init=False)
+    disruptions_revealed: int = field(default=0, init=False)
+
+    def on_lose_encounter(self, game: "Game", player: "Player", as_main_player: bool) -> None:
+        if as_main_player and player.power_active:
+            self.disruptions_revealed += 1
+
+    def check_alternate_win(self, game: "Game", player: "Player") -> bool:
+        return self.disruptions_revealed >= 8
+
+
+@dataclass
+class AssistantAlien(AlienPower):
+    """
+    Assistant - Power to Be Helpful.
+    Official FFG rules: As main player or ally, give help card to ally; gain reward.
+    """
+    name: str = field(default="Assistant", init=False)
+    description: str = field(default="Give help to allies; gain rewards.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class BleedingHeart(AlienPower):
+    """
+    Bleeding Heart - Power of Rapport.
+    Official FFG rules: Before alliances, declare peace - attack cards 10 or lower
+    become negotiates; compensation is doubled.
+    """
+    name: str = field(default="BleedingHeart", init=False)
+    description: str = field(default="Convert low attacks to negotiates; double compensation.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+
+@dataclass
+class Coward(AlienPower):
+    """
+    Coward - Power to Flee.
+    Official FFG rules: After cards selected, may flee - counts as success,
+    ships return, get rewards for opponent ships.
+    """
+    name: str = field(default="Coward", init=False)
+    description: str = field(default="Flee before reveal; counts as success.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    usable_as: List[PlayerRole] = field(
+        default_factory=lambda: [PlayerRole.OFFENSE],
+        init=False
+    )
+
+
+@dataclass
+class Crusher(AlienPower):
+    """
+    Crusher - Power to Crush.
+    Official FFG rules: After cards selected, opponent's ships count as just 1
+    for totals, compensation, and rewards.
+    """
+    name: str = field(default="Crusher", init=False)
+    description: str = field(default="Opponent ships count as 1.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+    usable_as: List[PlayerRole] = field(
+        default_factory=lambda: [PlayerRole.OFFENSE, PlayerRole.DEFENSE],
+        init=False
+    )
+
+
+@dataclass
+class EvilTwin(AlienPower):
+    """
+    Evil Twin - Power to Blame.
+    Official FFG rules: As main player after launch, designate a "good twin"
+    who suffers all your losses and penalties.
+    """
+    name: str = field(default="EvilTwin", init=False)
+    description: str = field(default="Another player suffers your losses.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.LAUNCH, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+    usable_as: List[PlayerRole] = field(
+        default_factory=lambda: [PlayerRole.OFFENSE, PlayerRole.DEFENSE],
+        init=False
+    )
+
+
+@dataclass
+class FireDancer(AlienPower):
+    """
+    Fire Dancer - Power to Awe.
+    Official FFG rules: As main player, place fire tokens. Fuel cards under
+    fire add to defense total in that system.
+    """
+    name: str = field(default="FireDancer", init=False)
+    description: str = field(default="Create fires that boost defense in systems.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    fire_bonus: int = field(default=0, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if not player.power_active:
+            return base_total
+        # Fire provides defensive bonus
+        if side == Side.DEFENSE:
+            return base_total + self.fire_bonus
+        return base_total
+
+
+@dataclass
+class Hunger(AlienPower):
+    """
+    Hunger - Power of Extra Helpings.
+    Official FFG rules: At start of your turn, take one random card from each
+    other player. At start of others' turns, take one from that player.
+    """
+    name: str = field(default="Hunger", init=False)
+    description: str = field(default="Take random cards from all players each turn.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.START_TURN, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+
+@dataclass
+class Hypochondriac(AlienPower):
+    """
+    Hypochondriac - Power of Anxiety.
+    Official FFG rules: Name a player who makes you anxious; they offer remedy
+    or get anxiety token. Players with most tokens can't win.
+    """
+    name: str = field(default="Hypochondriac", init=False)
+    description: str = field(default="Give anxiety tokens; most tokens can't win.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+
+@dataclass
+class Klutz(AlienPower):
+    """
+    Klutz - Power to Fumble.
+    Official FFG rules: When drawing multiple cards, must drop 1-2.
+    When placing multiple ships on same planet, drop one nearby ship to warp.
+    """
+    name: str = field(default="Klutz", init=False)
+    description: str = field(default="Drop cards when drawing; drop ships when landing.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.CONSTANT, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Maven(AlienPower):
+    """
+    Maven - Power to Be Right.
+    Official FFG rules: When not main player or ally after cards selected,
+    take all facedown cards and declare outcome. Discard a card to make prediction.
+    """
+    name: str = field(default="Maven", init=False)
+    description: str = field(default="Predict and control encounter outcomes.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+
+@dataclass
+class Moocher(AlienPower):
+    """
+    Moocher - Power to Barge In.
+    Official FFG rules: After destiny, mooch a colony on empty planet.
+    Place couch tokens that function as planets.
+    """
+    name: str = field(default="Moocher", init=False)
+    description: str = field(default="Create couch colonies on empty planets.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.DESTINY, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Oligarch(AlienPower):
+    """
+    Oligarch - Power of Greed.
+    Official FFG rules: When drawing a new hand, draw one additional card.
+    Accumulate privileges as others gain colonies.
+    """
+    name: str = field(default="Oligarch", init=False)
+    description: str = field(default="Draw extra card with new hands; accumulate privileges.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.CONSTANT, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class PackRat(AlienPower):
+    """
+    Pack Rat - Power to Collect.
+    Official FFG rules: Before cards selected, take one object from opponent.
+    Each collected object adds +1 to your defense total.
+    """
+    name: str = field(default="PackRat", init=False)
+    description: str = field(default="Collect objects; each adds +1 to defense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    collected_items: int = field(default=0, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if not player.power_active:
+            return base_total
+        if side == Side.DEFENSE:
+            return base_total + self.collected_items
+        return base_total
+
+
+@dataclass
+class Peddler(AlienPower):
+    """
+    Peddler - Power to Sell.
+    Official FFG rules: At start of turn, may spread hand and sell to players.
+    Maintain a store of 8 cards to sell during encounters.
+    """
+    name: str = field(default="Peddler", init=False)
+    description: str = field(default="Sell cards from hand or store to other players.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.START_TURN, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Surgeon(AlienPower):
+    """
+    Surgeon - Power of Surgery.
+    Official FFG rules: After destiny, offer wild flares as "facelifts"
+    that become temporary alien powers for other players.
+    """
+    name: str = field(default="Surgeon", init=False)
+    description: str = field(default="Give temporary powers to other players.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.DESTINY, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Tortoise(AlienPower):
+    """
+    Tortoise - Power to Dawdle.
+    Official FFG rules: At start of turn, receive 4 rewards and end turn.
+    Store cards in shell. May attempt solo victory instead of shared win.
+    """
+    name: str = field(default="Tortoise", init=False)
+    description: str = field(default="Take rewards instead of turn; store cards in shell.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.START_TURN, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    shell_cards: int = field(default=0, init=False)
+
+
+# Register Cosmic Eons aliens
+AlienRegistry.register(Anarchist())
+AlienRegistry.register(AssistantAlien())
+AlienRegistry.register(BleedingHeart())
+AlienRegistry.register(Coward())
+AlienRegistry.register(Crusher())
+AlienRegistry.register(EvilTwin())
+AlienRegistry.register(FireDancer())
+AlienRegistry.register(Hunger())
+AlienRegistry.register(Hypochondriac())
+AlienRegistry.register(Klutz())
+AlienRegistry.register(Maven())
+AlienRegistry.register(Moocher())
+AlienRegistry.register(Oligarch())
+AlienRegistry.register(PackRat())
+AlienRegistry.register(Peddler())
+AlienRegistry.register(Surgeon())
+AlienRegistry.register(Tortoise())
