@@ -102,3 +102,13 @@ from .number_powers import *  # noqa: F401, F403
 from .language_powers import *  # noqa: F401, F403
 from .astronomy_powers import *  # noqa: F401, F403
 from .dance_powers import *  # noqa: F401, F403
+from .texture_powers import *  # noqa: F401, F403
+from .vehicle_powers import *  # noqa: F401, F403
+from .weather_extreme_powers import *  # noqa: F401, F403
+from .concept_powers import *  # noqa: F401, F403
+from .tool_powers import *  # noqa: F401, F403
+from .fauna_powers import *  # noqa: F401, F403
+from .geography_powers import *  # noqa: F401, F403
+from .action_powers import *  # noqa: F401, F403
+from .material_powers import *  # noqa: F401, F403
+from .celestial_powers import *  # noqa: F401, F403
