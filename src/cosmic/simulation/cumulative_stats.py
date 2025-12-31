@@ -241,9 +241,11 @@ class CumulativeStats:
             stats.total_turns_played += turn_count
             stats.total_colonies_at_end += final_colonies.get(player_name, 0)
 
-            # Update ELO
+            # Update ELO with bounds to prevent runaway drift
             if alien_name in elo_changes:
                 stats.elo_rating += elo_changes[alien_name]
+                # Clamp ELO to reasonable bounds
+                stats.elo_rating = max(100, min(2500, stats.elo_rating))
                 if stats.elo_rating > stats.peak_elo:
                     stats.peak_elo = stats.elo_rating
 

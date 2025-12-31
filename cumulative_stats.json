@@ -23,7 +23,7 @@
       "win_rate": 21.74,
       "solo_wins": 14595,
       "shared_wins": 577,
-      "elo_rating": -617277.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.84
     },
@@ -34,8 +34,8 @@
       "win_rate": 21.53,
       "solo_wins": 14511,
       "shared_wins": 567,
-      "elo_rating": -617233.6,
-      "peak_elo": 1545.2,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Mirror": {
@@ -45,7 +45,7 @@
       "win_rate": 21.31,
       "solo_wins": 14388,
       "shared_wins": 609,
-      "elo_rating": -617243.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -56,7 +56,7 @@
       "win_rate": 21.51,
       "solo_wins": 14534,
       "shared_wins": 563,
-      "elo_rating": -617166.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -67,7 +67,7 @@
       "win_rate": 21.46,
       "solo_wins": 14496,
       "shared_wins": 604,
-      "elo_rating": -617178.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -78,8 +78,8 @@
       "win_rate": 22.34,
       "solo_wins": 14935,
       "shared_wins": 639,
-      "elo_rating": -617149.0,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.85
     },
     "Mimic": {
@@ -89,7 +89,7 @@
       "win_rate": 21.51,
       "solo_wins": 14506,
       "shared_wins": 617,
-      "elo_rating": -617172.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -100,8 +100,8 @@
       "win_rate": 21.53,
       "solo_wins": 14429,
       "shared_wins": 618,
-      "elo_rating": -617156.6,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
     "Brute": {
@@ -111,7 +111,7 @@
       "win_rate": 21.53,
       "solo_wins": 14372,
       "shared_wins": 558,
-      "elo_rating": -617150.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -122,7 +122,7 @@
       "win_rate": 26.8,
       "solo_wins": 18160,
       "shared_wins": 645,
-      "elo_rating": -617140.3,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.93
     },
@@ -133,7 +133,7 @@
       "win_rate": 24.87,
       "solo_wins": 16784,
       "shared_wins": 608,
-      "elo_rating": -617171.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.89
     },
@@ -144,7 +144,7 @@
       "win_rate": 27.26,
       "solo_wins": 18396,
       "shared_wins": 670,
-      "elo_rating": -617076.6,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.94
     },
@@ -155,7 +155,7 @@
       "win_rate": 21.5,
       "solo_wins": 14476,
       "shared_wins": 615,
-      "elo_rating": -617182.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -166,8 +166,8 @@
       "win_rate": 23.07,
       "solo_wins": 15633,
       "shared_wins": 590,
-      "elo_rating": -617242.9,
-      "peak_elo": 1516.4,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.86
     },
     "Negator": {
@@ -177,7 +177,7 @@
       "win_rate": 21.37,
       "solo_wins": 14394,
       "shared_wins": 637,
-      "elo_rating": -617302.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -188,7 +188,7 @@
       "win_rate": 27.26,
       "solo_wins": 18539,
       "shared_wins": 613,
-      "elo_rating": -617073.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 4.0
     },
@@ -199,7 +199,7 @@
       "win_rate": 21.69,
       "solo_wins": 14672,
       "shared_wins": 566,
-      "elo_rating": -617179.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -210,8 +210,8 @@
       "win_rate": 21.31,
       "solo_wins": 14413,
       "shared_wins": 578,
-      "elo_rating": -617231.7,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Witch": {
@@ -221,7 +221,7 @@
       "win_rate": 21.61,
       "solo_wins": 14521,
       "shared_wins": 608,
-      "elo_rating": -617170.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -232,8 +232,8 @@
       "win_rate": 21.4,
       "solo_wins": 14497,
       "shared_wins": 585,
-      "elo_rating": -617136.7,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Dragon": {
@@ -243,7 +243,7 @@
       "win_rate": 21.7,
       "solo_wins": 14672,
       "shared_wins": 548,
-      "elo_rating": -617240.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -254,7 +254,7 @@
       "win_rate": 21.19,
       "solo_wins": 14235,
       "shared_wins": 596,
-      "elo_rating": -617225.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
@@ -265,7 +265,7 @@
       "win_rate": 21.49,
       "solo_wins": 14420,
       "shared_wins": 581,
-      "elo_rating": -617135.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -276,7 +276,7 @@
       "win_rate": 21.74,
       "solo_wins": 14640,
       "shared_wins": 582,
-      "elo_rating": -617248.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -287,8 +287,8 @@
       "win_rate": 31.48,
       "solo_wins": 21420,
       "shared_wins": 664,
-      "elo_rating": -617101.3,
-      "peak_elo": 1545.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 4.05
     },
     "Xeno": {
@@ -298,7 +298,7 @@
       "win_rate": 21.41,
       "solo_wins": 14397,
       "shared_wins": 555,
-      "elo_rating": -617166.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -309,8 +309,8 @@
       "win_rate": 21.46,
       "solo_wins": 14303,
       "shared_wins": 590,
-      "elo_rating": -617188.7,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Foam": {
@@ -320,8 +320,8 @@
       "win_rate": 21.57,
       "solo_wins": 14461,
       "shared_wins": 569,
-      "elo_rating": -617178.2,
-      "peak_elo": 1500.5,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
     "Fido": {
@@ -331,8 +331,8 @@
       "win_rate": 21.55,
       "solo_wins": 14519,
       "shared_wins": 575,
-      "elo_rating": -617145.4,
-      "peak_elo": 1500.4,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
     "Decoy": {
@@ -342,7 +342,7 @@
       "win_rate": 21.67,
       "solo_wins": 14635,
       "shared_wins": 568,
-      "elo_rating": -617175.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -353,8 +353,8 @@
       "win_rate": 21.62,
       "solo_wins": 14487,
       "shared_wins": 576,
-      "elo_rating": -617184.6,
-      "peak_elo": 1501.9,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Keeper": {
@@ -364,8 +364,8 @@
       "win_rate": 21.27,
       "solo_wins": 14224,
       "shared_wins": 551,
-      "elo_rating": -617152.1,
-      "peak_elo": 1501.5,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Visionary": {
@@ -375,7 +375,7 @@
       "win_rate": 21.54,
       "solo_wins": 14475,
       "shared_wins": 606,
-      "elo_rating": -617220.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -386,7 +386,7 @@
       "win_rate": 18.59,
       "solo_wins": 11691,
       "shared_wins": 1331,
-      "elo_rating": -617141.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.97
     },
@@ -397,8 +397,8 @@
       "win_rate": 21.35,
       "solo_wins": 14327,
       "shared_wins": 583,
-      "elo_rating": -617112.1,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
     "Diplomat": {
@@ -408,7 +408,7 @@
       "win_rate": 21.43,
       "solo_wins": 14400,
       "shared_wins": 593,
-      "elo_rating": -617238.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -419,7 +419,7 @@
       "win_rate": 24.62,
       "solo_wins": 16601,
       "shared_wins": 638,
-      "elo_rating": -617173.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.9
     },
@@ -430,7 +430,7 @@
       "win_rate": 21.77,
       "solo_wins": 14519,
       "shared_wins": 619,
-      "elo_rating": -617215.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -441,8 +441,8 @@
       "win_rate": 20.68,
       "solo_wins": 14285,
       "shared_wins": 269,
-      "elo_rating": -617165.2,
-      "peak_elo": 1500.5,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.8
     },
     "Striker": {
@@ -452,8 +452,8 @@
       "win_rate": 21.49,
       "solo_wins": 14451,
       "shared_wins": 592,
-      "elo_rating": -617158.0,
-      "peak_elo": 1515.8,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
     "Beacon": {
@@ -463,7 +463,7 @@
       "win_rate": 21.71,
       "solo_wins": 14637,
       "shared_wins": 590,
-      "elo_rating": -617276.6,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -474,7 +474,7 @@
       "win_rate": 24.72,
       "solo_wins": 16720,
       "shared_wins": 603,
-      "elo_rating": -617120.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.91
     },
@@ -485,8 +485,8 @@
       "win_rate": 21.74,
       "solo_wins": 14544,
       "shared_wins": 601,
-      "elo_rating": -617228.4,
-      "peak_elo": 1515.6,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
     "Scavenger": {
@@ -496,7 +496,7 @@
       "win_rate": 21.63,
       "solo_wins": 14567,
       "shared_wins": 530,
-      "elo_rating": -617111.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -507,8 +507,8 @@
       "win_rate": 21.46,
       "solo_wins": 14459,
       "shared_wins": 595,
-      "elo_rating": -617208.1,
-      "peak_elo": 1501.5,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
     "Deuce": {
@@ -518,7 +518,7 @@
       "win_rate": 21.42,
       "solo_wins": 14457,
       "shared_wins": 588,
-      "elo_rating": -617235.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
@@ -529,8 +529,8 @@
       "win_rate": 21.53,
       "solo_wins": 14548,
       "shared_wins": 578,
-      "elo_rating": -617143.3,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Symbiote": {
@@ -540,7 +540,7 @@
       "win_rate": 30.85,
       "solo_wins": 20823,
       "shared_wins": 760,
-      "elo_rating": -617259.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 4.06
     },
@@ -551,7 +551,7 @@
       "win_rate": 21.35,
       "solo_wins": 14336,
       "shared_wins": 583,
-      "elo_rating": -617165.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -562,8 +562,8 @@
       "win_rate": 21.22,
       "solo_wins": 14158,
       "shared_wins": 564,
-      "elo_rating": -617134.8,
-      "peak_elo": 1515.8,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Harbinger": {
@@ -573,7 +573,7 @@
       "win_rate": 21.59,
       "solo_wins": 14490,
       "shared_wins": 566,
-      "elo_rating": -617140.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -584,7 +584,7 @@
       "win_rate": 25.25,
       "solo_wins": 17019,
       "shared_wins": 675,
-      "elo_rating": -617193.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.91
     },
@@ -595,8 +595,8 @@
       "win_rate": 33.28,
       "solo_wins": 22560,
       "shared_wins": 788,
-      "elo_rating": -617068.3,
-      "peak_elo": 1543.6,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 4.06
     },
     "Undertaker": {
@@ -606,7 +606,7 @@
       "win_rate": 21.33,
       "solo_wins": 14378,
       "shared_wins": 558,
-      "elo_rating": -617216.3,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -617,8 +617,8 @@
       "win_rate": 21.58,
       "solo_wins": 14574,
       "shared_wins": 617,
-      "elo_rating": -617182.5,
-      "peak_elo": 1519.5,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Sage": {
@@ -628,7 +628,7 @@
       "win_rate": 21.4,
       "solo_wins": 14374,
       "shared_wins": 572,
-      "elo_rating": -617094.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -639,7 +639,7 @@
       "win_rate": 21.28,
       "solo_wins": 14352,
       "shared_wins": 601,
-      "elo_rating": -617146.3,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -650,8 +650,8 @@
       "win_rate": 24.44,
       "solo_wins": 16618,
       "shared_wins": 356,
-      "elo_rating": -617067.0,
-      "peak_elo": 1531.1,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.89
     },
     "Tycoon": {
@@ -661,7 +661,7 @@
       "win_rate": 25.5,
       "solo_wins": 17465,
       "shared_wins": 400,
-      "elo_rating": -617046.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.91
     },
@@ -672,7 +672,7 @@
       "win_rate": 26.54,
       "solo_wins": 18266,
       "shared_wins": 263,
-      "elo_rating": -617239.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.92
     },
@@ -683,8 +683,8 @@
       "win_rate": 21.5,
       "solo_wins": 14514,
       "shared_wins": 564,
-      "elo_rating": -617121.3,
-      "peak_elo": 1531.2,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Laser": {
@@ -694,7 +694,7 @@
       "win_rate": 21.47,
       "solo_wins": 14445,
       "shared_wins": 542,
-      "elo_rating": -617174.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -705,8 +705,8 @@
       "win_rate": 22.81,
       "solo_wins": 15304,
       "shared_wins": 644,
-      "elo_rating": -617071.7,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.85
     },
     "Jester": {
@@ -716,7 +716,7 @@
       "win_rate": 21.4,
       "solo_wins": 14297,
       "shared_wins": 581,
-      "elo_rating": -617202.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -727,7 +727,7 @@
       "win_rate": 21.52,
       "solo_wins": 14403,
       "shared_wins": 625,
-      "elo_rating": -617229.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -738,7 +738,7 @@
       "win_rate": 21.46,
       "solo_wins": 14374,
       "shared_wins": 592,
-      "elo_rating": -617073.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -749,8 +749,8 @@
       "win_rate": 28.55,
       "solo_wins": 19075,
       "shared_wins": 843,
-      "elo_rating": -617122.9,
-      "peak_elo": 1515.7,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 4.01
     },
     "Pioneer": {
@@ -760,8 +760,8 @@
       "win_rate": 21.37,
       "solo_wins": 14456,
       "shared_wins": 569,
-      "elo_rating": -617144.0,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
     "Magician": {
@@ -771,7 +771,7 @@
       "win_rate": 21.52,
       "solo_wins": 14507,
       "shared_wins": 556,
-      "elo_rating": -617202.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -782,8 +782,8 @@
       "win_rate": 27.02,
       "solo_wins": 18105,
       "shared_wins": 787,
-      "elo_rating": -617108.3,
-      "peak_elo": 1500.5,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.95
     },
     "Opportunist": {
@@ -793,7 +793,7 @@
       "win_rate": 23.01,
       "solo_wins": 15572,
       "shared_wins": 624,
-      "elo_rating": -617183.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.86
     },
@@ -804,7 +804,7 @@
       "win_rate": 21.48,
       "solo_wins": 14434,
       "shared_wins": 558,
-      "elo_rating": -617261.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -815,7 +815,7 @@
       "win_rate": 21.59,
       "solo_wins": 14501,
       "shared_wins": 615,
-      "elo_rating": -617254.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -826,8 +826,8 @@
       "win_rate": 24.18,
       "solo_wins": 16421,
       "shared_wins": 621,
-      "elo_rating": -617064.4,
-      "peak_elo": 1515.6,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.88
     },
     "Fury": {
@@ -837,7 +837,7 @@
       "win_rate": 22.38,
       "solo_wins": 14949,
       "shared_wins": 627,
-      "elo_rating": -617242.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.85
     },
@@ -848,7 +848,7 @@
       "win_rate": 21.49,
       "solo_wins": 14372,
       "shared_wins": 541,
-      "elo_rating": -617224.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -859,7 +859,7 @@
       "win_rate": 21.53,
       "solo_wins": 14527,
       "shared_wins": 571,
-      "elo_rating": -617187.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
@@ -870,8 +870,8 @@
       "win_rate": 28.73,
       "solo_wins": 19336,
       "shared_wins": 763,
-      "elo_rating": -617122.8,
-      "peak_elo": 1516.2,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 4.02
     },
     "Cudgel": {
@@ -881,7 +881,7 @@
       "win_rate": 22.64,
       "solo_wins": 15235,
       "shared_wins": 498,
-      "elo_rating": -617140.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.84
     },
@@ -892,7 +892,7 @@
       "win_rate": 21.7,
       "solo_wins": 14522,
       "shared_wins": 566,
-      "elo_rating": -617218.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -903,7 +903,7 @@
       "win_rate": 23.35,
       "solo_wins": 15723,
       "shared_wins": 564,
-      "elo_rating": -617160.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.84
     },
@@ -914,7 +914,7 @@
       "win_rate": 21.4,
       "solo_wins": 14427,
       "shared_wins": 615,
-      "elo_rating": -617114.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -925,8 +925,8 @@
       "win_rate": 21.6,
       "solo_wins": 14637,
       "shared_wins": 567,
-      "elo_rating": -617231.0,
-      "peak_elo": 1515.6,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
     "Observer": {
@@ -936,7 +936,7 @@
       "win_rate": 21.48,
       "solo_wins": 14393,
       "shared_wins": 540,
-      "elo_rating": -617131.6,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -947,7 +947,7 @@
       "win_rate": 21.63,
       "solo_wins": 14646,
       "shared_wins": 582,
-      "elo_rating": -617109.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.84
     },
@@ -958,8 +958,8 @@
       "win_rate": 21.31,
       "solo_wins": 14322,
       "shared_wins": 573,
-      "elo_rating": -617088.1,
-      "peak_elo": 1515.6,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
     "Mite": {
@@ -969,7 +969,7 @@
       "win_rate": 21.39,
       "solo_wins": 14377,
       "shared_wins": 559,
-      "elo_rating": -617177.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -980,8 +980,8 @@
       "win_rate": 21.48,
       "solo_wins": 14419,
       "shared_wins": 604,
-      "elo_rating": -617124.6,
-      "peak_elo": 1501.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Predator": {
@@ -991,7 +991,7 @@
       "win_rate": 24.13,
       "solo_wins": 16284,
       "shared_wins": 638,
-      "elo_rating": -617176.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.88
     },
@@ -1002,8 +1002,8 @@
       "win_rate": 28.68,
       "solo_wins": 19417,
       "shared_wins": 622,
-      "elo_rating": -617161.7,
-      "peak_elo": 1515.8,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 4.01
     },
     "Seeker": {
@@ -1013,7 +1013,7 @@
       "win_rate": 21.42,
       "solo_wins": 14504,
       "shared_wins": 536,
-      "elo_rating": -617214.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1024,7 +1024,7 @@
       "win_rate": 22.84,
       "solo_wins": 15391,
       "shared_wins": 563,
-      "elo_rating": -617244.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.86
     },
@@ -1035,8 +1035,8 @@
       "win_rate": 22.63,
       "solo_wins": 15152,
       "shared_wins": 618,
-      "elo_rating": -617146.4,
-      "peak_elo": 1545.9,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.85
     },
     "Grifter": {
@@ -1046,7 +1046,7 @@
       "win_rate": 21.46,
       "solo_wins": 14549,
       "shared_wins": 525,
-      "elo_rating": -617059.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1057,7 +1057,7 @@
       "win_rate": 21.51,
       "solo_wins": 14472,
       "shared_wins": 596,
-      "elo_rating": -617149.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1068,7 +1068,7 @@
       "win_rate": 21.57,
       "solo_wins": 14433,
       "shared_wins": 591,
-      "elo_rating": -617198.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1079,7 +1079,7 @@
       "win_rate": 21.71,
       "solo_wins": 14606,
       "shared_wins": 566,
-      "elo_rating": -617214.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1090,8 +1090,8 @@
       "win_rate": 21.64,
       "solo_wins": 14626,
       "shared_wins": 583,
-      "elo_rating": -617150.0,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Trader": {
@@ -1101,7 +1101,7 @@
       "win_rate": 26.29,
       "solo_wins": 17786,
       "shared_wins": 594,
-      "elo_rating": -617127.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.93
     },
@@ -1112,8 +1112,8 @@
       "win_rate": 21.57,
       "solo_wins": 14548,
       "shared_wins": 623,
-      "elo_rating": -617262.2,
-      "peak_elo": 1529.5,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
     "Zombie": {
@@ -1123,7 +1123,7 @@
       "win_rate": 21.98,
       "solo_wins": 14769,
       "shared_wins": 603,
-      "elo_rating": -617092.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.84
     },
@@ -1134,7 +1134,7 @@
       "win_rate": 21.75,
       "solo_wins": 14565,
       "shared_wins": 620,
-      "elo_rating": -617135.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -1145,7 +1145,7 @@
       "win_rate": 21.26,
       "solo_wins": 14284,
       "shared_wins": 540,
-      "elo_rating": -617134.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1156,8 +1156,8 @@
       "win_rate": 21.65,
       "solo_wins": 14577,
       "shared_wins": 570,
-      "elo_rating": -617175.9,
-      "peak_elo": 1516.2,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Parasite": {
@@ -1167,7 +1167,7 @@
       "win_rate": 46.04,
       "solo_wins": 31819,
       "shared_wins": 471,
-      "elo_rating": -616880.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 4.14
     },
@@ -1178,8 +1178,8 @@
       "win_rate": 21.25,
       "solo_wins": 14285,
       "shared_wins": 563,
-      "elo_rating": -617232.5,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
     "Silencer": {
@@ -1189,7 +1189,7 @@
       "win_rate": 21.6,
       "solo_wins": 14587,
       "shared_wins": 597,
-      "elo_rating": -617120.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -1200,8 +1200,8 @@
       "win_rate": 21.51,
       "solo_wins": 14482,
       "shared_wins": 574,
-      "elo_rating": -617192.6,
-      "peak_elo": 1500.2,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Chronos": {
@@ -1211,8 +1211,8 @@
       "win_rate": 21.49,
       "solo_wins": 14487,
       "shared_wins": 596,
-      "elo_rating": -617170.4,
-      "peak_elo": 1500.2,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Horde": {
@@ -1222,7 +1222,7 @@
       "win_rate": 21.66,
       "solo_wins": 14596,
       "shared_wins": 564,
-      "elo_rating": -617144.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1233,7 +1233,7 @@
       "win_rate": 23.75,
       "solo_wins": 16279,
       "shared_wins": 366,
-      "elo_rating": -617196.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.87
     },
@@ -1244,8 +1244,8 @@
       "win_rate": 24.6,
       "solo_wins": 16568,
       "shared_wins": 626,
-      "elo_rating": -617112.4,
-      "peak_elo": 1514.5,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.9
     },
     "Pickpocket": {
@@ -1255,7 +1255,7 @@
       "win_rate": 23.27,
       "solo_wins": 15814,
       "shared_wins": 383,
-      "elo_rating": -617202.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.87
     },
@@ -1266,7 +1266,7 @@
       "win_rate": 21.53,
       "solo_wins": 14449,
       "shared_wins": 564,
-      "elo_rating": -617109.3,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1277,7 +1277,7 @@
       "win_rate": 21.5,
       "solo_wins": 14467,
       "shared_wins": 533,
-      "elo_rating": -617191.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
@@ -1288,7 +1288,7 @@
       "win_rate": 21.48,
       "solo_wins": 14480,
       "shared_wins": 601,
-      "elo_rating": -617157.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -1299,7 +1299,7 @@
       "win_rate": 21.42,
       "solo_wins": 14395,
       "shared_wins": 570,
-      "elo_rating": -617212.3,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1310,8 +1310,8 @@
       "win_rate": 21.46,
       "solo_wins": 14398,
       "shared_wins": 583,
-      "elo_rating": -617204.8,
-      "peak_elo": 1516.2,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Butler": {
@@ -1321,7 +1321,7 @@
       "win_rate": 21.52,
       "solo_wins": 14542,
       "shared_wins": 581,
-      "elo_rating": -617144.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1332,7 +1332,7 @@
       "win_rate": 21.62,
       "solo_wins": 14417,
       "shared_wins": 591,
-      "elo_rating": -617190.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1343,8 +1343,8 @@
       "win_rate": 22.32,
       "solo_wins": 15089,
       "shared_wins": 575,
-      "elo_rating": -617157.6,
-      "peak_elo": 1530.7,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.85
     },
     "Miser": {
@@ -1354,8 +1354,8 @@
       "win_rate": 25.02,
       "solo_wins": 17124,
       "shared_wins": 370,
-      "elo_rating": -617282.7,
-      "peak_elo": 1502.5,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.9
     },
     "Poison": {
@@ -1365,7 +1365,7 @@
       "win_rate": 21.53,
       "solo_wins": 14472,
       "shared_wins": 601,
-      "elo_rating": -617140.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1376,7 +1376,7 @@
       "win_rate": 21.43,
       "solo_wins": 14490,
       "shared_wins": 562,
-      "elo_rating": -617181.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1387,7 +1387,7 @@
       "win_rate": 21.29,
       "solo_wins": 14293,
       "shared_wins": 521,
-      "elo_rating": -617028.3,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1398,7 +1398,7 @@
       "win_rate": 21.61,
       "solo_wins": 14541,
       "shared_wins": 557,
-      "elo_rating": -617242.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1409,8 +1409,8 @@
       "win_rate": 21.48,
       "solo_wins": 14411,
       "shared_wins": 552,
-      "elo_rating": -617193.9,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
     "Hate": {
@@ -1420,7 +1420,7 @@
       "win_rate": 21.82,
       "solo_wins": 14602,
       "shared_wins": 576,
-      "elo_rating": -617199.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -1431,8 +1431,8 @@
       "win_rate": 21.41,
       "solo_wins": 14483,
       "shared_wins": 592,
-      "elo_rating": -617196.9,
-      "peak_elo": 1515.2,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Patriot": {
@@ -1442,7 +1442,7 @@
       "win_rate": 22.96,
       "solo_wins": 15505,
       "shared_wins": 612,
-      "elo_rating": -617161.3,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.86
     },
@@ -1453,8 +1453,8 @@
       "win_rate": 21.63,
       "solo_wins": 14631,
       "shared_wins": 571,
-      "elo_rating": -617209.3,
-      "peak_elo": 1529.1,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Reincarnator": {
@@ -1464,7 +1464,7 @@
       "win_rate": 21.4,
       "solo_wins": 14457,
       "shared_wins": 565,
-      "elo_rating": -617218.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
@@ -1475,7 +1475,7 @@
       "win_rate": 21.74,
       "solo_wins": 14736,
       "shared_wins": 569,
-      "elo_rating": -617197.3,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -1486,7 +1486,7 @@
       "win_rate": 21.7,
       "solo_wins": 14616,
       "shared_wins": 578,
-      "elo_rating": -617222.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1497,7 +1497,7 @@
       "win_rate": 26.7,
       "solo_wins": 18288,
       "shared_wins": 385,
-      "elo_rating": -617139.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.91
     },
@@ -1508,7 +1508,7 @@
       "win_rate": 21.82,
       "solo_wins": 14785,
       "shared_wins": 576,
-      "elo_rating": -617128.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1519,7 +1519,7 @@
       "win_rate": 21.7,
       "solo_wins": 14638,
       "shared_wins": 580,
-      "elo_rating": -617113.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -1530,7 +1530,7 @@
       "win_rate": 21.54,
       "solo_wins": 14479,
       "shared_wins": 578,
-      "elo_rating": -617175.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1541,8 +1541,8 @@
       "win_rate": 21.65,
       "solo_wins": 14535,
       "shared_wins": 590,
-      "elo_rating": -617102.5,
-      "peak_elo": 1515.5,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Ravager": {
@@ -1552,7 +1552,7 @@
       "win_rate": 21.43,
       "solo_wins": 14386,
       "shared_wins": 583,
-      "elo_rating": -617160.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1563,7 +1563,7 @@
       "win_rate": 21.61,
       "solo_wins": 14562,
       "shared_wins": 586,
-      "elo_rating": -617238.3,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1574,7 +1574,7 @@
       "win_rate": 23.71,
       "solo_wins": 16069,
       "shared_wins": 589,
-      "elo_rating": -617136.6,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.87
     },
@@ -1585,7 +1585,7 @@
       "win_rate": 23.85,
       "solo_wins": 16073,
       "shared_wins": 582,
-      "elo_rating": -617217.6,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.88
     },
@@ -1596,8 +1596,8 @@
       "win_rate": 21.27,
       "solo_wins": 14376,
       "shared_wins": 539,
-      "elo_rating": -617120.3,
-      "peak_elo": 1515.6,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
     "Aristocrat": {
@@ -1607,7 +1607,7 @@
       "win_rate": 24.76,
       "solo_wins": 16643,
       "shared_wins": 589,
-      "elo_rating": -617224.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.87
     },
@@ -1618,7 +1618,7 @@
       "win_rate": 28.31,
       "solo_wins": 19174,
       "shared_wins": 669,
-      "elo_rating": -617201.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.93
     },
@@ -1629,8 +1629,8 @@
       "win_rate": 21.29,
       "solo_wins": 14268,
       "shared_wins": 619,
-      "elo_rating": -617211.5,
-      "peak_elo": 1525.9,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
     "Pacifist": {
@@ -1640,7 +1640,7 @@
       "win_rate": 29.03,
       "solo_wins": 19594,
       "shared_wins": 665,
-      "elo_rating": -617105.3,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.98
     },
@@ -1651,7 +1651,7 @@
       "win_rate": 23.73,
       "solo_wins": 16089,
       "shared_wins": 591,
-      "elo_rating": -617216.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.87
     },
@@ -1662,8 +1662,8 @@
       "win_rate": 23.4,
       "solo_wins": 15715,
       "shared_wins": 596,
-      "elo_rating": -617250.8,
-      "peak_elo": 1515.3,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.87
     },
     "Jammer": {
@@ -1673,8 +1673,8 @@
       "win_rate": 21.48,
       "solo_wins": 14554,
       "shared_wins": 570,
-      "elo_rating": -617199.5,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
     "Shadow": {
@@ -1684,7 +1684,7 @@
       "win_rate": 26.92,
       "solo_wins": 18507,
       "shared_wins": 332,
-      "elo_rating": -617104.6,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.91
     },
@@ -1695,7 +1695,7 @@
       "win_rate": 21.53,
       "solo_wins": 14440,
       "shared_wins": 576,
-      "elo_rating": -617289.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1706,8 +1706,8 @@
       "win_rate": 21.76,
       "solo_wins": 14543,
       "shared_wins": 606,
-      "elo_rating": -617251.3,
-      "peak_elo": 1512.8,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Insect": {
@@ -1717,7 +1717,7 @@
       "win_rate": 24.71,
       "solo_wins": 16572,
       "shared_wins": 630,
-      "elo_rating": -617159.6,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.9
     },
@@ -1728,7 +1728,7 @@
       "win_rate": 21.51,
       "solo_wins": 14493,
       "shared_wins": 575,
-      "elo_rating": -617218.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1739,7 +1739,7 @@
       "win_rate": 19.02,
       "solo_wins": 11929,
       "shared_wins": 1347,
-      "elo_rating": -617202.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.98
     },
@@ -1750,7 +1750,7 @@
       "win_rate": 21.31,
       "solo_wins": 14325,
       "shared_wins": 558,
-      "elo_rating": -617186.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1761,8 +1761,8 @@
       "win_rate": 23.71,
       "solo_wins": 15925,
       "shared_wins": 665,
-      "elo_rating": -617231.6,
-      "peak_elo": 1515.5,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.87
     },
     "Pincushion": {
@@ -1772,7 +1772,7 @@
       "win_rate": 21.22,
       "solo_wins": 14331,
       "shared_wins": 563,
-      "elo_rating": -617196.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1783,8 +1783,8 @@
       "win_rate": 21.34,
       "solo_wins": 14420,
       "shared_wins": 544,
-      "elo_rating": -617203.0,
-      "peak_elo": 1528.4,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
     "Connoisseur": {
@@ -1794,8 +1794,8 @@
       "win_rate": 22.81,
       "solo_wins": 15380,
       "shared_wins": 601,
-      "elo_rating": -617266.5,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.85
     },
     "Grudge": {
@@ -1805,7 +1805,7 @@
       "win_rate": 21.43,
       "solo_wins": 14411,
       "shared_wins": 608,
-      "elo_rating": -617096.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1816,7 +1816,7 @@
       "win_rate": 21.97,
       "solo_wins": 14828,
       "shared_wins": 576,
-      "elo_rating": -617134.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.85
     },
@@ -1827,8 +1827,8 @@
       "win_rate": 21.47,
       "solo_wins": 14473,
       "shared_wins": 562,
-      "elo_rating": -617193.8,
-      "peak_elo": 1515.3,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Ace": {
@@ -1838,7 +1838,7 @@
       "win_rate": 21.66,
       "solo_wins": 14503,
       "shared_wins": 601,
-      "elo_rating": -617239.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.84
     },
@@ -1849,7 +1849,7 @@
       "win_rate": 21.47,
       "solo_wins": 14386,
       "shared_wins": 562,
-      "elo_rating": -617095.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1860,7 +1860,7 @@
       "win_rate": 21.46,
       "solo_wins": 14441,
       "shared_wins": 563,
-      "elo_rating": -617184.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -1871,8 +1871,8 @@
       "win_rate": 24.82,
       "solo_wins": 16995,
       "shared_wins": 329,
-      "elo_rating": -617153.1,
-      "peak_elo": 1500.4,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.91
     },
     "Lurker": {
@@ -1882,7 +1882,7 @@
       "win_rate": 21.64,
       "solo_wins": 14575,
       "shared_wins": 598,
-      "elo_rating": -617150.4,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1893,8 +1893,8 @@
       "win_rate": 57.29,
       "solo_wins": 38667,
       "shared_wins": 1238,
-      "elo_rating": -616808.2,
-      "peak_elo": 1599.6,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 4.28
     },
     "Changeling": {
@@ -1904,7 +1904,7 @@
       "win_rate": 21.44,
       "solo_wins": 14387,
       "shared_wins": 562,
-      "elo_rating": -617189.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1915,7 +1915,7 @@
       "win_rate": 21.49,
       "solo_wins": 14481,
       "shared_wins": 579,
-      "elo_rating": -617127.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -1926,7 +1926,7 @@
       "win_rate": 25.4,
       "solo_wins": 17133,
       "shared_wins": 633,
-      "elo_rating": -617138.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.89
     },
@@ -1937,7 +1937,7 @@
       "win_rate": 21.37,
       "solo_wins": 14390,
       "shared_wins": 594,
-      "elo_rating": -617146.6,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
@@ -1948,8 +1948,8 @@
       "win_rate": 21.36,
       "solo_wins": 14281,
       "shared_wins": 550,
-      "elo_rating": -617134.3,
-      "peak_elo": 1515.8,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
     "Giver": {
@@ -1959,8 +1959,8 @@
       "win_rate": 21.52,
       "solo_wins": 14501,
       "shared_wins": 626,
-      "elo_rating": -617119.1,
-      "peak_elo": 1511.1,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
     "Hunter": {
@@ -1970,7 +1970,7 @@
       "win_rate": 21.62,
       "solo_wins": 14488,
       "shared_wins": 568,
-      "elo_rating": -617212.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1981,7 +1981,7 @@
       "win_rate": 21.52,
       "solo_wins": 14414,
       "shared_wins": 570,
-      "elo_rating": -617215.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -1992,8 +1992,8 @@
       "win_rate": 21.57,
       "solo_wins": 14542,
       "shared_wins": 586,
-      "elo_rating": -617183.1,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.83
     },
     "Battlemaster": {
@@ -2003,7 +2003,7 @@
       "win_rate": 24.72,
       "solo_wins": 16815,
       "shared_wins": 598,
-      "elo_rating": -617185.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.89
     },
@@ -2014,7 +2014,7 @@
       "win_rate": 21.5,
       "solo_wins": 14353,
       "shared_wins": 613,
-      "elo_rating": -617242.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -2025,7 +2025,7 @@
       "win_rate": 21.81,
       "solo_wins": 14656,
       "shared_wins": 609,
-      "elo_rating": -617179.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.84
     },
@@ -2036,8 +2036,8 @@
       "win_rate": 21.46,
       "solo_wins": 14435,
       "shared_wins": 573,
-      "elo_rating": -617131.4,
-      "peak_elo": 1515.5,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Underdog": {
@@ -2047,7 +2047,7 @@
       "win_rate": 21.32,
       "solo_wins": 14346,
       "shared_wins": 594,
-      "elo_rating": -617226.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
@@ -2058,8 +2058,8 @@
       "win_rate": 23.89,
       "solo_wins": 15997,
       "shared_wins": 663,
-      "elo_rating": -617142.5,
-      "peak_elo": 1529.3,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.88
     },
     "Ultra": {
@@ -2069,7 +2069,7 @@
       "win_rate": 27.21,
       "solo_wins": 18493,
       "shared_wins": 658,
-      "elo_rating": -617177.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.94
     },
@@ -2080,8 +2080,8 @@
       "win_rate": 25.8,
       "solo_wins": 17387,
       "shared_wins": 631,
-      "elo_rating": -617073.8,
-      "peak_elo": 1515.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.92
     },
     "Leech": {
@@ -2091,7 +2091,7 @@
       "win_rate": 21.46,
       "solo_wins": 14436,
       "shared_wins": 589,
-      "elo_rating": -617302.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -2102,7 +2102,7 @@
       "win_rate": 21.69,
       "solo_wins": 14589,
       "shared_wins": 604,
-      "elo_rating": -617176.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -2113,8 +2113,8 @@
       "win_rate": 21.38,
       "solo_wins": 14388,
       "shared_wins": 569,
-      "elo_rating": -617230.7,
-      "peak_elo": 1501.6,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Empath": {
@@ -2124,7 +2124,7 @@
       "win_rate": 21.41,
       "solo_wins": 14445,
       "shared_wins": 597,
-      "elo_rating": -617217.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -2135,7 +2135,7 @@
       "win_rate": 21.47,
       "solo_wins": 14484,
       "shared_wins": 590,
-      "elo_rating": -617170.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
@@ -2146,7 +2146,7 @@
       "win_rate": 21.36,
       "solo_wins": 14314,
       "shared_wins": 613,
-      "elo_rating": -617169.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -2157,8 +2157,8 @@
       "win_rate": 21.54,
       "solo_wins": 14481,
       "shared_wins": 591,
-      "elo_rating": -617120.0,
-      "peak_elo": 1514.3,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
     "Siren": {
@@ -2168,7 +2168,7 @@
       "win_rate": 21.31,
       "solo_wins": 14400,
       "shared_wins": 510,
-      "elo_rating": -617232.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
@@ -2179,7 +2179,7 @@
       "win_rate": 22.95,
       "solo_wins": 15405,
       "shared_wins": 600,
-      "elo_rating": -617118.3,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.86
     },
@@ -2190,7 +2190,7 @@
       "win_rate": 21.3,
       "solo_wins": 14330,
       "shared_wins": 533,
-      "elo_rating": -617150.7,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.81
     },
@@ -2201,7 +2201,7 @@
       "win_rate": 21.55,
       "solo_wins": 14528,
       "shared_wins": 566,
-      "elo_rating": -617275.1,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -2212,7 +2212,7 @@
       "win_rate": 21.39,
       "solo_wins": 14346,
       "shared_wins": 628,
-      "elo_rating": -617065.8,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -2223,8 +2223,8 @@
       "win_rate": 36.84,
       "solo_wins": 7,
       "shared_wins": 0,
-      "elo_rating": 1414.2,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 4.0
     },
     "Forge": {
@@ -2234,7 +2234,7 @@
       "win_rate": 38.46,
       "solo_wins": 4,
       "shared_wins": 1,
-      "elo_rating": 1435.0,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.69
     },
@@ -2245,8 +2245,8 @@
       "win_rate": 23.53,
       "solo_wins": 4,
       "shared_wins": 0,
-      "elo_rating": 1371.4,
-      "peak_elo": 1515.3,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 4.0
     },
     "Wrath": {
@@ -2256,7 +2256,7 @@
       "win_rate": 27.27,
       "solo_wins": 6,
       "shared_wins": 0,
-      "elo_rating": 1374.9,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.82
     },
@@ -2267,8 +2267,8 @@
       "win_rate": 22.73,
       "solo_wins": 5,
       "shared_wins": 0,
-      "elo_rating": 1334.4,
-      "peak_elo": 1500.7,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.77
     },
     "Quartermaster": {
@@ -2278,8 +2278,8 @@
       "win_rate": 36.36,
       "solo_wins": 4,
       "shared_wins": 0,
-      "elo_rating": 1426.3,
-      "peak_elo": 1531.2,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 4.09
     },
     "Legion": {
@@ -2289,8 +2289,8 @@
       "win_rate": 35.71,
       "solo_wins": 5,
       "shared_wins": 0,
-      "elo_rating": 1430.4,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.5
     },
     "Elemental": {
@@ -2300,8 +2300,8 @@
       "win_rate": 63.16,
       "solo_wins": 11,
       "shared_wins": 1,
-      "elo_rating": 1521.3,
-      "peak_elo": 1531.3,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 4.26
     },
     "Gremlin": {
@@ -2311,7 +2311,7 @@
       "win_rate": 25.0,
       "solo_wins": 3,
       "shared_wins": 1,
-      "elo_rating": 1359.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.69
     },
@@ -2322,7 +2322,7 @@
       "win_rate": 7.69,
       "solo_wins": 1,
       "shared_wins": 0,
-      "elo_rating": 1345.5,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.31
     },
@@ -2333,8 +2333,8 @@
       "win_rate": 43.75,
       "solo_wins": 6,
       "shared_wins": 1,
-      "elo_rating": 1442.5,
-      "peak_elo": 1516.0,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.56
     },
     "Herald": {
@@ -2344,7 +2344,7 @@
       "win_rate": 46.15,
       "solo_wins": 5,
       "shared_wins": 1,
-      "elo_rating": 1460.2,
+      "elo_rating": 1500.0,
       "peak_elo": 1500.0,
       "avg_colonies": 3.92
     },
@@ -2355,8 +2355,8 @@
       "win_rate": 38.89,
       "solo_wins": 6,
       "shared_wins": 1,
-      "elo_rating": 1416.8,
-      "peak_elo": 1515.6,
+      "elo_rating": 1500.0,
+      "peak_elo": 1500.0,
       "avg_colonies": 3.83
     }
   }
