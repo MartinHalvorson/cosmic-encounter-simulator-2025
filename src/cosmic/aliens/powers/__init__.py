@@ -66,3 +66,5 @@ from .music_powers import *  # noqa: F401, F403
 from .profession_powers import *  # noqa: F401, F403
 from .emotion_powers import *  # noqa: F401, F403
 from .phenomenon_powers import *  # noqa: F401, F403
+from .cosmic_horror_powers import *  # noqa: F401, F403
+from .food_powers import *  # noqa: F401, F403
