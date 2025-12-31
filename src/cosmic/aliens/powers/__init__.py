@@ -18,3 +18,5 @@ from .strategic_powers import *  # noqa: F401, F403
 from .arcane_powers import *  # noqa: F401, F403
 from .dominion_powers import *  # noqa: F401, F403
 from .nature_powers import *  # noqa: F401, F403
+from .tech_powers import *  # noqa: F401, F403
+from .space_powers import *  # noqa: F401, F403

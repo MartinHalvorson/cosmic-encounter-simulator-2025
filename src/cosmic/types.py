@@ -188,6 +188,10 @@ class GameConfig:
     seed: Optional[int] = None  # For reproducibility
     required_aliens: Optional[List[str]] = None  # Aliens that must be in the game
 
+    # 2-player variant settings
+    two_player_mode: bool = False  # Enables 2-player variant rules
+    dual_powers: bool = False  # Each player gets 2 alien powers (for 2P variant)
+
 
 @dataclass
 class SimulationConfig:

@@ -23,6 +23,7 @@ class Player:
     name: str
     color: Color
     alien: Optional["AlienPower"] = None
+    secondary_alien: Optional["AlienPower"] = None  # For 2-player dual power variant
     ai_strategy: Optional["AIStrategy"] = None
 
     # Hand of cards
@@ -30,6 +31,7 @@ class Player:
 
     # Power state
     power_active: bool = True
+    secondary_power_active: bool = True  # For 2-player variant
 
     # Special counters for specific alien powers
     warrior_tokens: int = 0
