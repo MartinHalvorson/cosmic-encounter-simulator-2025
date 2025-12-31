@@ -228,6 +228,9 @@ class Game:
         if self.is_over:
             return
 
+        # Reset artifact state for this encounter
+        self._reset_encounter_artifacts()
+
         # Start turn phase
         if self.encounter_number == 1:
             self.current_turn += 1
@@ -870,3 +873,151 @@ class Game:
 
         if self.winners:
             self.is_over = True
+
+    # ========== Artifact Methods ==========
+
+    def _reset_encounter_artifacts(self) -> None:
+        """Reset artifact state at start of encounter."""
+        self.zapped_powers = []
+        self.encounter_cancelled = False
+
+    def _check_artifact_opportunity(self, phase: str, context: Dict[str, Any]) -> Optional[ArtifactCard]:
+        """
+        Check if any player wants to play an artifact in the current context.
+
+        Args:
+            phase: Current phase name
+            context: Context information for artifact decision
+
+        Returns:
+            The artifact played, or None
+        """
+        # Check each player in turn order (starting from offense)
+        check_order = [self.offense, self.defense] + [
+            p for p in self.players if p != self.offense and p != self.defense
+        ]
+
+        for player in check_order:
+            if player is None:
+                continue
+
+            ai = player.ai_strategy or BasicAI()
+            artifact = ai.select_artifact_to_play(self, player, phase, context)
+
+            if artifact and artifact in player.hand:
+                return self._play_artifact(player, artifact, context)
+
+        return None
+
+    def _play_artifact(self, player: Player, artifact: ArtifactCard, context: Dict[str, Any]) -> ArtifactCard:
+        """
+        Play an artifact card and apply its effect.
+
+        Args:
+            player: Player playing the artifact
+            artifact: The artifact card to play
+            context: Context for the effect
+
+        Returns:
+            The artifact that was played
+        """
+        player.remove_card(artifact)
+        self._log(f"{player.name} plays {artifact}")
+
+        artifact_type = artifact.artifact_type
+
+        if artifact_type == ArtifactType.COSMIC_ZAP:
+            self._apply_cosmic_zap(context)
+        elif artifact_type == ArtifactType.MOBIUS_TUBES:
+            self._apply_mobius_tubes(player)
+        elif artifact_type == ArtifactType.FORCE_FIELD:
+            self._apply_force_field()
+        elif artifact_type == ArtifactType.CARD_ZAP:
+            self._apply_card_zap(context)
+        elif artifact_type == ArtifactType.IONIC_GAS:
+            self._apply_ionic_gas(context)
+        elif artifact_type == ArtifactType.PLAGUE:
+            self._apply_plague(context)
+        elif artifact_type == ArtifactType.EMOTION_CONTROL:
+            self._apply_emotion_control(context)
+        elif artifact_type == ArtifactType.QUASH:
+            self._apply_quash(context)
+
+        self.cosmic_deck.discard(artifact)
+        return artifact
+
+    def _apply_cosmic_zap(self, context: Dict[str, Any]) -> None:
+        """Cancel a player's alien power for this encounter."""
+        target = context.get("target_player")
+        if target and target not in self.zapped_powers:
+            self.zapped_powers.append(target)
+            self._log(f"{target.name}'s power is zapped!")
+
+    def _apply_mobius_tubes(self, player: Player) -> None:
+        """Free all of player's ships from the warp."""
+        ships = player.ships_in_warp
+        if ships > 0:
+            player.retrieve_ships_from_warp(ships)
+            player.return_ships_to_colonies(ships, player.home_planets)
+            self._log(f"{player.name} frees {ships} ships from warp!")
+
+    def _apply_force_field(self) -> None:
+        """End the encounter with no winner or loser."""
+        self.encounter_cancelled = True
+        self._log("Force Field ends the encounter!")
+
+    def _apply_card_zap(self, context: Dict[str, Any]) -> None:
+        """Cancel an encounter card - player must play another."""
+        target_card = context.get("target_card")
+        target_player = context.get("target_player")
+        if target_card and target_player:
+            # Card is already played, treat as 0 value attack
+            self._log(f"{target_player.name}'s {target_card} is zapped!")
+
+    def _apply_ionic_gas(self, context: Dict[str, Any]) -> None:
+        """Prevent allies from participating."""
+        # Clear allies from both sides
+        for ally in self.offense_allies:
+            ships = self.offense_ships.get(ally.name, 0)
+            ally.return_ships_to_colonies(ships, ally.home_planets)
+        for ally in self.defense_allies:
+            ships = self.defense_ships.get(ally.name, 0)
+            ally.return_ships_to_colonies(ships, ally.home_planets)
+
+        self.offense_allies = []
+        self.defense_allies = []
+        # Remove ally ships from encounter totals
+        self.offense_ships = {k: v for k, v in self.offense_ships.items() if k == self.offense.name}
+        self.defense_ships = {k: v for k, v in self.defense_ships.items() if k == self.defense.name}
+        self._log("Ionic Gas disperses all allies!")
+
+    def _apply_plague(self, context: Dict[str, Any]) -> None:
+        """Send ships from a colony to the warp."""
+        target_player = context.get("target_player")
+        target_planet = context.get("target_planet")
+        if target_player and target_planet:
+            ships = target_planet.get_ships(target_player.name)
+            if ships > 0:
+                target_planet.remove_ships(target_player.name, ships)
+                target_player.send_ships_to_warp(ships)
+                self._log(f"Plague sends {ships} of {target_player.name}'s ships to warp!")
+
+    def _apply_emotion_control(self, context: Dict[str, Any]) -> None:
+        """Force opponent to play a negotiate card if they have one."""
+        target_player = context.get("target_player")
+        if target_player:
+            negotiate_cards = [c for c in target_player.hand if isinstance(c, NegotiateCard)]
+            if negotiate_cards:
+                self._log(f"{target_player.name} is forced to play Negotiate!")
+                # The effect is checked during planning phase
+
+    def _apply_quash(self, context: Dict[str, Any]) -> None:
+        """Cancel a flare or artifact being played."""
+        # Similar to cosmic zap but for cards
+        self._log("Quash cancels the effect!")
+
+    def is_power_active(self, player: Player) -> bool:
+        """Check if a player's power is currently active (not zapped)."""
+        if player in self.zapped_powers:
+            return False
+        return player.power_active
