@@ -200,3 +200,5 @@ from .smell_powers import *  # noqa: F401, F403
 from .movement_powers import *  # noqa: F401, F403
 from .topology_powers import *  # noqa: F401, F403
 from .behavior_powers import *  # noqa: F401, F403
+from .monarchy_powers import *  # noqa: F401, F403
+from .pirate_powers import *  # noqa: F401, F403
