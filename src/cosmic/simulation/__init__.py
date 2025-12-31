@@ -40,4 +40,12 @@ __all__ = [
     "MatchupResult",
     "run_quick_matchup",
     "find_counters",
+    "Tournament",
+    "RoundRobinTournament",
+    "SwissTournament",
+    "MonteCarloEstimator",
+    "SynergyMatrix",
+    "TournamentResults",
+    "run_quick_tournament",
+    "run_monte_carlo_analysis",
 ]
