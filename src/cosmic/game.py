@@ -9,8 +9,9 @@ from typing import List, Optional, Dict, Any, Tuple
 from .types import GamePhase, GameConfig, Side, PlayerRole, Color, ShipCount
 from .player import Player
 from .planet import Planet
-from .cards import CosmicDeck, DestinyDeck, RewardsDeck
-from .cards.base import Card, EncounterCard, AttackCard, NegotiateCard, MorphCard, ReinforcementCard
+from .cards import CosmicDeck, DestinyDeck, RewardsDeck, FlareDeck
+from .cards.base import Card, EncounterCard, AttackCard, NegotiateCard, MorphCard, ReinforcementCard, ArtifactCard
+from .types import ArtifactType
 from .aliens import AlienRegistry, AlienPower
 from .ai.basic_ai import BasicAI
 
@@ -44,6 +45,10 @@ class Game:
     defense_ships: Dict[str, int] = field(default_factory=dict)
     offense_allies: List[Player] = field(default_factory=list)
     defense_allies: List[Player] = field(default_factory=list)
+
+    # Artifact tracking
+    zapped_powers: List[Player] = field(default_factory=list)  # Players whose powers are zapped this encounter
+    encounter_cancelled: bool = False  # Force Field was played
 
     # Game result
     is_over: bool = False
@@ -125,6 +130,13 @@ class Game:
 
         # Initialize destiny deck with players
         self.destiny_deck.initialize(self.players)
+
+        # Add flare cards to cosmic deck (one for each alien in the game)
+        flare_deck = FlareDeck()
+        flare_deck.set_rng(self._rng)
+        alien_names = [p.alien.name for p in self.players if p.alien]
+        flares = flare_deck.create_flares_for_game(alien_names)
+        self.cosmic_deck.add_flares(flares)
 
         # Deal starting hands
         for player in self.players:

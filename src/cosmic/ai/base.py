@@ -293,6 +293,95 @@ class AIStrategy(ABC):
         else:
             return "cards"
 
+    # ========== Artifact Usage ==========
+
+    def should_use_artifact(
+        self,
+        game: "Game",
+        player: "Player",
+        artifact_type: str,
+        context: Dict[str, Any]
+    ) -> bool:
+        """
+        Decide whether to use an artifact card.
+
+        Args:
+            game: Current game state
+            player: Player with the artifact
+            artifact_type: Type of artifact (e.g., "cosmic_zap", "force_field")
+            context: Context about when/why artifact might be used
+
+        Returns:
+            True if should use the artifact
+        """
+        from ..types import ArtifactType
+
+        # Default logic for common artifacts
+        if artifact_type == ArtifactType.COSMIC_ZAP.value:
+            # Use to stop dangerous power usage
+            target = context.get("target_player")
+            if target and target.alien:
+                # Zap strong powers like Machine, Parasite
+                if target.alien.name in ["Machine", "Parasite", "Virus", "Void"]:
+                    return True
+            return False
+
+        elif artifact_type == ArtifactType.MOBIUS_TUBES.value:
+            # Use if we have many ships in warp
+            return player.ships_in_warp >= 4
+
+        elif artifact_type == ArtifactType.FORCE_FIELD.value:
+            # Use if we're about to lose badly as defense
+            if context.get("is_defense") and context.get("likely_to_lose"):
+                return True
+            return False
+
+        elif artifact_type == ArtifactType.CARD_ZAP.value:
+            # Zap high attack cards
+            target_card = context.get("target_card")
+            if target_card and hasattr(target_card, 'value') and target_card.value >= 20:
+                return True
+            return False
+
+        elif artifact_type == ArtifactType.IONIC_GAS.value:
+            # Use if opponents have many allies
+            opponent_allies = context.get("opponent_ally_count", 0)
+            return opponent_allies >= 2
+
+        elif artifact_type == ArtifactType.PLAGUE.value:
+            # Use against player with many ships on one planet
+            return False  # Rarely worth it in simulation
+
+        # Default: don't use
+        return False
+
+    def select_artifact_to_play(
+        self,
+        game: "Game",
+        player: "Player",
+        phase: str,
+        context: Dict[str, Any]
+    ) -> Optional["Card"]:
+        """
+        Select an artifact card to play (if any) during the current phase.
+
+        Returns:
+            The artifact card to play, or None
+        """
+        from ..cards.base import ArtifactCard
+
+        # Get artifact cards in hand
+        artifacts = [c for c in player.hand if isinstance(c, ArtifactCard)]
+        if not artifacts:
+            return None
+
+        # Check each artifact to see if we should use it
+        for artifact in artifacts:
+            if self.should_use_artifact(game, player, artifact.artifact_type.value, context):
+                return artifact
+
+        return None
+
     # ========== Utility Methods ==========
 
     def get_hand_strength(self, player: "Player") -> float:

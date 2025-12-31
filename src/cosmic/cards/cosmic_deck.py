@@ -8,7 +8,7 @@ from dataclasses import dataclass, field
 
 from .base import (
     Card, AttackCard, NegotiateCard, MorphCard,
-    ReinforcementCard, ArtifactCard
+    ReinforcementCard, ArtifactCard, FlareCard
 )
 from ..types import ArtifactType
 
@@ -141,3 +141,8 @@ class CosmicDeck:
     def set_rng(self, rng: random.Random) -> None:
         """Set the random number generator for reproducibility."""
         self._rng = rng
+
+    def add_flares(self, flares: List[FlareCard]) -> None:
+        """Add flare cards to the deck and reshuffle."""
+        self.draw_pile.extend(flares)
+        self.shuffle()

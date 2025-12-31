@@ -7,6 +7,7 @@ from .base import ReinforcementCard, ArtifactCard, FlareCard, KickerCard
 from .cosmic_deck import CosmicDeck
 from .destiny_deck import DestinyDeck, DestinyCard
 from .rewards_deck import RewardsDeck
+from .flare_deck import FlareDeck, FLARE_EFFECTS
 
 __all__ = [
     "Card",
@@ -22,4 +23,6 @@ __all__ = [
     "DestinyDeck",
     "DestinyCard",
     "RewardsDeck",
+    "FlareDeck",
+    "FLARE_EFFECTS",
 ]
