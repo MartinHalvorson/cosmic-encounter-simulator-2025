@@ -129,11 +129,11 @@ class TestAlternateTimelineAlienMechanics:
         # Should have ships/warp related description
         assert "warp" in alien.description.lower()
 
-    def test_locust_alt_has_swarm_mechanic(self):
-        """Locust_Alt should add ships to colonies."""
+    def test_locust_alt_has_discard_mechanic(self):
+        """Locust_Alt should force opponent to discard."""
         alien = AlienRegistry.get("Locust_Alt")
         assert alien is not None
-        assert "ship" in alien.description.lower() or "colon" in alien.description.lower()
+        assert "discard" in alien.description.lower() or "opponent" in alien.description.lower()
 
 
 class TestNewOdysseyAlienMechanics:
