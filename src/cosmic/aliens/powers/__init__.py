@@ -99,3 +99,6 @@ from .climate_powers import *  # noqa: F401, F403
 from .card_manipulation_powers import *  # noqa: F401, F403
 from .combat_modifier_powers import *  # noqa: F401, F403
 from .number_powers import *  # noqa: F401, F403
+from .language_powers import *  # noqa: F401, F403
+from .astronomy_powers import *  # noqa: F401, F403
+from .dance_powers import *  # noqa: F401, F403
