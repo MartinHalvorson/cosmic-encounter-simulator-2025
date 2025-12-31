@@ -50,3 +50,5 @@ from .territory_powers import *  # noqa: F401, F403
 from .ancient_powers import *  # noqa: F401, F403
 from .void_powers import *  # noqa: F401, F403
 from .champion_powers import *  # noqa: F401, F403
+from .predator_powers import *  # noqa: F401, F403
+from .artifact_powers import *  # noqa: F401, F403
