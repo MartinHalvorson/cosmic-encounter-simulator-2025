@@ -160,7 +160,7 @@ class Jailer(AlienPower):
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def on_regroup(self, game: "Game", player: "Player") -> None:
+    def on_regroup(self, game: "Game", player: "Player", role: PlayerRole) -> None:
         """Check if we have enough ships to release."""
         if player.ships_in_warp >= 3:
             ships = player.retrieve_ships_from_warp(player.ships_in_warp)
