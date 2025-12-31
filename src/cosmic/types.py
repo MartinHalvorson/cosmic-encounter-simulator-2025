@@ -243,6 +243,9 @@ class GameConfig:
     # 2-player variant settings
     two_player_mode: bool = False  # Enables 2-player variant rules
     dual_powers: bool = False  # Each player gets 2 alien powers (for 2P variant)
+    two_player_colonies_to_win: int = 4  # Reduced colonies needed in 2P
+    two_player_alternate_turns: bool = True  # Players take turns as offense
+    two_player_choose_target: bool = True  # Offense can choose target (no destiny)
 
 
 @dataclass
