@@ -9,6 +9,7 @@ from .destiny_deck import DestinyDeck, DestinyCard
 from .rewards_deck import RewardsDeck
 from .flare_deck import FlareDeck, FLARE_EFFECTS
 from .tech_deck import TechDeck, TechCard, TechCategory, PlayerTechState, TECH_EFFECTS
+from .hazard_deck import HazardDeck, HazardCard, HazardTiming, HazardSeverity, HAZARD_EFFECTS, apply_hazard_effect
 
 __all__ = [
     "Card",
@@ -31,4 +32,10 @@ __all__ = [
     "TechCategory",
     "PlayerTechState",
     "TECH_EFFECTS",
+    "HazardDeck",
+    "HazardCard",
+    "HazardTiming",
+    "HazardSeverity",
+    "HAZARD_EFFECTS",
+    "apply_hazard_effect",
 ]

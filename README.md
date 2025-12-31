@@ -175,11 +175,13 @@ The simulator follows [Fantasy Flight Games Cosmic Encounter](https://www.fantas
 - **Trader**: Can swap hands during planning
 - **Alternate Win Conditions**: Masochist (20 ships in warp), Genius (20 cards), Tick-Tock (10 tokens)
 
+#### Expansion Content (Available but Optional)
+- **Tech Cards (20)**: Plasma Thruster, Stellar Shield, Omega Missile, Neutron Bomb, Genesis Device, Replicator, Quantum Factory, Trade Hub, Force Wall, Warp Stabilizer, Regeneration Matrix, Disruption Field, Warp Gate, Gravity Well, Phase Shifter, Hyperspace Drive, Temporal Flux, Mind Scanner, Power Amplifier, Cloak Generator, Null Field, Victory Core
+- **Hazard Deck (20)**: Cosmic Quake, Solar Flare, Meteor Shower, Communications Blackout, Sensor Ghost, Warp Rift, Temporal Anomaly, Gravity Storm, Power Surge, Nebula Cloud, Supernova, Dimensional Rift, Plague Ship, Ion Storm, Black Hole, Cosmic Storm, Gamma Ray Burst, Power Nullifier, Galaxy Quake, Time Warp
+
 ### ❌ Not Yet Implemented
 
 #### Advanced Variants
-- **Hazard Deck**: Cosmic Quake, Warp Rift, and other hazards
-- **Tech Cards**: Technology advancement system
 - **Lucre (Money)**: Economic system from expansions
 - **Hidden Powers**: Variant where powers are kept secret
 - **Multi-Power Mode**: 2 alien powers per player variant
