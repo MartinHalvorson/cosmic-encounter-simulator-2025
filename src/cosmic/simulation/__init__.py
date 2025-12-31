@@ -13,6 +13,16 @@ from .matchup_analysis import (
     run_quick_matchup,
     find_counters,
 )
+from .tournament import (
+    Tournament,
+    RoundRobinTournament,
+    SwissTournament,
+    MonteCarloEstimator,
+    SynergyMatrix,
+    TournamentResults,
+    run_quick_tournament,
+    run_monte_carlo_analysis,
+)
 
 __all__ = [
     "Simulator",
