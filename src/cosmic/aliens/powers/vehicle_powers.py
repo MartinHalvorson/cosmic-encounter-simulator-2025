@@ -1,9 +1,12 @@
 """
-Vehicle and Transport themed alien powers for Cosmic Encounter.
+Vehicle-themed alien powers.
+
+These aliens are inspired by various modes of transportation.
 """
 
 from dataclasses import dataclass, field
 from typing import Optional, List, Dict, Any, TYPE_CHECKING
+import random
 
 from ..base import AlienPower, PowerCategory
 from ...types import PowerTiming, PowerType, Side, PlayerRole
@@ -16,171 +19,195 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Rocket(AlienPower):
-    """Rocket - Power of Launch."""
-    name: str = field(default="Rocket", init=False)
-    description: str = field(
-        default="+4 when attacking from your home system.",
-        init=False
-    )
+class Racecar(AlienPower):
+    """Racecar - Power of Speed. Always have 2 encounters per turn."""
+    name: str = field(default="Racecar", init=False)
+    description: str = field(default="Always have 2 encounters per turn.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.CONSTANT, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Tank_Vehicle(AlienPower):
+    """Tank - Power of Armor. +5 when on defense."""
+    name: str = field(default="Tank_Vehicle", init=False)
+    description: str = field(default="+5 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-
-@dataclass
-class Submarine(AlienPower):
-    """Submarine - Power of Stealth."""
-    name: str = field(default="Submarine", init=False)
-    description: str = field(
-        default="Your attack card is hidden until resolution.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-
-@dataclass
-class Tank(AlienPower):
-    """Tank - Power of Armor."""
-    name: str = field(default="Tank", init=False)
-    description: str = field(
-        default="First 2 ships lost each encounter go to colonies instead.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.SHIPS_TO_WARP, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
 
 
 @dataclass
 class Helicopter(AlienPower):
-    """Helicopter - Power of Hovering."""
+    """Helicopter - Power of Hover. May attack any planet, ignoring destiny."""
     name: str = field(default="Helicopter", init=False)
-    description: str = field(
-        default="Choose to cancel encounter after cards are revealed.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.RED, init=False)
-
-
-@dataclass
-class Train(AlienPower):
-    """Train - Power of Momentum."""
-    name: str = field(default="Train", init=False)
-    description: str = field(
-        default="+1 for each consecutive encounter you've won.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Spaceship(AlienPower):
-    """Spaceship - Power of Travel."""
-    name: str = field(default="Spaceship", init=False)
-    description: str = field(
-        default="Attack any planet regardless of destiny.",
-        init=False
-    )
+    description: str = field(default="Choose any planet to attack.", init=False)
     timing: PowerTiming = field(default=PowerTiming.DESTINY, init=False)
     power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Submarine_Vehicle(AlienPower):
+    """Submarine - Power of Stealth. Opponent doesn't know your card value."""
+    name: str = field(default="Submarine_Vehicle", init=False)
+    description: str = field(default="Your card is hidden until resolution.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
 
 @dataclass
-class Bicycle(AlienPower):
-    """Bicycle - Power of Efficiency."""
-    name: str = field(default="Bicycle", init=False)
-    description: str = field(
-        default="Your single ships count as 2 in encounters.",
-        init=False
-    )
+class Rocket_Vehicle(AlienPower):
+    """Rocket - Power of Launch. +3 on first encounter of game."""
+    name: str = field(default="Rocket_Vehicle", init=False)
+    description: str = field(default="+3 on first encounter of game.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and game.current_turn == 1:
+            return total + 3
+        return total
+
+
+@dataclass
+class Train_Vehicle(AlienPower):
+    """Train - Power of Momentum. +1 for each consecutive win (max +5)."""
+    name: str = field(default="Train_Vehicle", init=False)
+    description: str = field(default="+1 for each consecutive win (max +5).", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    consecutive_wins: int = field(default=0, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + min(self.consecutive_wins, 5)
+        return total
+
+
+@dataclass
+class Bicycle_Vehicle(AlienPower):
+    """Bicycle - Power of Simplicity. +2 when you have exactly 1 ship."""
+    name: str = field(default="Bicycle_Vehicle", init=False)
+    description: str = field(default="+2 when you have exactly 1 ship in encounter.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
-class Airplane(AlienPower):
-    """Airplane - Power of Altitude."""
-    name: str = field(default="Airplane", init=False)
-    description: str = field(
-        default="Ships can't be targeted by trap cards.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.CONSTANT, init=False)
+class Airplane_Vehicle(AlienPower):
+    """Airplane - Power of Flight. Ships can come from any colony."""
+    name: str = field(default="Airplane_Vehicle", init=False)
+    description: str = field(default="Commit ships from any of your colonies.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.LAUNCH, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Boat_Vehicle(AlienPower):
+    """Boat - Power of Sailing. +2 when attacking."""
+    name: str = field(default="Boat_Vehicle", init=False)
+    description: str = field(default="+2 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 2
+        return total
+
+
+@dataclass
+class Spaceship_Vehicle(AlienPower):
+    """Spaceship - Power of Exploration. Draw 1 card when winning as offense."""
+    name: str = field(default="Spaceship_Vehicle", init=False)
+    description: str = field(default="Draw 1 card when winning as offense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.WIN_ENCOUNTER, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Motorcycle_Vehicle(AlienPower):
+    """Motorcycle - Power of Agility. May withdraw half ships before resolution."""
+    name: str = field(default="Motorcycle_Vehicle", init=False)
+    description: str = field(default="May withdraw half ships before resolution.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
 
 @dataclass
-class Boat(AlienPower):
-    """Boat - Power of Crossing."""
-    name: str = field(default="Boat", init=False)
-    description: str = field(
-        default="Carry 1 ally ship with your ships for free.",
-        init=False
-    )
+class Truck_Vehicle(AlienPower):
+    """Truck - Power of Cargo. May commit up to 6 ships."""
+    name: str = field(default="Truck_Vehicle", init=False)
+    description: str = field(default="May commit up to 6 ships to encounter.", init=False)
     timing: PowerTiming = field(default=PowerTiming.LAUNCH, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
-class Bus(AlienPower):
-    """Bus - Power of Capacity."""
-    name: str = field(default="Bus", init=False)
-    description: str = field(
-        default="Commit up to 6 ships instead of 4.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.LAUNCH, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Motorcycle(AlienPower):
-    """Motorcycle - Power of Speed."""
-    name: str = field(default="Motorcycle", init=False)
-    description: str = field(
-        default="+3 when you have fewer ships than opponent.",
-        init=False
-    )
+class Bus_Vehicle(AlienPower):
+    """Bus - Power of Transport. Allies add +2 each."""
+    name: str = field(default="Bus_Vehicle", init=False)
+    description: str = field(default="Allied ships on your side add +2 each.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
-class Truck(AlienPower):
-    """Truck - Power of Hauling."""
-    name: str = field(default="Truck", init=False)
-    description: str = field(
-        default="Draw 2 extra cards at start of turn.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.START_TURN, init=False)
+class Ambulance_Vehicle(AlienPower):
+    """Ambulance - Power of Rescue. Return 2 ships from warp at turn start."""
+    name: str = field(default="Ambulance_Vehicle", init=False)
+    description: str = field(default="Return 2 ships from warp at turn start.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
-# Register all powers
-AlienRegistry.register(Rocket())
-AlienRegistry.register(Submarine())
-AlienRegistry.register(Tank())
+@dataclass
+class Firetruck_Vehicle(AlienPower):
+    """Firetruck - Power of Emergency. +4 when defending home planet."""
+    name: str = field(default="Firetruck_Vehicle", init=False)
+    description: str = field(default="+4 when defending a home planet.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
+
+# Register all vehicle powers
+AlienRegistry.register(Racecar())
+AlienRegistry.register(Tank_Vehicle())
 AlienRegistry.register(Helicopter())
-AlienRegistry.register(Train())
-AlienRegistry.register(Spaceship())
-AlienRegistry.register(Bicycle())
-AlienRegistry.register(Airplane())
-AlienRegistry.register(Boat())
-AlienRegistry.register(Bus())
-AlienRegistry.register(Motorcycle())
-AlienRegistry.register(Truck())
+AlienRegistry.register(Submarine_Vehicle())
+AlienRegistry.register(Rocket_Vehicle())
+AlienRegistry.register(Train_Vehicle())
+AlienRegistry.register(Bicycle_Vehicle())
+AlienRegistry.register(Airplane_Vehicle())
+AlienRegistry.register(Boat_Vehicle())
+AlienRegistry.register(Spaceship_Vehicle())
+AlienRegistry.register(Motorcycle_Vehicle())
+AlienRegistry.register(Truck_Vehicle())
+AlienRegistry.register(Bus_Vehicle())
+AlienRegistry.register(Ambulance_Vehicle())
+AlienRegistry.register(Firetruck_Vehicle())
