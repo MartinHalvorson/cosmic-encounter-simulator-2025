@@ -160,3 +160,5 @@ from .habitat_powers import *  # noqa: F401, F403
 from .rank_powers import *  # noqa: F401, F403
 from .terrain_powers import *  # noqa: F401, F403
 from .transport_powers import *  # noqa: F401, F403
+from .mythology_gods_powers import *  # noqa: F401, F403
+from .zodiac_powers import *  # noqa: F401, F403
