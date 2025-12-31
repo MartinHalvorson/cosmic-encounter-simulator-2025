@@ -63,10 +63,15 @@ class TacticalAI(AIStrategy):
         """
         cards = player.get_encounter_cards()
         if not cards:
-            raise ValueError(f"{player.name} has no encounter cards!")
+            # Player needs a new hand - return None to signal this
+            return None
 
         attack_cards = player.get_attack_cards()
         negotiate_cards = player.get_negotiate_cards()
+
+        # Fallback if no standard cards (e.g., only morphs)
+        if not attack_cards and not negotiate_cards:
+            return cards[0]
 
         # Get game state
         my_colonies = player.count_foreign_colonies(game.planets)
