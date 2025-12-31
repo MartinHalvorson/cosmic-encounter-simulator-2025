@@ -6,6 +6,7 @@ from .base import AIStrategy
 from .basic_ai import BasicAI
 from .strategic_ai import StrategicAI
 from .random_ai import RandomAI
+from .adaptive_ai import LearningAI
 from .personality_ai import (
     AggressiveAI,
     CautiousAI,
@@ -24,6 +25,7 @@ __all__ = [
     "BasicAI",
     "StrategicAI",
     "RandomAI",
+    "LearningAI",
     "AggressiveAI",
     "CautiousAI",
     "OpportunisticAI",
