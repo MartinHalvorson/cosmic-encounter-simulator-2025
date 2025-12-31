@@ -13,29 +13,30 @@ Build out a comprehensive Cosmic Encounter simulator to simulate games under var
 
 ## Current State (as of 2025-12-30)
 
-- **5+ million games simulated**
+- **7.3+ million games simulated**
 - **317 alien powers** implemented
 - **Full encounter cycle** implemented (8 phases)
-- **Multiple AI strategies** (5+ personalities)
+- **Multiple AI strategies** (5+ personalities) with power-aware decision making
 - **ELO rating system** with persistent statistics
 - **Tech Cards system** integrated (Cosmic Incursion expansion)
 - **Hazard Deck system** integrated (Cosmic Storm expansion)
-- **46 unit tests** with pytest framework
+- **2-player variant** with dual power support
+- **66 unit tests** with pytest framework
 
 ## Identified Gaps (Priority Order)
 
 ### Completed
-1. ~~**Unit Tests**~~ - Added 46 tests covering game, expansions, and powers
+1. ~~**Unit Tests**~~ - Added 66 tests covering game, expansions, powers, AI, and 2-player
 2. ~~**Hazard Deck Integration**~~ - Fully integrated into game flow
 3. ~~**Tech Cards Integration**~~ - Fully integrated with research progress
-4. ~~**Power Interaction Edge Cases**~~ - Added tests for key matchups
+4. ~~**AI Strategy Improvements**~~ - Power-aware card selection and ship commitment
+5. ~~**2-Player Variant**~~ - Dual powers support for 2-player games
+6. ~~**Power Interaction Edge Cases**~~ - Added tests for key matchups
 
 ### Medium Priority
-5. **Game.py Refactoring** - 1486 lines, could be split into phase modules
-6. **Advanced Artifact Timing** - More robust artifact resolution
-7. **Hyperspace Gate Mechanics** - Clarify and fully implement
-8. **2-Player Variant** - Currently only 3-6 players supported
-9. **AI Strategy Improvements** - More power-aware decision making
+7. **Game.py Refactoring** - 1486 lines, could be split into phase modules
+8. **Advanced Artifact Timing** - More robust artifact resolution
+9. **Hyperspace Gate Mechanics** - Clarify and fully implement
 
 ### Lower Priority
 10. **Documentation** - Power descriptions, AI strategy rationale
@@ -101,6 +102,31 @@ Build out a comprehensive Cosmic Encounter simulator to simulate games under var
 - Verified 317 alien powers are registered and working
 - Ran 500+ test games with no errors
 - All 46 tests passing
+
+### 2025-12-30 Evening Update
+- Enhanced AI with power-aware decision making:
+  - Comprehensive power categorization (combat modifiers, alliance-affecting, ship/card manipulation)
+  - Power-specific card selection strategies for 25+ aliens
+  - Ship commitment adjusts based on player's power and opponent's power
+  - Opponent strategy modifiers (expect low/high cards, minimize ships, etc.)
+- Added 14 AI-specific tests
+- Added 2-player variant support:
+  - Auto-enables two_player_mode for 2 players
+  - Dual powers (each player gets 2 alien powers)
+  - Secondary power game start effects
+  - 6 new 2-player tests
+- Total: 66 tests passing
+- Ran 10,000+ additional games, total now at 7.3 million games simulated
+- All changes committed and pushed
+
+### Current Statistics
+- **7.3+ million games simulated**
+- **317 alien powers** implemented
+- **66 unit tests** with pytest framework
+- Full encounter cycle (8 phases)
+- Multiple AI strategies (5+ personalities)
+- Tech Cards and Hazard Deck expansions
+- 2-player variant with dual powers
 
 ---
 
