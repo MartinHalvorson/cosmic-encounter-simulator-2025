@@ -273,6 +273,137 @@ class Warrior(AlienPower):
         player.warrior_tokens += 2
 
 
+@dataclass
+class Guerrilla(AlienPower):
+    """
+    Guerrilla - Power of Attrition.
+    Official FFG rules: As a main player, after you lose an encounter,
+    all other players who had ships in the encounter (your opponent and
+    their allies) lose all but one of their ships to the warp.
+    """
+    name: str = field(default="Guerrilla", init=False)
+    description: str = field(
+        default="When you lose, opponents lose all but one ship each.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.LOSE_ENCOUNTER, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    usable_as: List[PlayerRole] = field(
+        default_factory=lambda: [PlayerRole.OFFENSE, PlayerRole.DEFENSE],
+        init=False
+    )
+
+    def on_lose_encounter(
+        self,
+        game: "Game",
+        player: "Player",
+        as_main_player: bool
+    ) -> None:
+        """When we lose, opponents lose all but one ship."""
+        if not as_main_player or not player.power_active:
+            return
+
+        # Determine which side won
+        if game.offense == player:
+            # We were offense, defense won
+            winner_ships = game.defense_ships
+        else:
+            # We were defense, offense won
+            winner_ships = game.offense_ships
+
+        # Each player on winning side loses all but 1 ship to warp
+        for player_name, ship_count in winner_ships.items():
+            if ship_count > 1:
+                ships_to_lose = ship_count - 1
+                target_player = game.get_player_by_name(player_name)
+                if target_player:
+                    target_player.ships_in_warp += ships_to_lose
+
+
+@dataclass
+class Mind(AlienPower):
+    """
+    Mind - Power of Knowledge.
+    Official FFG rules: As a main player, before allies are invited,
+    you may use this power to look at the entire hand of your opponent.
+    You may not reveal what you see to other players.
+    """
+    name: str = field(default="Mind", init=False)
+    description: str = field(
+        default="Look at opponent's hand before allies are invited.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    usable_as: List[PlayerRole] = field(
+        default_factory=lambda: [PlayerRole.OFFENSE, PlayerRole.DEFENSE],
+        init=False
+    )
+
+    def on_before_alliance(
+        self,
+        game: "Game",
+        player: "Player",
+        role: PlayerRole
+    ) -> None:
+        """Look at opponent's hand. AI can use this information."""
+        if not player.power_active:
+            return
+
+        # Determine opponent
+        if game.offense == player:
+            opponent = game.defense
+        else:
+            opponent = game.offense
+
+        # Store opponent's hand info for AI decision-making
+        if hasattr(player, 'ai') and player.ai:
+            player.ai.observed_hand = list(opponent.hand)
+
+
+@dataclass
+class Vulch(AlienPower):
+    """
+    Vulch - Power to Salvage.
+    Official FFG rules: Whenever any other player discards an artifact
+    card (whether after playing it or not), use this power to add the
+    artifact to your hand. Your own discarded artifacts cannot be salvaged.
+    """
+    name: str = field(default="Vulch", init=False)
+    description: str = field(
+        default="Collect artifacts discarded by other players.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.ANY, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def on_card_discarded(
+        self,
+        game: "Game",
+        player: "Player",
+        discarding_player: "Player",
+        card: Any
+    ) -> bool:
+        """Salvage artifact cards discarded by others."""
+        if not player.power_active:
+            return False
+
+        # Don't salvage own cards
+        if discarding_player == player:
+            return False
+
+        # Check if it's an artifact card
+        from ...cards.base import ArtifactCard
+        if isinstance(card, ArtifactCard):
+            player.add_card(card)
+            return True  # Card was salvaged, don't discard
+
+        return False
+
+
 # Register all powers
 AlienRegistry.register(Zombie())
 AlienRegistry.register(Healer())
@@ -282,3 +413,6 @@ AlienRegistry.register(Shadow())
 AlienRegistry.register(Parasite())
 AlienRegistry.register(Machine())
 AlienRegistry.register(Warrior())
+AlienRegistry.register(Guerrilla())
+AlienRegistry.register(Mind())
+AlienRegistry.register(Vulch())
