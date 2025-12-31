@@ -125,3 +125,11 @@ from .justice_powers import *  # noqa: F401, F403
 from .dream_powers import *  # noqa: F401, F403
 from .weather_classic_powers import *  # noqa: F401, F403
 from .mineral_powers import *  # noqa: F401, F403
+from .virtue_powers import *  # noqa: F401, F403
+from .sin_powers import *  # noqa: F401, F403
+from .element_extended_powers import *  # noqa: F401, F403
+from .career_powers import *  # noqa: F401, F403
+from .state_powers import *  # noqa: F401, F403
+from .sports_powers import *  # noqa: F401, F403
+from .crime_powers import *  # noqa: F401, F403
+from .fantasy_powers import *  # noqa: F401, F403

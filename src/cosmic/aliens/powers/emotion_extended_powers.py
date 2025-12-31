@@ -47,7 +47,8 @@ class Excitement(AlienPower):
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
-        if player.power_active and game.encounter_count == 1:
+        encounter_count = getattr(game.logger, 'encounter_count', 0) if hasattr(game, 'logger') else 0
+        if player.power_active and encounter_count == 1:
             return base_total + 3
         return base_total
 
