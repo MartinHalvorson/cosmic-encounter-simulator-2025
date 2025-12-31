@@ -284,7 +284,7 @@ class Entropy(AlienPower):
     """Entropy - Power of Decay. At end of each turn, all players lose 1 ship from largest colony."""
     name: str = field(default="Entropy", init=False)
     description: str = field(default="At end of turn, all players lose 1 ship.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.END_TURN, init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.RED, init=False)
 

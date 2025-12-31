@@ -111,8 +111,9 @@ class Coral(AlienPower):
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            colonies = len(player.foreign_colonies) + len([p for p in player.home_planets if player.name in p.ships])
-            return total + colonies
+            home_count = len([p for p in player.home_planets if player.name in p.ships])
+            foreign_count = player.count_foreign_colonies(game.planets)
+            return total + home_count + foreign_count
         return total
 
 

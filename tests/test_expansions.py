@@ -176,5 +176,130 @@ class TestCombinedExpansions:
         assert completed == 20
 
 
+class TestSpaceStations:
+    """Tests for Space Stations (Cosmic Incursion expansion)."""
+
+    def test_stations_initialized_when_enabled(self):
+        """Players should receive station markers when use_space_stations is True."""
+        config = GameConfig(num_players=4, seed=42, use_space_stations=True)
+        game = Game(config=config)
+        game.setup()
+
+        for player in game.players:
+            assert len(player.available_stations) == 3
+            assert len(player.space_stations) == 0
+
+    def test_stations_not_initialized_when_disabled(self):
+        """Players should not have stations when use_space_stations is False."""
+        config = GameConfig(num_players=4, seed=42, use_space_stations=False)
+        game = Game(config=config)
+        game.setup()
+
+        for player in game.players:
+            assert len(player.available_stations) == 0
+
+    def test_game_with_stations_completes(self):
+        """Game with space stations enabled should complete without errors."""
+        config = GameConfig(num_players=4, seed=42, use_space_stations=True, max_turns=50)
+        game = Game(config=config)
+        game.setup()
+
+        winners = game.play()
+        assert game.is_over or game.current_turn >= 50
+
+    def test_station_placement(self):
+        """Players should be able to place stations."""
+        from cosmic.types import StationType
+
+        config = GameConfig(num_players=4, seed=42, use_space_stations=True)
+        game = Game(config=config)
+        game.setup()
+
+        player = game.players[0]
+        # Get a planet that's not the player's
+        foreign_planet = [p for p in game.planets if p.owner != player][0]
+
+        # Place a station
+        station = player.place_station(StationType.STATION_ALPHA, foreign_planet.planet_id)
+
+        assert station is not None
+        assert len(player.available_stations) == 2
+        assert len(player.space_stations) == 1
+
+    def test_station_defense_bonus(self):
+        """Alpha station should provide +2 defense bonus."""
+        from cosmic.types import StationType
+
+        config = GameConfig(num_players=4, seed=42, use_space_stations=True)
+        game = Game(config=config)
+        game.setup()
+
+        player = game.players[0]
+        planet = game.planets[0]
+
+        # Place Alpha station
+        player.place_station(StationType.STATION_ALPHA, planet.planet_id)
+
+        # Check bonus
+        bonus = player.get_station_defense_bonus(planet.planet_id)
+        assert bonus == 2
+
+    def test_multiple_games_with_stations(self):
+        """Multiple games with space stations should complete without errors."""
+        completed = 0
+        for i in range(20):
+            config = GameConfig(num_players=4, seed=i, use_space_stations=True, max_turns=75)
+            game = Game(config=config)
+            game.setup()
+            game.play()
+            completed += 1
+
+        assert completed == 20
+
+
+class TestAllExpansions:
+    """Tests for all expansions enabled together."""
+
+    def test_all_expansions_enabled(self):
+        """Game with all expansions should work correctly."""
+        config = GameConfig(
+            num_players=4,
+            seed=42,
+            use_tech=True,
+            use_hazards=True,
+            use_space_stations=True,
+            max_turns=50
+        )
+        game = Game(config=config)
+        game.setup()
+
+        assert game.tech_deck is not None
+        assert game.hazard_deck is not None
+        for player in game.players:
+            assert len(player.available_stations) == 3
+
+        winners = game.play()
+        assert game.is_over or game.current_turn >= 50
+
+    def test_multiple_games_with_all_expansions(self):
+        """Multiple games with all expansions should complete without errors."""
+        completed = 0
+        for i in range(10):
+            config = GameConfig(
+                num_players=4,
+                seed=i,
+                use_tech=True,
+                use_hazards=True,
+                use_space_stations=True,
+                max_turns=75
+            )
+            game = Game(config=config)
+            game.setup()
+            game.play()
+            completed += 1
+
+        assert completed == 10
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

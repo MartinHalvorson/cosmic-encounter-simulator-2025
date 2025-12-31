@@ -815,6 +815,15 @@ class Game:
         if def_tech_bonus > 0:
             self._log(f"{self.defense.name} tech bonus: +{def_tech_bonus}")
 
+        # Apply space station bonus (Cosmic Incursion expansion)
+        if self.config.use_space_stations and self.defense_planet:
+            station_bonus = self._get_station_defense_bonus(
+                self.defense, self.defense_planet.planet_id
+            )
+            if station_bonus > 0:
+                def_total += station_bonus
+                self._log(f"{self.defense.name} station bonus: +{station_bonus}")
+
         # Update final totals on game object
         self.offense_total = off_total
         self.defense_total = def_total
