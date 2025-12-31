@@ -1126,7 +1126,11 @@ From official FFG rules and BoardGameGeek:
 - **Updated cumulative stats:**
   - Total games: 21.4M+
   - Simulation runs: 36
-- **Current alien count: 2133**
+- **Current alien count: 2152**
 - **All 189 tests passing**
+- **Fixed property access bugs:**
+  - economy_powers.py: Use has_colony() instead of ship_counts dict
+  - warfare_powers.py: Use defense_planet instead of target_planet
+- **Added bonus_extended_powers.py (19 aliens)**
 
 **Previous Session Accomplishments:**
