@@ -4,7 +4,7 @@ A comprehensive simulation of the board game Cosmic Encounter, designed to analy
 
 ## Features
 
-- **129 Alien Powers** implemented with proper game mechanics
+- **155 Alien Powers** implemented with proper game mechanics
 - **Multiple AI Strategies**: Random, Basic, and Strategic AI for realistic gameplay
 - **Full Game Flow**: All 8 encounter phases (Start Turn, Regroup, Destiny, Launch, Alliance, Planning, Reveal, Resolution)
 - **Comprehensive Statistics**: Win rates, game length analysis, CSV/JSON export
@@ -1589,56 +1589,56 @@ python update_stats.py --sort power --order asc
 
 ## Simulation Results
 
-**Total Games Simulated:** 25,000
-**Solo Victories:** 24,540
-**Shared Victories:** 460
+**Total Games Simulated:** 50,000
+**Solo Victories:** 49,128
+**Shared Victories:** 872
 **Average Game Length:** 4.9 turns
-**Last Updated:** 2025-12-30T18:05:25
+**Last Updated:** 2025-12-30T18:06:47
 
 ### Alien Power Rankings (by ELO)
 
 | Rank | Alien | ELO | Win Rate | Games | Solo Wins | Shared |
 |------|-------|-----|----------|-------|-----------|--------|
-| 1 | Machine | -4522 | 56.5% | 724 | 400 | 9 |
-| 2 | Parasite | -4718 | 44.9% | 715 | 318 | 3 |
-| 3 | Horde | -4819 | 20.6% | 738 | 148 | 4 |
-| 4 | Negator | -4820 | 24.0% | 754 | 177 | 4 |
-| 5 | Schizoid | -4827 | 24.7% | 725 | 172 | 7 |
-| 6 | Claw | -4833 | 22.5% | 694 | 150 | 6 |
-| 7 | Crystal | -4839 | 25.5% | 695 | 169 | 8 |
-| 8 | Underdog | -4843 | 21.5% | 738 | 156 | 3 |
-| 9 | Zombie | -4862 | 19.9% | 739 | 141 | 6 |
-| 10 | Rage | -4863 | 21.7% | 751 | 153 | 10 |
-| 11 | Ghoul | -4864 | 27.1% | 704 | 186 | 5 |
-| 12 | Infiltrator | -4865 | 20.7% | 691 | 136 | 7 |
-| 13 | Trader | -4877 | 28.5% | 723 | 199 | 7 |
-| 14 | Observer | -4879 | 21.3% | 715 | 147 | 5 |
-| 15 | Invader | -4880 | 23.3% | 717 | 164 | 3 |
-| 16 | Vulture | -4881 | 19.3% | 704 | 131 | 5 |
-| 17 | Pincushion | -4887 | 20.1% | 701 | 136 | 5 |
-| 18 | Cavalry | -4888 | 21.0% | 710 | 145 | 4 |
-| 19 | Collector | -4890 | 21.0% | 719 | 145 | 6 |
-| 20 | Battlemaster | -4892 | 25.1% | 746 | 179 | 8 |
-| 21 | Xenophobe | -4894 | 23.1% | 728 | 155 | 13 |
-| 22 | Prowler | -4894 | 24.3% | 686 | 165 | 2 |
-| 23 | Grief | -4902 | 19.1% | 726 | 135 | 4 |
-| 24 | Kamikaze | -4902 | 24.5% | 699 | 164 | 7 |
-| 25 | Engineer | -4904 | 22.3% | 736 | 159 | 5 |
-| 26 | Grudge | -4905 | 21.4% | 738 | 155 | 3 |
-| 27 | Brute | -4909 | 22.4% | 666 | 146 | 3 |
-| 28 | Witch | -4911 | 21.7% | 752 | 157 | 6 |
-| 29 | Tripler | -4911 | 28.4% | 733 | 203 | 5 |
-| 30 | Remora | -4914 | 21.4% | 730 | 152 | 4 |
-| 31 | Outcast | -4919 | 21.6% | 707 | 150 | 3 |
-| 32 | Lurker | -4919 | 20.2% | 692 | 135 | 5 |
-| 33 | Yin | -4920 | 23.2% | 746 | 168 | 5 |
-| 34 | Cudgel | -4922 | 24.1% | 722 | 165 | 9 |
-| 35 | Illusionist | -4923 | 21.0% | 725 | 147 | 5 |
-| 36 | Fanatic | -4927 | 22.8% | 775 | 168 | 9 |
-| 37 | Gambler | -4928 | 20.5% | 687 | 135 | 6 |
-| 38 | Phantom | -4928 | 21.8% | 771 | 163 | 5 |
-| 39 | Pacifist | -4929 | 28.6% | 746 | 207 | 6 |
-| 40 | Calculator | -4930 | 24.0% | 733 | 168 | 8 |
+| 1 | Machine | -11176 | 56.7% | 1448 | 802 | 19 |
+| 2 | Warpish | -11261 | 32.5% | 1400 | 447 | 8 |
+| 3 | Chronos | -11286 | 22.1% | 1433 | 301 | 15 |
+| 4 | Cudgel | -11290 | 22.7% | 1412 | 309 | 12 |
+| 5 | Tripler | -11291 | 29.4% | 1471 | 415 | 17 |
+| 6 | Fanatic | -11293 | 21.7% | 1471 | 303 | 16 |
+| 7 | Pirate | -11295 | 22.5% | 1530 | 334 | 10 |
+| 8 | Parasite | -11300 | 45.9% | 1462 | 661 | 10 |
+| 9 | Fido | -11313 | 22.7% | 1463 | 327 | 5 |
+| 10 | Sheriff | -11314 | 23.3% | 1454 | 329 | 10 |
+| 11 | Visionary | -11314 | 21.5% | 1463 | 308 | 7 |
+| 12 | Rebel | -11315 | 23.7% | 1438 | 329 | 12 |
+| 13 | Electron | -11317 | 21.8% | 1409 | 293 | 14 |
+| 14 | Berserker | -11325 | 26.1% | 1431 | 359 | 14 |
+| 15 | Disease | -11338 | 28.5% | 1453 | 398 | 16 |
+| 16 | Symbiote | -11340 | 30.7% | 1481 | 441 | 13 |
+| 17 | Insect | -11342 | 24.0% | 1461 | 340 | 11 |
+| 18 | Grudge | -11344 | 21.2% | 1465 | 307 | 4 |
+| 19 | Crystal | -11344 | 23.6% | 1416 | 320 | 14 |
+| 20 | Fury | -11344 | 23.9% | 1450 | 334 | 13 |
+| 21 | Shadow | -11346 | 27.3% | 1441 | 388 | 6 |
+| 22 | Illusionist | -11346 | 20.3% | 1437 | 283 | 8 |
+| 23 | Ghoul | -11347 | 25.5% | 1413 | 350 | 10 |
+| 24 | Guardian | -11348 | 21.2% | 1405 | 288 | 10 |
+| 25 | Claw | -11351 | 22.4% | 1440 | 310 | 13 |
+| 26 | Nexus | -11352 | 24.4% | 1384 | 325 | 13 |
+| 27 | Feline | -11355 | 22.6% | 1462 | 321 | 9 |
+| 28 | Yogi | -11357 | 21.0% | 1443 | 294 | 9 |
+| 29 | Aristocrat | -11359 | 24.8% | 1490 | 365 | 4 |
+| 30 | Usurper | -11365 | 22.3% | 1478 | 320 | 9 |
+| 31 | Bully | -11366 | 21.3% | 1411 | 291 | 10 |
+| 32 | Amoeba | -11366 | 21.6% | 1488 | 306 | 15 |
+| 33 | Infiltrator | -11371 | 19.8% | 1402 | 266 | 12 |
+| 34 | Hacker | -11373 | 22.9% | 1501 | 340 | 4 |
+| 35 | Outcast | -11374 | 21.7% | 1471 | 312 | 7 |
+| 36 | Xenophobe | -11375 | 24.8% | 1425 | 335 | 19 |
+| 37 | Observer | -11386 | 20.9% | 1419 | 290 | 6 |
+| 38 | Poison | -11390 | 21.5% | 1459 | 303 | 11 |
+| 39 | Collector | -11391 | 21.6% | 1466 | 301 | 15 |
+| 40 | Tick-Tock | -11392 | 21.1% | 1457 | 298 | 9 |
 | ... | *115 more aliens* | ... | ... | ... | ... | ... |
 
 <!-- SIMULATION_RESULTS_END -->

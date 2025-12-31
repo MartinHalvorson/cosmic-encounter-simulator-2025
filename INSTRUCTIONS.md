@@ -142,8 +142,8 @@ Use the todo list to track progress through each component. Mark tasks complete 
 - [x] Implement Reinforcement card usage during combat
 - [x] Improve alliance and negotiation mechanics (defensive ally reward choice)
 - [x] Enhance AI decision making (reinforcement strategy, ally rewards)
-- [x] Add more alien powers - NOW AT 129 POWERS!
-- [x] Regular simulation runs with statistics updates (22,000 games)
+- [x] Add more alien powers - NOW AT 155 POWERS!
+- [x] Regular simulation runs with statistics updates (50,000 games)
 - [x] Commit and push after each major milestone
 - [ ] Add Artifact card timing and usage
 - [ ] Add Flare card system
@@ -187,22 +187,23 @@ From official FFG rules and BoardGameGeek:
 - Ran 22,000+ simulated games
 
 **Final Session Stats (2025-12-30):**
-- 129 alien powers implemented (started with 68)
-- 34,000+ games simulated across 3-6 players
+- 155 alien powers implemented (started with 68)
+- 50,000+ games simulated across 3-6 players
 - ELO ratings stable with meaningful tier differentiation
 - Reinforcement cards now work in combat
 - Defensive ally rewards now offer choice (cards OR ships)
 - Comprehensive statistics with per-player-count breakdowns
 
-**Top Powers by ELO:**
-1. Machine (1564) - A tier, extra encounters are extremely powerful
-2. Parasite (1562) - A tier, can join any encounter uninvited
-3. Warpish (1525) - B tier, strong in 3-player games
-4. Disease (1524) - B tier, eliminates enemy colonies
-5. Symbiote (1522) - B tier, double starting ships
+**Top Powers by ELO (as of 50k games):**
+1. Machine (56.7% win rate) - S tier, extra encounters are extremely powerful
+2. Parasite (45.9% win rate) - A tier, can join any encounter uninvited
+3. Warpish (32.5% win rate) - B tier, strong defensive positioning
+4. Tripler (29.4% win rate) - B tier, card manipulation
+5. Symbiote (30.7% win rate) - B tier, double starting ships
 
 **Observations:**
 - Powers that give extra encounters or attacks are strongest (Machine)
 - Powers that allow uninvited alliance participation are very strong (Parasite)
 - Powers that scale with ships in warp or colonies are situationally strong
 - Win rates decrease as player count increases (expected behavior)
+- Average win rate is ~22% (1/4.5 players on average)
