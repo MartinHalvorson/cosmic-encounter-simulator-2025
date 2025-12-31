@@ -192,18 +192,28 @@ class ShipCount:
 
 
 class StationType(Enum):
-    """Types of space stations (Cosmic Incursion expansion)."""
+    """Types of space stations (Cosmic Alliance expansion)."""
+    # Defensive stations
     STATION_ALPHA = "alpha"      # +2 to defensive total
-    STATION_BETA = "beta"        # Draw 1 extra card when using colonies to win
-    STATION_GAMMA = "gamma"      # Return 1 extra ship from warp during regroup
     STATION_DELTA = "delta"      # Counts as having a colony for alliance purposes
+
+    # Offensive stations
+    STATION_BETA = "beta"        # +2 to offensive total
     STATION_OMEGA = "omega"      # May use planet for launch even without ships
+
+    # Resource stations
+    STATION_GAMMA = "gamma"      # Return 1 extra ship from warp during regroup
+    STATION_SIGMA = "sigma"      # Draw 1 extra card when winning encounter
+
+    # Strategic stations
+    STATION_THETA = "theta"      # Commit up to 5 ships instead of 4
+    STATION_KAPPA = "kappa"      # May invite 1 extra ally
 
 
 @dataclass
 class SpaceStation:
     """
-    A space station placed on a planet (Cosmic Incursion expansion).
+    A space station placed on a planet (Cosmic Alliance expansion).
     Stations provide benefits even without ships present.
     """
     owner: str  # Player name
@@ -217,9 +227,41 @@ class SpaceStation:
             return 2
         return 0
 
+    def get_offense_bonus(self) -> int:
+        """Get offensive combat bonus from this station."""
+        if self.active and self.station_type == StationType.STATION_BETA:
+            return 2
+        return 0
+
+    def get_warp_retrieval_bonus(self) -> int:
+        """Get bonus ships retrieved from warp during regroup."""
+        if self.active and self.station_type == StationType.STATION_GAMMA:
+            return 1
+        return 0
+
+    def get_max_ships_bonus(self) -> int:
+        """Get bonus to max ships that can be committed."""
+        if self.active and self.station_type == StationType.STATION_THETA:
+            return 1
+        return 0
+
+    def get_ally_invite_bonus(self) -> int:
+        """Get bonus to number of allies that can be invited."""
+        if self.active and self.station_type == StationType.STATION_KAPPA:
+            return 1
+        return 0
+
     def provides_colony_presence(self) -> bool:
         """Whether this station counts as a colony presence."""
         return self.active and self.station_type == StationType.STATION_DELTA
+
+    def allows_empty_launch(self) -> bool:
+        """Whether this station allows launching from planet with no ships."""
+        return self.active and self.station_type == StationType.STATION_OMEGA
+
+    def grants_card_on_win(self) -> bool:
+        """Whether this station grants an extra card when winning."""
+        return self.active and self.station_type == StationType.STATION_SIGMA
 
 
 @dataclass
