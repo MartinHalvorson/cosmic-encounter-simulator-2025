@@ -486,6 +486,460 @@ class Philanthropist_Alt(AlienPower):
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
+# ========== Cosmic Incursion Expansion ==========
+
+@dataclass
+class Cryo(AlienPower):
+    """
+    Cryo - Power to Preserve.
+    Official FFG rules: As main player or ally, after allies are invited,
+    take one card from hand and store it in cold storage. Draw a replacement.
+    When you have 8+ cards stored, discard hand and take stored cards.
+    """
+    name: str = field(default="Cryo", init=False)
+    description: str = field(
+        default="Store cards in cold storage for later use.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    cold_storage: List[Any] = field(default_factory=list, init=False)
+
+    def on_alliance_phase(
+        self,
+        game: "Game",
+        player: "Player",
+        role: PlayerRole
+    ) -> None:
+        """Store a card in cold storage."""
+        if not player.power_active or not player.hand:
+            return
+
+        # Store one card (AI chooses lowest value attack or first card)
+        card_to_store = None
+        attacks = player.get_attack_cards()
+        if attacks:
+            card_to_store = min(attacks, key=lambda c: c.value)
+        elif player.hand:
+            card_to_store = player.hand[0]
+
+        if card_to_store:
+            player.remove_card(card_to_store)
+            self.cold_storage.append(card_to_store)
+
+            # Draw replacement
+            new_card = game.cosmic_deck.draw()
+            player.add_card(new_card)
+
+            # Check if we should swap to stored cards
+            if len(self.cold_storage) >= 8:
+                # Discard current hand
+                for card in list(player.hand):
+                    player.remove_card(card)
+                    game.cosmic_deck.discard(card)
+                # Take stored cards
+                for card in self.cold_storage:
+                    player.add_card(card)
+                self.cold_storage = []
+
+
+@dataclass
+class Locust(AlienPower):
+    """
+    Locust - Power to Devour.
+    Official FFG rules: At start of regroup phase, if you have a foreign
+    colony alone on a planet (no other players' ships), devour the planet,
+    removing it from the game. Your ships return to other colonies.
+    Each devoured planet counts as one foreign colony.
+    """
+    name: str = field(default="Locust", init=False)
+    description: str = field(
+        default="Devour planets where you are alone; they count as colonies.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    devoured_count: int = field(default=0, init=False)
+
+    def on_regroup(
+        self,
+        game: "Game",
+        player: "Player",
+        role: PlayerRole
+    ) -> None:
+        """Check for and devour planets where we're alone."""
+        if not player.power_active:
+            return
+
+        planets_to_devour = []
+        for planet in game.planets:
+            # Check if it's a foreign colony
+            if not planet.is_foreign_colony(player):
+                continue
+            # Check if we're alone
+            other_colonies = [
+                p for p in game.players if p != player and planet.has_colony(p.name)
+            ]
+            if not other_colonies:
+                planets_to_devour.append(planet)
+
+        for planet in planets_to_devour:
+            # Return our ships to home
+            ships = planet.get_ships(player.name)
+            planet.remove_ships(player.name, ships)
+            player.return_ships_to_colonies(ships, player.home_planets)
+            # Remove planet from game
+            if planet in game.planets:
+                game.planets.remove(planet)
+            self.devoured_count += 1
+
+
+@dataclass
+class Mercenary(AlienPower):
+    """
+    Mercenary - Power of Bounty Hunting.
+    Official FFG rules: After your side wins an encounter as main player
+    or offensive ally, gain defender rewards (1 card or 1 ship per ship involved).
+    """
+    name: str = field(default="Mercenary", init=False)
+    description: str = field(
+        default="Gain defender rewards when winning as offense/ally.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.WIN_ENCOUNTER, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def on_win_encounter(
+        self,
+        game: "Game",
+        player: "Player",
+        as_main_player: bool
+    ) -> None:
+        """Get defender rewards when winning on offense."""
+        if not player.power_active:
+            return
+
+        # Only works on offense side
+        is_offense_side = (
+            player == game.offense or player in game.offense_allies
+        )
+        if not is_offense_side:
+            return
+
+        # Get ships committed
+        ships = game.offense_ships.get(player.name, 0)
+        if ships <= 0:
+            return
+
+        # Choose cards or ships (AI prefers cards if hand is small)
+        if len(player.hand) < 6:
+            # Draw cards
+            for _ in range(ships):
+                if game.rewards_deck:
+                    card = game.rewards_deck.draw()
+                    player.add_card(card)
+        else:
+            # Retrieve ships from warp
+            retrieved = min(ships, player.ships_in_warp)
+            if retrieved > 0:
+                player.retrieve_ships_from_warp(retrieved)
+                player.return_ships_to_colonies(retrieved, player.home_planets)
+
+
+@dataclass
+class Merchant(AlienPower):
+    """
+    Merchant - Power to Hire.
+    Official FFG rules: After encounter cards are selected but before reveal,
+    play cards from hand face-down as extra ships (beyond 4-ship limit).
+    These hired ships return to hand at encounter end.
+    """
+    name: str = field(default="Merchant", init=False)
+    description: str = field(
+        default="Play cards as extra ships during encounters.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_ship_count(
+        self,
+        game: "Game",
+        player: "Player",
+        base_count: int,
+        side: Side
+    ) -> int:
+        """Add hired ships to count."""
+        if not player.power_active:
+            return base_count
+
+        # Merchant can hire up to 2 extra ships from cards
+        # Each card in hand over 5 can be used as a hired ship
+        extra_cards = max(0, len(player.hand) - 5)
+        hired_ships = min(2, extra_cards)
+
+        return base_count + hired_ships
+
+
+@dataclass
+class Plant(AlienPower):
+    """
+    Plant - Power of Grafting.
+    Official FFG rules: When you have a colony in another player's home
+    system, you may use their power instead of them for one encounter.
+    Cannot graft if you've lost your own power.
+    """
+    name: str = field(default="Plant", init=False)
+    description: str = field(
+        default="Use opponent's power when you have colony in their home.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+    def on_planning(
+        self,
+        game: "Game",
+        player: "Player",
+        role: PlayerRole
+    ) -> None:
+        """Check if we can graft another player's power."""
+        if not player.power_active:
+            return
+
+        # Find opponent whose home system we've colonized
+        for other in game.players:
+            if other == player:
+                continue
+            # Check if we have a colony on any of their home planets
+            for planet in other.home_planets:
+                if planet.has_colony(player.name):
+                    # Can graft their power - store for reference
+                    # In simulation, this just means we could use their power
+                    break
+
+
+# ========== Cosmic Conflict Expansion ==========
+
+@dataclass
+class Filth(AlienPower):
+    """
+    Filth - Power to Reek.
+    Official FFG rules: Any time your ships share a planet with other
+    players' ships, those ships must leave to other colonies or warp.
+    """
+    name: str = field(default="Filth", init=False)
+    description: str = field(
+        default="Forces other ships to leave planets you occupy.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.CONSTANT, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+
+@dataclass
+class Graviton(AlienPower):
+    """
+    Graviton - Power of Gravity.
+    Official FFG rules: As main player, after cards selected but before
+    reveal, declare 'tens' or 'ones'. Attack cards only use that digit.
+    """
+    name: str = field(default="Graviton", init=False)
+    description: str = field(
+        default="Declare tens or ones digit for attack cards.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_attack_value(
+        self,
+        game: "Game",
+        player: "Player",
+        base_value: int,
+        side: Side
+    ) -> int:
+        """Reduce cards to single digit (simplified: ones digit)."""
+        if not player.power_active:
+            return base_value
+        # Use ones digit
+        return base_value % 10
+
+
+@dataclass
+class Lunatic(AlienPower):
+    """
+    Lunatic - Power of Insanity.
+    Official FFG rules: As main player, after allies invited, may ally
+    against yourself. Get rewards from either side winning.
+    """
+    name: str = field(default="Lunatic", init=False)
+    description: str = field(
+        default="Ally against yourself; gain rewards either way.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+
+@dataclass
+class Industrialist(AlienPower):
+    """
+    Industrialist - Power to Build.
+    Official FFG rules: When you lose with attack card, opponent must let
+    you win OR you stack the card as permanent bonus for future encounters.
+    """
+    name: str = field(default="Industrialist", init=False)
+    description: str = field(
+        default="Stack lost attack cards as permanent combat bonus.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.LOSE_ENCOUNTER, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    stack_bonus: int = field(default=0, init=False)
+
+    def on_lose_encounter(
+        self,
+        game: "Game",
+        player: "Player",
+        as_main_player: bool
+    ) -> None:
+        """Add lost attack card value to permanent stack."""
+        if not as_main_player or not player.power_active:
+            return
+        # Get the attack card that was played
+        if game.offense == player and game.offense_card:
+            from ...cards.base import AttackCard
+            if isinstance(game.offense_card, AttackCard):
+                self.stack_bonus += game.offense_card.value
+        elif game.defense == player and game.defense_card:
+            from ...cards.base import AttackCard
+            if isinstance(game.defense_card, AttackCard):
+                self.stack_bonus += game.defense_card.value
+
+    def modify_total(
+        self,
+        game: "Game",
+        player: "Player",
+        base_total: int,
+        side: Side
+    ) -> int:
+        """Add stack bonus to combat total."""
+        if player.power_active:
+            return base_total + self.stack_bonus
+        return base_total
+
+
+@dataclass
+class Relic(AlienPower):
+    """
+    Relic - Power to Awaken.
+    Official FFG rules: Gain free foreign colony when others draw new hands.
+    When you draw new hand, retrieve all ships from warp.
+    """
+    name: str = field(default="Relic", init=False)
+    description: str = field(
+        default="Gain colony when others draw hands; retrieve all ships when you draw.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.ANY, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+
+@dataclass
+class Saboteur(AlienPower):
+    """
+    Saboteur - Power of Booby Trap.
+    Official FFG rules: Place trap tokens on planets. When ships land,
+    reveal token - if trap, all ships on planet go to warp.
+    """
+    name: str = field(default="Saboteur", init=False)
+    description: str = field(
+        default="Place trap tokens that send landing ships to warp.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+
+@dataclass
+class Sadist(AlienPower):
+    """
+    Sadist - Power to Inflict Pain.
+    Official FFG rules: At start of regroup, if all other players have
+    lost 8+ ships each (warp + removed), Sadist wins immediately.
+    """
+    name: str = field(default="Sadist", init=False)
+    description: str = field(
+        default="Win if all others have lost 8+ ships each.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def check_alternate_win(
+        self,
+        game: "Game",
+        player: "Player"
+    ) -> bool:
+        """Check if Sadist wins via alternate condition."""
+        if not player.power_active:
+            return False
+
+        for other in game.players:
+            if other == player:
+                continue
+            if other.ships_in_warp < 8:
+                return False
+        return True
+
+
+@dataclass
+class Trickster(AlienPower):
+    """
+    Trickster - Power of Possibilities.
+    Official FFG rules: As main player, hide token in fist. Opponent
+    guesses - if correct, you lose; if wrong, you win.
+    """
+    name: str = field(default="Trickster", init=False)
+    description: str = field(
+        default="Hide token; opponent guesses to determine winner.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+
+@dataclass
+class Warhawk(AlienPower):
+    """
+    Warhawk - Power of Attack.
+    Official FFG rules: Never negotiates. Opponent's negotiate becomes
+    attack 00. Your negotiate becomes morph. Both negotiate = both 00.
+    """
+    name: str = field(default="Warhawk", init=False)
+    description: str = field(
+        default="Never negotiates; opponent's negotiate becomes attack 00.",
+        init=False
+    )
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+
 # Register all powers
 AlienRegistry.register(Assassin())
 AlienRegistry.register(Butler())
@@ -513,3 +967,19 @@ AlienRegistry.register(Fido())
 AlienRegistry.register(Visionary())
 AlienRegistry.register(Silencer())
 AlienRegistry.register(Philanthropist_Alt())
+# Cosmic Incursion expansion
+AlienRegistry.register(Cryo())
+AlienRegistry.register(Locust())
+AlienRegistry.register(Mercenary())
+AlienRegistry.register(Merchant())
+AlienRegistry.register(Plant())
+# Cosmic Conflict expansion
+AlienRegistry.register(Filth())
+AlienRegistry.register(Graviton())
+AlienRegistry.register(Lunatic())
+AlienRegistry.register(Industrialist())
+AlienRegistry.register(Relic())
+AlienRegistry.register(Saboteur())
+AlienRegistry.register(Sadist())
+AlienRegistry.register(Trickster())
+AlienRegistry.register(Warhawk())

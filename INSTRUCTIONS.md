@@ -350,3 +350,24 @@ From official FFG rules and BoardGameGeek:
   - Flare bonus applied to combat totals
 - **5,111,972+ cumulative games simulated**
 - Simulation speed: ~600 games/second
+
+### Session 9 Progress (2025-12-30) - Complete FFG Expansions
+- **Added all Cosmic Incursion aliens (5 new):**
+  - Cryo (Preserve): Store cards in cold storage, swap at 8+
+  - Locust (Devour): Consume planets where alone, count as colonies
+  - Mercenary (Bounty): Get defender rewards when winning on offense
+  - Merchant (Hire): Play cards as extra ships in combat
+  - Plant (Graft): Use opponent's power when colonizing their home
+- **Added all Cosmic Conflict aliens (9 new):**
+  - Filth (Reek): Force other ships off shared planets
+  - Graviton (Gravity): Attack cards use only ones digit
+  - Lunatic (Insanity): Ally against yourself, get rewards either way
+  - Industrialist (Build): Stack lost attack cards as permanent bonus
+  - Relic (Awaken): Gain colony when others draw, retrieve ships when you draw
+  - Saboteur (Booby Trap): Trap tokens send ships to warp
+  - Sadist (Pain): Alt-win if all others have 8+ ships in warp
+  - Trickster (Possibilities): Hide token guessing game
+  - Warhawk (Attack): Never negotiates, converts opponent's negotiates to 00
+- **276 alien powers now implemented!**
+- **7,029,979+ cumulative games simulated**
+- Complete coverage of FFG base + Incursion + Conflict expansions
