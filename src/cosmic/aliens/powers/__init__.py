@@ -89,3 +89,9 @@ from .direction_powers import *  # noqa: F401, F403
 from .shape_powers import *  # noqa: F401, F403
 from .cooking_powers import *  # noqa: F401, F403
 from .celebration_powers import *  # noqa: F401, F403
+from .architecture_powers import *  # noqa: F401, F403
+from .philosophy_powers import *  # noqa: F401, F403
+from .medical_powers import *  # noqa: F401, F403
+from .theater_powers import *  # noqa: F401, F403
+from .color_powers import *  # noqa: F401, F403
+from .age_powers import *  # noqa: F401, F403
