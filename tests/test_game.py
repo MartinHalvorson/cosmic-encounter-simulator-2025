@@ -276,5 +276,83 @@ class TestMultipleGames:
         assert completed == 100, f"Failed games: {errors[:5]}"
 
 
+class TestTwoPlayerVariant:
+    """Tests for 2-player variant support."""
+
+    def test_two_player_mode_auto_enabled(self):
+        """2-player mode should auto-enable for 2 players."""
+        config = GameConfig(num_players=2, seed=42)
+        game = Game(config=config)
+        game.setup()
+
+        assert game.config.two_player_mode is True
+
+    def test_dual_powers_default_enabled(self):
+        """Dual powers should be enabled by default in 2-player mode."""
+        config = GameConfig(num_players=2, seed=42)
+        game = Game(config=config)
+        game.setup()
+
+        assert game.config.dual_powers is True
+
+    def test_players_have_two_powers(self):
+        """Each player should have primary and secondary alien."""
+        config = GameConfig(num_players=2, seed=42)
+        game = Game(config=config)
+        game.setup()
+
+        for player in game.players:
+            assert player.alien is not None
+            assert player.secondary_alien is not None
+            assert player.alien.name != player.secondary_alien.name
+
+    def test_two_player_game_completes(self):
+        """2-player game should complete without errors."""
+        config = GameConfig(num_players=2, seed=42, max_turns=100)
+        game = Game(config=config)
+        game.setup()
+
+        winners = game.play()
+
+        assert game.is_over or game.current_turn >= 100
+
+    def test_multiple_two_player_games(self):
+        """Multiple 2-player games should complete without errors."""
+        completed = 0
+        errors = []
+
+        for i in range(50):
+            try:
+                config = GameConfig(num_players=2, seed=i, max_turns=100)
+                game = Game(config=config)
+                game.setup()
+                game.play()
+                completed += 1
+            except Exception as e:
+                errors.append((i, str(e)))
+
+        assert completed == 50, f"Failed games: {errors[:3]}"
+
+    def test_required_aliens_in_two_player(self):
+        """Required aliens should work in 2-player mode."""
+        config = GameConfig(
+            num_players=2,
+            seed=42,
+            required_aliens=["Virus", "Macron"]
+        )
+        game = Game(config=config)
+        game.setup()
+
+        # All powers (primary + secondary) should include required
+        all_powers = []
+        for p in game.players:
+            all_powers.append(p.alien.name)
+            if p.secondary_alien:
+                all_powers.append(p.secondary_alien.name)
+
+        assert "Virus" in all_powers
+        assert "Macron" in all_powers
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

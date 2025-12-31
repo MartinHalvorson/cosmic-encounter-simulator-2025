@@ -102,12 +102,22 @@ class Game:
         """
         num_players = self.config.num_players
 
+        # Auto-enable 2-player mode for 2-player games
+        if num_players == 2:
+            self.config.two_player_mode = True
+            # Default to dual powers in 2-player mode
+            if not self.config.dual_powers:
+                self.config.dual_powers = True
+
         # Generate player names if not provided
         if player_names is None:
             player_names = [f"Player {i+1}" for i in range(num_players)]
 
         # Get colors
         colors = list(Color)[:num_players]
+
+        # Calculate how many powers needed (double for dual powers)
+        powers_needed = num_players * 2 if self.config.dual_powers else num_players
 
         # Get alien powers
         if powers is None:
@@ -122,7 +132,7 @@ class Game:
                         selected_powers.append(alien)
 
                 # Fill remaining slots with random aliens
-                remaining_count = num_players - len(selected_powers)
+                remaining_count = powers_needed - len(selected_powers)
                 if remaining_count > 0:
                     available = [a for a in all_aliens if a not in selected_powers]
                     additional = self._rng.sample(
@@ -133,7 +143,7 @@ class Game:
             else:
                 selected_powers = self._rng.sample(
                     all_aliens,
-                    min(num_players, len(all_aliens))
+                    min(powers_needed, len(all_aliens))
                 )
         else:
             selected_powers = []
@@ -155,6 +165,11 @@ class Game:
                 alien=selected_powers[i] if i < len(selected_powers) else None,
                 ai_strategy=default_ai
             )
+            # Assign secondary power for dual power variant
+            if self.config.dual_powers:
+                secondary_idx = num_players + i
+                if secondary_idx < len(selected_powers):
+                    player.secondary_alien = selected_powers[secondary_idx]
             self.players.append(player)
 
         # Randomize turn order
@@ -172,6 +187,11 @@ class Game:
         flare_deck = FlareDeck()
         flare_deck.set_rng(self._rng)
         alien_names = [p.alien.name for p in self.players if p.alien]
+        # Add secondary alien flares for dual power games
+        if self.config.dual_powers:
+            for p in self.players:
+                if p.secondary_alien:
+                    alien_names.append(p.secondary_alien.name)
         flares = flare_deck.create_flares_for_game(alien_names)
         self.cosmic_deck.add_flares(flares)
 
@@ -187,8 +207,15 @@ class Game:
         for player in self.players:
             if player.alien:
                 player.alien.on_game_start(self, player)
+            # Apply secondary power game start effects
+            if player.secondary_alien and self.config.dual_powers:
+                player.secondary_alien.on_game_start(self, player)
 
         self._log(f"Game started with {num_players} players")
+        if self.config.two_player_mode:
+            self._log("2-player variant enabled")
+        if self.config.dual_powers:
+            self._log("Dual powers enabled")
         if self.config.use_tech:
             self._log("Tech cards enabled")
         if self.config.use_hazards:
