@@ -433,36 +433,51 @@ class StrategicAI(AIStrategy):
         as_offense: bool
     ) -> List["Player"]:
         """
-        Strategic invitations:
-        - Invite players who won't benefit too much
-        - Consider power synergies
-        - Balance ship gains vs shared victory risk
+        Strategic invitations considering:
+        - Colony counts and win proximity
+        - Alien power synergies/dangers
+        - Ship availability of potential allies
         """
         my_colonies = player.count_foreign_colonies(game.planets)
         invited = []
 
         for ally in potential_allies:
             ally_colonies = ally.count_foreign_colonies(game.planets)
+            ally_power = ally.alien.name if ally.alien and ally.power_active else None
 
             # Never invite someone about to win (unless we're also winning)
             if ally_colonies >= 4 and my_colonies < 4:
                 continue
 
+            # Avoid inviting dangerous powers that get stronger with allies
+            if ally_power == "Parasite":
+                # Parasite allies without invitation, don't need to invite
+                continue
+
+            # Prefer allies with useful powers
+            priority = 0
+            if ally_power in {"Human", "Warrior", "Shadow"}:
+                priority += 1  # Combat boost powers help
+            if ally_power == "Zombie":
+                priority += 1  # Zombie doesn't lose ships permanently
+
             # Strategic considerations based on colonies
             if my_colonies == 4:
                 # Only invite if they can't win with us
-                if ally_colonies <= 2:
-                    invited.append(ally)
+                if ally_colonies <= 2 or priority > 0:
+                    invited.append((ally, priority))
             elif my_colonies == 3:
                 # Be somewhat selective
                 if ally_colonies <= 3:
-                    invited.append(ally)
+                    invited.append((ally, priority))
             else:
                 # Earlier game - invite most players
                 if ally_colonies <= my_colonies + 1:
-                    invited.append(ally)
+                    invited.append((ally, priority))
 
-        return invited
+        # Sort by priority (higher is better) and return just the players
+        invited.sort(key=lambda x: x[1], reverse=True)
+        return [ally for ally, _ in invited]
 
     def decide_alliance_response(
         self,
@@ -474,10 +489,11 @@ class StrategicAI(AIStrategy):
         invited_by_defense: bool
     ) -> Optional["Side"]:
         """
-        Sophisticated alliance decisions:
-        - Model likely encounter outcome
-        - Consider shared victory implications
-        - Weigh colony gain vs card rewards
+        Sophisticated alliance decisions considering:
+        - Win probability modeling
+        - Shared victory implications
+        - Power danger assessment
+        - Risk/reward of colony vs cards
         """
         from ..types import Side
 
@@ -488,32 +504,63 @@ class StrategicAI(AIStrategy):
         off_colonies = offense.count_foreign_colonies(game.planets)
         def_colonies = defense.count_foreign_colonies(game.planets)
 
-        # Estimate hand strengths
+        # Get power information
+        off_power = offense.alien.name if offense.alien and offense.power_active else None
+        def_power = defense.alien.name if defense.alien and defense.power_active else None
+
+        # Estimate hand strengths and win probability
         off_strength = self.get_hand_strength(offense)
         def_strength = self.get_hand_strength(defense)
 
-        # Block potential winners
+        # Power-based adjustments
+        if off_power in {"Virus", "Macron", "Human"}:
+            off_strength += 0.15  # Combat bonus powers
+        if def_power in {"Virus", "Macron", "Human"}:
+            def_strength += 0.15
+        if off_power == "Loser":
+            off_strength += 0.2  # Loser is tricky to beat
+        if def_power == "Loser":
+            def_strength += 0.2
+
+        # Block potential winners - highest priority
         if off_colonies >= 4 and my_colonies < 4 and invited_by_defense:
             return Side.DEFENSE  # Block their win
 
-        if def_colonies >= 4 and my_colonies < 4 and not invited_by_defense:
-            if invited_by_offense:
-                return Side.OFFENSE  # Help attack leader
+        if def_colonies >= 4 and my_colonies < 4 and invited_by_offense:
+            return Side.OFFENSE  # Help attack leader on defense
+
+        # Avoid helping dangerous powers near victory
+        if off_power in DANGEROUS_POWERS and off_colonies >= 3:
+            if invited_by_defense:
+                return Side.DEFENSE
+            return None  # Don't help dangerous power
 
         # Standard decision
         if invited_by_offense and invited_by_defense:
-            # Prefer offense (colony opportunity) unless defense looks strong
-            if def_strength > off_strength + 0.2:
+            # Weight factors
+            off_win_chance = 0.5 + (off_strength - def_strength) * 0.3
+            off_win_chance = max(0.2, min(0.8, off_win_chance))
+
+            # Colony opportunity vs card reward
+            if off_win_chance > 0.6:
+                return Side.OFFENSE
+            elif off_win_chance < 0.4:
                 return Side.DEFENSE
-            return Side.OFFENSE
+            else:
+                # Close call - prefer offense for colony if we need it
+                return Side.OFFENSE if my_colonies < 3 else Side.DEFENSE
 
         if invited_by_offense:
             # Don't help if they're about to win alone
             if off_colonies >= 4 and my_colonies < 4:
                 return None
+            # Accept if we need colonies or they're likely to win
+            if my_colonies < 3 or off_strength > 0.5:
+                return Side.OFFENSE
             return Side.OFFENSE
 
         if invited_by_defense:
+            # Defensive alliance - guaranteed cards if we win
             return Side.DEFENSE
 
         return None
@@ -635,3 +682,156 @@ class StrategicAI(AIStrategy):
     def set_seed(self, seed: int) -> None:
         """Set random seed for reproducibility."""
         self._rng.seed(seed)
+
+    def reset_tracking(self) -> None:
+        """Reset opponent tracking for a new game."""
+        self._opponent_aggression.clear()
+        self._high_cards_seen = 0
+        self._cards_seen_total = 0
+
+    def observe_card_play(self, card: "Card", player_name: str) -> None:
+        """Track cards played for card counting."""
+        self._cards_seen_total += 1
+        if hasattr(card, 'value') and card.value >= 15:
+            self._high_cards_seen += 1
+
+    def get_high_card_probability(self) -> float:
+        """Estimate probability of opponent having high cards."""
+        # Base probability from deck composition
+        # ~10 cards are 15+ in standard deck of ~72 encounter cards
+        base_prob = 10 / 72
+
+        if self._cards_seen_total == 0:
+            return base_prob
+
+        # Adjust based on what we've seen
+        high_cards_remaining = max(0, 10 - self._high_cards_seen)
+        total_remaining = max(1, 72 - self._cards_seen_total)
+        return high_cards_remaining / total_remaining
+
+    def estimate_win_probability(
+        self,
+        game: "Game",
+        player: "Player",
+        is_offense: bool
+    ) -> float:
+        """
+        Estimate probability of winning current encounter.
+        Returns value from 0.0 to 1.0.
+        """
+        opponent = game.defense if is_offense else game.offense
+
+        # Base from hand strength
+        my_strength = self.get_hand_strength(player)
+        opp_strength = self.get_hand_strength(opponent)
+
+        # Ship advantage
+        if is_offense:
+            my_ships = sum(game.offense_ships.values()) if hasattr(game, 'offense_ships') else 4
+            opp_ships = sum(game.defense_ships.values()) if hasattr(game, 'defense_ships') else 4
+        else:
+            my_ships = sum(game.defense_ships.values()) if hasattr(game, 'defense_ships') else 4
+            opp_ships = sum(game.offense_ships.values()) if hasattr(game, 'offense_ships') else 4
+
+        ship_diff = (my_ships - opp_ships) / 8  # Normalize
+
+        # Power adjustments
+        my_power = player.alien.name if player.alien and player.power_active else None
+        opp_power = opponent.alien.name if opponent.alien and opponent.power_active else None
+
+        power_mod = 0.0
+        if my_power in {"Virus", "Macron", "Human"}:
+            power_mod += 0.1
+        if opp_power in {"Virus", "Macron", "Human"}:
+            power_mod -= 0.1
+        if my_power == "Loser":
+            power_mod += 0.15
+        if opp_power == "Loser":
+            power_mod -= 0.15
+
+        # Combine factors
+        win_prob = 0.5 + (my_strength - opp_strength) * 0.3 + ship_diff * 0.1 + power_mod
+        return max(0.1, min(0.9, win_prob))
+
+    def should_play_flare(
+        self,
+        game: "Game",
+        player: "Player",
+        flare_card: "Card",
+        phase: str
+    ) -> bool:
+        """Decide whether to play a flare card."""
+        from ..cards.base import FlareCard
+
+        if not isinstance(flare_card, FlareCard):
+            return False
+
+        my_colonies = player.count_foreign_colonies(game.planets)
+        alien_name = flare_card.alien_name
+
+        # Check if we can use Super (matching alien)
+        can_use_super = (
+            player.alien and
+            player.alien.name == alien_name and
+            player.power_active
+        )
+
+        # More willing to use Super effects
+        if can_use_super:
+            # Use Super flare if close to winning or in trouble
+            if my_colonies >= 3:
+                return True
+            if player.ships_in_warp >= 5:
+                return True
+            return self._rng.random() < 0.4
+
+        # Wild flares - use strategically
+        # Combat flares during reveal phase
+        if phase == "reveal":
+            if alien_name in {"Human", "Warrior", "Macron", "Virus"}:
+                return self.get_hand_strength(player) < 0.5
+
+        # Defensive flares when defending
+        if phase == "defense":
+            if alien_name in {"Zombie", "Phantom", "Healer"}:
+                return player.ships_in_warp >= 3
+
+        # Generally conservative with wild flares
+        return self._rng.random() < 0.2
+
+    def get_game_urgency(self, game: "Game", player: "Player") -> float:
+        """
+        Calculate how urgently player needs to act.
+        Returns 0.0 (no rush) to 1.0 (desperate/critical).
+        """
+        my_colonies = player.count_foreign_colonies(game.planets)
+
+        # Check if any opponent is close to winning
+        max_opp_colonies = 0
+        for p in game.players:
+            if p != player:
+                colonies = p.count_foreign_colonies(game.planets)
+                max_opp_colonies = max(max_opp_colonies, colonies)
+
+        # Urgency factors
+        urgency = 0.0
+
+        # We're close to winning
+        if my_colonies >= 4:
+            urgency += 0.4
+
+        # Opponent is close to winning
+        if max_opp_colonies >= 4:
+            urgency += 0.5
+        elif max_opp_colonies >= 3:
+            urgency += 0.2
+
+        # We're far behind
+        if max_opp_colonies - my_colonies >= 2:
+            urgency += 0.3
+
+        # Low on ships
+        if player.ships_in_warp >= 10:
+            urgency += 0.2
+
+        return min(1.0, urgency)

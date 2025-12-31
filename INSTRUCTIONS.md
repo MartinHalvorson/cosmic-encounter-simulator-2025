@@ -222,6 +222,7 @@ From official FFG rules and BoardGameGeek:
 
 ### Goals for This Session
 - [x] Expand to 200 alien powers
+- [x] Implement Artifact card timing and usage
 - [ ] Implement flare card mechanics
 - [ ] Add tech cards from Cosmic Incursion expansion
 - [ ] Improve AI strategic decision-making
@@ -229,3 +230,20 @@ From official FFG rules and BoardGameGeek:
 - [ ] Create power tier analysis tools
 - [ ] Implement hazard deck mechanics
 - [ ] Add station support for space station expansion
+
+### Session 3 Progress (2025-12-30)
+- **213 alien powers now implemented!**
+- Added ultimate_powers.py with 25 new powers:
+  - Catalyst, Arcane, Banshee, Chronos, Diplomat
+  - Elemental, Forge, Gremlin, Herald, Illusionist
+  - Juggernaut, Keeper, Legion, Mystic, Noble
+  - Oracle, Phantom, Quartermaster, Ravager, Sentinel
+  - Tempest, Usurper, Vanguard, Wrath, Zealot
+- Implemented Artifact card system:
+  - Cosmic Zap (cancel alien powers)
+  - Force Field (end encounter with no winner)
+  - Mobius Tubes (free ships from warp)
+  - Ionic Gas (remove all allies)
+  - Card Zap, Plague, Emotion Control, Quash
+- Added is_power_active() method respecting Cosmic Zap
+- 1.5M+ cumulative games simulated
