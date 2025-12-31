@@ -133,3 +133,10 @@ from .state_powers import *  # noqa: F401, F403
 from .sports_powers import *  # noqa: F401, F403
 from .crime_powers import *  # noqa: F401, F403
 from .fantasy_powers import *  # noqa: F401, F403
+from .office_powers import *  # noqa: F401, F403
+from .technology_powers import *  # noqa: F401, F403
+from .scifi_powers import *  # noqa: F401, F403
+from .pattern_powers import *  # noqa: F401, F403
+from .combat_extended_powers import *  # noqa: F401, F403
+from .motion_powers import *  # noqa: F401, F403
+from .horror_powers import *  # noqa: F401, F403
