@@ -1584,6 +1584,65 @@ python update_stats.py --sort power --order asc
 
 </details>
 
+
+<!-- SIMULATION_RESULTS_START -->
+
+## Simulation Results
+
+**Total Games Simulated:** 25,000
+**Solo Victories:** 24,540
+**Shared Victories:** 460
+**Average Game Length:** 4.9 turns
+**Last Updated:** 2025-12-30T18:05:25
+
+### Alien Power Rankings (by ELO)
+
+| Rank | Alien | ELO | Win Rate | Games | Solo Wins | Shared |
+|------|-------|-----|----------|-------|-----------|--------|
+| 1 | Machine | -4522 | 56.5% | 724 | 400 | 9 |
+| 2 | Parasite | -4718 | 44.9% | 715 | 318 | 3 |
+| 3 | Horde | -4819 | 20.6% | 738 | 148 | 4 |
+| 4 | Negator | -4820 | 24.0% | 754 | 177 | 4 |
+| 5 | Schizoid | -4827 | 24.7% | 725 | 172 | 7 |
+| 6 | Claw | -4833 | 22.5% | 694 | 150 | 6 |
+| 7 | Crystal | -4839 | 25.5% | 695 | 169 | 8 |
+| 8 | Underdog | -4843 | 21.5% | 738 | 156 | 3 |
+| 9 | Zombie | -4862 | 19.9% | 739 | 141 | 6 |
+| 10 | Rage | -4863 | 21.7% | 751 | 153 | 10 |
+| 11 | Ghoul | -4864 | 27.1% | 704 | 186 | 5 |
+| 12 | Infiltrator | -4865 | 20.7% | 691 | 136 | 7 |
+| 13 | Trader | -4877 | 28.5% | 723 | 199 | 7 |
+| 14 | Observer | -4879 | 21.3% | 715 | 147 | 5 |
+| 15 | Invader | -4880 | 23.3% | 717 | 164 | 3 |
+| 16 | Vulture | -4881 | 19.3% | 704 | 131 | 5 |
+| 17 | Pincushion | -4887 | 20.1% | 701 | 136 | 5 |
+| 18 | Cavalry | -4888 | 21.0% | 710 | 145 | 4 |
+| 19 | Collector | -4890 | 21.0% | 719 | 145 | 6 |
+| 20 | Battlemaster | -4892 | 25.1% | 746 | 179 | 8 |
+| 21 | Xenophobe | -4894 | 23.1% | 728 | 155 | 13 |
+| 22 | Prowler | -4894 | 24.3% | 686 | 165 | 2 |
+| 23 | Grief | -4902 | 19.1% | 726 | 135 | 4 |
+| 24 | Kamikaze | -4902 | 24.5% | 699 | 164 | 7 |
+| 25 | Engineer | -4904 | 22.3% | 736 | 159 | 5 |
+| 26 | Grudge | -4905 | 21.4% | 738 | 155 | 3 |
+| 27 | Brute | -4909 | 22.4% | 666 | 146 | 3 |
+| 28 | Witch | -4911 | 21.7% | 752 | 157 | 6 |
+| 29 | Tripler | -4911 | 28.4% | 733 | 203 | 5 |
+| 30 | Remora | -4914 | 21.4% | 730 | 152 | 4 |
+| 31 | Outcast | -4919 | 21.6% | 707 | 150 | 3 |
+| 32 | Lurker | -4919 | 20.2% | 692 | 135 | 5 |
+| 33 | Yin | -4920 | 23.2% | 746 | 168 | 5 |
+| 34 | Cudgel | -4922 | 24.1% | 722 | 165 | 9 |
+| 35 | Illusionist | -4923 | 21.0% | 725 | 147 | 5 |
+| 36 | Fanatic | -4927 | 22.8% | 775 | 168 | 9 |
+| 37 | Gambler | -4928 | 20.5% | 687 | 135 | 6 |
+| 38 | Phantom | -4928 | 21.8% | 771 | 163 | 5 |
+| 39 | Pacifist | -4929 | 28.6% | 746 | 207 | 6 |
+| 40 | Calculator | -4930 | 24.0% | 733 | 168 | 8 |
+| ... | *115 more aliens* | ... | ... | ... | ... | ... |
+
+<!-- SIMULATION_RESULTS_END -->
+
 ## Legacy Version
 
 The original 2016 simulator is preserved in `Simulator.py` and `main.py` for reference.
