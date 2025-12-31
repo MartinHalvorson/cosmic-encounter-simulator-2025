@@ -112,3 +112,4 @@ from .geography_powers import *  # noqa: F401, F403
 from .action_powers import *  # noqa: F401, F403
 from .material_powers import *  # noqa: F401, F403
 from .celestial_powers import *  # noqa: F401, F403
+from .body_powers import *  # noqa: F401, F403
