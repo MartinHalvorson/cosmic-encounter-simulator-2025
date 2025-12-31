@@ -638,8 +638,8 @@ class TheMeek(AlienPower):
         player: "Player"
     ) -> bool:
         """Check if The Meek has won through losses."""
-        # Requires 8 losses (increased from 5 for balance)
-        return player.power_active and self.loss_count >= 8
+        # Requires 15 losses (very hard to achieve)
+        return player.power_active and self.loss_count >= 15
 
 
 @dataclass
