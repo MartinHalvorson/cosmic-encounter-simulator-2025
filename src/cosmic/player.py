@@ -7,6 +7,7 @@ from typing import List, Optional, Dict, Any, TYPE_CHECKING
 
 from .types import Color, PlayerRole
 from .cards.base import Card, EncounterCard, AttackCard, NegotiateCard, MorphCard
+from .cards.tech_deck import PlayerTechState
 
 if TYPE_CHECKING:
     from .planet import Planet
@@ -36,6 +37,9 @@ class Player:
 
     # Ships in the warp
     ships_in_warp: int = 0
+
+    # Technology research state (Cosmic Incursion expansion)
+    tech_state: PlayerTechState = field(default_factory=PlayerTechState)
 
     # Reference to home planets (set by Game)
     _home_planets: List["Planet"] = field(default_factory=list)

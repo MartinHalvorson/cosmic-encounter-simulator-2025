@@ -120,12 +120,85 @@ The simulator includes 200 unique alien powers across multiple categories:
 
 The simulator follows [Fantasy Flight Games Cosmic Encounter](https://www.fantasyflightgames.com/en/products/cosmic-encounter/) rules.
 
-Key mechanics implemented:
-- **Encounter Flow**: Full 8-phase encounter sequence
-- **Alliances**: Strategic invitation and acceptance
-- **Deals**: Colony swaps with failed deal penalties (3 ships to warp)
-- **Compensation**: Cards from attacker when negotiate loses to attack
-- **Alternate Win Conditions**: Masochist, Genius, Tick-Tock
+### ✅ Implemented Rules
+
+#### Core Game Flow
+- **Full 8-Phase Encounter Sequence**: Start Turn → Regroup → Destiny → Launch → Alliance → Planning → Reveal → Resolution
+- **Variable Player Count**: 3-6 players (configurable, extensible to 3-8)
+- **Turn Order**: Randomized turn order at game start
+- **Victory Condition**: 5 foreign colonies to win
+- **Shared Victory**: Multiple players can win simultaneously if they reach 5+ colonies on the same encounter
+
+#### Card System
+- **Attack Cards**: Values 0-40 for combat
+- **Negotiate Cards**: Force deals or gain compensation
+- **Morph Cards**: Copy opponent's attack card value
+- **Reinforcement Cards**: +2 to +5 bonuses playable by main players and allies
+- **Flare Cards**: One flare per alien in the game (basic implementation)
+
+#### Artifact Cards (Fully Implemented)
+- **Cosmic Zap**: Cancel alien power for one encounter
+- **Mobius Tubes**: Free all your ships from the warp
+- **Force Field**: End encounter with no winner/loser
+- **Card Zap**: Cancel an encounter card
+- **Ionic Gas**: Remove all allies from encounter
+- **Plague**: Send ships from a colony to warp
+- **Emotion Control**: Force opponent to play negotiate
+- **Quash**: Cancel flare or artifact effects
+
+#### Combat Resolution
+- **Attack vs Attack**: Card value + ships = total; higher wins (defense wins ties)
+- **Negotiate vs Attack**: Attack wins; negotiator gets compensation (cards from opponent's hand)
+- **Negotiate vs Negotiate**: Players must make a deal (colony swap) or both lose 3 ships
+- **Loser/Antimatter**: Reverse victory condition (lower total wins)
+- **Reinforcements**: Main players and allies can add reinforcement cards
+
+#### Alliance Mechanics
+- **Invitations**: Both offense and defense invite allies
+- **Commitment**: Allies commit 1-4 ships from colonies
+- **Offensive Ally Rewards**: Share in colony (land ships on planet)
+- **Defensive Ally Rewards**: Choose cards OR retrieve ships from warp
+
+#### Special Mechanics
+- **New Hand**: Draw new hand when out of encounter cards
+- **Warp**: Ships lost in encounters go to warp
+- **Regroup**: Retrieve 1 ship from warp at turn start
+- **Second Encounter**: Offense can take second encounter if they won first and have encounter cards
+- **Power Loss**: Lose alien power when reduced to 1-2 home colonies
+
+#### Alien-Specific Rules
+- **Machine**: Can take unlimited encounters while holding encounter cards
+- **Parasite**: Can join any alliance uninvited
+- **Symbiote**: Starts with double ships
+- **Pacifist**: Wins when playing negotiate vs attack
+- **Hacker**: Special compensation rules
+- **Trader**: Can swap hands during planning
+- **Alternate Win Conditions**: Masochist (20 ships in warp), Genius (20 cards), Tick-Tock (10 tokens)
+
+### ❌ Not Yet Implemented
+
+#### Advanced Variants
+- **Hazard Deck**: Cosmic Quake, Warp Rift, and other hazards
+- **Tech Cards**: Technology advancement system
+- **Lucre (Money)**: Economic system from expansions
+- **Hidden Powers**: Variant where powers are kept secret
+- **Multi-Power Mode**: 2 alien powers per player variant
+- **Team Games**: 2v2, 3v3 competitive variants
+
+#### Card System Gaps
+- **Full Flare Effects**: Wild and super flare distinctions (basic flares only)
+- **Kicker Cards**: Multiplier cards from expansions
+- **Crooked Deal**: Special negotiate variant
+
+#### Edge Cases
+- **Self-Encounter**: When destiny points to your own system
+- **Defender Rewards**: Some edge cases in defensive victory rewards
+- **Timing Conflicts**: Complex power interaction priority
+
+#### Optional Rules
+- **Cosmic Combo**: Official combo alien pairings
+- **Hidden Alliances**: Secret alliance commitment
+- **Progressive Start**: Variable starting conditions
 
 ## Alien Power Rankings
 

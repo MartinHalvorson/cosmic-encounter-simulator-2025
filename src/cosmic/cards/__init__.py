@@ -8,6 +8,7 @@ from .cosmic_deck import CosmicDeck
 from .destiny_deck import DestinyDeck, DestinyCard
 from .rewards_deck import RewardsDeck
 from .flare_deck import FlareDeck, FLARE_EFFECTS
+from .tech_deck import TechDeck, TechCard, TechCategory, PlayerTechState, TECH_EFFECTS
 
 __all__ = [
     "Card",
@@ -25,4 +26,9 @@ __all__ = [
     "RewardsDeck",
     "FlareDeck",
     "FLARE_EFFECTS",
+    "TechDeck",
+    "TechCard",
+    "TechCategory",
+    "PlayerTechState",
+    "TECH_EFFECTS",
 ]
