@@ -747,6 +747,21 @@ From official FFG rules and BoardGameGeek:
 - **Fixed official alien name lookup:**
   - Fixed get_missing_official_aliens() for Alt aliens
   - All 239 official FFG aliens properly detected
+
+**Session 21 Late Evening Progress:**
+- **Added Science Powers (15 aliens):**
+  - Physicist (+2/warp), Chemist (combine cards), Biologist (+1 ship)
+  - Astronomer (see destiny), Geologist (+3 home), Mathematician (+1/card)
+  - Programmer, Geneticist, Inventor, Theorist, Researcher
+  - Analyst, Technician, Statistician, Roboticist
+- **Added Gaming Powers (10 aliens):**
+  - Gamer, Strategist (+2/win), Bluffer, Tactician
+  - Champion_Gaming, Challenger, Underdog (+5), Speedrunner
+  - Rival, Competitor
+- **Added Plant Powers, Insect Powers, Quantum Powers, more:**
+  - Total of 12 new power category files
+- **1239 ALIEN POWERS NOW IMPLEMENTED!**
+- **21+ million cumulative games simulated**
   - Added REGISTERED_NAME_MAPPINGS for reverse lookups
 - **Fixed Cosmic Horror Ancient power bug:**
   - Changed game.turn_count to game.current_turn

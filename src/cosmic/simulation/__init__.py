@@ -23,6 +23,23 @@ from .tournament import (
     run_quick_tournament,
     run_monte_carlo_analysis,
 )
+from .visualization import (
+    PerformanceChart,
+    GameAnalysisReport,
+    PowerComparisonReport,
+    generate_quick_report,
+    compare_aliens,
+)
+from .replay import (
+    GameRecording,
+    GameRecorder,
+    GameReplayer,
+    GameAnalyzer,
+    GameEvent,
+    EventType,
+    record_game,
+    analyze_recording,
+)
 
 __all__ = [
     "Simulator",
@@ -48,4 +65,19 @@ __all__ = [
     "TournamentResults",
     "run_quick_tournament",
     "run_monte_carlo_analysis",
+    # Visualization
+    "PerformanceChart",
+    "GameAnalysisReport",
+    "PowerComparisonReport",
+    "generate_quick_report",
+    "compare_aliens",
+    # Replay
+    "GameRecording",
+    "GameRecorder",
+    "GameReplayer",
+    "GameAnalyzer",
+    "GameEvent",
+    "EventType",
+    "record_game",
+    "analyze_recording",
 ]

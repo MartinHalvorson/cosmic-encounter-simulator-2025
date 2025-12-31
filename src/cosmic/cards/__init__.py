@@ -10,6 +10,8 @@ from .rewards_deck import RewardsDeck
 from .flare_deck import FlareDeck, FLARE_EFFECTS
 from .tech_deck import TechDeck, TechCard, TechCategory, PlayerTechState, TECH_EFFECTS
 from .hazard_deck import HazardDeck, HazardCard, HazardTiming, HazardSeverity, HAZARD_EFFECTS, apply_hazard_effect
+from .lux_system import LuxAction, LUX_COSTS, LuxToken, PlayerLuxState, LuxManager, LuxIncome
+from .rift_cards import RiftCard, RiftType, RiftDeck, is_rift_card, handle_card_taken
 
 __all__ = [
     "Card",
