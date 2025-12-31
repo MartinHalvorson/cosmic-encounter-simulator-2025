@@ -173,3 +173,6 @@ from .puzzle_powers import *  # noqa: F401, F403
 from .mythical_creature_powers import *  # noqa: F401, F403
 from .size_powers import *  # noqa: F401, F403
 from .temperament_powers import *  # noqa: F401, F403
+from .explorer_powers import *  # noqa: F401, F403
+from .garden_powers import *  # noqa: F401, F403
+from .astrology_powers import *  # noqa: F401, F403
