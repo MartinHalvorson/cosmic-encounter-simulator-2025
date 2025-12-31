@@ -202,3 +202,6 @@ from .topology_powers import *  # noqa: F401, F403
 from .behavior_powers import *  # noqa: F401, F403
 from .monarchy_powers import *  # noqa: F401, F403
 from .pirate_powers import *  # noqa: F401, F403
+from .weather_final_powers import *  # noqa: F401, F403
+from .geology_powers import *  # noqa: F401, F403
+from .chemistry_powers import *  # noqa: F401, F403
