@@ -96,10 +96,29 @@ class Game:
         # Get alien powers
         if powers is None:
             all_aliens = AlienRegistry.get_all()
-            selected_powers = self._rng.sample(
-                all_aliens,
-                min(num_players, len(all_aliens))
-            )
+
+            # Check for required aliens from config
+            if self.config.required_aliens:
+                selected_powers = []
+                for name in self.config.required_aliens:
+                    alien = AlienRegistry.get(name)
+                    if alien:
+                        selected_powers.append(alien)
+
+                # Fill remaining slots with random aliens
+                remaining_count = num_players - len(selected_powers)
+                if remaining_count > 0:
+                    available = [a for a in all_aliens if a not in selected_powers]
+                    additional = self._rng.sample(
+                        available,
+                        min(remaining_count, len(available))
+                    )
+                    selected_powers.extend(additional)
+            else:
+                selected_powers = self._rng.sample(
+                    all_aliens,
+                    min(num_players, len(all_aliens))
+                )
         else:
             selected_powers = []
             for name in powers:

@@ -186,6 +186,7 @@ class GameConfig:
     use_hazards: bool = False
     max_turns: int = 200  # Prevent infinite games
     seed: Optional[int] = None  # For reproducibility
+    required_aliens: Optional[List[str]] = None  # Aliens that must be in the game
 
 
 @dataclass
