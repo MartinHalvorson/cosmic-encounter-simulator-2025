@@ -176,3 +176,16 @@ from .temperament_powers import *  # noqa: F401, F403
 from .explorer_powers import *  # noqa: F401, F403
 from .garden_powers import *  # noqa: F401, F403
 from .astrology_powers import *  # noqa: F401, F403
+from .carnival_powers import *  # noqa: F401, F403
+from .arena_powers import *  # noqa: F401, F403
+from .journey_powers import *  # noqa: F401, F403
+from .frequency_powers import *  # noqa: F401, F403
+from .intensity_powers import *  # noqa: F401, F403
+from .duration_powers import *  # noqa: F401, F403
+from .position_powers import *  # noqa: F401, F403
+from .quality_powers import *  # noqa: F401, F403
+from .reaction_powers import *  # noqa: F401, F403
+from .quantity_powers import *  # noqa: F401, F403
+from .legendary_heroes_powers import *  # noqa: F401, F403
+from .villain_powers import *  # noqa: F401, F403
+from .biome_powers import *  # noqa: F401, F403
