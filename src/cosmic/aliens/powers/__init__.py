@@ -380,3 +380,12 @@ from .computer_powers import *  # noqa: F401, F403
 from .weather_condition_powers import *  # noqa: F401, F403
 from .landscape_powers import *  # noqa: F401, F403
 from .space_body_powers import *  # noqa: F401, F403
+from .academic_field_powers import *  # noqa: F401, F403
+from .energy_type_powers import *  # noqa: F401, F403
+from .fictional_character_powers import *  # noqa: F401, F403
+from .medieval_role_powers import *  # noqa: F401, F403
+from .nature_element_powers import *  # noqa: F401, F403
+from .gaming_console_powers import *  # noqa: F401, F403
+from .nature_element_powers import *  # noqa: F401, F403
+from .mythology_new_powers import *  # noqa: F401, F403
+from .body_part_powers import *  # noqa: F401, F403
