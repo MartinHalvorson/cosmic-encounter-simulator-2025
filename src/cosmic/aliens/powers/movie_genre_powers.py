@@ -156,7 +156,7 @@ class Animation(AlienPower):
 
     def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active:
-            home_colonies = player.get_home_colony_count()
+            home_colonies = sum(1 for p in player.home_planets if p.has_colony(player.name))
             return base_total + (home_colonies * 2)
         return base_total
 
