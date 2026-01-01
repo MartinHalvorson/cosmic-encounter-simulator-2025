@@ -7,7 +7,7 @@ from typing import Optional, List, Dict, Any, TYPE_CHECKING, Callable
 from abc import ABC, abstractmethod
 from enum import Enum, auto
 
-from ..types import PowerTiming, PowerType, Side, PlayerRole
+from ..types import PowerTiming, PowerType, Side, PlayerRole, Expansion
 
 if TYPE_CHECKING:
     from ..game import Game
@@ -35,6 +35,9 @@ class AlienPower(ABC):
     power_type: PowerType = PowerType.OPTIONAL
     category: PowerCategory = PowerCategory.GREEN
     alert_text: str = ""  # Short text shown when power might activate
+
+    # Which expansion this power belongs to (defaults to HOMEBREW)
+    expansion: Expansion = Expansion.HOMEBREW
 
     # Which roles can use this power
     usable_as: List[PlayerRole] = field(default_factory=lambda: [
