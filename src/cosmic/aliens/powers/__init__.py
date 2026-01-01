@@ -405,3 +405,8 @@ from .architecture_new_powers import *  # noqa: F401, F403
 from .nature_force_powers import *  # noqa: F401, F403
 from .game_mechanic_powers import *  # noqa: F401, F403
 from .music_genre_powers import *  # noqa: F401, F403
+from .final_push_powers import *  # noqa: F401, F403
+from .final_push2_powers import *  # noqa: F401, F403
+from .science_field_powers import *  # noqa: F401, F403
+from .sports_extended_new_powers import *  # noqa: F401, F403
+from .final_push3_powers import *  # noqa: F401, F403
