@@ -394,3 +394,4 @@ from .horror_movie_powers import *  # noqa: F401, F403
 from .internet_culture_powers import *  # noqa: F401, F403
 from .kitchen_extended_powers import *  # noqa: F401, F403
 from .video_game_powers import *  # noqa: F401, F403
+from .milestone_4500_powers import *  # noqa: F401, F403
