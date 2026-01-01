@@ -473,3 +473,8 @@ from .vehicle_type_powers import *  # noqa: F401, F403
 from .art_medium_powers import *  # noqa: F401, F403
 from .tree_species_powers import *  # noqa: F401, F403
 from .garden_pest_powers import *  # noqa: F401, F403
+from .clothing_powers import *  # noqa: F401, F403
+from .body_part_powers import *  # noqa: F401, F403
+from .season_powers import *  # noqa: F401, F403
+from .emotion_powers import *  # noqa: F401, F403
+from .color_powers import *  # noqa: F401, F403
