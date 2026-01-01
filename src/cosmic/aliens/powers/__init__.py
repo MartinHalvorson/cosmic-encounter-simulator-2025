@@ -466,3 +466,10 @@ from .coffee_powers import *  # noqa: F401, F403
 from .fruit_powers import *  # noqa: F401, F403
 from .cheese_powers import *  # noqa: F401, F403
 from .pasta_powers import *  # noqa: F401, F403
+from .office_equipment_powers import *  # noqa: F401, F403
+from .desert_terrain_powers import *  # noqa: F401, F403
+from .kitchen_appliance_powers import *  # noqa: F401, F403
+from .vehicle_type_powers import *  # noqa: F401, F403
+from .art_medium_powers import *  # noqa: F401, F403
+from .tree_species_powers import *  # noqa: F401, F403
+from .garden_pest_powers import *  # noqa: F401, F403
