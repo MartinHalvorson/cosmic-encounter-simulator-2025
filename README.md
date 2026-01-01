@@ -30872,57 +30872,57 @@ python update_stats.py --sort power --order asc
 
 ## Simulation Results
 
-**Total Games Simulated:** 22,148,931
-**Solo Victories:** 21,529,625
-**Shared Victories:** 366,082
+**Total Games Simulated:** 22,248,357
+**Solo Victories:** 21,627,404
+**Shared Victories:** 367,729
 **Average Game Length:** 5.0 turns
-**Last Updated:** 2025-12-31T21:39:53
+**Last Updated:** 2025-12-31T21:41:28
 
 ### Alien Power Rankings (by ELO)
 
 | Rank | Alien | ELO | Win Rate | Games | Solo Wins | Shared |
 |------|-------|-----|----------|-------|-----------|--------|
-| 1 | Gelato | 1508 | 100.0% | 1 | 1 | 0 |
-| 2 | Heatwave_Weather | 1508 | 100.0% | 1 | 1 | 0 |
-| 3 | Temple_Artemis | 1505 | 100.0% | 1 | 1 | 0 |
-| 4 | Smartphone | 1505 | 100.0% | 1 | 1 | 0 |
-| 5 | Side_Dish | 1504 | 100.0% | 1 | 1 | 0 |
-| 6 | Turquoise_Gem | 1504 | 100.0% | 1 | 1 | 0 |
-| 7 | Threshold | 1500 | 100.0% | 1 | 1 | 0 |
-| 8 | Virtuoso_Achievement | 1500 | 100.0% | 1 | 1 | 0 |
-| 9 | Elder_Thing | 1500 | 100.0% | 1 | 1 | 0 |
-| 10 | Satellite_Space | 1500 | 100.0% | 1 | 1 | 0 |
-| 11 | Glory_Achievement | 1500 | 100.0% | 1 | 1 | 0 |
-| 12 | Theta_Letter | 1500 | 100.0% | 1 | 1 | 0 |
-| 13 | Graviton_Field | 1500 | 100.0% | 1 | 1 | 0 |
-| 14 | Helium_Element | 1500 | 100.0% | 1 | 1 | 0 |
-| 15 | Angkor_Wat | 1500 | 100.0% | 1 | 1 | 0 |
-| 16 | Phoenix_Fantasy | 1500 | 100.0% | 1 | 1 | 0 |
-| 17 | Linen_Textile | 1500 | 100.0% | 1 | 1 | 0 |
-| 18 | Hurricane_Weather | 1500 | 100.0% | 1 | 1 | 0 |
-| 19 | Cat_Pet | 1500 | 100.0% | 1 | 1 | 0 |
-| 20 | Legal_Clerk | 1500 | 100.0% | 1 | 1 | 0 |
-| 21 | Field_Hockey | 1500 | 100.0% | 1 | 1 | 0 |
-| 22 | Social_Network | 1500 | 100.0% | 1 | 1 | 0 |
-| 23 | Dual_Aspect | 1500 | 100.0% | 1 | 1 | 0 |
-| 24 | Realization | 1500 | 100.0% | 1 | 1 | 0 |
-| 25 | Colossus_Rhodes | 1485 | 50.0% | 2 | 1 | 0 |
-| 26 | Merry_Go_Round | 1483 | 0.0% | 1 | 0 | 0 |
-| 27 | Slide_Play | 1476 | 0.0% | 1 | 0 | 0 |
-| 28 | Lavender_Garden | 1476 | 0.0% | 1 | 0 | 0 |
-| 29 | Sage_6K | 1476 | 0.0% | 1 | 0 | 0 |
-| 30 | CTO | 1474 | 50.0% | 2 | 1 | 0 |
-| 31 | Eggs | 1473 | 0.0% | 1 | 0 | 0 |
-| 32 | Cotton_Mill | 1473 | 0.0% | 1 | 0 | 0 |
-| 33 | Serverless | 1473 | 0.0% | 1 | 0 | 0 |
-| 34 | Denim_Textile | 1473 | 0.0% | 1 | 0 | 0 |
-| 35 | Phi_Letter | 1473 | 50.0% | 2 | 1 | 0 |
-| 36 | Thunderstorm_Weather | 1473 | 0.0% | 1 | 0 | 0 |
-| 37 | Rover_Space | 1472 | 0.0% | 1 | 0 | 0 |
-| 38 | Arbitrator_Legal | 1472 | 0.0% | 1 | 0 | 0 |
-| 39 | Search_Engine | 1472 | 0.0% | 1 | 0 | 0 |
-| 40 | Toaster_Kitchen | 1471 | 0.0% | 1 | 0 | 0 |
-| ... | *6175 more aliens* | ... | ... | ... | ... | ... |
+| 1 | Kuiper_Belt | 1436 | 0.0% | 2 | 0 | 0 |
+| 2 | Wok | 818 | 32.4% | 34 | 11 | 0 |
+| 3 | Quasar_Ast | 673 | 34.1% | 41 | 14 | 0 |
+| 4 | Pulsar_Ast | 657 | 41.7% | 48 | 19 | 1 |
+| 5 | SolarWind | 625 | 42.3% | 52 | 22 | 0 |
+| 6 | Nebula_Ast | 621 | 28.6% | 42 | 12 | 0 |
+| 7 | Barbecue | 616 | 26.2% | 42 | 11 | 0 |
+| 8 | Supernova_Ast | 602 | 31.8% | 44 | 14 | 0 |
+| 9 | Pin | 562 | 32.6% | 46 | 14 | 1 |
+| 10 | Asteroid_Ast | 545 | 33.3% | 51 | 17 | 0 |
+| 11 | Fortress_Arch | 540 | 25.0% | 44 | 11 | 0 |
+| 12 | Deep_One | 539 | 24.4% | 41 | 10 | 0 |
+| 13 | Emerald_Alt | 538 | 38.9% | 54 | 20 | 1 |
+| 14 | Curer | 532 | 17.9% | 39 | 7 | 0 |
+| 15 | Ares_Alt | 532 | 36.5% | 52 | 19 | 0 |
+| 16 | All_In | 496 | 27.7% | 47 | 12 | 1 |
+| 17 | Apollo_Alt | 494 | 20.9% | 43 | 8 | 1 |
+| 18 | Mordred | 490 | 31.9% | 47 | 14 | 1 |
+| 19 | Flush | 476 | 20.0% | 45 | 9 | 0 |
+| 20 | Athena_Alt | 457 | 21.3% | 47 | 10 | 0 |
+| 21 | Elite_Achievement | 455 | 40.4% | 57 | 22 | 1 |
+| 22 | Pyramid_Arch | 438 | 23.4% | 47 | 10 | 1 |
+| 23 | Age_Forward | 435 | 19.6% | 46 | 9 | 0 |
+| 24 | Bathala | 435 | 34.0% | 53 | 17 | 1 |
+| 25 | Assembly_Line | 433 | 43.3% | 60 | 23 | 3 |
+| 26 | Poseidon_Alt | 433 | 19.1% | 47 | 9 | 0 |
+| 27 | Turmeric | 430 | 29.4% | 51 | 15 | 0 |
+| 28 | Mantis_Shrimp | 430 | 38.6% | 57 | 20 | 2 |
+| 29 | King_Piece | 426 | 23.5% | 51 | 12 | 0 |
+| 30 | Summit_Achievement | 423 | 37.5% | 56 | 20 | 1 |
+| 31 | Sapphire_Alt | 423 | 25.9% | 54 | 14 | 0 |
+| 32 | Kinnara | 418 | 30.2% | 53 | 16 | 0 |
+| 33 | Prickly_Texture | 408 | 27.5% | 51 | 13 | 1 |
+| 34 | Gambler_Card | 402 | 15.9% | 44 | 6 | 1 |
+| 35 | Pickler | 401 | 31.0% | 58 | 17 | 1 |
+| 36 | Hermes_Alt | 399 | 20.8% | 48 | 10 | 0 |
+| 37 | Hamster | 396 | 37.9% | 58 | 21 | 1 |
+| 38 | Tornado_Alt | 390 | 25.5% | 55 | 14 | 0 |
+| 39 | Hauberk | 388 | 31.5% | 54 | 17 | 0 |
+| 40 | Titanic_Size | 387 | 41.4% | 70 | 29 | 0 |
+| ... | *6325 more aliens* | ... | ... | ... | ... | ... |
 
 <!-- SIMULATION_RESULTS_END -->
 
