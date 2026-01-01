@@ -361,3 +361,7 @@ from .weather_seasons_powers import *  # noqa: F401, F403
 from .computing_powers import *  # noqa: F401, F403
 from .ocean_depth_powers import *  # noqa: F401, F403
 from .space_phenomena_powers import *  # noqa: F401, F403
+from .astronomy_powers import *  # noqa: F401, F403
+from .sports_alt_powers import *  # noqa: F401, F403
+from .cooking_style_powers import *  # noqa: F401, F403
+from .finnish_mythology_powers import *  # noqa: F401, F403

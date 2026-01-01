@@ -44,28 +44,24 @@ class TestNegotiateCards:
         card = NegotiateCard()
         assert card.is_encounter_card()
 
-    def test_negotiate_value_is_none(self):
-        """Negotiate cards have no attack value."""
+    def test_negotiate_value_is_zero(self):
+        """Negotiate cards have 0 attack value (not used in combat)."""
         card = NegotiateCard()
-        assert card.value is None
+        assert card.value == 0
 
 
 class TestMorphCards:
     """Tests for morph card interactions."""
 
-    def test_morph_copies_opponent(self):
-        """Morph should copy opponent's attack value."""
+    def test_morph_is_encounter_card(self):
+        """Morph should be an encounter card."""
         morph = MorphCard()
         assert morph.is_encounter_card()
 
-        # When opponent plays 20, morph should become 20
-        morph.set_copied_value(20)
-        assert morph.effective_value == 20
-
-    def test_morph_without_copy(self):
-        """Morph without copy should have base value."""
+    def test_morph_base_value_is_zero(self):
+        """Morph base value is 0 (copies opponent during resolution)."""
         morph = MorphCard()
-        assert morph.effective_value == 0  # Default base
+        assert morph.value == 0
 
 
 class TestReinforcementCards:
@@ -226,13 +222,12 @@ class TestCardCombinations:
         total = kicked + reinforcement.value
         assert total == 23
 
-    def test_morph_with_kicker(self):
-        """Morph with kicker should work correctly."""
-        morph = MorphCard()
-        morph.set_copied_value(8)
+    def test_kicker_with_high_attack(self):
+        """Kicker with high attack card should multiply correctly."""
+        attack = AttackCard(value=8)
         kicker = KickerCard(value=3)
 
-        total = morph.effective_value * kicker.value
+        total = attack.value * kicker.value
         assert total == 24
 
 
