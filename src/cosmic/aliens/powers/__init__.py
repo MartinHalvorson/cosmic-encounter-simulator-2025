@@ -292,3 +292,6 @@ from .emotion_alt2_powers import *  # noqa: F401, F403
 from .hunting_powers import *  # noqa: F401, F403
 from .crafting_powers import *  # noqa: F401, F403
 from .astronomical_powers import *  # noqa: F401, F403
+from .emotion_final_powers import *  # noqa: F401, F403
+from .garden_extended_powers import *  # noqa: F401, F403
+from .milestone_4000_powers import *  # noqa: F401, F403
