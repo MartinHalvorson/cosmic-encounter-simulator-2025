@@ -16,25 +16,10 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Shiitake(AlienPower):
-    """Shiitake - Power of Umami. +4 always."""
-    name: str = field(default="Shiitake", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Portobello(AlienPower):
-    """Portobello - Power of Meaty. +5 always."""
-    name: str = field(default="Portobello", init=False)
-    description: str = field(default="+5 constant.", init=False)
+class Shiitake_Mushroom(AlienPower):
+    """Shiitake_Mushroom - Power of Umami. +5 always."""
+    name: str = field(default="Shiitake_Mushroom", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -46,10 +31,10 @@ class Portobello(AlienPower):
 
 
 @dataclass
-class Chanterelle(AlienPower):
-    """Chanterelle - Power of Golden. +5 always."""
-    name: str = field(default="Chanterelle", init=False)
-    description: str = field(default="+5 constant.", init=False)
+class Portobello_Mushroom(AlienPower):
+    """Portobello_Mushroom - Power of Meaty. +5 always."""
+    name: str = field(default="Portobello_Mushroom", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -61,10 +46,10 @@ class Chanterelle(AlienPower):
 
 
 @dataclass
-class Porcini(AlienPower):
-    """Porcini - Power of Italian. +5 always."""
-    name: str = field(default="Porcini", init=False)
-    description: str = field(default="+5 constant.", init=False)
+class Chanterelle_Mushroom(AlienPower):
+    """Chanterelle_Mushroom - Power of Golden. +5 always."""
+    name: str = field(default="Chanterelle_Mushroom", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -76,130 +61,10 @@ class Porcini(AlienPower):
 
 
 @dataclass
-class Morel(AlienPower):
-    """Morel - Power of Honeycomb. +5 always."""
-    name: str = field(default="Morel", init=False)
-    description: str = field(default="+5 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Oyster_Mushroom(AlienPower):
-    """Oyster_Mushroom - Power of Delicate. +3 always."""
-    name: str = field(default="Oyster_Mushroom", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Enoki(AlienPower):
-    """Enoki - Power of Thin. +3 always."""
-    name: str = field(default="Enoki", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Cremini(AlienPower):
-    """Cremini - Power of Brown. +4 always."""
-    name: str = field(default="Cremini", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Button_Mushroom(AlienPower):
-    """Button_Mushroom - Power of Common. +3 always."""
-    name: str = field(default="Button_Mushroom", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class King_Trumpet(AlienPower):
-    """King_Trumpet - Power of Royal. +5 always."""
-    name: str = field(default="King_Trumpet", init=False)
-    description: str = field(default="+5 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Maitake(AlienPower):
-    """Maitake - Power of Dance. +4 always."""
-    name: str = field(default="Maitake", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Shimeji(AlienPower):
-    """Shimeji - Power of Cluster. +4 always."""
-    name: str = field(default="Shimeji", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Matsutake(AlienPower):
-    """Matsutake - Power of Pine. +6 always."""
-    name: str = field(default="Matsutake", init=False)
-    description: str = field(default="+6 constant.", init=False)
+class Morel_Mushroom(AlienPower):
+    """Morel_Mushroom - Power of Rare. +6 always."""
+    name: str = field(default="Morel_Mushroom", init=False)
+    description: str = field(default="+6 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.RED, init=False)
@@ -211,10 +76,145 @@ class Matsutake(AlienPower):
 
 
 @dataclass
-class Agaric(AlienPower):
-    """Agaric - Power of Spotted. +4 always."""
-    name: str = field(default="Agaric", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Oyster_Mushroom(AlienPower):
+    """Oyster_Mushroom - Power of Tender. +5 always."""
+    name: str = field(default="Oyster_Mushroom", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Truffle_Mushroom(AlienPower):
+    """Truffle_Mushroom - Power of Luxury. +7 always."""
+    name: str = field(default="Truffle_Mushroom", init=False)
+    description: str = field(default="+7 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 7
+        return total
+
+
+@dataclass
+class Porcini_Mushroom(AlienPower):
+    """Porcini_Mushroom - Power of Nutty. +5 always."""
+    name: str = field(default="Porcini_Mushroom", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Enoki_Mushroom(AlienPower):
+    """Enoki_Mushroom - Power of Delicate. +4 always."""
+    name: str = field(default="Enoki_Mushroom", init=False)
+    description: str = field(default="+4 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Maitake_Mushroom(AlienPower):
+    """Maitake_Mushroom - Power of Dance. +5 always."""
+    name: str = field(default="Maitake_Mushroom", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Cremini_Mushroom(AlienPower):
+    """Cremini_Mushroom - Power of Common. +4 always."""
+    name: str = field(default="Cremini_Mushroom", init=False)
+    description: str = field(default="+4 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class King_Trumpet_Mushroom(AlienPower):
+    """King_Trumpet_Mushroom - Power of Royal. +5 always."""
+    name: str = field(default="King_Trumpet_Mushroom", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Lion_Mane_Mushroom(AlienPower):
+    """Lion_Mane_Mushroom - Power of Shaggy. +5 always."""
+    name: str = field(default="Lion_Mane_Mushroom", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Reishi_Mushroom(AlienPower):
+    """Reishi_Mushroom - Power of Immortal. +6 on defense."""
+    name: str = field(default="Reishi_Mushroom", init=False)
+    description: str = field(default="+6 on defense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 6
+        return total
+
+
+@dataclass
+class Button_Mushroom(AlienPower):
+    """Button_Mushroom - Power of Basic. +4 always."""
+    name: str = field(default="Button_Mushroom", init=False)
+    description: str = field(default="+4 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
@@ -226,9 +226,8 @@ class Agaric(AlienPower):
 
 
 MUSHROOM_TYPE_POWERS = [
-    Shiitake, Portobello, Chanterelle, Porcini, Morel,
-    Oyster_Mushroom, Enoki, Cremini, Button_Mushroom, King_Trumpet,
-    Maitake, Shimeji, Matsutake, Agaric,
+    Shiitake_Mushroom, Portobello_Mushroom, Chanterelle_Mushroom, Morel_Mushroom, Oyster_Mushroom, Truffle_Mushroom, Porcini_Mushroom,
+    Enoki_Mushroom, Maitake_Mushroom, Cremini_Mushroom, King_Trumpet_Mushroom, Lion_Mane_Mushroom, Reishi_Mushroom, Button_Mushroom,
 ]
 
 for power_class in MUSHROOM_TYPE_POWERS:

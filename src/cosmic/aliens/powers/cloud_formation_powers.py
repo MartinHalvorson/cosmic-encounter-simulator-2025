@@ -1,5 +1,5 @@
 """
-Energy Type Powers for Cosmic Encounter.
+Cloud Formation Powers for Cosmic Encounter.
 """
 
 from dataclasses import dataclass, field
@@ -16,24 +16,24 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Kinetic_Energy(AlienPower):
-    """Kinetic_Energy - Power of Motion. +5 on offense."""
-    name: str = field(default="Kinetic_Energy", init=False)
-    description: str = field(default="+5 on offense.", init=False)
+class Cumulus_Cloud(AlienPower):
+    """Cumulus_Cloud - Power of Puffy. +5 always."""
+    name: str = field(default="Cumulus_Cloud", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
+        if player.power_active:
             return total + 5
         return total
 
 
 @dataclass
-class Potential_Energy(AlienPower):
-    """Potential_Energy - Power of Store. +5 on defense."""
-    name: str = field(default="Potential_Energy", init=False)
+class Stratus_Cloud(AlienPower):
+    """Stratus_Cloud - Power of Layer. +5 on defense."""
+    name: str = field(default="Stratus_Cloud", init=False)
     description: str = field(default="+5 on defense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -46,191 +46,191 @@ class Potential_Energy(AlienPower):
 
 
 @dataclass
-class Thermal_Energy(AlienPower):
-    """Thermal_Energy - Power of Heat. +5 always."""
-    name: str = field(default="Thermal_Energy", init=False)
-    description: str = field(default="+5 always.", init=False)
+class Cirrus_Cloud(AlienPower):
+    """Cirrus_Cloud - Power of Wispy. +4 always."""
+    name: str = field(default="Cirrus_Cloud", init=False)
+    description: str = field(default="+4 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 5
+            return total + 4
         return total
 
 
 @dataclass
-class Chemical_Energy(AlienPower):
-    """Chemical_Energy - Power of Bond. +5 always."""
-    name: str = field(default="Chemical_Energy", init=False)
-    description: str = field(default="+5 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Nuclear_Energy(AlienPower):
-    """Nuclear_Energy - Power of Atom. +7 always."""
-    name: str = field(default="Nuclear_Energy", init=False)
-    description: str = field(default="+7 always.", init=False)
+class Cumulonimbus_Cloud(AlienPower):
+    """Cumulonimbus_Cloud - Power of Storm. +6 on offense."""
+    name: str = field(default="Cumulonimbus_Cloud", init=False)
+    description: str = field(default="+6 on offense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.RED, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 7
-        return total
-
-
-@dataclass
-class Electrical_Energy(AlienPower):
-    """Electrical_Energy - Power of Current. +5 always."""
-    name: str = field(default="Electrical_Energy", init=False)
-    description: str = field(default="+5 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Magnetic_Energy(AlienPower):
-    """Magnetic_Energy - Power of Field. +5 always."""
-    name: str = field(default="Magnetic_Energy", init=False)
-    description: str = field(default="+5 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Radiant_Energy(AlienPower):
-    """Radiant_Energy - Power of Light. +5 always."""
-    name: str = field(default="Radiant_Energy", init=False)
-    description: str = field(default="+5 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Sound_Energy(AlienPower):
-    """Sound_Energy - Power of Wave. +5 always."""
-    name: str = field(default="Sound_Energy", init=False)
-    description: str = field(default="+5 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Elastic_Energy(AlienPower):
-    """Elastic_Energy - Power of Spring. +5 always."""
-    name: str = field(default="Elastic_Energy", init=False)
-    description: str = field(default="+5 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Gravitational_Energy(AlienPower):
-    """Gravitational_Energy - Power of Pull. +5 always."""
-    name: str = field(default="Gravitational_Energy", init=False)
-    description: str = field(default="+5 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Mechanical_Energy(AlienPower):
-    """Mechanical_Energy - Power of Work. +5 always."""
-    name: str = field(default="Mechanical_Energy", init=False)
-    description: str = field(default="+5 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Ionization_Energy(AlienPower):
-    """Ionization_Energy - Power of Strip. +5 on offense."""
-    name: str = field(default="Ionization_Energy", init=False)
-    description: str = field(default="+5 on offense.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Dark_Energy(AlienPower):
-    """Dark_Energy - Power of Expand. +6 always."""
-    name: str = field(default="Dark_Energy", init=False)
-    description: str = field(default="+6 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.RED, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
             return total + 6
         return total
 
 
-ENERGY_TYPE_POWERS = [
-    Kinetic_Energy, Potential_Energy, Thermal_Energy, Chemical_Energy, Nuclear_Energy, Electrical_Energy, Magnetic_Energy,
-    Radiant_Energy, Sound_Energy, Elastic_Energy, Gravitational_Energy, Mechanical_Energy, Ionization_Energy, Dark_Energy,
+@dataclass
+class Nimbostratus_Cloud(AlienPower):
+    """Nimbostratus_Cloud - Power of Rain. +5 always."""
+    name: str = field(default="Nimbostratus_Cloud", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Stratocumulus_Cloud(AlienPower):
+    """Stratocumulus_Cloud - Power of Roll. +5 always."""
+    name: str = field(default="Stratocumulus_Cloud", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Altocumulus_Cloud(AlienPower):
+    """Altocumulus_Cloud - Power of Mid. +5 always."""
+    name: str = field(default="Altocumulus_Cloud", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Altostratus_Cloud(AlienPower):
+    """Altostratus_Cloud - Power of Cover. +5 on defense."""
+    name: str = field(default="Altostratus_Cloud", init=False)
+    description: str = field(default="+5 on defense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Cirrostratus_Cloud(AlienPower):
+    """Cirrostratus_Cloud - Power of Halo. +5 always."""
+    name: str = field(default="Cirrostratus_Cloud", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Cirrocumulus_Cloud(AlienPower):
+    """Cirrocumulus_Cloud - Power of Ripple. +4 always."""
+    name: str = field(default="Cirrocumulus_Cloud", init=False)
+    description: str = field(default="+4 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Mammatus_Cloud(AlienPower):
+    """Mammatus_Cloud - Power of Bulge. +5 always."""
+    name: str = field(default="Mammatus_Cloud", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Lenticular_Cloud(AlienPower):
+    """Lenticular_Cloud - Power of Lens. +5 always."""
+    name: str = field(default="Lenticular_Cloud", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Contrail_Cloud(AlienPower):
+    """Contrail_Cloud - Power of Trail. +5 always."""
+    name: str = field(default="Contrail_Cloud", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Fog_Cloud(AlienPower):
+    """Fog_Cloud - Power of Ground. +5 on defense."""
+    name: str = field(default="Fog_Cloud", init=False)
+    description: str = field(default="+5 on defense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+CLOUD_FORMATION_POWERS = [
+    Cumulus_Cloud, Stratus_Cloud, Cirrus_Cloud, Cumulonimbus_Cloud, Nimbostratus_Cloud, Stratocumulus_Cloud, Altocumulus_Cloud,
+    Altostratus_Cloud, Cirrostratus_Cloud, Cirrocumulus_Cloud, Mammatus_Cloud, Lenticular_Cloud, Contrail_Cloud, Fog_Cloud,
 ]
 
-for power_class in ENERGY_TYPE_POWERS:
+for power_class in CLOUD_FORMATION_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

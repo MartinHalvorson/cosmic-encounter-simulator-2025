@@ -16,10 +16,55 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Espresso(AlienPower):
-    """Espresso - Power of Strong. +5 on offense."""
-    name: str = field(default="Espresso", init=False)
-    description: str = field(default="+5 when attacking.", init=False)
+class Espresso_Coffee(AlienPower):
+    """Espresso_Coffee - Power of Intense. +6 on offense."""
+    name: str = field(default="Espresso_Coffee", init=False)
+    description: str = field(default="+6 on offense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 6
+        return total
+
+
+@dataclass
+class Latte_Coffee(AlienPower):
+    """Latte_Coffee - Power of Smooth. +5 always."""
+    name: str = field(default="Latte_Coffee", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Cappuccino_Coffee(AlienPower):
+    """Cappuccino_Coffee - Power of Foam. +5 always."""
+    name: str = field(default="Cappuccino_Coffee", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Americano_Coffee(AlienPower):
+    """Americano_Coffee - Power of Bold. +5 on offense."""
+    name: str = field(default="Americano_Coffee", init=False)
+    description: str = field(default="+5 on offense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -31,145 +76,55 @@ class Espresso(AlienPower):
 
 
 @dataclass
-class Cappuccino(AlienPower):
-    """Cappuccino - Power of Foam. +4 always."""
-    name: str = field(default="Cappuccino", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Latte(AlienPower):
-    """Latte - Power of Milk. +4 always."""
-    name: str = field(default="Latte", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Americano(AlienPower):
-    """Americano - Power of Diluted. +3 always."""
-    name: str = field(default="Americano", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Mocha(AlienPower):
-    """Mocha - Power of Chocolate. +4 always."""
-    name: str = field(default="Mocha", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Macchiato(AlienPower):
-    """Macchiato - Power of Stained. +4 always."""
-    name: str = field(default="Macchiato", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Ristretto(AlienPower):
-    """Ristretto - Power of Short. +5 on offense."""
-    name: str = field(default="Ristretto", init=False)
-    description: str = field(default="+5 when attacking.", init=False)
+class Mocha_Coffee(AlienPower):
+    """Mocha_Coffee - Power of Sweet. +5 always."""
+    name: str = field(default="Mocha_Coffee", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
+        if player.power_active:
             return total + 5
         return total
 
 
 @dataclass
-class Lungo(AlienPower):
-    """Lungo - Power of Long. +4 always."""
-    name: str = field(default="Lungo", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Macchiato_Coffee(AlienPower):
+    """Macchiato_Coffee - Power of Mark. +5 always."""
+    name: str = field(default="Macchiato_Coffee", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 4
+            return total + 5
         return total
 
 
 @dataclass
-class Affogato(AlienPower):
-    """Affogato - Power of Drowned. +4 always."""
-    name: str = field(default="Affogato", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Cold_Brew_Coffee(AlienPower):
+    """Cold_Brew_Coffee - Power of Cool. +5 on defense."""
+    name: str = field(default="Cold_Brew_Coffee", init=False)
+    description: str = field(default="+5 on defense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
         return total
 
 
 @dataclass
-class Cold_Brew(AlienPower):
-    """Cold_Brew - Power of Cold. +4 always."""
-    name: str = field(default="Cold_Brew", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Irish_Coffee(AlienPower):
-    """Irish_Coffee - Power of Whiskey. +5 always."""
-    name: str = field(default="Irish_Coffee", init=False)
-    description: str = field(default="+5 constant.", init=False)
+class French_Press_Coffee(AlienPower):
+    """French_Press_Coffee - Power of Full. +5 always."""
+    name: str = field(default="French_Press_Coffee", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -182,9 +137,24 @@ class Irish_Coffee(AlienPower):
 
 @dataclass
 class Turkish_Coffee(AlienPower):
-    """Turkish_Coffee - Power of Strong. +5 always."""
+    """Turkish_Coffee - Power of Strong. +6 always."""
     name: str = field(default="Turkish_Coffee", init=False)
-    description: str = field(default="+5 constant.", init=False)
+    description: str = field(default="+6 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 6
+        return total
+
+
+@dataclass
+class Irish_Coffee(AlienPower):
+    """Irish_Coffee - Power of Warm. +5 always."""
+    name: str = field(default="Irish_Coffee", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -196,25 +166,10 @@ class Turkish_Coffee(AlienPower):
 
 
 @dataclass
-class Frappe(AlienPower):
-    """Frappe - Power of Frozen. +3 always."""
-    name: str = field(default="Frappe", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Cortado(AlienPower):
-    """Cortado - Power of Cut. +4 always."""
-    name: str = field(default="Cortado", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Iced_Coffee(AlienPower):
+    """Iced_Coffee - Power of Chill. +4 always."""
+    name: str = field(default="Iced_Coffee", init=False)
+    description: str = field(default="+4 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
@@ -225,10 +180,54 @@ class Cortado(AlienPower):
         return total
 
 
+@dataclass
+class Affogato_Coffee(AlienPower):
+    """Affogato_Coffee - Power of Drown. +5 always."""
+    name: str = field(default="Affogato_Coffee", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Flat_White_Coffee(AlienPower):
+    """Flat_White_Coffee - Power of Balance. +5 always."""
+    name: str = field(default="Flat_White_Coffee", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Ristretto_Coffee(AlienPower):
+    """Ristretto_Coffee - Power of Concentrated. +6 on offense."""
+    name: str = field(default="Ristretto_Coffee", init=False)
+    description: str = field(default="+6 on offense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 6
+        return total
+
+
 COFFEE_TYPE_POWERS = [
-    Espresso, Cappuccino, Latte, Americano, Mocha,
-    Macchiato, Ristretto, Lungo, Affogato, Cold_Brew,
-    Irish_Coffee, Turkish_Coffee, Frappe, Cortado,
+    Espresso_Coffee, Latte_Coffee, Cappuccino_Coffee, Americano_Coffee, Mocha_Coffee, Macchiato_Coffee, Cold_Brew_Coffee,
+    French_Press_Coffee, Turkish_Coffee, Irish_Coffee, Iced_Coffee, Affogato_Coffee, Flat_White_Coffee, Ristretto_Coffee,
 ]
 
 for power_class in COFFEE_TYPE_POWERS:

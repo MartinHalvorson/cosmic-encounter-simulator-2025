@@ -16,55 +16,25 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Cheddar(AlienPower):
-    """Cheddar - Power of Sharp. +4 on offense."""
-    name: str = field(default="Cheddar", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
+class Cheddar_Cheese(AlienPower):
+    """Cheddar_Cheese - Power of Sharp. +5 on offense."""
+    name: str = field(default="Cheddar_Cheese", init=False)
+    description: str = field(default="+5 on offense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.OFFENSE:
-            return total + 4
+            return total + 5
         return total
 
 
 @dataclass
-class Brie(AlienPower):
-    """Brie - Power of Soft. +3 always."""
-    name: str = field(default="Brie", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Gouda(AlienPower):
-    """Gouda - Power of Smooth. +4 always."""
-    name: str = field(default="Gouda", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Parmesan(AlienPower):
-    """Parmesan - Power of Age. +5 always."""
-    name: str = field(default="Parmesan", init=False)
-    description: str = field(default="+5 constant.", init=False)
+class Mozzarella_Cheese(AlienPower):
+    """Mozzarella_Cheese - Power of Stretch. +5 always."""
+    name: str = field(default="Mozzarella_Cheese", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -76,175 +46,175 @@ class Parmesan(AlienPower):
 
 
 @dataclass
-class Mozzarella(AlienPower):
-    """Mozzarella - Power of Stretch. +3 always."""
-    name: str = field(default="Mozzarella", init=False)
-    description: str = field(default="+3 constant.", init=False)
+class Parmesan_Cheese(AlienPower):
+    """Parmesan_Cheese - Power of Age. +6 always."""
+    name: str = field(default="Parmesan_Cheese", init=False)
+    description: str = field(default="+6 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 3
+            return total + 6
         return total
 
 
 @dataclass
-class Camembert(AlienPower):
-    """Camembert - Power of Cream. +4 always."""
-    name: str = field(default="Camembert", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Brie_Cheese(AlienPower):
+    """Brie_Cheese - Power of Soft. +5 on defense."""
+    name: str = field(default="Brie_Cheese", init=False)
+    description: str = field(default="+5 on defense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Roquefort(AlienPower):
-    """Roquefort - Power of Blue. +4 on defense."""
-    name: str = field(default="Roquefort", init=False)
-    description: str = field(default="+4 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.DEFENSE:
-            return total + 4
+            return total + 5
         return total
 
 
 @dataclass
-class Gruyere(AlienPower):
-    """Gruyere - Power of Melt. +4 always."""
-    name: str = field(default="Gruyere", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Gouda_Cheese(AlienPower):
+    """Gouda_Cheese - Power of Caramel. +5 always."""
+    name: str = field(default="Gouda_Cheese", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 4
+            return total + 5
         return total
 
 
 @dataclass
-class Feta(AlienPower):
-    """Feta - Power of Crumble. +3 always."""
-    name: str = field(default="Feta", init=False)
-    description: str = field(default="+3 constant.", init=False)
+class Swiss_Cheese(AlienPower):
+    """Swiss_Cheese - Power of Hole. +5 always."""
+    name: str = field(default="Swiss_Cheese", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 3
+            return total + 5
         return total
 
 
 @dataclass
-class Manchego(AlienPower):
-    """Manchego - Power of Spain. +4 always."""
-    name: str = field(default="Manchego", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Blue_Cheese(AlienPower):
+    """Blue_Cheese - Power of Bold. +5 on offense."""
+    name: str = field(default="Blue_Cheese", init=False)
+    description: str = field(default="+5 on offense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Ricotta(AlienPower):
-    """Ricotta - Power of Fresh. +3 always."""
-    name: str = field(default="Ricotta", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Provolone(AlienPower):
-    """Provolone - Power of Smoke. +3 always."""
-    name: str = field(default="Provolone", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Emmental(AlienPower):
-    """Emmental - Power of Holes. +3 always."""
-    name: str = field(default="Emmental", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Halloumi(AlienPower):
-    """Halloumi - Power of Grill. +4 on offense."""
-    name: str = field(default="Halloumi", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.OFFENSE:
-            return total + 4
+            return total + 5
         return total
 
 
 @dataclass
-class Pecorino(AlienPower):
-    """Pecorino - Power of Sheep. +3 always."""
-    name: str = field(default="Pecorino", init=False)
-    description: str = field(default="+3 constant.", init=False)
+class Feta_Cheese(AlienPower):
+    """Feta_Cheese - Power of Crumble. +4 always."""
+    name: str = field(default="Feta_Cheese", init=False)
+    description: str = field(default="+4 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 3
+            return total + 4
         return total
 
 
 @dataclass
-class Stilton(AlienPower):
-    """Stilton - Power of King. +5 always."""
-    name: str = field(default="Stilton", init=False)
-    description: str = field(default="+5 constant.", init=False)
+class Goat_Cheese(AlienPower):
+    """Goat_Cheese - Power of Tangy. +5 always."""
+    name: str = field(default="Goat_Cheese", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Camembert_Cheese(AlienPower):
+    """Camembert_Cheese - Power of Creamy. +5 always."""
+    name: str = field(default="Camembert_Cheese", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Ricotta_Cheese(AlienPower):
+    """Ricotta_Cheese - Power of Fresh. +4 always."""
+    name: str = field(default="Ricotta_Cheese", init=False)
+    description: str = field(default="+4 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Provolone_Cheese(AlienPower):
+    """Provolone_Cheese - Power of Smoke. +5 always."""
+    name: str = field(default="Provolone_Cheese", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Gruyere_Cheese(AlienPower):
+    """Gruyere_Cheese - Power of Nutty. +5 always."""
+    name: str = field(default="Gruyere_Cheese", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Manchego_Cheese(AlienPower):
+    """Manchego_Cheese - Power of Spain. +5 always."""
+    name: str = field(default="Manchego_Cheese", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -256,10 +226,8 @@ class Stilton(AlienPower):
 
 
 CHEESE_TYPE_POWERS = [
-    Cheddar, Brie, Gouda, Parmesan, Mozzarella,
-    Camembert, Roquefort, Gruyere, Feta, Manchego,
-    Ricotta, Provolone, Emmental, Halloumi, Pecorino,
-    Stilton,
+    Cheddar_Cheese, Mozzarella_Cheese, Parmesan_Cheese, Brie_Cheese, Gouda_Cheese, Swiss_Cheese, Blue_Cheese,
+    Feta_Cheese, Goat_Cheese, Camembert_Cheese, Ricotta_Cheese, Provolone_Cheese, Gruyere_Cheese, Manchego_Cheese,
 ]
 
 for power_class in CHEESE_TYPE_POWERS:

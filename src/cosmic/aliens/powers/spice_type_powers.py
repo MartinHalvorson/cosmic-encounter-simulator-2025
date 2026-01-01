@@ -16,70 +16,70 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Cinnamon(AlienPower):
-    """Cinnamon - Power of Warmth. +3 always."""
-    name: str = field(default="Cinnamon", init=False)
-    description: str = field(default="+3 constant.", init=False)
+class Cinnamon_Spice(AlienPower):
+    """Cinnamon_Spice - Power of Warmth. +5 always."""
+    name: str = field(default="Cinnamon_Spice", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 3
+            return total + 5
         return total
 
 
 @dataclass
-class Paprika(AlienPower):
-    """Paprika - Power of Color. +3 always."""
-    name: str = field(default="Paprika", init=False)
-    description: str = field(default="+3 constant.", init=False)
+class Pepper_Spice(AlienPower):
+    """Pepper_Spice - Power of Heat. +5 on offense."""
+    name: str = field(default="Pepper_Spice", init=False)
+    description: str = field(default="+5 on offense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
         return total
 
 
 @dataclass
-class Turmeric(AlienPower):
-    """Turmeric - Power of Gold. +4 always."""
-    name: str = field(default="Turmeric", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Cumin_Spice(AlienPower):
+    """Cumin_Spice - Power of Earth. +5 always."""
+    name: str = field(default="Cumin_Spice", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 4
+            return total + 5
         return total
 
 
 @dataclass
-class Cumin(AlienPower):
-    """Cumin - Power of Earth. +3 always."""
-    name: str = field(default="Cumin", init=False)
-    description: str = field(default="+3 constant.", init=False)
+class Paprika_Spice(AlienPower):
+    """Paprika_Spice - Power of Smoky. +5 always."""
+    name: str = field(default="Paprika_Spice", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 3
+            return total + 5
         return total
 
 
 @dataclass
-class Saffron(AlienPower):
-    """Saffron - Power of Precious. +6 always."""
-    name: str = field(default="Saffron", init=False)
-    description: str = field(default="+6 constant.", init=False)
+class Turmeric_Spice(AlienPower):
+    """Turmeric_Spice - Power of Gold. +6 always."""
+    name: str = field(default="Turmeric_Spice", init=False)
+    description: str = field(default="+6 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.RED, init=False)
@@ -91,130 +91,85 @@ class Saffron(AlienPower):
 
 
 @dataclass
-class Ginger(AlienPower):
-    """Ginger - Power of Zing. +4 on offense."""
-    name: str = field(default="Ginger", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
+class Nutmeg_Spice(AlienPower):
+    """Nutmeg_Spice - Power of Sweet. +5 always."""
+    name: str = field(default="Nutmeg_Spice", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Cardamom_Spice(AlienPower):
+    """Cardamom_Spice - Power of Aromatic. +5 always."""
+    name: str = field(default="Cardamom_Spice", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Clove_Spice(AlienPower):
+    """Clove_Spice - Power of Intense. +5 on offense."""
+    name: str = field(default="Clove_Spice", init=False)
+    description: str = field(default="+5 on offense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.OFFENSE:
-            return total + 4
+            return total + 5
         return total
 
 
 @dataclass
-class Nutmeg(AlienPower):
-    """Nutmeg - Power of Sweet. +3 always."""
-    name: str = field(default="Nutmeg", init=False)
-    description: str = field(default="+3 constant.", init=False)
+class Ginger_Spice(AlienPower):
+    """Ginger_Spice - Power of Zing. +5 always."""
+    name: str = field(default="Ginger_Spice", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 3
+            return total + 5
         return total
 
 
 @dataclass
-class Clove(AlienPower):
-    """Clove - Power of Pungent. +4 on offense."""
-    name: str = field(default="Clove", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
+class Saffron_Spice(AlienPower):
+    """Saffron_Spice - Power of Precious. +7 always."""
+    name: str = field(default="Saffron_Spice", init=False)
+    description: str = field(default="+7 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Cardamom(AlienPower):
-    """Cardamom - Power of Aroma. +4 always."""
-    name: str = field(default="Cardamom", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 4
+            return total + 7
         return total
 
 
 @dataclass
-class Pepper(AlienPower):
-    """Pepper - Power of Heat. +3 on offense."""
-    name: str = field(default="Pepper", init=False)
-    description: str = field(default="+3 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 3
-        return total
-
-
-@dataclass
-class Oregano(AlienPower):
-    """Oregano - Power of Herb. +3 always."""
-    name: str = field(default="Oregano", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Basil(AlienPower):
-    """Basil - Power of Fresh. +3 always."""
-    name: str = field(default="Basil", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Thyme(AlienPower):
-    """Thyme - Power of Time. +3 always."""
-    name: str = field(default="Thyme", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Rosemary(AlienPower):
-    """Rosemary - Power of Memory. +4 always."""
-    name: str = field(default="Rosemary", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Oregano_Spice(AlienPower):
+    """Oregano_Spice - Power of Herb. +4 always."""
+    name: str = field(default="Oregano_Spice", init=False)
+    description: str = field(default="+4 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
@@ -226,10 +181,40 @@ class Rosemary(AlienPower):
 
 
 @dataclass
-class Vanilla(AlienPower):
-    """Vanilla - Power of Classic. +4 always."""
-    name: str = field(default="Vanilla", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Basil_Spice(AlienPower):
+    """Basil_Spice - Power of Fresh. +5 always."""
+    name: str = field(default="Basil_Spice", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Rosemary_Spice(AlienPower):
+    """Rosemary_Spice - Power of Pine. +5 always."""
+    name: str = field(default="Rosemary_Spice", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Thyme_Spice(AlienPower):
+    """Thyme_Spice - Power of Subtle. +4 always."""
+    name: str = field(default="Thyme_Spice", init=False)
+    description: str = field(default="+4 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
@@ -241,9 +226,8 @@ class Vanilla(AlienPower):
 
 
 SPICE_TYPE_POWERS = [
-    Cinnamon, Paprika, Turmeric, Cumin, Saffron,
-    Ginger, Nutmeg, Clove, Cardamom, Pepper,
-    Oregano, Basil, Thyme, Rosemary, Vanilla,
+    Cinnamon_Spice, Pepper_Spice, Cumin_Spice, Paprika_Spice, Turmeric_Spice, Nutmeg_Spice, Cardamom_Spice,
+    Clove_Spice, Ginger_Spice, Saffron_Spice, Oregano_Spice, Basil_Spice, Rosemary_Spice, Thyme_Spice,
 ]
 
 for power_class in SPICE_TYPE_POWERS:
