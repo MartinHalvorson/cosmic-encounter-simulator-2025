@@ -344,3 +344,10 @@ from .underground_powers import *  # noqa: F401, F403
 from .island_powers import *  # noqa: F401, F403
 from .winter_powers import *  # noqa: F401, F403
 from .mythical_beast_powers import *  # noqa: F401, F403
+from .slavic_mythology_powers import *  # noqa: F401, F403
+from .korean_mythology_powers import *  # noqa: F401, F403
+from .beverage_new_powers import *  # noqa: F401, F403
+from .climate_powers import *  # noqa: F401, F403
+from .geological_powers import *  # noqa: F401, F403
+from .mythical_creature_powers import *  # noqa: F401, F403
+from .music_style_powers import *  # noqa: F401, F403

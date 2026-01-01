@@ -1,7 +1,7 @@
 """
-Climate Powers for Cosmic Encounter.
+New Beverage Powers for Cosmic Encounter.
 
-Aliens inspired by climate zones and conditions.
+More aliens inspired by drinks and beverages.
 """
 
 from dataclasses import dataclass, field
@@ -18,89 +18,9 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Tropical(AlienPower):
-    """Tropical - Power of Heat."""
-    name: str = field(default="Tropical", init=False)
-    description: str = field(default="+4 on offense.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return base_total + 4
-        return base_total
-
-
-@dataclass
-class Arctic(AlienPower):
-    """Arctic - Power of Cold."""
-    name: str = field(default="Arctic", init=False)
-    description: str = field(default="+4 on defense.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return base_total + 4
-        return base_total
-
-
-@dataclass
-class Temperate(AlienPower):
-    """Temperate - Power of Balance."""
-    name: str = field(default="Temperate", init=False)
-    description: str = field(default="+3 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
-        if player.power_active:
-            return base_total + 3
-        return base_total
-
-
-@dataclass
-class Arid(AlienPower):
-    """Arid - Power of Dryness."""
-    name: str = field(default="Arid", init=False)
-    description: str = field(default="+5 with no allies.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-
-@dataclass
-class Humid(AlienPower):
-    """Humid - Power of Moisture."""
-    name: str = field(default="Humid", init=False)
-    description: str = field(default="+2 per ally.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Mediterranean(AlienPower):
-    """Mediterranean - Power of Seasons."""
-    name: str = field(default="Mediterranean", init=False)
-    description: str = field(default="+4 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
-        if player.power_active:
-            return base_total + 4
-        return base_total
-
-
-@dataclass
-class Continental(AlienPower):
-    """Continental - Power of Extremes."""
-    name: str = field(default="Continental", init=False)
+class Espresso(AlienPower):
+    """Espresso - Power of Intensity."""
+    name: str = field(default="Espresso", init=False)
     description: str = field(default="+5 on offense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -113,39 +33,64 @@ class Continental(AlienPower):
 
 
 @dataclass
-class Monsoon(AlienPower):
-    """Monsoon - Power of Storms."""
-    name: str = field(default="Monsoon", init=False)
-    description: str = field(default="Draw 2 cards.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.START_TURN, init=False)
+class Latte(AlienPower):
+    """Latte - Power of Smoothness."""
+    name: str = field(default="Latte", init=False)
+    description: str = field(default="+3 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def on_turn_start(self, game: "Game", player: "Player") -> None:
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active:
-            cards = game.cosmic_deck.draw_multiple(2)
-            player.add_cards(cards)
+            return base_total + 3
+        return base_total
 
 
 @dataclass
-class Tundra(AlienPower):
-    """Tundra - Power of Frost."""
-    name: str = field(default="Tundra", init=False)
-    description: str = field(default="+3 on defense.", init=False)
+class Cappuccino(AlienPower):
+    """Cappuccino - Power of Foam."""
+    name: str = field(default="Cappuccino", init=False)
+    description: str = field(default="+4 on defense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active and side == Side.DEFENSE:
-            return base_total + 3
+            return base_total + 4
         return base_total
 
 
 @dataclass
-class Savanna(AlienPower):
-    """Savanna - Power of Grasslands."""
-    name: str = field(default="Savanna", init=False)
+class Mocha(AlienPower):
+    """Mocha - Power of Blend."""
+    name: str = field(default="Mocha", init=False)
+    description: str = field(default="+2 per ally.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Macchiato(AlienPower):
+    """Macchiato - Power of Staining."""
+    name: str = field(default="Macchiato", init=False)
+    description: str = field(default="+4 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 4
+        return base_total
+
+
+@dataclass
+class Americano(AlienPower):
+    """Americano - Power of Dilution."""
+    name: str = field(default="Americano", init=False)
     description: str = field(default="+3 on offense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -158,38 +103,93 @@ class Savanna(AlienPower):
 
 
 @dataclass
-class Rainforest(AlienPower):
-    """Rainforest - Power of Life."""
-    name: str = field(default="Rainforest", init=False)
-    description: str = field(default="Retrieve 2 ships.", init=False)
+class ColdBrew(AlienPower):
+    """ColdBrew - Power of Patience."""
+    name: str = field(default="ColdBrew", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 5
+        return base_total
+
+
+@dataclass
+class Frappe(AlienPower):
+    """Frappe - Power of Chill."""
+    name: str = field(default="Frappe", init=False)
+    description: str = field(default="Freeze opponent.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+
+@dataclass
+class GreenTea(AlienPower):
+    """GreenTea - Power of Calm."""
+    name: str = field(default="GreenTea", init=False)
+    description: str = field(default="+3 on defense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return base_total + 3
+        return base_total
+
+
+@dataclass
+class BlackTea(AlienPower):
+    """BlackTea - Power of Strength."""
+    name: str = field(default="BlackTea", init=False)
+    description: str = field(default="+4 on offense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return base_total + 4
+        return base_total
+
+
+@dataclass
+class HerbalTea(AlienPower):
+    """HerbalTea - Power of Healing."""
+    name: str = field(default="HerbalTea", init=False)
+    description: str = field(default="Retrieve 1 ship.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def on_regroup(self, game: "Game", player: "Player", role) -> None:
         if player.power_active and player.ships_in_warp > 0:
-            player.retrieve_ships_from_warp(min(2, player.ships_in_warp))
+            player.retrieve_ships_from_warp(1)
 
 
 @dataclass
-class Polar(AlienPower):
-    """Polar - Power of Ice."""
-    name: str = field(default="Polar", init=False)
-    description: str = field(default="+5 on defense.", init=False)
+class Chai(AlienPower):
+    """Chai - Power of Spice."""
+    name: str = field(default="Chai", init=False)
+    description: str = field(default="+3 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return base_total + 5
+        if player.power_active:
+            return base_total + 3
         return base_total
 
 
 # Register all aliens
 for alien_class in [
-    Tropical, Arctic, Temperate, Arid, Humid,
-    Mediterranean, Continental, Monsoon, Tundra, Savanna,
-    Rainforest, Polar,
+    Espresso, Latte, Cappuccino, Mocha, Macchiato,
+    Americano, ColdBrew, Frappe, GreenTea, BlackTea,
+    HerbalTea, Chai,
 ]:
     AlienRegistry.register(alien_class())
