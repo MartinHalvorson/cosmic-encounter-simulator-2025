@@ -145,7 +145,10 @@ class Game:
 
         self.colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Black", "White", "Brown", "Silver", "Gold", "Ruby", "Emerald", "Maroon", "Navy"]
 
-        self.powers = ["Cudgel", "Genius", "Ghoul", "Hacker", "Healer", "Kamikazee", "Machine", "Masochist", "Mirror", "Pacifist", "Parasite", "Pickpocket", "Shadow", "Symbiote", "Tick Tock", "Trader", "Tripler", "Vacuum", "Virus", "Warpish", "Warrior", "Zombie", "None"]
+        # Load all powers from the AlienRegistry
+        from src.cosmic.aliens.registry import AlienRegistry
+        from src.cosmic.aliens import powers as _powers  # noqa: F401 - triggers registration
+        self.powers = AlienRegistry.get_names() + ["None"]
 
         # Cudgel - As a main player, when Cudgel wins, opponents lose as many ships as Cudgel had
         # Genius - Alternative win condition of having 20 or more cards in hand
