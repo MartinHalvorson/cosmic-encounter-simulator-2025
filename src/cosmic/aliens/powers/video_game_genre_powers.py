@@ -1,5 +1,5 @@
 """
-Board Game Powers - Board game themed aliens.
+Video Game Genre Powers - Gaming genre themed aliens.
 """
 
 from dataclasses import dataclass, field
@@ -16,39 +16,39 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Chess_Board(AlienPower):
-    """Chess_Board - Strategic mastery."""
-    name: str = field(default="Chess_Board", init=False)
-    description: str = field(default="+5 constant.", init=False)
+class RPG_Game(AlienPower):
+    """RPG_Game - Role playing growth."""
+    name: str = field(default="RPG_Game", init=False)
+    description: str = field(default="+1 per turn (max +7).", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 5
+            return total + min(7, game.current_turn)
         return total
 
 
 @dataclass
-class Checkers_Board(AlienPower):
-    """Checkers_Board - Jump and capture."""
-    name: str = field(default="Checkers_Board", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
+class FPS_Game(AlienPower):
+    """FPS_Game - First person action."""
+    name: str = field(default="FPS_Game", init=False)
+    description: str = field(default="+6 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.OFFENSE:
-            return total + 4
+            return total + 6
         return total
 
 
 @dataclass
-class Monopoly_Board(AlienPower):
-    """Monopoly_Board - Property empire."""
-    name: str = field(default="Monopoly_Board", init=False)
+class Strategy_Game(AlienPower):
+    """Strategy_Game - Tactical planning."""
+    name: str = field(default="Strategy_Game", init=False)
     description: str = field(default="+2 per colony (max +8).", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -62,9 +62,24 @@ class Monopoly_Board(AlienPower):
 
 
 @dataclass
-class Scrabble_Board(AlienPower):
-    """Scrabble_Board - Word building."""
-    name: str = field(default="Scrabble_Board", init=False)
+class Platformer_Game(AlienPower):
+    """Platformer_Game - Jump and run."""
+    name: str = field(default="Platformer_Game", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Puzzle_Game(AlienPower):
+    """Puzzle_Game - Mind bending."""
+    name: str = field(default="Puzzle_Game", init=False)
     description: str = field(default="+1 per card (max +7).", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -77,61 +92,39 @@ class Scrabble_Board(AlienPower):
 
 
 @dataclass
-class Risk_Board(AlienPower):
-    """Risk_Board - World conquest."""
-    name: str = field(default="Risk_Board", init=False)
-    description: str = field(default="+6 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 6
-        return total
-
-
-@dataclass
-class Clue_Board(AlienPower):
-    """Clue_Board - Mystery solving."""
-    name: str = field(default="Clue_Board", init=False)
-    description: str = field(default="+4 when alone.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if not player.power_active:
-            return total
-        ally_count = 0
-        if side == Side.OFFENSE:
-            ally_count = len([p for p in game.offense_allies if p != player.name])
-        else:
-            ally_count = len([p for p in game.defense_allies if p != player.name])
-        if ally_count == 0:
-            return total + 4
-        return total
-
-
-@dataclass
-class Battleship_Board(AlienPower):
-    """Battleship_Board - Naval warfare."""
-    name: str = field(default="Battleship_Board", init=False)
-    description: str = field(default="+5 when defending.", init=False)
+class Racing_Game(AlienPower):
+    """Racing_Game - Speed thrill."""
+    name: str = field(default="Racing_Game", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
+        if player.power_active and side == Side.OFFENSE:
             return total + 5
         return total
 
 
 @dataclass
-class Trivial_Board(AlienPower):
-    """Trivial_Board - Knowledge pursuit."""
-    name: str = field(default="Trivial_Board", init=False)
+class Survival_Game(AlienPower):
+    """Survival_Game - Resource management."""
+    name: str = field(default="Survival_Game", init=False)
+    description: str = field(default="+5 with 3 or fewer cards.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and len(player.hand) <= 3:
+            return total + 5
+        return total
+
+
+@dataclass
+class Simulation_Game(AlienPower):
+    """Simulation_Game - Life builder."""
+    name: str = field(default="Simulation_Game", init=False)
     description: str = field(default="+5 with 5+ cards.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -144,24 +137,39 @@ class Trivial_Board(AlienPower):
 
 
 @dataclass
-class Life_Board(AlienPower):
-    """Life_Board - Life journey."""
-    name: str = field(default="Life_Board", init=False)
-    description: str = field(default="+1 per turn (max +6).", init=False)
+class Fighting_Game(AlienPower):
+    """Fighting_Game - Combo master."""
+    name: str = field(default="Fighting_Game", init=False)
+    description: str = field(default="+2 plus random +0-5.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + min(6, game.current_turn)
+            return total + 2 + random.randint(0, 5)
         return total
 
 
 @dataclass
-class Sorry_Board(AlienPower):
-    """Sorry_Board - Bump and slide."""
-    name: str = field(default="Sorry_Board", init=False)
+class Horror_Game(AlienPower):
+    """Horror_Game - Terrifying defense."""
+    name: str = field(default="Horror_Game", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Sandbox_Game(AlienPower):
+    """Sandbox_Game - Open world."""
+    name: str = field(default="Sandbox_Game", init=False)
     description: str = field(default="+4 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -174,24 +182,24 @@ class Sorry_Board(AlienPower):
 
 
 @dataclass
-class Candyland_Board(AlienPower):
-    """Candyland_Board - Sweet path."""
-    name: str = field(default="Candyland_Board", init=False)
-    description: str = field(default="+2 plus random +0-4.", init=False)
+class Roguelike_Game(AlienPower):
+    """Roguelike_Game - Random challenge."""
+    name: str = field(default="Roguelike_Game", init=False)
+    description: str = field(default="+3 plus random +0-4.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 2 + random.randint(0, 4)
+            return total + 3 + random.randint(0, 4)
         return total
 
 
 @dataclass
-class Catan_Board(AlienPower):
-    """Catan_Board - Resource trading."""
-    name: str = field(default="Catan_Board", init=False)
+class MMORPG_Game(AlienPower):
+    """MMORPG_Game - Massive multiplayer."""
+    name: str = field(default="MMORPG_Game", init=False)
     description: str = field(default="+5 with allies.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -211,13 +219,13 @@ class Catan_Board(AlienPower):
 
 
 @dataclass
-class Pandemic_Board(AlienPower):
-    """Pandemic_Board - Cooperative cure."""
-    name: str = field(default="Pandemic_Board", init=False)
-    description: str = field(default="+2 per ally (max +6).", init=False)
+class Stealth_Game(AlienPower):
+    """Stealth_Game - Silent assassin."""
+    name: str = field(default="Stealth_Game", init=False)
+    description: str = field(default="+5 when alone.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if not player.power_active:
@@ -227,48 +235,33 @@ class Pandemic_Board(AlienPower):
             ally_count = len([p for p in game.offense_allies if p != player.name])
         else:
             ally_count = len([p for p in game.defense_allies if p != player.name])
-        return total + min(6, ally_count * 2)
-
-
-@dataclass
-class Ticket_Board(AlienPower):
-    """Ticket_Board - Train routes."""
-    name: str = field(default="Ticket_Board", init=False)
-    description: str = field(default="+5 with 3+ colonies.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            colonies = player.count_foreign_colonies(game.planets)
-            if colonies >= 3:
-                return total + 5
+        if ally_count == 0:
+            return total + 5
         return total
 
 
 @dataclass
-class Backgammon_Board(AlienPower):
-    """Backgammon_Board - Ancient race."""
-    name: str = field(default="Backgammon_Board", init=False)
-    description: str = field(default="+3 on even turns.", init=False)
+class Rhythm_Game(AlienPower):
+    """Rhythm_Game - Beat master."""
+    name: str = field(default="Rhythm_Game", init=False)
+    description: str = field(default="+4 on even turns.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and game.current_turn % 2 == 0:
-            return total + 3
+            return total + 4
         return total
 
 
-BOARD_GAME_POWERS = [
-    Chess_Board, Checkers_Board, Monopoly_Board, Scrabble_Board, Risk_Board,
-    Clue_Board, Battleship_Board, Trivial_Board, Life_Board, Sorry_Board,
-    Candyland_Board, Catan_Board, Pandemic_Board, Ticket_Board, Backgammon_Board
+VIDEO_GAME_GENRE_POWERS = [
+    RPG_Game, FPS_Game, Strategy_Game, Platformer_Game, Puzzle_Game,
+    Racing_Game, Survival_Game, Simulation_Game, Fighting_Game, Horror_Game,
+    Sandbox_Game, Roguelike_Game, MMORPG_Game, Stealth_Game, Rhythm_Game
 ]
 
-for power_class in BOARD_GAME_POWERS:
+for power_class in VIDEO_GAME_GENRE_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

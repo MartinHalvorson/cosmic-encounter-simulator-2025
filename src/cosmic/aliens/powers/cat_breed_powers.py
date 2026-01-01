@@ -1,5 +1,5 @@
 """
-Kitchen Appliance Powers - Kitchen appliance themed aliens.
+Cat Breed Powers - Cat breed themed aliens.
 """
 
 from dataclasses import dataclass, field
@@ -16,99 +16,24 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Blender_Appliance(AlienPower):
-    """Blender_Appliance - Mix it up."""
-    name: str = field(default="Blender_Appliance", init=False)
-    description: str = field(default="+2 plus random +0-4.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 2 + random.randint(0, 4)
-        return total
-
-
-@dataclass
-class Toaster_Appliance(AlienPower):
-    """Toaster_Appliance - Quick heat."""
-    name: str = field(default="Toaster_Appliance", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
+class Persian_Cat(AlienPower):
+    """Persian_Cat - Luxurious beauty."""
+    name: str = field(default="Persian_Cat", init=False)
+    description: str = field(default="+5 with 5+ cards.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Microwave_Appliance(AlienPower):
-    """Microwave_Appliance - Fast cooking."""
-    name: str = field(default="Microwave_Appliance", init=False)
-    description: str = field(default="+5 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
+        if player.power_active and len(player.hand) >= 5:
             return total + 5
         return total
 
 
 @dataclass
-class Refrigerator_Appliance(AlienPower):
-    """Refrigerator_Appliance - Cool storage."""
-    name: str = field(default="Refrigerator_Appliance", init=False)
-    description: str = field(default="+1 per card (max +7).", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + min(7, len(player.hand))
-        return total
-
-
-@dataclass
-class Oven_Appliance(AlienPower):
-    """Oven_Appliance - Slow cooking power."""
-    name: str = field(default="Oven_Appliance", init=False)
-    description: str = field(default="+1 per turn (max +6).", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + min(6, game.current_turn)
-        return total
-
-
-@dataclass
-class Dishwasher_Appliance(AlienPower):
-    """Dishwasher_Appliance - Clean sweep."""
-    name: str = field(default="Dishwasher_Appliance", init=False)
-    description: str = field(default="+5 with 3 or fewer cards.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and len(player.hand) <= 3:
-            return total + 5
-        return total
-
-
-@dataclass
-class Mixer_Appliance(AlienPower):
-    """Mixer_Appliance - Combine forces."""
-    name: str = field(default="Mixer_Appliance", init=False)
+class Siamese_Cat(AlienPower):
+    """Siamese_Cat - Vocal companion."""
+    name: str = field(default="Siamese_Cat", init=False)
     description: str = field(default="+4 with allies.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -128,24 +53,24 @@ class Mixer_Appliance(AlienPower):
 
 
 @dataclass
-class CoffeeMaker_Appliance(AlienPower):
-    """CoffeeMaker_Appliance - Morning boost."""
-    name: str = field(default="CoffeeMaker_Appliance", init=False)
-    description: str = field(default="+4 on early turns (1-3).", init=False)
+class Maine_Coon_Cat(AlienPower):
+    """Maine_Coon_Cat - Gentle giant."""
+    name: str = field(default="Maine_Coon_Cat", init=False)
+    description: str = field(default="+6 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and game.current_turn <= 3:
-            return total + 4
+        if player.power_active:
+            return total + 6
         return total
 
 
 @dataclass
-class Kettle_Appliance(AlienPower):
-    """Kettle_Appliance - Boiling point."""
-    name: str = field(default="Kettle_Appliance", init=False)
+class Bengal_Cat(AlienPower):
+    """Bengal_Cat - Wild beauty."""
+    name: str = field(default="Bengal_Cat", init=False)
     description: str = field(default="+5 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -158,39 +83,31 @@ class Kettle_Appliance(AlienPower):
 
 
 @dataclass
-class Freezer_Appliance(AlienPower):
-    """Freezer_Appliance - Deep cold."""
-    name: str = field(default="Freezer_Appliance", init=False)
-    description: str = field(default="+5 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Grill_Appliance(AlienPower):
-    """Grill_Appliance - Searing heat."""
-    name: str = field(default="Grill_Appliance", init=False)
-    description: str = field(default="+6 when attacking.", init=False)
+class Sphynx_Cat(AlienPower):
+    """Sphynx_Cat - Hairless wonder."""
+    name: str = field(default="Sphynx_Cat", init=False)
+    description: str = field(default="+4 when alone.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 6
+        if not player.power_active:
+            return total
+        ally_count = 0
+        if side == Side.OFFENSE:
+            ally_count = len([p for p in game.offense_allies if p != player.name])
+        else:
+            ally_count = len([p for p in game.defense_allies if p != player.name])
+        if ally_count == 0:
+            return total + 4
         return total
 
 
 @dataclass
-class Juicer_Appliance(AlienPower):
-    """Juicer_Appliance - Extract power."""
-    name: str = field(default="Juicer_Appliance", init=False)
+class Ragdoll_Cat(AlienPower):
+    """Ragdoll_Cat - Floppy friend."""
+    name: str = field(default="Ragdoll_Cat", init=False)
     description: str = field(default="+3 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -203,9 +120,87 @@ class Juicer_Appliance(AlienPower):
 
 
 @dataclass
-class Processor_Appliance(AlienPower):
-    """Processor_Appliance - Chop and slice."""
-    name: str = field(default="Processor_Appliance", init=False)
+class British_Shorthair_Cat(AlienPower):
+    """British_Shorthair_Cat - Round and calm."""
+    name: str = field(default="British_Shorthair_Cat", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Abyssinian_Cat(AlienPower):
+    """Abyssinian_Cat - Active explorer."""
+    name: str = field(default="Abyssinian_Cat", init=False)
+    description: str = field(default="+2 per colony (max +6).", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            colonies = player.count_foreign_colonies(game.planets)
+            return total + min(6, colonies * 2)
+        return total
+
+
+@dataclass
+class Scottish_Fold_Cat(AlienPower):
+    """Scottish_Fold_Cat - Folded ears."""
+    name: str = field(default="Scottish_Fold_Cat", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Russian_Blue_Cat(AlienPower):
+    """Russian_Blue_Cat - Shimmering silver."""
+    name: str = field(default="Russian_Blue_Cat", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Norwegian_Forest_Cat(AlienPower):
+    """Norwegian_Forest_Cat - Hardy explorer."""
+    name: str = field(default="Norwegian_Forest_Cat", init=False)
+    description: str = field(default="+5 with 3+ colonies.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            colonies = player.count_foreign_colonies(game.planets)
+            if colonies >= 3:
+                return total + 5
+        return total
+
+
+@dataclass
+class Burmese_Cat(AlienPower):
+    """Burmese_Cat - Social charm."""
+    name: str = field(default="Burmese_Cat", init=False)
     description: str = field(default="+2 per ally (max +6).", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -223,46 +218,58 @@ class Processor_Appliance(AlienPower):
 
 
 @dataclass
-class AirFryer_Appliance(AlienPower):
-    """AirFryer_Appliance - Crispy finish."""
-    name: str = field(default="AirFryer_Appliance", init=False)
-    description: str = field(default="+5 with 5+ cards.", init=False)
+class Bombay_Cat(AlienPower):
+    """Bombay_Cat - Miniature panther."""
+    name: str = field(default="Bombay_Cat", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and len(player.hand) >= 5:
-            return total + 5
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
         return total
 
 
 @dataclass
-class SlowCooker_Appliance(AlienPower):
-    """SlowCooker_Appliance - Patient cooking."""
-    name: str = field(default="SlowCooker_Appliance", init=False)
-    description: str = field(default="+5 with 3+ colonies.", init=False)
+class Munchkin_Cat(AlienPower):
+    """Munchkin_Cat - Short legs speed."""
+    name: str = field(default="Munchkin_Cat", init=False)
+    description: str = field(default="+2 plus random +0-4.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            colonies = player.count_foreign_colonies(game.planets)
-            if colonies >= 3:
-                return total + 5
+            return total + 2 + random.randint(0, 4)
         return total
 
 
-KITCHEN_APPLIANCE_POWERS = [
-    Blender_Appliance, Toaster_Appliance, Microwave_Appliance,
-    Refrigerator_Appliance, Oven_Appliance, Dishwasher_Appliance,
-    Mixer_Appliance, CoffeeMaker_Appliance, Kettle_Appliance,
-    Freezer_Appliance, Grill_Appliance, Juicer_Appliance,
-    Processor_Appliance, AirFryer_Appliance, SlowCooker_Appliance
+@dataclass
+class Savannah_Cat(AlienPower):
+    """Savannah_Cat - Wild cross."""
+    name: str = field(default="Savannah_Cat", init=False)
+    description: str = field(default="+6 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 6
+        return total
+
+
+CAT_BREED_POWERS = [
+    Persian_Cat, Siamese_Cat, Maine_Coon_Cat, Bengal_Cat, Sphynx_Cat,
+    Ragdoll_Cat, British_Shorthair_Cat, Abyssinian_Cat, Scottish_Fold_Cat,
+    Russian_Blue_Cat, Norwegian_Forest_Cat, Burmese_Cat, Bombay_Cat,
+    Munchkin_Cat, Savannah_Cat
 ]
 
-for power_class in KITCHEN_APPLIANCE_POWERS:
+for power_class in CAT_BREED_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

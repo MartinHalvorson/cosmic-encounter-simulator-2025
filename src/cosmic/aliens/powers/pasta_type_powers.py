@@ -1,5 +1,5 @@
 """
-Kitchen Appliance Powers - Kitchen appliance themed aliens.
+Pasta Type Powers - Pasta themed aliens.
 """
 
 from dataclasses import dataclass, field
@@ -16,24 +16,24 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Blender_Appliance(AlienPower):
-    """Blender_Appliance - Mix it up."""
-    name: str = field(default="Blender_Appliance", init=False)
-    description: str = field(default="+2 plus random +0-4.", init=False)
+class Spaghetti_Pasta(AlienPower):
+    """Spaghetti_Pasta - Classic strands."""
+    name: str = field(default="Spaghetti_Pasta", init=False)
+    description: str = field(default="+4 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 2 + random.randint(0, 4)
+            return total + 4
         return total
 
 
 @dataclass
-class Toaster_Appliance(AlienPower):
-    """Toaster_Appliance - Quick heat."""
-    name: str = field(default="Toaster_Appliance", init=False)
+class Penne_Pasta(AlienPower):
+    """Penne_Pasta - Tube shaped."""
+    name: str = field(default="Penne_Pasta", init=False)
     description: str = field(default="+4 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -46,39 +46,9 @@ class Toaster_Appliance(AlienPower):
 
 
 @dataclass
-class Microwave_Appliance(AlienPower):
-    """Microwave_Appliance - Fast cooking."""
-    name: str = field(default="Microwave_Appliance", init=False)
-    description: str = field(default="+5 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Refrigerator_Appliance(AlienPower):
-    """Refrigerator_Appliance - Cool storage."""
-    name: str = field(default="Refrigerator_Appliance", init=False)
-    description: str = field(default="+1 per card (max +7).", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + min(7, len(player.hand))
-        return total
-
-
-@dataclass
-class Oven_Appliance(AlienPower):
-    """Oven_Appliance - Slow cooking power."""
-    name: str = field(default="Oven_Appliance", init=False)
+class Lasagna_Pasta(AlienPower):
+    """Lasagna_Pasta - Layered sheets."""
+    name: str = field(default="Lasagna_Pasta", init=False)
     description: str = field(default="+1 per turn (max +6).", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -91,24 +61,54 @@ class Oven_Appliance(AlienPower):
 
 
 @dataclass
-class Dishwasher_Appliance(AlienPower):
-    """Dishwasher_Appliance - Clean sweep."""
-    name: str = field(default="Dishwasher_Appliance", init=False)
-    description: str = field(default="+5 with 3 or fewer cards.", init=False)
+class Ravioli_Pasta(AlienPower):
+    """Ravioli_Pasta - Stuffed squares."""
+    name: str = field(default="Ravioli_Pasta", init=False)
+    description: str = field(default="+5 with 5+ cards.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and len(player.hand) <= 3:
+        if player.power_active and len(player.hand) >= 5:
             return total + 5
         return total
 
 
 @dataclass
-class Mixer_Appliance(AlienPower):
-    """Mixer_Appliance - Combine forces."""
-    name: str = field(default="Mixer_Appliance", init=False)
+class Linguine_Pasta(AlienPower):
+    """Linguine_Pasta - Flat ribbons."""
+    name: str = field(default="Linguine_Pasta", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 3
+        return total
+
+
+@dataclass
+class Fettuccine_Pasta(AlienPower):
+    """Fettuccine_Pasta - Wide noodles."""
+    name: str = field(default="Fettuccine_Pasta", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Tortellini_Pasta(AlienPower):
+    """Tortellini_Pasta - Ring shaped."""
+    name: str = field(default="Tortellini_Pasta", init=False)
     description: str = field(default="+4 with allies.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -128,84 +128,9 @@ class Mixer_Appliance(AlienPower):
 
 
 @dataclass
-class CoffeeMaker_Appliance(AlienPower):
-    """CoffeeMaker_Appliance - Morning boost."""
-    name: str = field(default="CoffeeMaker_Appliance", init=False)
-    description: str = field(default="+4 on early turns (1-3).", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and game.current_turn <= 3:
-            return total + 4
-        return total
-
-
-@dataclass
-class Kettle_Appliance(AlienPower):
-    """Kettle_Appliance - Boiling point."""
-    name: str = field(default="Kettle_Appliance", init=False)
-    description: str = field(default="+5 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Freezer_Appliance(AlienPower):
-    """Freezer_Appliance - Deep cold."""
-    name: str = field(default="Freezer_Appliance", init=False)
-    description: str = field(default="+5 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Grill_Appliance(AlienPower):
-    """Grill_Appliance - Searing heat."""
-    name: str = field(default="Grill_Appliance", init=False)
-    description: str = field(default="+6 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 6
-        return total
-
-
-@dataclass
-class Juicer_Appliance(AlienPower):
-    """Juicer_Appliance - Extract power."""
-    name: str = field(default="Juicer_Appliance", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Processor_Appliance(AlienPower):
-    """Processor_Appliance - Chop and slice."""
-    name: str = field(default="Processor_Appliance", init=False)
+class Macaroni_Pasta(AlienPower):
+    """Macaroni_Pasta - Curved tubes."""
+    name: str = field(default="Macaroni_Pasta", init=False)
     description: str = field(default="+2 per ally (max +6).", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -223,24 +148,24 @@ class Processor_Appliance(AlienPower):
 
 
 @dataclass
-class AirFryer_Appliance(AlienPower):
-    """AirFryer_Appliance - Crispy finish."""
-    name: str = field(default="AirFryer_Appliance", init=False)
-    description: str = field(default="+5 with 5+ cards.", init=False)
+class Rigatoni_Pasta(AlienPower):
+    """Rigatoni_Pasta - Ridged tubes."""
+    name: str = field(default="Rigatoni_Pasta", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and len(player.hand) >= 5:
+        if player.power_active and side == Side.OFFENSE:
             return total + 5
         return total
 
 
 @dataclass
-class SlowCooker_Appliance(AlienPower):
-    """SlowCooker_Appliance - Patient cooking."""
-    name: str = field(default="SlowCooker_Appliance", init=False)
+class Gnocchi_Pasta(AlienPower):
+    """Gnocchi_Pasta - Potato dumplings."""
+    name: str = field(default="Gnocchi_Pasta", init=False)
     description: str = field(default="+5 with 3+ colonies.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -254,15 +179,96 @@ class SlowCooker_Appliance(AlienPower):
         return total
 
 
-KITCHEN_APPLIANCE_POWERS = [
-    Blender_Appliance, Toaster_Appliance, Microwave_Appliance,
-    Refrigerator_Appliance, Oven_Appliance, Dishwasher_Appliance,
-    Mixer_Appliance, CoffeeMaker_Appliance, Kettle_Appliance,
-    Freezer_Appliance, Grill_Appliance, Juicer_Appliance,
-    Processor_Appliance, AirFryer_Appliance, SlowCooker_Appliance
+@dataclass
+class Orzo_Pasta(AlienPower):
+    """Orzo_Pasta - Rice shaped."""
+    name: str = field(default="Orzo_Pasta", init=False)
+    description: str = field(default="+2 plus random +0-3.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 2 + random.randint(0, 3)
+        return total
+
+
+@dataclass
+class Farfalle_Pasta(AlienPower):
+    """Farfalle_Pasta - Bowtie shaped."""
+    name: str = field(default="Farfalle_Pasta", init=False)
+    description: str = field(default="+4 when alone.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if not player.power_active:
+            return total
+        ally_count = 0
+        if side == Side.OFFENSE:
+            ally_count = len([p for p in game.offense_allies if p != player.name])
+        else:
+            ally_count = len([p for p in game.defense_allies if p != player.name])
+        if ally_count == 0:
+            return total + 4
+        return total
+
+
+@dataclass
+class Fusilli_Pasta(AlienPower):
+    """Fusilli_Pasta - Spiral shaped."""
+    name: str = field(default="Fusilli_Pasta", init=False)
+    description: str = field(default="+1 per card (max +6).", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + min(6, len(player.hand))
+        return total
+
+
+@dataclass
+class Orecchiette_Pasta(AlienPower):
+    """Orecchiette_Pasta - Little ears."""
+    name: str = field(default="Orecchiette_Pasta", init=False)
+    description: str = field(default="+3 on even turns.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and game.current_turn % 2 == 0:
+            return total + 3
+        return total
+
+
+@dataclass
+class Cannelloni_Pasta(AlienPower):
+    """Cannelloni_Pasta - Large tubes."""
+    name: str = field(default="Cannelloni_Pasta", init=False)
+    description: str = field(default="+6 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 6
+        return total
+
+
+PASTA_TYPE_POWERS = [
+    Spaghetti_Pasta, Penne_Pasta, Lasagna_Pasta, Ravioli_Pasta, Linguine_Pasta,
+    Fettuccine_Pasta, Tortellini_Pasta, Macaroni_Pasta, Rigatoni_Pasta,
+    Gnocchi_Pasta, Orzo_Pasta, Farfalle_Pasta, Fusilli_Pasta, Orecchiette_Pasta,
+    Cannelloni_Pasta
 ]
 
-for power_class in KITCHEN_APPLIANCE_POWERS:
+for power_class in PASTA_TYPE_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

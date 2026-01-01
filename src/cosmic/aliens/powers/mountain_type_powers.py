@@ -1,5 +1,5 @@
 """
-Board Game Powers - Board game themed aliens.
+Mountain Type Powers - Mountain themed aliens.
 """
 
 from dataclasses import dataclass, field
@@ -16,39 +16,39 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Chess_Board(AlienPower):
-    """Chess_Board - Strategic mastery."""
-    name: str = field(default="Chess_Board", init=False)
-    description: str = field(default="+5 constant.", init=False)
+class Everest_Mountain(AlienPower):
+    """Everest_Mountain - Highest peak."""
+    name: str = field(default="Everest_Mountain", init=False)
+    description: str = field(default="+6 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 6
+        return total
+
+
+@dataclass
+class Alps_Mountain(AlienPower):
+    """Alps_Mountain - European grandeur."""
+    name: str = field(default="Alps_Mountain", init=False)
+    description: str = field(default="+5 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
+        if player.power_active and side == Side.DEFENSE:
             return total + 5
         return total
 
 
 @dataclass
-class Checkers_Board(AlienPower):
-    """Checkers_Board - Jump and capture."""
-    name: str = field(default="Checkers_Board", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Monopoly_Board(AlienPower):
-    """Monopoly_Board - Property empire."""
-    name: str = field(default="Monopoly_Board", init=False)
+class Andes_Mountain(AlienPower):
+    """Andes_Mountain - Longest range."""
+    name: str = field(default="Andes_Mountain", init=False)
     description: str = field(default="+2 per colony (max +8).", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -62,40 +62,40 @@ class Monopoly_Board(AlienPower):
 
 
 @dataclass
-class Scrabble_Board(AlienPower):
-    """Scrabble_Board - Word building."""
-    name: str = field(default="Scrabble_Board", init=False)
-    description: str = field(default="+1 per card (max +7).", init=False)
+class Rockies_Mountain(AlienPower):
+    """Rockies_Mountain - Rocky backbone."""
+    name: str = field(default="Rockies_Mountain", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + min(7, len(player.hand))
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
         return total
 
 
 @dataclass
-class Risk_Board(AlienPower):
-    """Risk_Board - World conquest."""
-    name: str = field(default="Risk_Board", init=False)
-    description: str = field(default="+6 when attacking.", init=False)
+class Himalayas_Mountain(AlienPower):
+    """Himalayas_Mountain - Roof of world."""
+    name: str = field(default="Himalayas_Mountain", init=False)
+    description: str = field(default="+5 with 5+ cards.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 6
+        if player.power_active and len(player.hand) >= 5:
+            return total + 5
         return total
 
 
 @dataclass
-class Clue_Board(AlienPower):
-    """Clue_Board - Mystery solving."""
-    name: str = field(default="Clue_Board", init=False)
-    description: str = field(default="+4 when alone.", init=False)
+class Kilimanjaro_Mountain(AlienPower):
+    """Kilimanjaro_Mountain - African peak."""
+    name: str = field(default="Kilimanjaro_Mountain", init=False)
+    description: str = field(default="+5 when alone.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -109,59 +109,14 @@ class Clue_Board(AlienPower):
         else:
             ally_count = len([p for p in game.defense_allies if p != player.name])
         if ally_count == 0:
-            return total + 4
-        return total
-
-
-@dataclass
-class Battleship_Board(AlienPower):
-    """Battleship_Board - Naval warfare."""
-    name: str = field(default="Battleship_Board", init=False)
-    description: str = field(default="+5 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
             return total + 5
         return total
 
 
 @dataclass
-class Trivial_Board(AlienPower):
-    """Trivial_Board - Knowledge pursuit."""
-    name: str = field(default="Trivial_Board", init=False)
-    description: str = field(default="+5 with 5+ cards.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and len(player.hand) >= 5:
-            return total + 5
-        return total
-
-
-@dataclass
-class Life_Board(AlienPower):
-    """Life_Board - Life journey."""
-    name: str = field(default="Life_Board", init=False)
-    description: str = field(default="+1 per turn (max +6).", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + min(6, game.current_turn)
-        return total
-
-
-@dataclass
-class Sorry_Board(AlienPower):
-    """Sorry_Board - Bump and slide."""
-    name: str = field(default="Sorry_Board", init=False)
+class Fuji_Mountain(AlienPower):
+    """Fuji_Mountain - Sacred peak."""
+    name: str = field(default="Fuji_Mountain", init=False)
     description: str = field(default="+4 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -174,66 +129,24 @@ class Sorry_Board(AlienPower):
 
 
 @dataclass
-class Candyland_Board(AlienPower):
-    """Candyland_Board - Sweet path."""
-    name: str = field(default="Candyland_Board", init=False)
-    description: str = field(default="+2 plus random +0-4.", init=False)
+class Denali_Mountain(AlienPower):
+    """Denali_Mountain - Alaska giant."""
+    name: str = field(default="Denali_Mountain", init=False)
+    description: str = field(default="+1 per turn (max +6).", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 2 + random.randint(0, 4)
+            return total + min(6, game.current_turn)
         return total
 
 
 @dataclass
-class Catan_Board(AlienPower):
-    """Catan_Board - Resource trading."""
-    name: str = field(default="Catan_Board", init=False)
-    description: str = field(default="+5 with allies.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if not player.power_active:
-            return total
-        ally_count = 0
-        if side == Side.OFFENSE:
-            ally_count = len([p for p in game.offense_allies if p != player.name])
-        else:
-            ally_count = len([p for p in game.defense_allies if p != player.name])
-        if ally_count > 0:
-            return total + 5
-        return total
-
-
-@dataclass
-class Pandemic_Board(AlienPower):
-    """Pandemic_Board - Cooperative cure."""
-    name: str = field(default="Pandemic_Board", init=False)
-    description: str = field(default="+2 per ally (max +6).", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if not player.power_active:
-            return total
-        ally_count = 0
-        if side == Side.OFFENSE:
-            ally_count = len([p for p in game.offense_allies if p != player.name])
-        else:
-            ally_count = len([p for p in game.defense_allies if p != player.name])
-        return total + min(6, ally_count * 2)
-
-
-@dataclass
-class Ticket_Board(AlienPower):
-    """Ticket_Board - Train routes."""
-    name: str = field(default="Ticket_Board", init=False)
+class Matterhorn_Mountain(AlienPower):
+    """Matterhorn_Mountain - Iconic peak."""
+    name: str = field(default="Matterhorn_Mountain", init=False)
     description: str = field(default="+5 with 3+ colonies.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -248,27 +161,110 @@ class Ticket_Board(AlienPower):
 
 
 @dataclass
-class Backgammon_Board(AlienPower):
-    """Backgammon_Board - Ancient race."""
-    name: str = field(default="Backgammon_Board", init=False)
-    description: str = field(default="+3 on even turns.", init=False)
+class K2_Mountain(AlienPower):
+    """K2_Mountain - Savage peak."""
+    name: str = field(default="K2_Mountain", init=False)
+    description: str = field(default="+2 plus random +0-4.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 2 + random.randint(0, 4)
+        return total
+
+
+@dataclass
+class Rainier_Mountain(AlienPower):
+    """Rainier_Mountain - Pacific northwest."""
+    name: str = field(default="Rainier_Mountain", init=False)
+    description: str = field(default="+4 with allies.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and game.current_turn % 2 == 0:
+        if not player.power_active:
+            return total
+        ally_count = 0
+        if side == Side.OFFENSE:
+            ally_count = len([p for p in game.offense_allies if p != player.name])
+        else:
+            ally_count = len([p for p in game.defense_allies if p != player.name])
+        if ally_count > 0:
+            return total + 4
+        return total
+
+
+@dataclass
+class Olympus_Mountain(AlienPower):
+    """Olympus_Mountain - Home of gods."""
+    name: str = field(default="Olympus_Mountain", init=False)
+    description: str = field(default="+1 per card (max +6).", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + min(6, len(player.hand))
+        return total
+
+
+@dataclass
+class Whitney_Mountain(AlienPower):
+    """Whitney_Mountain - Highest in lower 48."""
+    name: str = field(default="Whitney_Mountain", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
             return total + 3
         return total
 
 
-BOARD_GAME_POWERS = [
-    Chess_Board, Checkers_Board, Monopoly_Board, Scrabble_Board, Risk_Board,
-    Clue_Board, Battleship_Board, Trivial_Board, Life_Board, Sorry_Board,
-    Candyland_Board, Catan_Board, Pandemic_Board, Ticket_Board, Backgammon_Board
+@dataclass
+class McKinley_Mountain(AlienPower):
+    """McKinley_Mountain - Great one."""
+    name: str = field(default="McKinley_Mountain", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Vesuvius_Mountain(AlienPower):
+    """Vesuvius_Mountain - Volcanic power."""
+    name: str = field(default="Vesuvius_Mountain", init=False)
+    description: str = field(default="+6 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 6
+        return total
+
+
+MOUNTAIN_TYPE_POWERS = [
+    Everest_Mountain, Alps_Mountain, Andes_Mountain, Rockies_Mountain,
+    Himalayas_Mountain, Kilimanjaro_Mountain, Fuji_Mountain, Denali_Mountain,
+    Matterhorn_Mountain, K2_Mountain, Rainier_Mountain, Olympus_Mountain,
+    Whitney_Mountain, McKinley_Mountain, Vesuvius_Mountain
 ]
 
-for power_class in BOARD_GAME_POWERS:
+for power_class in MOUNTAIN_TYPE_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

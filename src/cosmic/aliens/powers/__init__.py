@@ -1,5 +1,5 @@
 """
-Official Fantasy Flight Games Cosmic Encounter alien powers.
+Individual alien power implementations.
 """
 
 from .aboriginal_powers import *  # noqa: F401, F403
@@ -73,6 +73,8 @@ from .card_suit_powers import *  # noqa: F401, F403
 from .career_powers import *  # noqa: F401, F403
 from .caribbean_powers import *  # noqa: F401, F403
 from .carnival_powers import *  # noqa: F401, F403
+from .carnival_ride_powers import *  # noqa: F401, F403
+from .cat_breed_powers import *  # noqa: F401, F403
 from .celebration_powers import *  # noqa: F401, F403
 from .celestial_object_powers import *  # noqa: F401, F403
 from .celestial_powers import *  # noqa: F401, F403
@@ -81,6 +83,7 @@ from .celtic_powers import *  # noqa: F401, F403
 from .champion_powers import *  # noqa: F401, F403
 from .chaos_powers import *  # noqa: F401, F403
 from .cheese_powers import *  # noqa: F401, F403
+from .cheese_type_powers import *  # noqa: F401, F403
 from .chemistry_powers import *  # noqa: F401, F403
 from .chess_powers import *  # noqa: F401, F403
 from .chinese_mythology_powers import *  # noqa: F401, F403
@@ -90,6 +93,7 @@ from .classic_powers import *  # noqa: F401, F403
 from .climate_powers import *  # noqa: F401, F403
 from .clothing_item_powers import *  # noqa: F401, F403
 from .clothing_powers import *  # noqa: F401, F403
+from .cloud_type_powers import *  # noqa: F401, F403
 from .coding_powers import *  # noqa: F401, F403
 from .coffee_drink_powers import *  # noqa: F401, F403
 from .coffee_powers import *  # noqa: F401, F403
@@ -132,6 +136,7 @@ from .desert_creature_powers import *  # noqa: F401, F403
 from .desert_powers import *  # noqa: F401, F403
 from .desert_terrain_powers import *  # noqa: F401, F403
 from .dessert_powers import *  # noqa: F401, F403
+from .dessert_treat_powers import *  # noqa: F401, F403
 from .dessert_type_powers import *  # noqa: F401, F403
 from .destruction_powers import *  # noqa: F401, F403
 from .detective_powers import *  # noqa: F401, F403
@@ -140,6 +145,7 @@ from .dimensional_powers import *  # noqa: F401, F403
 from .dining_powers import *  # noqa: F401, F403
 from .dinosaur_powers import *  # noqa: F401, F403
 from .direction_powers import *  # noqa: F401, F403
+from .dog_breed_powers import *  # noqa: F401, F403
 from .dominion_powers import *  # noqa: F401, F403
 from .dream_powers import *  # noqa: F401, F403
 from .duration_powers import *  # noqa: F401, F403
@@ -150,8 +156,8 @@ from .egyptian_powers import *  # noqa: F401, F403
 from .element_extended_powers import *  # noqa: F401, F403
 from .element_pack_powers import *  # noqa: F401, F403
 from .elemental_powers import *  # noqa: F401, F403
-from .emotion_alt_powers import *  # noqa: F401, F403
 from .emotion_alt2_powers import *  # noqa: F401, F403
+from .emotion_alt_powers import *  # noqa: F401, F403
 from .emotion_core_powers import *  # noqa: F401, F403
 from .emotion_extended_powers import *  # noqa: F401, F403
 from .emotion_final_powers import *  # noqa: F401, F403
@@ -164,11 +170,13 @@ from .expansion_powers import *  # noqa: F401, F403
 from .explorer_powers import *  # noqa: F401, F403
 from .fabric_material_powers import *  # noqa: F401, F403
 from .fabric_powers import *  # noqa: F401, F403
+from .fabric_type_powers import *  # noqa: F401, F403
 from .fairy_tale_powers import *  # noqa: F401, F403
 from .fantasy_creature_powers import *  # noqa: F401, F403
 from .fantasy_element_powers import *  # noqa: F401, F403
 from .fantasy_powers import *  # noqa: F401, F403
 from .fantasy_race_powers import *  # noqa: F401, F403
+from .fast_food_powers import *  # noqa: F401, F403
 from .fauna_powers import *  # noqa: F401, F403
 from .festival_powers import *  # noqa: F401, F403
 from .fictional_character_powers import *  # noqa: F401, F403
@@ -176,12 +184,13 @@ from .film_powers import *  # noqa: F401, F403
 from .final_5_powers import *  # noqa: F401, F403
 from .final_6000_powers import *  # noqa: F401, F403
 from .final_powers import *  # noqa: F401, F403
+from .final_push2_powers import *  # noqa: F401, F403
+from .final_push3_powers import *  # noqa: F401, F403
 from .final_push_5000_powers import *  # noqa: F401, F403
 from .final_push_5k_powers import *  # noqa: F401, F403
 from .final_push_powers import *  # noqa: F401, F403
-from .final_push2_powers import *  # noqa: F401, F403
-from .final_push3_powers import *  # noqa: F401, F403
 from .finnish_mythology_powers import *  # noqa: F401, F403
+from .fish_type_powers import *  # noqa: F401, F403
 from .fishing_powers import *  # noqa: F401, F403
 from .flower_powers import *  # noqa: F401, F403
 from .food_category_powers import *  # noqa: F401, F403
@@ -216,6 +225,8 @@ from .greek_letter_powers import *  # noqa: F401, F403
 from .greek_powers import *  # noqa: F401, F403
 from .growth_powers import *  # noqa: F401, F403
 from .habitat_powers import *  # noqa: F401, F403
+from .hair_style_powers import *  # noqa: F401, F403
+from .hat_type_powers import *  # noqa: F401, F403
 from .hindu_mythology_powers import *  # noqa: F401, F403
 from .hindu_powers import *  # noqa: F401, F403
 from .holiday_powers import *  # noqa: F401, F403
@@ -243,7 +254,9 @@ from .kitchen_appliance_powers import *  # noqa: F401, F403
 from .kitchen_extended_powers import *  # noqa: F401, F403
 from .kitchen_meal_powers import *  # noqa: F401, F403
 from .kitchen_powers import *  # noqa: F401, F403
+from .kitchen_tool_powers import *  # noqa: F401, F403
 from .knight_powers import *  # noqa: F401, F403
+from .knot_type_powers import *  # noqa: F401, F403
 from .korean_mythology_powers import *  # noqa: F401, F403
 from .laboratory_powers import *  # noqa: F401, F403
 from .landform_powers import *  # noqa: F401, F403
@@ -307,6 +320,7 @@ from .mongolian_powers import *  # noqa: F401, F403
 from .more_powers import *  # noqa: F401, F403
 from .motion_powers import *  # noqa: F401, F403
 from .mountain_powers import *  # noqa: F401, F403
+from .mountain_type_powers import *  # noqa: F401, F403
 from .movement_powers import *  # noqa: F401, F403
 from .movie_genre_powers import *  # noqa: F401, F403
 from .movie_powers import *  # noqa: F401, F403
@@ -363,6 +377,8 @@ from .office_powers import *  # noqa: F401, F403
 from .office_role_powers import *  # noqa: F401, F403
 from .office_supply_powers import *  # noqa: F401, F403
 from .pasta_powers import *  # noqa: F401, F403
+from .pasta_shape_powers import *  # noqa: F401, F403
+from .pasta_type_powers import *  # noqa: F401, F403
 from .pattern_powers import *  # noqa: F401, F403
 from .periodic_element_powers import *  # noqa: F401, F403
 from .persian_mythology_powers import *  # noqa: F401, F403
@@ -380,6 +396,7 @@ from .playing_piece_powers import *  # noqa: F401, F403
 from .polynesian_mythology_powers import *  # noqa: F401, F403
 from .polynesian_powers import *  # noqa: F401, F403
 from .position_powers import *  # noqa: F401, F403
+from .pottery_type_powers import *  # noqa: F401, F403
 from .predator_powers import *  # noqa: F401, F403
 from .prehistoric_powers import *  # noqa: F401, F403
 from .profession_powers import *  # noqa: F401, F403
@@ -416,6 +433,7 @@ from .season_powers import *  # noqa: F401, F403
 from .sensation_powers import *  # noqa: F401, F403
 from .sense_powers import *  # noqa: F401, F403
 from .shape_powers import *  # noqa: F401, F403
+from .shoe_type_powers import *  # noqa: F401, F403
 from .sin_powers import *  # noqa: F401, F403
 from .size_powers import *  # noqa: F401, F403
 from .sky_powers import *  # noqa: F401, F403
@@ -456,6 +474,7 @@ from .stealth_powers import *  # noqa: F401, F403
 from .steampunk_powers import *  # noqa: F401, F403
 from .strategic_powers import *  # noqa: F401, F403
 from .strategy_powers import *  # noqa: F401, F403
+from .string_instrument_powers import *  # noqa: F401, F403
 from .superhero_powers import *  # noqa: F401, F403
 from .survival_powers import *  # noqa: F401, F403
 from .taste_powers import *  # noqa: F401, F403
@@ -491,11 +510,13 @@ from .trap_powers import *  # noqa: F401, F403
 from .treasure_powers import *  # noqa: F401, F403
 from .tree_powers import *  # noqa: F401, F403
 from .tree_species_powers import *  # noqa: F401, F403
+from .tree_type_powers import *  # noqa: F401, F403
 from .ultimate_powers import *  # noqa: F401, F403
 from .underground_powers import *  # noqa: F401, F403
 from .vehicle_new_powers import *  # noqa: F401, F403
 from .vehicle_powers import *  # noqa: F401, F403
 from .vehicle_type_powers import *  # noqa: F401, F403
+from .video_game_genre_powers import *  # noqa: F401, F403
 from .video_game_powers import *  # noqa: F401, F403
 from .vietnamese_powers import *  # noqa: F401, F403
 from .viking_powers import *  # noqa: F401, F403
@@ -522,6 +543,7 @@ from .welsh_powers import *  # noqa: F401, F403
 from .western_powers import *  # noqa: F401, F403
 from .wilderness_powers import *  # noqa: F401, F403
 from .wind_instrument_powers import *  # noqa: F401, F403
+from .wine_type_powers import *  # noqa: F401, F403
 from .winter_powers import *  # noqa: F401, F403
 from .writing_tool_powers import *  # noqa: F401, F403
 from .zodiac_powers import *  # noqa: F401, F403

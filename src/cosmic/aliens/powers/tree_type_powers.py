@@ -1,170 +1,28 @@
 """
-Kitchen Appliance Powers - Kitchen appliance themed aliens.
+Tree Type Powers for Cosmic Encounter.
 """
 
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
-import random
 
 from ..base import AlienPower, PowerCategory
-from ..registry import AlienRegistry
 from ...types import PowerTiming, PowerType, Side
 
 if TYPE_CHECKING:
     from ...game import Game
     from ...player import Player
 
-
-@dataclass
-class Blender_Appliance(AlienPower):
-    """Blender_Appliance - Mix it up."""
-    name: str = field(default="Blender_Appliance", init=False)
-    description: str = field(default="+2 plus random +0-4.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 2 + random.randint(0, 4)
-        return total
+from ..registry import AlienRegistry
 
 
 @dataclass
-class Toaster_Appliance(AlienPower):
-    """Toaster_Appliance - Quick heat."""
-    name: str = field(default="Toaster_Appliance", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Microwave_Appliance(AlienPower):
-    """Microwave_Appliance - Fast cooking."""
-    name: str = field(default="Microwave_Appliance", init=False)
-    description: str = field(default="+5 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Refrigerator_Appliance(AlienPower):
-    """Refrigerator_Appliance - Cool storage."""
-    name: str = field(default="Refrigerator_Appliance", init=False)
-    description: str = field(default="+1 per card (max +7).", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + min(7, len(player.hand))
-        return total
-
-
-@dataclass
-class Oven_Appliance(AlienPower):
-    """Oven_Appliance - Slow cooking power."""
-    name: str = field(default="Oven_Appliance", init=False)
-    description: str = field(default="+1 per turn (max +6).", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + min(6, game.current_turn)
-        return total
-
-
-@dataclass
-class Dishwasher_Appliance(AlienPower):
-    """Dishwasher_Appliance - Clean sweep."""
-    name: str = field(default="Dishwasher_Appliance", init=False)
-    description: str = field(default="+5 with 3 or fewer cards.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and len(player.hand) <= 3:
-            return total + 5
-        return total
-
-
-@dataclass
-class Mixer_Appliance(AlienPower):
-    """Mixer_Appliance - Combine forces."""
-    name: str = field(default="Mixer_Appliance", init=False)
-    description: str = field(default="+4 with allies.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if not player.power_active:
-            return total
-        ally_count = 0
-        if side == Side.OFFENSE:
-            ally_count = len([p for p in game.offense_allies if p != player.name])
-        else:
-            ally_count = len([p for p in game.defense_allies if p != player.name])
-        if ally_count > 0:
-            return total + 4
-        return total
-
-
-@dataclass
-class CoffeeMaker_Appliance(AlienPower):
-    """CoffeeMaker_Appliance - Morning boost."""
-    name: str = field(default="CoffeeMaker_Appliance", init=False)
-    description: str = field(default="+4 on early turns (1-3).", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and game.current_turn <= 3:
-            return total + 4
-        return total
-
-
-@dataclass
-class Kettle_Appliance(AlienPower):
-    """Kettle_Appliance - Boiling point."""
-    name: str = field(default="Kettle_Appliance", init=False)
-    description: str = field(default="+5 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Freezer_Appliance(AlienPower):
-    """Freezer_Appliance - Deep cold."""
-    name: str = field(default="Freezer_Appliance", init=False)
+class Oak_Tree(AlienPower):
+    """Oak_Tree - Power of Mighty. +5 on defense."""
+    name: str = field(default="Oak_Tree", init=False)
     description: str = field(default="+5 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.DEFENSE:
@@ -173,24 +31,24 @@ class Freezer_Appliance(AlienPower):
 
 
 @dataclass
-class Grill_Appliance(AlienPower):
-    """Grill_Appliance - Searing heat."""
-    name: str = field(default="Grill_Appliance", init=False)
-    description: str = field(default="+6 when attacking.", init=False)
+class Pine_Tree(AlienPower):
+    """Pine_Tree - Power of Evergreen. +4 always."""
+    name: str = field(default="Pine_Tree", init=False)
+    description: str = field(default="+4 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 6
+        if player.power_active:
+            return total + 4
         return total
 
 
 @dataclass
-class Juicer_Appliance(AlienPower):
-    """Juicer_Appliance - Extract power."""
-    name: str = field(default="Juicer_Appliance", init=False)
+class Maple_Tree(AlienPower):
+    """Maple_Tree - Power of Sweet. +3 always."""
+    name: str = field(default="Maple_Tree", init=False)
     description: str = field(default="+3 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -203,66 +61,208 @@ class Juicer_Appliance(AlienPower):
 
 
 @dataclass
-class Processor_Appliance(AlienPower):
-    """Processor_Appliance - Chop and slice."""
-    name: str = field(default="Processor_Appliance", init=False)
-    description: str = field(default="+2 per ally (max +6).", init=False)
+class Birch_Tree(AlienPower):
+    """Birch_Tree - Power of White. +3 always."""
+    name: str = field(default="Birch_Tree", init=False)
+    description: str = field(default="+3 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if not player.power_active:
-            return total
-        ally_count = 0
-        if side == Side.OFFENSE:
-            ally_count = len([p for p in game.offense_allies if p != player.name])
-        else:
-            ally_count = len([p for p in game.defense_allies if p != player.name])
-        return total + min(6, ally_count * 2)
-
-
-@dataclass
-class AirFryer_Appliance(AlienPower):
-    """AirFryer_Appliance - Crispy finish."""
-    name: str = field(default="AirFryer_Appliance", init=False)
-    description: str = field(default="+5 with 5+ cards.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and len(player.hand) >= 5:
-            return total + 5
-        return total
-
-
-@dataclass
-class SlowCooker_Appliance(AlienPower):
-    """SlowCooker_Appliance - Patient cooking."""
-    name: str = field(default="SlowCooker_Appliance", init=False)
-    description: str = field(default="+5 with 3+ colonies.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            colonies = player.count_foreign_colonies(game.planets)
-            if colonies >= 3:
-                return total + 5
+            return total + 3
         return total
 
 
-KITCHEN_APPLIANCE_POWERS = [
-    Blender_Appliance, Toaster_Appliance, Microwave_Appliance,
-    Refrigerator_Appliance, Oven_Appliance, Dishwasher_Appliance,
-    Mixer_Appliance, CoffeeMaker_Appliance, Kettle_Appliance,
-    Freezer_Appliance, Grill_Appliance, Juicer_Appliance,
-    Processor_Appliance, AirFryer_Appliance, SlowCooker_Appliance
+@dataclass
+class Willow_Tree(AlienPower):
+    """Willow_Tree - Power of Weep. +3 on defense."""
+    name: str = field(default="Willow_Tree", init=False)
+    description: str = field(default="+3 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 3
+        return total
+
+
+@dataclass
+class Cedar_Tree(AlienPower):
+    """Cedar_Tree - Power of Aroma. +4 always."""
+    name: str = field(default="Cedar_Tree", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Redwood_Tree(AlienPower):
+    """Redwood_Tree - Power of Giant. +6 on defense."""
+    name: str = field(default="Redwood_Tree", init=False)
+    description: str = field(default="+6 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 6
+        return total
+
+
+@dataclass
+class Ash_Tree(AlienPower):
+    """Ash_Tree - Power of Resilience. +4 on defense."""
+    name: str = field(default="Ash_Tree", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Elm_Tree(AlienPower):
+    """Elm_Tree - Power of Shade. +3 always."""
+    name: str = field(default="Elm_Tree", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 3
+        return total
+
+
+@dataclass
+class Bamboo_Tree(AlienPower):
+    """Bamboo_Tree - Power of Fast. +4 on offense."""
+    name: str = field(default="Bamboo_Tree", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Cypress_Tree(AlienPower):
+    """Cypress_Tree - Power of Swamp. +3 on defense."""
+    name: str = field(default="Cypress_Tree", init=False)
+    description: str = field(default="+3 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 3
+        return total
+
+
+@dataclass
+class Spruce_Tree(AlienPower):
+    """Spruce_Tree - Power of Cone. +3 always."""
+    name: str = field(default="Spruce_Tree", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 3
+        return total
+
+
+@dataclass
+class Fir_Tree(AlienPower):
+    """Fir_Tree - Power of Needle. +3 always."""
+    name: str = field(default="Fir_Tree", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 3
+        return total
+
+
+@dataclass
+class Cherry_Tree(AlienPower):
+    """Cherry_Tree - Power of Blossom. +4 always."""
+    name: str = field(default="Cherry_Tree", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Palm_Tree(AlienPower):
+    """Palm_Tree - Power of Tropic. +3 always."""
+    name: str = field(default="Palm_Tree", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 3
+        return total
+
+
+@dataclass
+class Magnolia_Tree(AlienPower):
+    """Magnolia_Tree - Power of Bloom. +4 always."""
+    name: str = field(default="Magnolia_Tree", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+TREE_TYPE_POWERS = [
+    Oak_Tree, Pine_Tree, Maple_Tree, Birch_Tree, Willow_Tree,
+    Cedar_Tree, Redwood_Tree, Ash_Tree, Elm_Tree, Bamboo_Tree,
+    Cypress_Tree, Spruce_Tree, Fir_Tree, Cherry_Tree, Palm_Tree,
+    Magnolia_Tree,
 ]
 
-for power_class in KITCHEN_APPLIANCE_POWERS:
+for power_class in TREE_TYPE_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:
