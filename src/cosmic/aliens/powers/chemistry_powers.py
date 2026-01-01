@@ -1,14 +1,14 @@
 """
-Chemistry Powers - Chemistry and element themed aliens.
+Chemistry and elements themed alien powers.
 """
 
 from dataclasses import dataclass, field
-from typing import Optional, List, Dict, Any, TYPE_CHECKING
+from typing import TYPE_CHECKING
 import random
 
 from ..base import AlienPower, PowerCategory
 from ..registry import AlienRegistry
-from ...types import PowerTiming, PowerType, PlayerRole, Side
+from ...types import PowerTiming, PowerType, Side
 
 if TYPE_CHECKING:
     from ...game import Game
@@ -16,230 +16,348 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Hydrogen_Chem(AlienPower):
-    """Hydrogen_Chem - Lightest Element. +3 always."""
-    name: str = field(default="Hydrogen_Chem", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+class Hydrogen(AlienPower):
+    name: str = field(default="Hydrogen", init=False)
+    description: str = field(default="+1 per ship in encounter.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active:
-            return total + 3
-        return total
+            ships = len(game.offense_ships) + len(game.defense_ships) if hasattr(game, 'offense_ships') else 0
+            return base_total + ships
+        return base_total
 
 
 @dataclass
-class Helium_Chem(AlienPower):
-    """Helium_Chem - Noble Gas. +3 always."""
-    name: str = field(default="Helium_Chem", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+class Helium(AlienPower):
+    name: str = field(default="Helium", init=False)
+    description: str = field(default="+2 light and stable.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active:
-            return total + 3
-        return total
+            return base_total + 2
+        return base_total
 
 
 @dataclass
-class Oxygen_Chem(AlienPower):
-    """Oxygen_Chem - Life Element. +4 always."""
-    name: str = field(default="Oxygen_Chem", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+class Carbon(AlienPower):
+    name: str = field(default="Carbon", init=False)
+    description: str = field(default="+4 basis of life.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active:
-            return total + 4
-        return total
+            return base_total + 4
+        return base_total
 
 
 @dataclass
-class Nitrogen_Chem(AlienPower):
-    """Nitrogen_Chem - Atmosphere Element. +3 on defense."""
-    name: str = field(default="Nitrogen_Chem", init=False)
-    description: str = field(default="+3 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+class Nitrogen(AlienPower):
+    name: str = field(default="Nitrogen", init=False)
+    description: str = field(default="+3 stable atmosphere.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 3
-        return total
-
-
-@dataclass
-class Carbon_Chem(AlienPower):
-    """Carbon_Chem - Life Basis. +4 always."""
-    name: str = field(default="Carbon_Chem", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active:
-            return total + 4
-        return total
+            return base_total + 3
+        return base_total
 
 
 @dataclass
-class Iron_Chem(AlienPower):
-    """Iron_Chem - Strong Metal. +5 on defense."""
-    name: str = field(default="Iron_Chem", init=False)
-    description: str = field(default="+5 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Copper_Chem(AlienPower):
-    """Copper_Chem - Conductor Metal. +4 on offense."""
-    name: str = field(default="Copper_Chem", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Sulfur_Chem(AlienPower):
-    """Sulfur_Chem - Reactive Element. +4 on offense."""
-    name: str = field(default="Sulfur_Chem", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Chlorine_Chem(AlienPower):
-    """Chlorine_Chem - Halogen. -3 to opponent."""
-    name: str = field(default="Chlorine_Chem", init=False)
-    description: str = field(default="Opponent gets -3.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Fluorine_Chem(AlienPower):
-    """Fluorine_Chem - Most Reactive. +5 on offense."""
-    name: str = field(default="Fluorine_Chem", init=False)
+class Oxygen(AlienPower):
+    name: str = field(default="Oxygen", init=False)
     description: str = field(default="+5 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
+            return base_total + 5
+        return base_total
 
 
 @dataclass
-class Neon_Chem(AlienPower):
-    """Neon_Chem - Bright Gas. +4 always."""
+class Fluorine(AlienPower):
+    name: str = field(default="Fluorine", init=False)
+    description: str = field(default="+6 but volatile.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 6
+        return base_total
+
+
+@dataclass
+class Neon(AlienPower):
     name: str = field(default="Neon_Chem", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    description: str = field(default="+3 noble gas.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active:
-            return total + 4
-        return total
+            return base_total + 3
+        return base_total
 
 
 @dataclass
-class Argon_Chem(AlienPower):
-    """Argon_Chem - Inert Gas. +4 on defense."""
-    name: str = field(default="Argon_Chem", init=False)
-    description: str = field(default="+4 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+class Sodium(AlienPower):
+    name: str = field(default="Sodium", init=False)
+    description: str = field(default="+4 reactive metal.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 4
+        return base_total
+
+
+@dataclass
+class Magnesium(AlienPower):
+    name: str = field(default="Magnesium", init=False)
+    description: str = field(default="+3 bright burning.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 3
+        return base_total
+
+
+@dataclass
+class Aluminum(AlienPower):
+    name: str = field(default="Aluminum", init=False)
+    description: str = field(default="+3 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active and side == Side.DEFENSE:
-            return total + 4
-        return total
+            return base_total + 3
+        return base_total
 
 
 @dataclass
-class Sodium_Chem(AlienPower):
-    """Sodium_Chem - Reactive Metal. +4 on offense."""
-    name: str = field(default="Sodium_Chem", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+class Silicon(AlienPower):
+    name: str = field(default="Silicon", init=False)
+    description: str = field(default="+4 semiconductor.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Potassium_Chem(AlienPower):
-    """Potassium_Chem - Essential Metal. +4 always."""
-    name: str = field(default="Potassium_Chem", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active:
-            return total + 4
-        return total
+            return base_total + 4
+        return base_total
 
 
 @dataclass
-class Calcium_Chem(AlienPower):
-    """Calcium_Chem - Bone Element. +5 on defense."""
-    name: str = field(default="Calcium_Chem", init=False)
-    description: str = field(default="+5 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+class Phosphorus(AlienPower):
+    name: str = field(default="Phosphorus", init=False)
+    description: str = field(default="+5 life essential.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 5
+        return base_total
+
+
+@dataclass
+class Sulfur(AlienPower):
+    name: str = field(default="Sulfur", init=False)
+    description: str = field(default="+4 on even turns.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active and game.current_turn % 2 == 0:
+            return base_total + 4
+        return base_total
+
+
+@dataclass
+class Chlorine(AlienPower):
+    name: str = field(default="Chlorine", init=False)
+    description: str = field(default="+5 toxic gas.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 5
+        return base_total
 
 
-# Register all powers
+@dataclass
+class Argon(AlienPower):
+    name: str = field(default="Argon", init=False)
+    description: str = field(default="+3 inert and stable.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 3
+        return base_total
+
+
+@dataclass
+class Potassium(AlienPower):
+    name: str = field(default="Potassium", init=False)
+    description: str = field(default="+4 essential mineral.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 4
+        return base_total
+
+
+@dataclass
+class Calcium(AlienPower):
+    name: str = field(default="Calcium", init=False)
+    description: str = field(default="+3 strong bones.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 3
+        return base_total
+
+
+@dataclass
+class Iron(AlienPower):
+    name: str = field(default="Iron_Chem", init=False)
+    description: str = field(default="+5 strong and durable.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 5
+        return base_total
+
+
+@dataclass
+class Copper(AlienPower):
+    name: str = field(default="Copper", init=False)
+    description: str = field(default="+4 conductive.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 4
+        return base_total
+
+
+@dataclass
+class Zinc(AlienPower):
+    name: str = field(default="Zinc", init=False)
+    description: str = field(default="+3 protective coating.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 3
+        return base_total
+
+
+@dataclass
+class Gold(AlienPower):
+    name: str = field(default="Gold_Chem", init=False)
+    description: str = field(default="+6 precious metal.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 6
+        return base_total
+
+
+@dataclass
+class Silver(AlienPower):
+    name: str = field(default="Silver_Chem", init=False)
+    description: str = field(default="+5 lustrous.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 5
+        return base_total
+
+
+@dataclass
+class Platinum(AlienPower):
+    name: str = field(default="Platinum", init=False)
+    description: str = field(default="+7 rare and valuable.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 7
+        return base_total
+
+
+@dataclass
+class Uranium(AlienPower):
+    name: str = field(default="Uranium", init=False)
+    description: str = field(default="Random +3-8.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + random.randint(3, 8)
+        return base_total
+
+
 CHEMISTRY_POWERS = [
-    Hydrogen_Chem, Helium_Chem, Oxygen_Chem, Nitrogen_Chem, Carbon_Chem,
-    Iron_Chem, Copper_Chem, Sulfur_Chem, Chlorine_Chem, Fluorine_Chem,
-    Neon_Chem, Argon_Chem, Sodium_Chem, Potassium_Chem, Calcium_Chem,
+    Hydrogen, Helium, Carbon, Nitrogen, Oxygen,
+    Fluorine, Neon, Sodium, Magnesium, Aluminum,
+    Silicon, Phosphorus, Sulfur, Chlorine, Argon,
+    Potassium, Calcium, Iron, Copper, Zinc,
+    Gold, Silver, Platinum, Uranium,
 ]
 
 for power_class in CHEMISTRY_POWERS:
