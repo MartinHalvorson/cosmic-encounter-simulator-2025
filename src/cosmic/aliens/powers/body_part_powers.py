@@ -1,72 +1,145 @@
 """
-Body Part Powers for Cosmic Encounter.
-
-Aliens inspired by body parts and anatomy.
+Body Part Powers - Anatomy and body parts themed aliens.
 """
 
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from typing import Optional, List, Dict, Any, TYPE_CHECKING
+import random
 
 from ..base import AlienPower, PowerCategory
-from ...types import PowerTiming, PowerType, Side
+from ..registry import AlienRegistry
+from ...types import PowerTiming, PowerType, PlayerRole, Side
 
 if TYPE_CHECKING:
     from ...game import Game
     from ...player import Player
 
-from ..registry import AlienRegistry
-
 
 @dataclass
 class Heart_Body(AlienPower):
-    """Heart_Body - Power of Life."""
+    """Heart_Body - Vital Organ. +5 always."""
     name: str = field(default="Heart_Body", init=False)
-    description: str = field(default="Retrieve 2 ships.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
+    description: str = field(default="+5 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
-    def on_regroup(self, game: "Game", player: "Player", role) -> None:
-        if player.power_active and player.ships_in_warp > 0:
-            player.retrieve_ships_from_warp(min(2, player.ships_in_warp))
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
 
 
 @dataclass
 class Brain_Body(AlienPower):
-    """Brain_Body - Power of Thought."""
+    """Brain_Body - Central Control. +5 always."""
     name: str = field(default="Brain_Body", init=False)
-    description: str = field(default="Draw extra card.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.START_TURN, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def on_turn_start(self, game: "Game", player: "Player") -> None:
-        if player.power_active:
-            card = game.cosmic_deck.draw()
-            if card:
-                player.add_card(card)
-
-
-@dataclass
-class Fist(AlienPower):
-    """Fist - Power of Strike."""
-    name: str = field(default="Fist", init=False)
-    description: str = field(default="+5 on offense.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    description: str = field(default="+5 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Lung_Body(AlienPower):
+    """Lung_Body - Breathing Organ. +4 always."""
+    name: str = field(default="Lung_Body", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Liver_Body(AlienPower):
+    """Liver_Body - Filter Organ. +4 on defense."""
+    name: str = field(default="Liver_Body", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Kidney_Body(AlienPower):
+    """Kidney_Body - Filter Pair. +3 on defense."""
+    name: str = field(default="Kidney_Body", init=False)
+    description: str = field(default="+3 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 3
+        return total
+
+
+@dataclass
+class Muscle_Body(AlienPower):
+    """Muscle_Body - Power Tissue. +5 on offense."""
+    name: str = field(default="Muscle_Body", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.OFFENSE:
-            return base_total + 5
-        return base_total
+            return total + 5
+        return total
+
+
+@dataclass
+class Bone_Body(AlienPower):
+    """Bone_Body - Structural Support. +5 on defense."""
+    name: str = field(default="Bone_Body", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Skin_Body(AlienPower):
+    """Skin_Body - Outer Layer. +4 on defense."""
+    name: str = field(default="Skin_Body", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
 
 
 @dataclass
 class Eye_Body(AlienPower):
-    """Eye_Body - Power of Sight."""
+    """Eye_Body - Vision Organ. See opponent card."""
     name: str = field(default="Eye_Body", init=False)
-    description: str = field(default="See opponent cards.", init=False)
+    description: str = field(default="View opponent's card.", init=False)
     timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
     power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
@@ -74,117 +147,103 @@ class Eye_Body(AlienPower):
 
 @dataclass
 class Ear_Body(AlienPower):
-    """Ear_Body - Power of Hearing."""
+    """Ear_Body - Hearing Organ. +3 always."""
     name: str = field(default="Ear_Body", init=False)
-    description: str = field(default="Detect traps.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.LAUNCH, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Spine(AlienPower):
-    """Spine - Power of Support."""
-    name: str = field(default="Spine", init=False)
-    description: str = field(default="+4 on defense.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return base_total + 4
-        return base_total
-
-
-@dataclass
-class Muscle(AlienPower):
-    """Muscle - Power of Force."""
-    name: str = field(default="Muscle", init=False)
-    description: str = field(default="+4 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return base_total + 4
-        return base_total
+            return total + 3
+        return total
 
 
 @dataclass
-class Bone_Body(AlienPower):
-    """Bone_Body - Power of Structure."""
-    name: str = field(default="Bone_Body", init=False)
-    description: str = field(default="+3 on defense.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+class Hand_Body(AlienPower):
+    """Hand_Body - Grasping. +4 on offense."""
+    name: str = field(default="Hand_Body", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Foot_Body(AlienPower):
+    """Foot_Body - Walking. +4 on offense."""
+    name: str = field(default="Foot_Body", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Spine_Body(AlienPower):
+    """Spine_Body - Central Column. +5 on defense."""
+    name: str = field(default="Spine_Body", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.DEFENSE:
-            return base_total + 3
-        return base_total
+            return total + 5
+        return total
 
 
 @dataclass
-class Nerve(AlienPower):
-    """Nerve - Power of Signal."""
-    name: str = field(default="Nerve", init=False)
-    description: str = field(default="+3 always.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+class Stomach_Body(AlienPower):
+    """Stomach_Body - Digestion. +3 always."""
+    name: str = field(default="Stomach_Body", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return base_total + 3
-        return base_total
+            return total + 3
+        return total
 
 
 @dataclass
-class Skin(AlienPower):
-    """Skin - Power of Protection."""
-    name: str = field(default="Skin", init=False)
-    description: str = field(default="+3 on defense.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+class Blood_Body(AlienPower):
+    """Blood_Body - Life Fluid. +4 always."""
+    name: str = field(default="Blood_Body", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return base_total + 3
-        return base_total
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
 
 
-@dataclass
-class Lung(AlienPower):
-    """Lung - Power of Breath."""
-    name: str = field(default="Lung", init=False)
-    description: str = field(default="+2 per turn.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+# Register all powers
+BODY_PART_POWERS = [
+    Heart_Body, Brain_Body, Lung_Body, Liver_Body, Kidney_Body, Muscle_Body,
+    Bone_Body, Skin_Body, Eye_Body, Ear_Body, Hand_Body, Foot_Body,
+    Spine_Body, Stomach_Body, Blood_Body,
+]
 
-
-@dataclass
-class Liver(AlienPower):
-    """Liver - Power of Regeneration."""
-    name: str = field(default="Liver", init=False)
-    description: str = field(default="Retrieve 1 ship.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def on_regroup(self, game: "Game", player: "Player", role) -> None:
-        if player.power_active and player.ships_in_warp > 0:
-            player.retrieve_ships_from_warp(1)
-
-
-# Register all aliens
-for alien_class in [
-    Heart_Body, Brain_Body, Fist, Eye_Body, Ear_Body,
-    Spine, Muscle, Bone_Body, Nerve, Skin,
-    Lung, Liver,
-]:
-    AlienRegistry.register(alien_class())
+for power_class in BODY_PART_POWERS:
+    try:
+        AlienRegistry.register(power_class())
+    except ValueError:
+        pass

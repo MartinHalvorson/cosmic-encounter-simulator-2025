@@ -1,14 +1,14 @@
 """
-Clothing Powers - Clothing and apparel themed aliens.
+Garden Pest Powers - Garden pest themed aliens.
 """
 
 from dataclasses import dataclass, field
-from typing import Optional, List, Dict, Any, TYPE_CHECKING
+from typing import TYPE_CHECKING
 import random
 
 from ..base import AlienPower, PowerCategory
 from ..registry import AlienRegistry
-from ...types import PowerTiming, PowerType, PlayerRole, Side
+from ...types import PowerTiming, PowerType, Side
 
 if TYPE_CHECKING:
     from ...game import Game
@@ -16,9 +16,24 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Shirt_Cloth(AlienPower):
-    """Shirt_Cloth - Upper Body. +3 always."""
-    name: str = field(default="Shirt_Cloth", init=False)
+class Aphid(AlienPower):
+    """Aphid - Sap Sucker. +2 always."""
+    name: str = field(default="Aphid", init=False)
+    description: str = field(default="+2 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 2
+        return total
+
+
+@dataclass
+class Caterpillar(AlienPower):
+    """Caterpillar - Leaf Eater. +3 always."""
+    name: str = field(default="Caterpillar", init=False)
     description: str = field(default="+3 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -31,24 +46,9 @@ class Shirt_Cloth(AlienPower):
 
 
 @dataclass
-class Pants_Cloth(AlienPower):
-    """Pants_Cloth - Lower Body. +3 always."""
-    name: str = field(default="Pants_Cloth", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Jacket_Cloth(AlienPower):
-    """Jacket_Cloth - Outer Layer. +4 on defense."""
-    name: str = field(default="Jacket_Cloth", init=False)
+class Snail_Pest(AlienPower):
+    """Snail_Pest - Slow Mover. +4 on defense."""
+    name: str = field(default="Snail_Pest", init=False)
     description: str = field(default="+4 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -61,69 +61,34 @@ class Jacket_Cloth(AlienPower):
 
 
 @dataclass
-class Coat_Cloth(AlienPower):
-    """Coat_Cloth - Heavy Outer. +5 on defense."""
-    name: str = field(default="Coat_Cloth", init=False)
-    description: str = field(default="+5 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Hat_Cloth(AlienPower):
-    """Hat_Cloth - Head Cover. +3 always."""
-    name: str = field(default="Hat_Cloth", init=False)
-    description: str = field(default="+3 constant.", init=False)
+class Slug(AlienPower):
+    """Slug - Shell-less. +3 on defense."""
+    name: str = field(default="Slug", init=False)
+    description: str = field(default="+3 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
+        if player.power_active and side == Side.DEFENSE:
             return total + 3
         return total
 
 
 @dataclass
-class Shoe_Cloth(AlienPower):
-    """Shoe_Cloth - Footwear. +4 on offense."""
-    name: str = field(default="Shoe_Cloth", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
+class Whitefly(AlienPower):
+    """Whitefly - Tiny Pest. +2 per ally."""
+    name: str = field(default="Whitefly", init=False)
+    description: str = field(default="+2 per ally.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
 
 @dataclass
-class Boot_Cloth(AlienPower):
-    """Boot_Cloth - Heavy Footwear. +5 on offense."""
-    name: str = field(default="Boot_Cloth", init=False)
-    description: str = field(default="+5 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Glove_Cloth(AlienPower):
-    """Glove_Cloth - Hand Cover. +3 on offense."""
-    name: str = field(default="Glove_Cloth", init=False)
+class Thrips(AlienPower):
+    """Thrips - Tiny Eater. +3 on offense."""
+    name: str = field(default="Thrips", init=False)
     description: str = field(default="+3 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -136,69 +101,9 @@ class Glove_Cloth(AlienPower):
 
 
 @dataclass
-class Scarf_Cloth(AlienPower):
-    """Scarf_Cloth - Neck Wrap. +3 on defense."""
-    name: str = field(default="Scarf_Cloth", init=False)
-    description: str = field(default="+3 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 3
-        return total
-
-
-@dataclass
-class Vest_Cloth(AlienPower):
-    """Vest_Cloth - Sleeveless. +3 on defense."""
-    name: str = field(default="Vest_Cloth", init=False)
-    description: str = field(default="+3 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 3
-        return total
-
-
-@dataclass
-class Dress_Cloth(AlienPower):
-    """Dress_Cloth - One Piece. +4 always."""
-    name: str = field(default="Dress_Cloth", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Suit_Cloth(AlienPower):
-    """Suit_Cloth - Formal Wear. +5 always."""
-    name: str = field(default="Suit_Cloth", init=False)
-    description: str = field(default="+5 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Sweater_Cloth(AlienPower):
-    """Sweater_Cloth - Knitted Top. +4 on defense."""
-    name: str = field(default="Sweater_Cloth", init=False)
+class Mealybug(AlienPower):
+    """Mealybug - Waxy Pest. +4 on defense."""
+    name: str = field(default="Mealybug", init=False)
     description: str = field(default="+4 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -211,9 +116,69 @@ class Sweater_Cloth(AlienPower):
 
 
 @dataclass
-class Tie_Cloth(AlienPower):
-    """Tie_Cloth - Neck Accessory. +3 always."""
-    name: str = field(default="Tie_Cloth", init=False)
+class Japanese_Beetle(AlienPower):
+    """Japanese_Beetle - Shiny Pest. +4 always."""
+    name: str = field(default="Japanese_Beetle", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Cutworm(AlienPower):
+    """Cutworm - Root Cutter. +4 on offense."""
+    name: str = field(default="Cutworm", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Earwig(AlienPower):
+    """Earwig - Pincher. Random +2 to +5."""
+    name: str = field(default="Earwig", init=False)
+    description: str = field(default="Random +2 to +5.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + random.randint(2, 5)
+        return total
+
+
+@dataclass
+class Tomato_Hornworm(AlienPower):
+    """Tomato_Hornworm - Big Eater. +5 on offense."""
+    name: str = field(default="Tomato_Hornworm", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Squash_Bug(AlienPower):
+    """Squash_Bug - Vine Pest. +3 always."""
+    name: str = field(default="Squash_Bug", init=False)
     description: str = field(default="+3 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -226,28 +191,48 @@ class Tie_Cloth(AlienPower):
 
 
 @dataclass
-class Belt_Cloth(AlienPower):
-    """Belt_Cloth - Waist Band. +3 always."""
-    name: str = field(default="Belt_Cloth", init=False)
-    description: str = field(default="+3 constant.", init=False)
+class Cabbage_Worm(AlienPower):
+    """Cabbage_Worm - Brassica Pest. Draw extra card."""
+    name: str = field(default="Cabbage_Worm", init=False)
+    description: str = field(default="Draw extra card.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Leafhopper(AlienPower):
+    """Leafhopper - Jumping Pest. Ships escape warp."""
+    name: str = field(default="Leafhopper", init=False)
+    description: str = field(default="Ships go home not warp.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.SHIPS_TO_WARP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Flea_Beetle(AlienPower):
+    """Flea_Beetle - Jumping Eater. +3 on first encounter."""
+    name: str = field(default="Flea_Beetle", init=False)
+    description: str = field(default="+3 on first encounter.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
+        if player.power_active and game.encounter_number == 1:
             return total + 3
         return total
 
 
 # Register all powers
-CLOTHING_POWERS = [
-    Shirt_Cloth, Pants_Cloth, Jacket_Cloth, Coat_Cloth, Hat_Cloth, Shoe_Cloth,
-    Boot_Cloth, Glove_Cloth, Scarf_Cloth, Vest_Cloth, Dress_Cloth, Suit_Cloth,
-    Sweater_Cloth, Tie_Cloth, Belt_Cloth,
+GARDEN_PEST_POWERS = [
+    Aphid, Caterpillar, Snail_Pest, Slug, Whitefly, Thrips, Mealybug,
+    Japanese_Beetle, Cutworm, Earwig, Tomato_Hornworm, Squash_Bug,
+    Cabbage_Worm, Leafhopper, Flea_Beetle,
 ]
 
-for power_class in CLOTHING_POWERS:
+for power_class in GARDEN_PEST_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

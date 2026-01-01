@@ -460,3 +460,9 @@ from .dance_style_powers import *  # noqa: F401, F403
 from .milestone_5k_batch2_powers import *  # noqa: F401, F403
 from .milestone_5k_batch3_powers import *  # noqa: F401, F403
 from .milestone_5k_batch4_powers import *  # noqa: F401, F403
+from .tree_powers import *  # noqa: F401, F403
+from .flower_powers import *  # noqa: F401, F403
+from .coffee_powers import *  # noqa: F401, F403
+from .fruit_powers import *  # noqa: F401, F403
+from .cheese_powers import *  # noqa: F401, F403
+from .pasta_powers import *  # noqa: F401, F403
