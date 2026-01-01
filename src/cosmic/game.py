@@ -1666,6 +1666,150 @@ class Game:
                 context["flare_bonus"] = context.get("flare_bonus", 0) + card.value
             self.cosmic_deck.discard(card)
 
+        # Sorcerer Wild: Swap encounter cards with opponent after reveal
+        elif alien_name == "Sorcerer":
+            if self.offense_card and self.defense_card:
+                self.offense_card, self.defense_card = self.defense_card, self.offense_card
+                self._log("Sorcerer flare swaps encounter cards!")
+
+        # Silencer Wild: Cancel one alien power this encounter
+        elif alien_name == "Silencer":
+            # Zap the opponent's power
+            opponent = self.defense if player == self.offense else self.offense
+            if opponent and opponent not in self.zapped_powers:
+                self.zapped_powers.append(opponent)
+                self._log(f"Silencer flare cancels {opponent.name}'s power!")
+
+        # Void Wild: Remove one opposing ship from the game (to the void)
+        elif alien_name == "Void":
+            opponent = self.defense if player == self.offense else self.offense
+            if opponent:
+                if player == self.offense and self.defense_ships.get(opponent.name, 0) > 0:
+                    self.defense_ships[opponent.name] -= 1
+                    opponent.ships_in_void = getattr(opponent, 'ships_in_void', 0) + 1
+                    self._log(f"Void flare removes one of {opponent.name}'s ships to the void!")
+                elif player == self.defense and self.offense_ships.get(opponent.name, 0) > 0:
+                    self.offense_ships[opponent.name] -= 1
+                    opponent.ships_in_void = getattr(opponent, 'ships_in_void', 0) + 1
+                    self._log(f"Void flare removes one of {opponent.name}'s ships to the void!")
+
+        # Saboteur Wild: Reduce one attack card by 10
+        elif alien_name == "Saboteur":
+            opponent = self.defense if player == self.offense else self.offense
+            if opponent:
+                if player == self.offense and isinstance(self.defense_card, AttackCard):
+                    reduction = min(10, self.defense_card.value)
+                    context["saboteur_reduction_defense"] = reduction
+                elif player == self.defense and isinstance(self.offense_card, AttackCard):
+                    reduction = min(10, self.offense_card.value)
+                    context["saboteur_reduction_offense"] = reduction
+
+        # Kamikaze Wild: Sacrifice ships for +4 each
+        elif alien_name == "Kamikaze":
+            if player == self.offense:
+                ships_available = self.offense_ships.get(player.name, 0) - 1
+                sacrifice = min(ships_available, 2)
+                if sacrifice > 0:
+                    self.offense_ships[player.name] -= sacrifice
+                    player.ships_in_warp += sacrifice
+                    context["flare_bonus"] = context.get("flare_bonus", 0) + (sacrifice * 4)
+            elif player == self.defense:
+                ships_available = self.defense_ships.get(player.name, 0) - 1
+                sacrifice = min(ships_available, 2)
+                if sacrifice > 0:
+                    self.defense_ships[player.name] -= sacrifice
+                    player.ships_in_warp += sacrifice
+                    context["flare_bonus"] = context.get("flare_bonus", 0) + (sacrifice * 4)
+
+        # Dictator Wild: Choose which card one opponent must play
+        elif alien_name == "Dictator":
+            # In simulation, force opponent to use their weakest card
+            context["dictator_force_weak"] = True
+
+        # Anti-Matter Wild: Reverse the outcome - lower total wins
+        elif alien_name == "Anti-Matter":
+            context["anti_matter_reverse"] = True
+            self._log("Anti-Matter flare reverses combat - lower total wins!")
+
+        # Leviathan Wild: Add +10 but lose 2 ships to warp
+        elif alien_name == "Leviathan":
+            context["flare_bonus"] = context.get("flare_bonus", 0) + 10
+            if player == self.offense and self.offense_ships.get(player.name, 0) > 2:
+                loss = min(2, self.offense_ships[player.name] - 1)
+                self.offense_ships[player.name] -= loss
+                player.ships_in_warp += loss
+            elif player == self.defense and self.defense_ships.get(player.name, 0) > 2:
+                loss = min(2, self.defense_ships[player.name] - 1)
+                self.defense_ships[player.name] -= loss
+                player.ships_in_warp += loss
+
+        # Warhawk Wild: Add +5 when attacking
+        elif alien_name == "Warhawk":
+            if player == self.offense:
+                context["flare_bonus"] = context.get("flare_bonus", 0) + 5
+
+        # Trickster Wild: Play a negotiate as a 20 attack
+        elif alien_name == "Trickster":
+            if player == self.offense and isinstance(self.offense_card, NegotiateCard):
+                context["trickster_negotiate_value"] = 20
+            elif player == self.defense and isinstance(self.defense_card, NegotiateCard):
+                context["trickster_negotiate_value"] = 20
+
+        # Amoeba Wild: Add 2 ships to the encounter from warp
+        elif alien_name == "Amoeba":
+            ships = min(2, player.ships_in_warp)
+            if ships > 0:
+                player.retrieve_ships_from_warp(ships)
+                if player == self.offense:
+                    self.offense_ships[player.name] = self.offense_ships.get(player.name, 0) + ships
+                elif player == self.defense:
+                    self.defense_ships[player.name] = self.defense_ships.get(player.name, 0) + ships
+
+        # Changeling Wild: Copy one alien power for this encounter
+        elif alien_name == "Changeling":
+            # Copy the opponent's power
+            opponent = self.defense if player == self.offense else self.offense
+            if opponent and opponent.alien:
+                context["changeling_copied_power"] = opponent.alien.name
+                self._log(f"Changeling copies {opponent.alien.name}'s power!")
+
+        # Nightmare Wild: Opponent must discard 2 cards
+        elif alien_name == "Nightmare":
+            opponent = self.defense if player == self.offense else self.offense
+            if opponent:
+                discards = min(2, len(opponent.hand))
+                for _ in range(discards):
+                    if opponent.hand:
+                        card = self._rng.choice(opponent.hand)
+                        opponent.remove_card(card)
+                        self.cosmic_deck.discard(card)
+
+        # Barbarian Wild: Pillage 1 card from loser
+        elif alien_name == "Barbarian":
+            context["barbarian_pillage"] = 1
+
+        # Bully Wild: +4 against players with fewer colonies
+        elif alien_name == "Bully":
+            opponent = self.defense if player == self.offense else self.offense
+            if opponent:
+                my_colonies = player.count_foreign_colonies(self.planets)
+                opp_colonies = opponent.count_foreign_colonies(self.planets)
+                if opp_colonies < my_colonies:
+                    context["flare_bonus"] = context.get("flare_bonus", 0) + 4
+
+        # Calculator Wild: Increase card value by the number of cards in hand
+        elif alien_name == "Calculator":
+            bonus = len(player.hand)
+            context["flare_bonus"] = context.get("flare_bonus", 0) + bonus
+
+        # Gambler Wild: Flip a coin. If heads, double card value
+        elif alien_name == "Gambler":
+            if self._rng.random() < 0.5:  # Heads
+                context["gambler_double"] = True
+                self._log("Gambler flare: Heads! Card value doubled!")
+            else:
+                self._log("Gambler flare: Tails! No effect.")
+
         # Default: +2 to total (generic Wild effect)
         else:
             context["flare_bonus"] = context.get("flare_bonus", 0) + 2
