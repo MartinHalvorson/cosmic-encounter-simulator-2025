@@ -11,6 +11,7 @@ from .advanced_powers import *  # noqa: F401, F403
 from .adventure_powers import *  # noqa: F401, F403
 from .african_mythology_powers import *  # noqa: F401, F403
 from .age_powers import *  # noqa: F401, F403
+from .aircraft_type_powers import *  # noqa: F401, F403
 from .alliance_powers import *  # noqa: F401, F403
 from .ancient_civilizations_powers import *  # noqa: F401, F403
 from .ancient_powers import *  # noqa: F401, F403
@@ -73,6 +74,7 @@ from .camping_gear_powers import *  # noqa: F401, F403
 from .camping_powers import *  # noqa: F401, F403
 from .candy_powers import *  # noqa: F401, F403
 from .candy_type_powers import *  # noqa: F401, F403
+from .car_brand_powers import *  # noqa: F401, F403
 from .card_game_powers import *  # noqa: F401, F403
 from .card_manipulation_powers import *  # noqa: F401, F403
 from .card_powers import *  # noqa: F401, F403
@@ -466,6 +468,7 @@ from .season_powers import *  # noqa: F401, F403
 from .sensation_powers import *  # noqa: F401, F403
 from .sense_powers import *  # noqa: F401, F403
 from .shape_powers import *  # noqa: F401, F403
+from .ship_type_powers import *  # noqa: F401, F403
 from .shoe_type_powers import *  # noqa: F401, F403
 from .sin_powers import *  # noqa: F401, F403
 from .size_powers import *  # noqa: F401, F403
@@ -503,6 +506,7 @@ from .sports_extended_powers import *  # noqa: F401, F403
 from .sports_position_powers import *  # noqa: F401, F403
 from .sports_powers import *  # noqa: F401, F403
 from .sports_team_powers import *  # noqa: F401, F403
+from .sports_type_powers import *  # noqa: F401, F403
 from .spy_powers import *  # noqa: F401, F403
 from .state_powers import *  # noqa: F401, F403
 from .stealth_powers import *  # noqa: F401, F403
@@ -537,6 +541,7 @@ from .time_travel_powers import *  # noqa: F401, F403
 from .tool_equipment_powers import *  # noqa: F401, F403
 from .tool_extended_powers import *  # noqa: F401, F403
 from .tool_powers import *  # noqa: F401, F403
+from .tool_type_powers import *  # noqa: F401, F403
 from .topology_powers import *  # noqa: F401, F403
 from .trait_powers import *  # noqa: F401, F403
 from .transformation_powers import *  # noqa: F401, F403

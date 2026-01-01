@@ -187,16 +187,31 @@ def generate_table(stats: dict, sort_by: str = "elo", ascending: bool = False) -
         if lower_name not in seen or data["total_games"] > seen[lower_name][1]["total_games"]:
             seen[lower_name] = (name, data)
 
+    # Abbreviations for expansions to keep table compact
+    EXPANSION_ABBREV = {
+        "Base Game": "Base",
+        "Cosmic Incursion": "Incursion",
+        "Cosmic Conflict": "Conflict",
+        "Cosmic Alliance": "Alliance",
+        "Cosmic Storm": "Storm",
+        "Cosmic Dominion": "Dominion",
+        "Cosmic Eons": "Eons",
+        "Cosmic Odyssey": "Odyssey",
+        None: "Custom",
+    }
+
     # Build sortable data from deduplicated powers
     table_data = []
     for lower_name, (name, data) in seen.items():
         if data["total_games"] < 5:  # Skip powers with very few games
             continue
+        expansion = get_alien_expansion(name)
         row = {
             "name": name,
             "elo": data["elo"],
             "overall": get_win_rate(data),
             "games": data["total_games"],
+            "source": EXPANSION_ABBREV.get(expansion, "Custom"),
         }
         for pc in PLAYER_COUNTS:
             row[f"{pc}p"] = get_win_rate(data, f"{pc}p")
@@ -205,6 +220,8 @@ def generate_table(stats: dict, sort_by: str = "elo", ascending: bool = False) -
     # Sort
     if sort_by == "power":
         table_data.sort(key=lambda x: x["name"].lower(), reverse=not ascending)
+    elif sort_by == "source":
+        table_data.sort(key=lambda x: x["source"].lower(), reverse=not ascending)
     else:
         table_data.sort(key=lambda x: x.get(sort_by, 0), reverse=not ascending)
 
@@ -215,6 +232,7 @@ def generate_table(stats: dict, sort_by: str = "elo", ascending: bool = False) -
 <tr>
 <th align="left">Rank</th>
 <th align="left">Power</th>
+<th align="left">Source</th>
 <th align="right">ELO</th>
 <th align="right">Overall</th>
 <th align="right">2P</th>
@@ -245,6 +263,7 @@ def generate_table(stats: dict, sort_by: str = "elo", ascending: bool = False) -
         html += f"""<tr>
 <td align="left">{i}</td>
 <td align="left">{tier} {row['name']}</td>
+<td align="left">{row['source']}</td>
 <td align="right"><b>{row['elo']:.0f}</b></td>
 <td align="right">{row['overall']:.1f}%</td>
 <td align="right">{row['2p']:.1f}%</td>
@@ -297,6 +316,9 @@ python update_stats.py --sort 5p --order desc
 
 # Sort alphabetically by power name
 python update_stats.py --sort power --order asc
+
+# Sort by source/expansion
+python update_stats.py --sort source --order asc
 ```
 
 </details>
@@ -335,7 +357,7 @@ def main():
     parser.add_argument("--games", type=int, default=0,
                         help="Number of games to simulate per player count (0 = just regenerate table)")
     parser.add_argument("--sort", type=str, default="elo",
-                        choices=["power", "elo", "overall", "2p", "3p", "4p", "5p", "6p", "games"],
+                        choices=["power", "source", "elo", "overall", "2p", "3p", "4p", "5p", "6p", "games"],
                         help="Column to sort by")
     parser.add_argument("--order", type=str, default="desc",
                         choices=["asc", "desc"],
