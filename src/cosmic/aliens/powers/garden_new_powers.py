@@ -1,5 +1,5 @@
 """
-Emotion Type Powers for Cosmic Encounter.
+Garden Powers for Cosmic Encounter.
 """
 
 from dataclasses import dataclass, field
@@ -16,9 +16,9 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Joy_Emotion(AlienPower):
-    """Joy_Emotion - Power of Happy. +5 always"""
-    name: str = field(default="Joy_Emotion", init=False)
+class Shovel_Grd(AlienPower):
+    """Shovel_Grd - Power of Dig. +5 always"""
+    name: str = field(default="Shovel_Grd", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -31,24 +31,114 @@ class Joy_Emotion(AlienPower):
 
 
 @dataclass
-class Sadness_Emotion(AlienPower):
-    """Sadness_Emotion - Power of Blue. +5 on defense"""
-    name: str = field(default="Sadness_Emotion", init=False)
-    description: str = field(default="+5 on defense", init=False)
+class Rake_Grd(AlienPower):
+    """Rake_Grd - Power of Gather. +5 always"""
+    name: str = field(default="Rake_Grd", init=False)
+    description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
+        if player.power_active:
             return total + 5
         return total
 
 
 @dataclass
-class Anger_Emotion(AlienPower):
-    """Anger_Emotion - Power of Rage. +5 on offense"""
-    name: str = field(default="Anger_Emotion", init=False)
+class Hoe_Grd(AlienPower):
+    """Hoe_Grd - Power of Cultivate. +5 always"""
+    name: str = field(default="Hoe_Grd", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Pruner_Grd(AlienPower):
+    """Pruner_Grd - Power of Trim. +5 always"""
+    name: str = field(default="Pruner_Grd", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Trowel_Grd(AlienPower):
+    """Trowel_Grd - Power of Plant. +5 always"""
+    name: str = field(default="Trowel_Grd", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Watering_Can_Grd(AlienPower):
+    """Watering_Can_Grd - Power of Hydrate. +5 always"""
+    name: str = field(default="Watering_Can_Grd", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Hose_Grd(AlienPower):
+    """Hose_Grd - Power of Spray. +5 always"""
+    name: str = field(default="Hose_Grd", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Wheelbarrow_Grd(AlienPower):
+    """Wheelbarrow_Grd - Power of Haul. +5 always"""
+    name: str = field(default="Wheelbarrow_Grd", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Lawn_Mower_Grd(AlienPower):
+    """Lawn_Mower_Grd - Power of Cut. +5 on offense"""
+    name: str = field(default="Lawn_Mower_Grd", init=False)
     description: str = field(default="+5 on offense", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -61,24 +151,9 @@ class Anger_Emotion(AlienPower):
 
 
 @dataclass
-class Fear_Emotion(AlienPower):
-    """Fear_Emotion - Power of Scared. +5 on defense"""
-    name: str = field(default="Fear_Emotion", init=False)
-    description: str = field(default="+5 on defense", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Surprise_Emotion(AlienPower):
-    """Surprise_Emotion - Power of Shock. +5 always"""
-    name: str = field(default="Surprise_Emotion", init=False)
+class Hedge_Trimmer_Grd(AlienPower):
+    """Hedge_Trimmer_Grd - Power of Shape. +5 always"""
+    name: str = field(default="Hedge_Trimmer_Grd", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -91,9 +166,9 @@ class Surprise_Emotion(AlienPower):
 
 
 @dataclass
-class Disgust_Emotion(AlienPower):
-    """Disgust_Emotion - Power of Revulsion. +5 always"""
-    name: str = field(default="Disgust_Emotion", init=False)
+class Leaf_Blower_Grd(AlienPower):
+    """Leaf_Blower_Grd - Power of Clear. +5 always"""
+    name: str = field(default="Leaf_Blower_Grd", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -106,9 +181,9 @@ class Disgust_Emotion(AlienPower):
 
 
 @dataclass
-class Trust_Emotion(AlienPower):
-    """Trust_Emotion - Power of Faith. +5 always"""
-    name: str = field(default="Trust_Emotion", init=False)
+class Seed_Spreader_Grd(AlienPower):
+    """Seed_Spreader_Grd - Power of Distribute. +5 always"""
+    name: str = field(default="Seed_Spreader_Grd", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -121,116 +196,41 @@ class Trust_Emotion(AlienPower):
 
 
 @dataclass
-class Anticipation_Emotion(AlienPower):
-    """Anticipation_Emotion - Power of Expect. +5 always"""
-    name: str = field(default="Anticipation_Emotion", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Love_Emotion(AlienPower):
-    """Love_Emotion - Power of Affection. +5 always"""
-    name: str = field(default="Love_Emotion", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Optimism_Emotion(AlienPower):
-    """Optimism_Emotion - Power of Hope. +5 on offense"""
-    name: str = field(default="Optimism_Emotion", init=False)
-    description: str = field(default="+5 on offense", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Pessimism_Emotion(AlienPower):
-    """Pessimism_Emotion - Power of Doubt. +5 on defense"""
-    name: str = field(default="Pessimism_Emotion", init=False)
-    description: str = field(default="+5 on defense", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Envy_Emotion(AlienPower):
-    """Envy_Emotion - Power of Jealous. +5 on offense"""
-    name: str = field(default="Envy_Emotion", init=False)
-    description: str = field(default="+5 on offense", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Contentment_Emotion(AlienPower):
-    """Contentment_Emotion - Power of Satisfy. +4 on defense"""
-    name: str = field(default="Contentment_Emotion", init=False)
-    description: str = field(default="+4 on defense", init=False)
+class Garden_Fork_Grd(AlienPower):
+    """Garden_Fork_Grd - Power of Turn. +4 always"""
+    name: str = field(default="Garden_Fork_Grd", init=False)
+    description: str = field(default="+4 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
+        if player.power_active:
             return total + 4
         return total
 
 
 @dataclass
-class Euphoria_Emotion(AlienPower):
-    """Euphoria_Emotion - Power of Bliss. +6 always"""
-    name: str = field(default="Euphoria_Emotion", init=False)
-    description: str = field(default="+6 always", init=False)
+class Chainsaw_Grd(AlienPower):
+    """Chainsaw_Grd - Power of Power. +6 on offense"""
+    name: str = field(default="Chainsaw_Grd", init=False)
+    description: str = field(default="+6 on offense", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.RED, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
+        if player.power_active and side == Side.OFFENSE:
             return total + 6
         return total
 
 
-EMOTION_TYPE_POWERS = [
-    Joy_Emotion, Sadness_Emotion, Anger_Emotion, Fear_Emotion, Surprise_Emotion, Disgust_Emotion, Trust_Emotion,
-    Anticipation_Emotion, Love_Emotion, Optimism_Emotion, Pessimism_Emotion, Envy_Emotion, Contentment_Emotion, Euphoria_Emotion,
+GARDEN_NEW_POWERS = [
+    Shovel_Grd, Rake_Grd, Hoe_Grd, Pruner_Grd, Trowel_Grd, Watering_Can_Grd, Hose_Grd,
+    Wheelbarrow_Grd, Lawn_Mower_Grd, Hedge_Trimmer_Grd, Leaf_Blower_Grd, Seed_Spreader_Grd, Garden_Fork_Grd, Chainsaw_Grd,
 ]
 
-for power_class in EMOTION_TYPE_POWERS:
+for power_class in GARDEN_NEW_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

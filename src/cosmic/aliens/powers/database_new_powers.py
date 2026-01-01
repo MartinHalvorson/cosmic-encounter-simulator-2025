@@ -1,5 +1,5 @@
 """
-Emotion Type Powers for Cosmic Encounter.
+Database Powers for Cosmic Encounter.
 """
 
 from dataclasses import dataclass, field
@@ -16,9 +16,9 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Joy_Emotion(AlienPower):
-    """Joy_Emotion - Power of Happy. +5 always"""
-    name: str = field(default="Joy_Emotion", init=False)
+class SQL_Query_DB(AlienPower):
+    """SQL_Query_DB - Power of Query. +5 always"""
+    name: str = field(default="SQL_Query_DB", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -31,24 +31,9 @@ class Joy_Emotion(AlienPower):
 
 
 @dataclass
-class Sadness_Emotion(AlienPower):
-    """Sadness_Emotion - Power of Blue. +5 on defense"""
-    name: str = field(default="Sadness_Emotion", init=False)
-    description: str = field(default="+5 on defense", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Anger_Emotion(AlienPower):
-    """Anger_Emotion - Power of Rage. +5 on offense"""
-    name: str = field(default="Anger_Emotion", init=False)
+class Index_DB(AlienPower):
+    """Index_DB - Power of Fast. +5 on offense"""
+    name: str = field(default="Index_DB", init=False)
     description: str = field(default="+5 on offense", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -61,24 +46,9 @@ class Anger_Emotion(AlienPower):
 
 
 @dataclass
-class Fear_Emotion(AlienPower):
-    """Fear_Emotion - Power of Scared. +5 on defense"""
-    name: str = field(default="Fear_Emotion", init=False)
-    description: str = field(default="+5 on defense", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Surprise_Emotion(AlienPower):
-    """Surprise_Emotion - Power of Shock. +5 always"""
-    name: str = field(default="Surprise_Emotion", init=False)
+class Transaction_DB(AlienPower):
+    """Transaction_DB - Power of Atomic. +5 always"""
+    name: str = field(default="Transaction_DB", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -91,9 +61,9 @@ class Surprise_Emotion(AlienPower):
 
 
 @dataclass
-class Disgust_Emotion(AlienPower):
-    """Disgust_Emotion - Power of Revulsion. +5 always"""
-    name: str = field(default="Disgust_Emotion", init=False)
+class Normalization_DB(AlienPower):
+    """Normalization_DB - Power of Clean. +5 always"""
+    name: str = field(default="Normalization_DB", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -106,54 +76,9 @@ class Disgust_Emotion(AlienPower):
 
 
 @dataclass
-class Trust_Emotion(AlienPower):
-    """Trust_Emotion - Power of Faith. +5 always"""
-    name: str = field(default="Trust_Emotion", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Anticipation_Emotion(AlienPower):
-    """Anticipation_Emotion - Power of Expect. +5 always"""
-    name: str = field(default="Anticipation_Emotion", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Love_Emotion(AlienPower):
-    """Love_Emotion - Power of Affection. +5 always"""
-    name: str = field(default="Love_Emotion", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Optimism_Emotion(AlienPower):
-    """Optimism_Emotion - Power of Hope. +5 on offense"""
-    name: str = field(default="Optimism_Emotion", init=False)
+class Denormalization_DB(AlienPower):
+    """Denormalization_DB - Power of Speed. +5 on offense"""
+    name: str = field(default="Denormalization_DB", init=False)
     description: str = field(default="+5 on offense", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -166,9 +91,54 @@ class Optimism_Emotion(AlienPower):
 
 
 @dataclass
-class Pessimism_Emotion(AlienPower):
-    """Pessimism_Emotion - Power of Doubt. +5 on defense"""
-    name: str = field(default="Pessimism_Emotion", init=False)
+class Primary_Key_DB(AlienPower):
+    """Primary_Key_DB - Power of Unique. +5 always"""
+    name: str = field(default="Primary_Key_DB", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Foreign_Key_DB(AlienPower):
+    """Foreign_Key_DB - Power of Link. +5 always"""
+    name: str = field(default="Foreign_Key_DB", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Join_DB(AlienPower):
+    """Join_DB - Power of Combine. +5 always"""
+    name: str = field(default="Join_DB", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class View_DB(AlienPower):
+    """View_DB - Power of Virtual. +5 on defense"""
+    name: str = field(default="View_DB", init=False)
     description: str = field(default="+5 on defense", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -181,39 +151,69 @@ class Pessimism_Emotion(AlienPower):
 
 
 @dataclass
-class Envy_Emotion(AlienPower):
-    """Envy_Emotion - Power of Jealous. +5 on offense"""
-    name: str = field(default="Envy_Emotion", init=False)
-    description: str = field(default="+5 on offense", init=False)
+class Stored_Proc_DB(AlienPower):
+    """Stored_Proc_DB - Power of Reuse. +5 always"""
+    name: str = field(default="Stored_Proc_DB", init=False)
+    description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
+        if player.power_active:
             return total + 5
         return total
 
 
 @dataclass
-class Contentment_Emotion(AlienPower):
-    """Contentment_Emotion - Power of Satisfy. +4 on defense"""
-    name: str = field(default="Contentment_Emotion", init=False)
-    description: str = field(default="+4 on defense", init=False)
+class Trigger_DB(AlienPower):
+    """Trigger_DB - Power of React. +5 on defense"""
+    name: str = field(default="Trigger_DB", init=False)
+    description: str = field(default="+5 on defense", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Cursor_DB(AlienPower):
+    """Cursor_DB - Power of Iterate. +5 always"""
+    name: str = field(default="Cursor_DB", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Backup_DB(AlienPower):
+    """Backup_DB - Power of Safe. +4 always"""
+    name: str = field(default="Backup_DB", init=False)
+    description: str = field(default="+4 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
+        if player.power_active:
             return total + 4
         return total
 
 
 @dataclass
-class Euphoria_Emotion(AlienPower):
-    """Euphoria_Emotion - Power of Bliss. +6 always"""
-    name: str = field(default="Euphoria_Emotion", init=False)
+class Replication_DB(AlienPower):
+    """Replication_DB - Power of Copy. +6 always"""
+    name: str = field(default="Replication_DB", init=False)
     description: str = field(default="+6 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -225,12 +225,12 @@ class Euphoria_Emotion(AlienPower):
         return total
 
 
-EMOTION_TYPE_POWERS = [
-    Joy_Emotion, Sadness_Emotion, Anger_Emotion, Fear_Emotion, Surprise_Emotion, Disgust_Emotion, Trust_Emotion,
-    Anticipation_Emotion, Love_Emotion, Optimism_Emotion, Pessimism_Emotion, Envy_Emotion, Contentment_Emotion, Euphoria_Emotion,
+DATABASE_NEW_POWERS = [
+    SQL_Query_DB, Index_DB, Transaction_DB, Normalization_DB, Denormalization_DB, Primary_Key_DB, Foreign_Key_DB,
+    Join_DB, View_DB, Stored_Proc_DB, Trigger_DB, Cursor_DB, Backup_DB, Replication_DB,
 ]
 
-for power_class in EMOTION_TYPE_POWERS:
+for power_class in DATABASE_NEW_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

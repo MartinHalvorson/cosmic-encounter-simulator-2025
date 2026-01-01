@@ -1,5 +1,5 @@
 """
-Emotion Type Powers for Cosmic Encounter.
+Power Tool Powers for Cosmic Encounter.
 """
 
 from dataclasses import dataclass, field
@@ -16,39 +16,9 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Joy_Emotion(AlienPower):
-    """Joy_Emotion - Power of Happy. +5 always"""
-    name: str = field(default="Joy_Emotion", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Sadness_Emotion(AlienPower):
-    """Sadness_Emotion - Power of Blue. +5 on defense"""
-    name: str = field(default="Sadness_Emotion", init=False)
-    description: str = field(default="+5 on defense", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Anger_Emotion(AlienPower):
-    """Anger_Emotion - Power of Rage. +5 on offense"""
-    name: str = field(default="Anger_Emotion", init=False)
+class Circular_Saw_PT(AlienPower):
+    """Circular_Saw_PT - Power of Spin. +5 on offense"""
+    name: str = field(default="Circular_Saw_PT", init=False)
     description: str = field(default="+5 on offense", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -61,24 +31,9 @@ class Anger_Emotion(AlienPower):
 
 
 @dataclass
-class Fear_Emotion(AlienPower):
-    """Fear_Emotion - Power of Scared. +5 on defense"""
-    name: str = field(default="Fear_Emotion", init=False)
-    description: str = field(default="+5 on defense", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Surprise_Emotion(AlienPower):
-    """Surprise_Emotion - Power of Shock. +5 always"""
-    name: str = field(default="Surprise_Emotion", init=False)
+class Jigsaw_PT(AlienPower):
+    """Jigsaw_PT - Power of Curve. +5 always"""
+    name: str = field(default="Jigsaw_PT", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -91,9 +46,9 @@ class Surprise_Emotion(AlienPower):
 
 
 @dataclass
-class Disgust_Emotion(AlienPower):
-    """Disgust_Emotion - Power of Revulsion. +5 always"""
-    name: str = field(default="Disgust_Emotion", init=False)
+class Router_PT(AlienPower):
+    """Router_PT - Power of Edge. +5 always"""
+    name: str = field(default="Router_PT", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -106,9 +61,9 @@ class Disgust_Emotion(AlienPower):
 
 
 @dataclass
-class Trust_Emotion(AlienPower):
-    """Trust_Emotion - Power of Faith. +5 always"""
-    name: str = field(default="Trust_Emotion", init=False)
+class Sander_PT(AlienPower):
+    """Sander_PT - Power of Polish. +5 always"""
+    name: str = field(default="Sander_PT", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -121,39 +76,9 @@ class Trust_Emotion(AlienPower):
 
 
 @dataclass
-class Anticipation_Emotion(AlienPower):
-    """Anticipation_Emotion - Power of Expect. +5 always"""
-    name: str = field(default="Anticipation_Emotion", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Love_Emotion(AlienPower):
-    """Love_Emotion - Power of Affection. +5 always"""
-    name: str = field(default="Love_Emotion", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Optimism_Emotion(AlienPower):
-    """Optimism_Emotion - Power of Hope. +5 on offense"""
-    name: str = field(default="Optimism_Emotion", init=False)
+class Grinder_PT(AlienPower):
+    """Grinder_PT - Power of Abrade. +5 on offense"""
+    name: str = field(default="Grinder_PT", init=False)
     description: str = field(default="+5 on offense", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -166,24 +91,9 @@ class Optimism_Emotion(AlienPower):
 
 
 @dataclass
-class Pessimism_Emotion(AlienPower):
-    """Pessimism_Emotion - Power of Doubt. +5 on defense"""
-    name: str = field(default="Pessimism_Emotion", init=False)
-    description: str = field(default="+5 on defense", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Envy_Emotion(AlienPower):
-    """Envy_Emotion - Power of Jealous. +5 on offense"""
-    name: str = field(default="Envy_Emotion", init=False)
+class Nail_Gun_PT(AlienPower):
+    """Nail_Gun_PT - Power of Fast. +5 on offense"""
+    name: str = field(default="Nail_Gun_PT", init=False)
     description: str = field(default="+5 on offense", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -196,24 +106,114 @@ class Envy_Emotion(AlienPower):
 
 
 @dataclass
-class Contentment_Emotion(AlienPower):
-    """Contentment_Emotion - Power of Satisfy. +4 on defense"""
-    name: str = field(default="Contentment_Emotion", init=False)
-    description: str = field(default="+4 on defense", init=False)
+class Heat_Gun_PT(AlienPower):
+    """Heat_Gun_PT - Power of Warm. +5 always"""
+    name: str = field(default="Heat_Gun_PT", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Rotary_Tool_PT(AlienPower):
+    """Rotary_Tool_PT - Power of Detail. +5 always"""
+    name: str = field(default="Rotary_Tool_PT", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Planer_PT(AlienPower):
+    """Planer_PT - Power of Shave. +5 always"""
+    name: str = field(default="Planer_PT", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Table_Saw_PT(AlienPower):
+    """Table_Saw_PT - Power of Precise. +5 always"""
+    name: str = field(default="Table_Saw_PT", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Miter_Saw_PT(AlienPower):
+    """Miter_Saw_PT - Power of Angle. +5 always"""
+    name: str = field(default="Miter_Saw_PT", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Band_Saw_PT(AlienPower):
+    """Band_Saw_PT - Power of Resaw. +5 always"""
+    name: str = field(default="Band_Saw_PT", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Oscillating_PT(AlienPower):
+    """Oscillating_PT - Power of Vibrate. +4 always"""
+    name: str = field(default="Oscillating_PT", init=False)
+    description: str = field(default="+4 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
+        if player.power_active:
             return total + 4
         return total
 
 
 @dataclass
-class Euphoria_Emotion(AlienPower):
-    """Euphoria_Emotion - Power of Bliss. +6 always"""
-    name: str = field(default="Euphoria_Emotion", init=False)
+class CNC_Router_PT(AlienPower):
+    """CNC_Router_PT - Power of Automate. +6 always"""
+    name: str = field(default="CNC_Router_PT", init=False)
     description: str = field(default="+6 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -225,12 +225,12 @@ class Euphoria_Emotion(AlienPower):
         return total
 
 
-EMOTION_TYPE_POWERS = [
-    Joy_Emotion, Sadness_Emotion, Anger_Emotion, Fear_Emotion, Surprise_Emotion, Disgust_Emotion, Trust_Emotion,
-    Anticipation_Emotion, Love_Emotion, Optimism_Emotion, Pessimism_Emotion, Envy_Emotion, Contentment_Emotion, Euphoria_Emotion,
+POWER_TOOL_NEW_POWERS = [
+    Circular_Saw_PT, Jigsaw_PT, Router_PT, Sander_PT, Grinder_PT, Nail_Gun_PT, Heat_Gun_PT,
+    Rotary_Tool_PT, Planer_PT, Table_Saw_PT, Miter_Saw_PT, Band_Saw_PT, Oscillating_PT, CNC_Router_PT,
 ]
 
-for power_class in EMOTION_TYPE_POWERS:
+for power_class in POWER_TOOL_NEW_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:
