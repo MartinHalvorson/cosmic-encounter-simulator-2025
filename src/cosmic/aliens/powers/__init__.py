@@ -285,3 +285,10 @@ from .apocalypse_powers import *  # noqa: F401, F403
 from .medieval_powers import *  # noqa: F401, F403
 from .space_combat_powers import *  # noqa: F401, F403
 from .ancient_civilizations_powers import *  # noqa: F401, F403
+from .mythology_egyptian_powers import *  # noqa: F401, F403
+from .board_game_powers import *  # noqa: F401, F403
+from .natural_disaster_powers import *  # noqa: F401, F403
+from .emotion_alt2_powers import *  # noqa: F401, F403
+from .hunting_powers import *  # noqa: F401, F403
+from .crafting_powers import *  # noqa: F401, F403
+from .astronomical_powers import *  # noqa: F401, F403

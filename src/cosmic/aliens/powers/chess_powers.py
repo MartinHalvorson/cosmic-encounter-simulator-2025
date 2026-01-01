@@ -1,41 +1,154 @@
 """
-Chess Powers for Cosmic Encounter.
-
-Aliens inspired by chess pieces and strategies.
+Chess Powers - Chess piece themed aliens.
 """
 
 from dataclasses import dataclass, field
-from typing import TYPE_CHECKING
+from typing import Optional, List, Dict, Any, TYPE_CHECKING
+import random
 
 from ..base import AlienPower, PowerCategory
-from ...types import PowerTiming, PowerType, Side
+from ..registry import AlienRegistry
+from ...types import PowerTiming, PowerType, PlayerRole, Side
 
 if TYPE_CHECKING:
     from ...game import Game
     from ...player import Player
 
-from ..registry import AlienRegistry
+
+@dataclass
+class Chess_King(AlienPower):
+    """Chess_King - Royal Piece. +5 on defense."""
+    name: str = field(default="Chess_King", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
 
 
 @dataclass
-class Pawn_Piece(AlienPower):
-    """Pawn_Piece - Power of Advance. +3 on offense."""
-    name: str = field(default="Pawn_Piece", init=False)
-    description: str = field(default="+3 when attacking.", init=False)
+class Chess_Queen(AlienPower):
+    """Chess_Queen - Powerful Piece. +6 always."""
+    name: str = field(default="Chess_Queen", init=False)
+    description: str = field(default="+6 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 6
+        return total
+
+
+@dataclass
+class Rook(AlienPower):
+    """Rook - Castle Piece. +5 on defense."""
+    name: str = field(default="Rook", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Bishop(AlienPower):
+    """Bishop - Diagonal Piece. +4 always."""
+    name: str = field(default="Bishop", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Knight_Chess(AlienPower):
+    """Knight_Chess - L-Move Piece. +4 on offense."""
+    name: str = field(default="Knight_Chess", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Pawn(AlienPower):
+    """Pawn - Basic Piece. +3 always."""
+    name: str = field(default="Pawn", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
             return total + 3
         return total
 
 
 @dataclass
-class Rook_Piece(AlienPower):
-    """Rook_Piece - Power of Lines. +4 on defense."""
-    name: str = field(default="Rook_Piece", init=False)
+class Castling(AlienPower):
+    """Castling - Special Move. Ships escape."""
+    name: str = field(default="Castling", init=False)
+    description: str = field(default="Ships go home not warp.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.SHIPS_TO_WARP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Check(AlienPower):
+    """Check - Threatening Move. +4 on offense."""
+    name: str = field(default="Check", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Checkmate(AlienPower):
+    """Checkmate - Winning Move. +5 on offense."""
+    name: str = field(default="Checkmate", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Stalemate(AlienPower):
+    """Stalemate - Draw Position. +4 on defense."""
+    name: str = field(default="Stalemate", init=False)
     description: str = field(default="+4 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -48,170 +161,78 @@ class Rook_Piece(AlienPower):
 
 
 @dataclass
-class Knight_Piece(AlienPower):
-    """Knight_Piece - Power of Leap. Attack any planet, ignore destiny."""
-    name: str = field(default="Knight_Piece", init=False)
-    description: str = field(default="Attack any planet.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.DESTINY, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+class Promotion(AlienPower):
+    """Promotion - Upgrade Pawn. +5 always."""
+    name: str = field(default="Promotion", init=False)
+    description: str = field(default="+5 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
-
-@dataclass
-class Bishop_Piece(AlienPower):
-    """Bishop_Piece - Power of Diagonals. +2 and win ties."""
-    name: str = field(default="Bishop_Piece", init=False)
-    description: str = field(default="+2 and win ties.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 2
+            return total + 5
         return total
-
-
-@dataclass
-class Queen_Piece(AlienPower):
-    """Queen_Piece - Power of Range. +3 always."""
-    name: str = field(default="Queen_Piece", init=False)
-    description: str = field(default="+3 in all encounters.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class King_Piece(AlienPower):
-    """King_Piece - Power of Importance. Cannot lose more than 2 ships."""
-    name: str = field(default="King_Piece", init=False)
-    description: str = field(default="Lose max 2 ships.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.SHIPS_TO_WARP, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Checkmate(AlienPower):
-    """Checkmate - Power of Victory. +5 at 4 colonies."""
-    name: str = field(default="Checkmate", init=False)
-    description: str = field(default="+5 at 4 colonies.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            colonies = player.count_foreign_colonies(game.planets)
-            if colonies >= 4:
-                return total + 5
-        return total
-
-
-@dataclass
-class Castling(AlienPower):
-    """Castling - Power of Swap. Swap ships between colonies."""
-    name: str = field(default="Castling", init=False)
-    description: str = field(default="Swap ships between colonies.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
 
 @dataclass
 class En_Passant(AlienPower):
-    """En_Passant - Power of Capture. Take 1 card from defeated opponent."""
+    """En_Passant - Special Capture. -3 to opponent."""
     name: str = field(default="En_Passant", init=False)
-    description: str = field(default="Take card from loser.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.WIN_ENCOUNTER, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-
-@dataclass
-class Promotion(AlienPower):
-    """Promotion - Power of Upgrade. +3 after first win."""
-    name: str = field(default="Promotion", init=False)
-    description: str = field(default="+3 after first win.", init=False)
+    description: str = field(default="Opponent gets -3.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
-class Fork(AlienPower):
-    """Fork - Power of Dual Threat. +2 for each ally in encounter."""
-    name: str = field(default="Fork", init=False)
-    description: str = field(default="+2 per ally.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+class Grandmaster(AlienPower):
+    """Grandmaster - Chess Expert. See opponent card."""
+    name: str = field(default="Grandmaster", init=False)
+    description: str = field(default="View opponent's card.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
-class Pin(AlienPower):
-    """Pin - Power of Restriction. Opponent cannot invite allies."""
-    name: str = field(default="Pin", init=False)
-    description: str = field(default="Block opponent allies.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-
-@dataclass
-class Stalemate(AlienPower):
-    """Stalemate - Power of Draws. Force tie when losing."""
-    name: str = field(default="Stalemate", init=False)
-    description: str = field(default="Force tie when losing.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-
-@dataclass
-class Gambit(AlienPower):
-    """Gambit - Power of Sacrifice. Sacrifice ships for +2 each."""
-    name: str = field(default="Gambit", init=False)
-    description: str = field(default="Sacrifice ships for +2 each.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-
-@dataclass
-class Tempo(AlienPower):
-    """Tempo - Power of Speed. +1 per turn game has lasted."""
-    name: str = field(default="Tempo", init=False)
-    description: str = field(default="+1 per turn.", init=False)
+class Opening(AlienPower):
+    """Opening - First Moves. +4 on offense."""
+    name: str = field(default="Opening", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + game.current_turn
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
         return total
 
 
-# Register all chess powers
-AlienRegistry.register(Pawn_Piece())
-AlienRegistry.register(Rook_Piece())
-AlienRegistry.register(Knight_Piece())
-AlienRegistry.register(Bishop_Piece())
-AlienRegistry.register(Queen_Piece())
-AlienRegistry.register(King_Piece())
-AlienRegistry.register(Checkmate())
-AlienRegistry.register(Castling())
-AlienRegistry.register(En_Passant())
-AlienRegistry.register(Promotion())
-AlienRegistry.register(Fork())
-AlienRegistry.register(Pin())
-AlienRegistry.register(Stalemate())
-AlienRegistry.register(Gambit())
-AlienRegistry.register(Tempo())
+@dataclass
+class Endgame(AlienPower):
+    """Endgame - Final Stage. +5 always."""
+    name: str = field(default="Endgame", init=False)
+    description: str = field(default="+5 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+# Register all powers
+CHESS_POWERS = [
+    Chess_King, Chess_Queen, Rook, Bishop, Knight_Chess, Pawn, Castling,
+    Check, Checkmate, Stalemate, Promotion, En_Passant, Grandmaster, Opening, Endgame,
+]
+
+for power_class in CHESS_POWERS:
+    try:
+        AlienRegistry.register(power_class())
+    except ValueError:
+        pass
