@@ -412,3 +412,18 @@ from .sports_extended_new_powers import *  # noqa: F401, F403
 from .final_push3_powers import *  # noqa: F401, F403
 from .school_role_powers import *  # noqa: F401, F403
 from .music_instrument_alt_powers import *  # noqa: F401, F403
+from .final_push_5k_powers import *  # noqa: F401, F403
+from .milestone_5000_final_powers import *  # noqa: F401, F403
+from .weather_type_powers import *  # noqa: F401, F403
+from .household_item_powers import *  # noqa: F401, F403
+from .celtic_mythology_powers import *
+from .mayan_mythology_powers import *
+from .aboriginal_powers import *
+from .persian_mythology_powers import *
+from .indonesian_mythology_powers import *
+from .musical_genre_powers import *  # noqa: F401, F403
+from .weather_effect_powers import *  # noqa: F401, F403
+from .ocean_life_powers import *  # noqa: F401, F403
+from .space_object_alt_powers import *  # noqa: F401, F403
+from .mythical_artifact_powers import *  # noqa: F401, F403
+from .time_period_powers import *  # noqa: F401, F403

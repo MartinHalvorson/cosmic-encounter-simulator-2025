@@ -1,14 +1,14 @@
 """
-Biology Powers - Biology and life science themed aliens.
+Household Item Powers - Common household items themed aliens.
 """
 
 from dataclasses import dataclass, field
-from typing import Optional, List, Dict, Any, TYPE_CHECKING
+from typing import TYPE_CHECKING
 import random
 
 from ..base import AlienPower, PowerCategory
 from ..registry import AlienRegistry
-from ...types import PowerTiming, PowerType, PlayerRole, Side
+from ...types import PowerTiming, PowerType, Side
 
 if TYPE_CHECKING:
     from ...game import Game
@@ -16,9 +16,9 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Cell_Bio(AlienPower):
-    """Cell_Bio - Basic Unit. +3 always."""
-    name: str = field(default="Cell_Bio", init=False)
+class Lamp(AlienPower):
+    """Lamp - Light Source. +3 always."""
+    name: str = field(default="Lamp", init=False)
     description: str = field(default="+3 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -31,114 +31,24 @@ class Cell_Bio(AlienPower):
 
 
 @dataclass
-class Nucleus_Bio(AlienPower):
-    """Nucleus_Bio - Cell Center. +4 always."""
-    name: str = field(default="Nucleus_Bio", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Clock(AlienPower):
+    """Clock - Time Keeper. +2 per game turn."""
+    name: str = field(default="Clock", init=False)
+    description: str = field(default="+2 per turn.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + 4
+            return total + (game.current_turn * 2)
         return total
 
 
 @dataclass
-class Mitochondria(AlienPower):
-    """Mitochondria - Powerhouse. +5 on offense."""
-    name: str = field(default="Mitochondria", init=False)
-    description: str = field(default="+5 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Ribosome(AlienPower):
-    """Ribosome - Protein Factory. +3 always."""
-    name: str = field(default="Ribosome", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Chromosome(AlienPower):
-    """Chromosome - Genetic Package. +4 always."""
-    name: str = field(default="Chromosome", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class DNA_Bio(AlienPower):
-    """DNA_Bio - Genetic Code. +5 always."""
-    name: str = field(default="DNA_Bio", init=False)
-    description: str = field(default="+5 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class RNA_Bio(AlienPower):
-    """RNA_Bio - Messenger. +4 on offense."""
-    name: str = field(default="RNA_Bio", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Enzyme_Bio(AlienPower):
-    """Enzyme_Bio - Catalyst. +4 on offense."""
-    name: str = field(default="Enzyme_Bio", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Protein_Bio(AlienPower):
-    """Protein_Bio - Building Block. +4 on defense."""
-    name: str = field(default="Protein_Bio", init=False)
+class Couch(AlienPower):
+    """Couch - Seating. +4 on defense."""
+    name: str = field(default="Couch", init=False)
     description: str = field(default="+4 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -151,54 +61,39 @@ class Protein_Bio(AlienPower):
 
 
 @dataclass
-class Membrane_Bio(AlienPower):
-    """Membrane_Bio - Barrier. +5 on defense."""
-    name: str = field(default="Membrane_Bio", init=False)
-    description: str = field(default="+5 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+class Television(AlienPower):
+    """Television - Entertainment. Draw extra card."""
+    name: str = field(default="Television", init=False)
+    description: str = field(default="Draw extra card.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Refrigerator(AlienPower):
+    """Refrigerator - Food Storage. Return 2 ships from warp."""
+    name: str = field(default="Refrigerator", init=False)
+    description: str = field(default="Return 2 ships.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Bed(AlienPower):
+    """Bed - Sleeping. Return 3 ships from warp."""
+    name: str = field(default="Bed", init=False)
+    description: str = field(default="Return 3 ships.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
 
 @dataclass
-class Cytoplasm(AlienPower):
-    """Cytoplasm - Cell Filling. +3 always."""
-    name: str = field(default="Cytoplasm", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Organelle(AlienPower):
-    """Organelle - Cell Part. +3 always."""
-    name: str = field(default="Organelle", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Chloroplast(AlienPower):
-    """Chloroplast - Energy Maker. +4 on offense."""
-    name: str = field(default="Chloroplast", init=False)
+class Stove(AlienPower):
+    """Stove - Cooking. +4 on offense."""
+    name: str = field(default="Stove", init=False)
     description: str = field(default="+4 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -211,43 +106,127 @@ class Chloroplast(AlienPower):
 
 
 @dataclass
-class Vacuole(AlienPower):
-    """Vacuole - Storage Sac. +3 on defense."""
-    name: str = field(default="Vacuole", init=False)
-    description: str = field(default="+3 when defending.", init=False)
+class Dishwasher(AlienPower):
+    """Dishwasher - Cleaning. Ships escape warp."""
+    name: str = field(default="Dishwasher", init=False)
+    description: str = field(default="Ships go home not warp.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.SHIPS_TO_WARP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Vacuum(AlienPower):
+    """Vacuum - Suction. +3 on offense."""
+    name: str = field(default="Vacuum", init=False)
+    description: str = field(default="+3 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
+        if player.power_active and side == Side.OFFENSE:
             return total + 3
         return total
 
 
 @dataclass
-class Golgi(AlienPower):
-    """Golgi - Processing Center. +4 always."""
-    name: str = field(default="Golgi", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Washing_Machine(AlienPower):
+    """Washing_Machine - Laundry. Random +2 to +5."""
+    name: str = field(default="Washing_Machine", init=False)
+    description: str = field(default="Random +2 to +5.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + random.randint(2, 5)
+        return total
+
+
+@dataclass
+class Microwave(AlienPower):
+    """Microwave - Quick Heat. +3 always."""
+    name: str = field(default="Microwave", init=False)
+    description: str = field(default="+3 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
+            return total + 3
+        return total
+
+
+@dataclass
+class Toaster(AlienPower):
+    """Toaster - Bread Heater. +2 always."""
+    name: str = field(default="Toaster", init=False)
+    description: str = field(default="+2 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 2
+        return total
+
+
+@dataclass
+class Blender(AlienPower):
+    """Blender - Mixer. +4 on offense."""
+    name: str = field(default="Blender", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Fan(AlienPower):
+    """Fan - Air Mover. +2 always."""
+    name: str = field(default="Fan", init=False)
+    description: str = field(default="+2 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 2
+        return total
+
+
+@dataclass
+class Heater(AlienPower):
+    """Heater - Warmth. +4 on defense."""
+    name: str = field(default="Heater", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
             return total + 4
         return total
 
 
 # Register all powers
-BIOLOGY_POWERS = [
-    Cell_Bio, Nucleus_Bio, Mitochondria, Ribosome, Chromosome, DNA_Bio, RNA_Bio,
-    Enzyme_Bio, Protein_Bio, Membrane_Bio, Cytoplasm, Organelle, Chloroplast,
-    Vacuole, Golgi,
+HOUSEHOLD_ITEM_POWERS = [
+    Lamp, Clock, Couch, Television, Refrigerator, Bed, Stove, Dishwasher,
+    Vacuum, Washing_Machine, Microwave, Toaster, Blender, Fan, Heater,
 ]
 
-for power_class in BIOLOGY_POWERS:
+for power_class in HOUSEHOLD_ITEM_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

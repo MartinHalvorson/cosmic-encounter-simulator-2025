@@ -207,21 +207,21 @@ def generate_table(stats: dict, sort_by: str = "elo", ascending: bool = False) -
     else:
         table_data.sort(key=lambda x: x.get(sort_by, 0), reverse=not ascending)
 
-    # Generate HTML table with sortable headers
+    # Generate HTML table
     html = """
-<table id="rankings">
+<table>
 <thead>
 <tr>
-<th align="left" data-sort="rank">Rank</th>
-<th align="left" data-sort="power">Power ⇅</th>
-<th align="right" data-sort="elo">ELO ⇅</th>
-<th align="right" data-sort="overall">Overall ⇅</th>
-<th align="right" data-sort="2p">2P ⇅</th>
-<th align="right" data-sort="3p">3P ⇅</th>
-<th align="right" data-sort="4p">4P ⇅</th>
-<th align="right" data-sort="5p">5P ⇅</th>
-<th align="right" data-sort="6p">6P ⇅</th>
-<th align="right" data-sort="games">Games ⇅</th>
+<th align="left">Rank</th>
+<th align="left">Power</th>
+<th align="right">ELO</th>
+<th align="right">Overall</th>
+<th align="right">2P</th>
+<th align="right">3P</th>
+<th align="right">4P</th>
+<th align="right">5P</th>
+<th align="right">6P</th>
+<th align="right">Games</th>
 </tr>
 </thead>
 <tbody>
@@ -257,33 +257,6 @@ def generate_table(stats: dict, sort_by: str = "elo", ascending: bool = False) -
 
     html += """</tbody>
 </table>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const table = document.getElementById('rankings');
-  if (!table) return;
-  const headers = table.querySelectorAll('th[data-sort]');
-  headers.forEach(header => {
-    header.style.cursor = 'pointer';
-    header.addEventListener('click', () => {
-      const column = header.dataset.sort;
-      const tbody = table.querySelector('tbody');
-      const rows = Array.from(tbody.querySelectorAll('tr'));
-      const idx = Array.from(header.parentNode.children).indexOf(header);
-      const asc = header.dataset.order !== 'asc';
-      header.dataset.order = asc ? 'asc' : 'desc';
-      rows.sort((a, b) => {
-        let aVal = a.children[idx].textContent.replace(/[🟣🔵🟢🟡🔴%,]/g, '').trim();
-        let bVal = b.children[idx].textContent.replace(/[🟣🔵🟢🟡🔴%,]/g, '').trim();
-        const aNum = parseFloat(aVal), bNum = parseFloat(bVal);
-        if (!isNaN(aNum) && !isNaN(bNum)) return asc ? aNum - bNum : bNum - aNum;
-        return asc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
-      });
-      rows.forEach((row, i) => { row.children[0].textContent = i + 1; tbody.appendChild(row); });
-    });
-  });
-});
-</script>
 """
     return html
 

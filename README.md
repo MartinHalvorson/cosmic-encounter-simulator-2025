@@ -6,24 +6,24 @@ A simulation of the board game Cosmic Encounter for analyzing alien power balanc
 
 ## Alien Power Rankings
 
-> **21,800,000+** games simulated | Last updated: 2025-12-31
+> **178,836** games simulated | Last updated: 2025-12-31 10:35
 >
 > **Tier Guide:** 🟣 S (1600+) | 🔵 A (1550+) | 🟢 B (1500+) | 🟡 C (1450+) | 🔴 D (<1450)
 
 
-<table id="rankings">
+<table>
 <thead>
 <tr>
-<th align="left" data-sort="rank">Rank</th>
-<th align="left" data-sort="power">Power ⇅</th>
-<th align="right" data-sort="elo">ELO ⇅</th>
-<th align="right" data-sort="overall">Overall ⇅</th>
-<th align="right" data-sort="2p">2P ⇅</th>
-<th align="right" data-sort="3p">3P ⇅</th>
-<th align="right" data-sort="4p">4P ⇅</th>
-<th align="right" data-sort="5p">5P ⇅</th>
-<th align="right" data-sort="6p">6P ⇅</th>
-<th align="right" data-sort="games">Games ⇅</th>
+<th align="left">Rank</th>
+<th align="left">Power</th>
+<th align="right">ELO</th>
+<th align="right">Overall</th>
+<th align="right">2P</th>
+<th align="right">3P</th>
+<th align="right">4P</th>
+<th align="right">5P</th>
+<th align="right">6P</th>
+<th align="right">Games</th>
 </tr>
 </thead>
 <tbody>
@@ -15738,33 +15738,6 @@ A simulation of the board game Cosmic Encounter for analyzing alien power balanc
 </tbody>
 </table>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const table = document.getElementById('rankings');
-  if (!table) return;
-  const headers = table.querySelectorAll('th[data-sort]');
-  headers.forEach(header => {
-    header.style.cursor = 'pointer';
-    header.addEventListener('click', () => {
-      const column = header.dataset.sort;
-      const tbody = table.querySelector('tbody');
-      const rows = Array.from(tbody.querySelectorAll('tr'));
-      const idx = Array.from(header.parentNode.children).indexOf(header);
-      const asc = header.dataset.order !== 'asc';
-      header.dataset.order = asc ? 'asc' : 'desc';
-      rows.sort((a, b) => {
-        let aVal = a.children[idx].textContent.replace(/[🟣🔵🟢🟡🔴%,]/g, '').trim();
-        let bVal = b.children[idx].textContent.replace(/[🟣🔵🟢🟡🔴%,]/g, '').trim();
-        const aNum = parseFloat(aVal), bNum = parseFloat(bVal);
-        if (!isNaN(aNum) && !isNaN(bNum)) return asc ? aNum - bNum : bNum - aNum;
-        return asc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
-      });
-      rows.forEach((row, i) => { row.children[0].textContent = i + 1; tbody.appendChild(row); });
-    });
-  });
-});
-</script>
-
 
 <details>
 <summary>How to update this table</summary>
@@ -15788,61 +15761,3 @@ python update_stats.py --sort power --order asc
 
 </details>
 
-
-<!-- SIMULATION_RESULTS_START -->
-
-## Simulation Results
-
-**Total Games Simulated:** 21,898,356
-**Solo Victories:** 21,283,276
-**Shared Victories:** 361,861
-**Average Game Length:** 5.0 turns
-**Last Updated:** 2025-12-31T20:28:45
-
-### Alien Power Rankings (by ELO)
-
-| Rank | Alien | ELO | Win Rate | Games | Solo Wins | Shared |
-|------|-------|-----|----------|-------|-----------|--------|
-| 1 | Oarfish | 1051 | 46.4% | 28 | 13 | 0 |
-| 2 | Aether | 886 | 37.5% | 32 | 12 | 0 |
-| 3 | Lemminkainen | 883 | 35.5% | 31 | 11 | 0 |
-| 4 | SSD | 877 | 37.5% | 32 | 11 | 1 |
-| 5 | Leshy | 862 | 19.2% | 26 | 5 | 0 |
-| 6 | Wing | 856 | 40.0% | 35 | 14 | 0 |
-| 7 | Coelacanth | 841 | 45.0% | 40 | 18 | 0 |
-| 8 | Winter_Solstice | 823 | 40.5% | 37 | 14 | 1 |
-| 9 | Hibernation | 821 | 32.4% | 34 | 11 | 0 |
-| 10 | Wok | 819 | 32.4% | 34 | 11 | 0 |
-| 11 | Centrifuge | 804 | 42.1% | 38 | 15 | 1 |
-| 12 | Eruption | 799 | 25.8% | 31 | 8 | 0 |
-| 13 | Linen | 798 | 42.5% | 40 | 17 | 0 |
-| 14 | Ilmarinen | 798 | 36.1% | 36 | 13 | 0 |
-| 15 | Antivirus | 798 | 41.0% | 39 | 16 | 0 |
-| 16 | Level | 772 | 36.1% | 36 | 12 | 1 |
-| 17 | Mokosh | 771 | 46.5% | 43 | 18 | 2 |
-| 18 | Habitable_Zone | 769 | 38.5% | 39 | 15 | 0 |
-| 19 | Matrix_Math | 768 | 20.0% | 30 | 6 | 0 |
-| 20 | Poaching | 766 | 39.0% | 41 | 16 | 0 |
-| 21 | Jacheongbi | 765 | 30.6% | 36 | 10 | 1 |
-| 22 | Palm | 762 | 30.6% | 36 | 11 | 0 |
-| 23 | Seondnyeo | 758 | 31.6% | 38 | 12 | 0 |
-| 24 | Diner | 754 | 35.9% | 39 | 14 | 0 |
-| 25 | Command_Module | 751 | 47.9% | 48 | 23 | 0 |
-| 26 | Chef_Rest | 751 | 34.2% | 38 | 13 | 0 |
-| 27 | Bonghwang | 745 | 19.4% | 31 | 6 | 0 |
-| 28 | Helm | 743 | 43.2% | 44 | 18 | 1 |
-| 29 | Quintessence | 736 | 21.9% | 32 | 7 | 0 |
-| 30 | Hedge_Trimmer | 736 | 25.7% | 35 | 9 | 0 |
-| 31 | Variable | 735 | 38.1% | 42 | 16 | 0 |
-| 32 | Jarilo | 734 | 37.5% | 40 | 14 | 1 |
-| 33 | Planetarium | 734 | 28.6% | 35 | 10 | 0 |
-| 34 | Yeomra | 727 | 21.9% | 32 | 7 | 0 |
-| 35 | Romanesque | 726 | 26.5% | 34 | 9 | 0 |
-| 36 | Icicle | 723 | 41.3% | 46 | 19 | 0 |
-| 37 | Function | 717 | 36.6% | 41 | 15 | 0 |
-| 38 | Lathe | 716 | 35.0% | 40 | 13 | 1 |
-| 39 | Fine_Dining | 715 | 21.2% | 33 | 7 | 0 |
-| 40 | Megalodon | 714 | 18.8% | 32 | 6 | 0 |
-| ... | *4618 more aliens* | ... | ... | ... | ... | ... |
-
-<!-- SIMULATION_RESULTS_END -->
