@@ -262,3 +262,16 @@ from .weather_phenomena_powers import *  # noqa: F401, F403
 from .school_subject_powers import *  # noqa: F401, F403
 from .container_powers import *  # noqa: F401, F403
 from .measurement_powers import *  # noqa: F401, F403
+from .mythology_norse_alt_powers import *  # noqa: F401, F403
+from .sports_team_powers import *  # noqa: F401, F403
+from .western_powers import *  # noqa: F401, F403
+from .space_exploration_powers import *  # noqa: F401, F403
+from .fairy_tale_powers import *  # noqa: F401, F403
+from .circus_powers import *  # noqa: F401, F403
+from .desert_creature_powers import *  # noqa: F401, F403
+from .mountain_powers import *  # noqa: F401, F403
+from .crystal_powers import *  # noqa: F401, F403
+from .landform_powers import *  # noqa: F401, F403
+from .writing_tool_powers import *  # noqa: F401, F403
+from .playing_piece_powers import *  # noqa: F401, F403
+from .dining_powers import *  # noqa: F401, F403
