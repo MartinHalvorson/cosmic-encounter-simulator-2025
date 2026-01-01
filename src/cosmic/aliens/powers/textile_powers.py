@@ -1,5 +1,5 @@
 """
-Gemstone Powers - Precious gemstone themed aliens.
+Textile Powers - Fabric and textile themed aliens.
 """
 
 from dataclasses import dataclass, field
@@ -15,9 +15,9 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Diamond_Gem(AlienPower):
-    """Diamond_Gem - Hardest gem. +5 always."""
-    name: str = field(default="Diamond_Gem", init=False)
+class Silk_Textile(AlienPower):
+    """Silk_Textile - Luxury fabric. +5 always."""
+    name: str = field(default="Silk_Textile", init=False)
     description: str = field(default="+5 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -30,39 +30,9 @@ class Diamond_Gem(AlienPower):
 
 
 @dataclass
-class Ruby_Gem(AlienPower):
-    """Ruby_Gem - Red fire. +5 on offense."""
-    name: str = field(default="Ruby_Gem", init=False)
-    description: str = field(default="+5 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Sapphire_Gem(AlienPower):
-    """Sapphire_Gem - Blue wisdom. +5 on defense."""
-    name: str = field(default="Sapphire_Gem", init=False)
-    description: str = field(default="+5 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Emerald_Gem(AlienPower):
-    """Emerald_Gem - Green nature. +4 always."""
-    name: str = field(default="Emerald_Gem", init=False)
+class Cotton_Textile(AlienPower):
+    """Cotton_Textile - Natural fiber. +4 always."""
+    name: str = field(default="Cotton_Textile", init=False)
     description: str = field(default="+4 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -75,9 +45,9 @@ class Emerald_Gem(AlienPower):
 
 
 @dataclass
-class Amethyst_Gem(AlienPower):
-    """Amethyst_Gem - Purple calm. +4 on defense."""
-    name: str = field(default="Amethyst_Gem", init=False)
+class Wool_Textile(AlienPower):
+    """Wool_Textile - Warm fiber. +4 on defense."""
+    name: str = field(default="Wool_Textile", init=False)
     description: str = field(default="+4 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -90,39 +60,9 @@ class Amethyst_Gem(AlienPower):
 
 
 @dataclass
-class Topaz_Gem(AlienPower):
-    """Topaz_Gem - Golden glow. +4 on offense."""
-    name: str = field(default="Topaz_Gem", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Opal_Gem(AlienPower):
-    """Opal_Gem - Rainbow fire. +4 always."""
-    name: str = field(default="Opal_Gem", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Garnet_Gem(AlienPower):
-    """Garnet_Gem - Deep red. +3 always."""
-    name: str = field(default="Garnet_Gem", init=False)
+class Linen_Textile(AlienPower):
+    """Linen_Textile - Cool fabric. +3 always."""
+    name: str = field(default="Linen_Textile", init=False)
     description: str = field(default="+3 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -135,39 +75,39 @@ class Garnet_Gem(AlienPower):
 
 
 @dataclass
-class Turquoise_Gem(AlienPower):
-    """Turquoise_Gem - Sky stone. +3 on defense."""
-    name: str = field(default="Turquoise_Gem", init=False)
-    description: str = field(default="+3 when defending.", init=False)
+class Denim_Textile(AlienPower):
+    """Denim_Textile - Tough fabric. +4 on defense."""
+    name: str = field(default="Denim_Textile", init=False)
+    description: str = field(default="+4 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.DEFENSE:
-            return total + 3
+            return total + 4
         return total
 
 
 @dataclass
-class Pearl_Gem(AlienPower):
-    """Pearl_Gem - Ocean treasure. +3 always."""
-    name: str = field(default="Pearl_Gem", init=False)
-    description: str = field(default="+3 constant.", init=False)
+class Leather_Textile(AlienPower):
+    """Leather_Textile - Animal hide. +5 on defense."""
+    name: str = field(default="Leather_Textile", init=False)
+    description: str = field(default="+5 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
         return total
 
 
 @dataclass
-class Jade_Gem(AlienPower):
-    """Jade_Gem - Green fortune. +4 always."""
-    name: str = field(default="Jade_Gem", init=False)
+class Velvet_Textile(AlienPower):
+    """Velvet_Textile - Soft luxury. +4 always."""
+    name: str = field(default="Velvet_Textile", init=False)
     description: str = field(default="+4 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -180,9 +120,39 @@ class Jade_Gem(AlienPower):
 
 
 @dataclass
-class Onyx_Gem(AlienPower):
-    """Onyx_Gem - Black power. +4 on offense."""
-    name: str = field(default="Onyx_Gem", init=False)
+class Cashmere_Textile(AlienPower):
+    """Cashmere_Textile - Premium wool. +5 always."""
+    name: str = field(default="Cashmere_Textile", init=False)
+    description: str = field(default="+5 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Canvas_Textile(AlienPower):
+    """Canvas_Textile - Heavy duty. +4 on defense."""
+    name: str = field(default="Canvas_Textile", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Nylon_Textile(AlienPower):
+    """Nylon_Textile - Synthetic strong. +4 on offense."""
+    name: str = field(default="Nylon_Textile", init=False)
     description: str = field(default="+4 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -194,13 +164,44 @@ class Onyx_Gem(AlienPower):
         return total
 
 
+@dataclass
+class Polyester_Textile(AlienPower):
+    """Polyester_Textile - Durable synthetic. +3 always."""
+    name: str = field(default="Polyester_Textile", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 3
+        return total
+
+
+@dataclass
+class Kevlar_Textile(AlienPower):
+    """Kevlar_Textile - Bulletproof. +6 on defense."""
+    name: str = field(default="Kevlar_Textile", init=False)
+    description: str = field(default="+6 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 6
+        return total
+
+
 # Register all powers
-GEMSTONE_POWERS = [
-    Diamond_Gem, Ruby_Gem, Sapphire_Gem, Emerald_Gem, Amethyst_Gem, Topaz_Gem,
-    Opal_Gem, Garnet_Gem, Turquoise_Gem, Pearl_Gem, Jade_Gem, Onyx_Gem,
+TEXTILE_POWERS = [
+    Silk_Textile, Cotton_Textile, Wool_Textile, Linen_Textile, Denim_Textile,
+    Leather_Textile, Velvet_Textile, Cashmere_Textile, Canvas_Textile,
+    Nylon_Textile, Polyester_Textile, Kevlar_Textile,
 ]
 
-for power_class in GEMSTONE_POWERS:
+for power_class in TEXTILE_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

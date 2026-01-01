@@ -1,5 +1,5 @@
 """
-Gemstone Powers - Precious gemstone themed aliens.
+Ancient Wonder Powers - Ancient wonders of the world themed aliens.
 """
 
 from dataclasses import dataclass, field
@@ -15,39 +15,9 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Diamond_Gem(AlienPower):
-    """Diamond_Gem - Hardest gem. +5 always."""
-    name: str = field(default="Diamond_Gem", init=False)
-    description: str = field(default="+5 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Ruby_Gem(AlienPower):
-    """Ruby_Gem - Red fire. +5 on offense."""
-    name: str = field(default="Ruby_Gem", init=False)
-    description: str = field(default="+5 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Sapphire_Gem(AlienPower):
-    """Sapphire_Gem - Blue wisdom. +5 on defense."""
-    name: str = field(default="Sapphire_Gem", init=False)
+class Great_Pyramid(AlienPower):
+    """Great_Pyramid - Eternal monument. +5 on defense."""
+    name: str = field(default="Great_Pyramid", init=False)
     description: str = field(default="+5 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -60,9 +30,9 @@ class Sapphire_Gem(AlienPower):
 
 
 @dataclass
-class Emerald_Gem(AlienPower):
-    """Emerald_Gem - Green nature. +4 always."""
-    name: str = field(default="Emerald_Gem", init=False)
+class Hanging_Gardens(AlienPower):
+    """Hanging_Gardens - Living beauty. +4 always."""
+    name: str = field(default="Hanging_Gardens", init=False)
     description: str = field(default="+4 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -75,9 +45,39 @@ class Emerald_Gem(AlienPower):
 
 
 @dataclass
-class Amethyst_Gem(AlienPower):
-    """Amethyst_Gem - Purple calm. +4 on defense."""
-    name: str = field(default="Amethyst_Gem", init=False)
+class Colossus_Rhodes(AlienPower):
+    """Colossus_Rhodes - Giant guardian. +5 on defense."""
+    name: str = field(default="Colossus_Rhodes", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Lighthouse_Alexandria(AlienPower):
+    """Lighthouse_Alexandria - Guiding light. +4 on offense."""
+    name: str = field(default="Lighthouse_Alexandria", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Mausoleum_Wonder(AlienPower):
+    """Mausoleum_Wonder - Grand tomb. +4 on defense."""
+    name: str = field(default="Mausoleum_Wonder", init=False)
     description: str = field(default="+4 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -90,24 +90,39 @@ class Amethyst_Gem(AlienPower):
 
 
 @dataclass
-class Topaz_Gem(AlienPower):
-    """Topaz_Gem - Golden glow. +4 on offense."""
-    name: str = field(default="Topaz_Gem", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
+class Temple_Artemis(AlienPower):
+    """Temple_Artemis - Divine sanctuary. +5 always."""
+    name: str = field(default="Temple_Artemis", init=False)
+    description: str = field(default="+5 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
+        if player.power_active:
+            return total + 5
         return total
 
 
 @dataclass
-class Opal_Gem(AlienPower):
-    """Opal_Gem - Rainbow fire. +4 always."""
-    name: str = field(default="Opal_Gem", init=False)
+class Zeus_Statue(AlienPower):
+    """Zeus_Statue - Divine power. +5 on offense."""
+    name: str = field(default="Zeus_Statue", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Stonehenge_Wonder(AlienPower):
+    """Stonehenge_Wonder - Ancient mystery. +4 always."""
+    name: str = field(default="Stonehenge_Wonder", init=False)
     description: str = field(default="+4 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -120,87 +135,73 @@ class Opal_Gem(AlienPower):
 
 
 @dataclass
-class Garnet_Gem(AlienPower):
-    """Garnet_Gem - Deep red. +3 always."""
-    name: str = field(default="Garnet_Gem", init=False)
-    description: str = field(default="+3 constant.", init=False)
+class Great_Wall_Wonder(AlienPower):
+    """Great_Wall_Wonder - Ultimate barrier. +6 on defense."""
+    name: str = field(default="Great_Wall_Wonder", init=False)
+    description: str = field(default="+6 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
+        if player.power_active and side == Side.DEFENSE:
+            return total + 6
         return total
 
 
 @dataclass
-class Turquoise_Gem(AlienPower):
-    """Turquoise_Gem - Sky stone. +3 on defense."""
-    name: str = field(default="Turquoise_Gem", init=False)
-    description: str = field(default="+3 when defending.", init=False)
+class Petra_Wonder(AlienPower):
+    """Petra_Wonder - Rose city. +4 on defense."""
+    name: str = field(default="Petra_Wonder", init=False)
+    description: str = field(default="+4 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.DEFENSE:
-            return total + 3
-        return total
-
-
-@dataclass
-class Pearl_Gem(AlienPower):
-    """Pearl_Gem - Ocean treasure. +3 always."""
-    name: str = field(default="Pearl_Gem", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Jade_Gem(AlienPower):
-    """Jade_Gem - Green fortune. +4 always."""
-    name: str = field(default="Jade_Gem", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
             return total + 4
         return total
 
 
 @dataclass
-class Onyx_Gem(AlienPower):
-    """Onyx_Gem - Black power. +4 on offense."""
-    name: str = field(default="Onyx_Gem", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
+class Angkor_Wat(AlienPower):
+    """Angkor_Wat - Temple city. +5 always."""
+    name: str = field(default="Angkor_Wat", init=False)
+    description: str = field(default="+5 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Machu_Picchu(AlienPower):
+    """Machu_Picchu - Mountain citadel. +4 on defense."""
+    name: str = field(default="Machu_Picchu", init=False)
+    description: str = field(default="+4 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
+        if player.power_active and side == Side.DEFENSE:
             return total + 4
         return total
 
 
 # Register all powers
-GEMSTONE_POWERS = [
-    Diamond_Gem, Ruby_Gem, Sapphire_Gem, Emerald_Gem, Amethyst_Gem, Topaz_Gem,
-    Opal_Gem, Garnet_Gem, Turquoise_Gem, Pearl_Gem, Jade_Gem, Onyx_Gem,
+ANCIENT_WONDER_POWERS = [
+    Great_Pyramid, Hanging_Gardens, Colossus_Rhodes, Lighthouse_Alexandria,
+    Mausoleum_Wonder, Temple_Artemis, Zeus_Statue, Stonehenge_Wonder,
+    Great_Wall_Wonder, Petra_Wonder, Angkor_Wat, Machu_Picchu,
 ]
 
-for power_class in GEMSTONE_POWERS:
+for power_class in ANCIENT_WONDER_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:
