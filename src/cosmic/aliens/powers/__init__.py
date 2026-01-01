@@ -389,3 +389,8 @@ from .gaming_console_powers import *  # noqa: F401, F403
 from .nature_element_powers import *  # noqa: F401, F403
 from .mythology_new_powers import *  # noqa: F401, F403
 from .body_part_powers import *  # noqa: F401, F403
+from .gardening_powers import *  # noqa: F401, F403
+from .horror_movie_powers import *  # noqa: F401, F403
+from .internet_culture_powers import *  # noqa: F401, F403
+from .kitchen_extended_powers import *  # noqa: F401, F403
+from .video_game_powers import *  # noqa: F401, F403
