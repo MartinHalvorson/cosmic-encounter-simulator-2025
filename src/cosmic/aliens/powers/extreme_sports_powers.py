@@ -1,14 +1,14 @@
 """
-Direction Powers - Directions and navigation themed aliens.
+Extreme Sports Powers - Extreme sports themed aliens.
 """
 
 from dataclasses import dataclass, field
-from typing import Optional, List, Dict, Any, TYPE_CHECKING
+from typing import TYPE_CHECKING
 import random
 
 from ..base import AlienPower, PowerCategory
 from ..registry import AlienRegistry
-from ...types import PowerTiming, PowerType, PlayerRole, Side
+from ...types import PowerTiming, PowerType, Side
 
 if TYPE_CHECKING:
     from ...game import Game
@@ -16,9 +16,9 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class North_Dir(AlienPower):
-    """North_Dir - Upward Direction. +4 on offense."""
-    name: str = field(default="North_Dir", init=False)
+class Skydiver(AlienPower):
+    """Skydiver - Falling power. +4 on offense."""
+    name: str = field(default="Skydiver", init=False)
     description: str = field(default="+4 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -31,114 +31,9 @@ class North_Dir(AlienPower):
 
 
 @dataclass
-class South_Dir(AlienPower):
-    """South_Dir - Downward Direction. +4 on defense."""
-    name: str = field(default="South_Dir", init=False)
-    description: str = field(default="+4 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class East_Dir(AlienPower):
-    """East_Dir - Rising Direction. +4 on offense."""
-    name: str = field(default="East_Dir", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class West_Dir(AlienPower):
-    """West_Dir - Setting Direction. +4 on defense."""
-    name: str = field(default="West_Dir", init=False)
-    description: str = field(default="+4 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Up_Dir(AlienPower):
-    """Up_Dir - Ascending. +5 on offense."""
-    name: str = field(default="Up_Dir", init=False)
-    description: str = field(default="+5 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Down_Dir(AlienPower):
-    """Down_Dir - Descending. +5 on defense."""
-    name: str = field(default="Down_Dir", init=False)
-    description: str = field(default="+5 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Forward_Dir(AlienPower):
-    """Forward_Dir - Ahead. +5 on offense."""
-    name: str = field(default="Forward_Dir", init=False)
-    description: str = field(default="+5 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Backward_Dir(AlienPower):
-    """Backward_Dir - Retreat. +5 on defense."""
-    name: str = field(default="Backward_Dir", init=False)
-    description: str = field(default="+5 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Left_Dir(AlienPower):
-    """Left_Dir - Lateral. +3 always."""
-    name: str = field(default="Left_Dir", init=False)
+class Bungee(AlienPower):
+    """Bungee - Elastic power. +3 always."""
+    name: str = field(default="Bungee", init=False)
     description: str = field(default="+3 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -151,9 +46,24 @@ class Left_Dir(AlienPower):
 
 
 @dataclass
-class Right_Dir(AlienPower):
-    """Right_Dir - Lateral. +3 always."""
-    name: str = field(default="Right_Dir", init=False)
+class Basejumper(AlienPower):
+    """Basejumper - Bold drop. +5 on offense."""
+    name: str = field(default="Basejumper", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Paraglider(AlienPower):
+    """Paraglider - Gliding power. +3 always."""
+    name: str = field(default="Paraglider", init=False)
     description: str = field(default="+3 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -166,39 +76,9 @@ class Right_Dir(AlienPower):
 
 
 @dataclass
-class Center_Dir(AlienPower):
-    """Center_Dir - Middle Position. +4 always."""
-    name: str = field(default="Center_Dir", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Inside_Dir(AlienPower):
-    """Inside_Dir - Interior. +4 on defense."""
-    name: str = field(default="Inside_Dir", init=False)
-    description: str = field(default="+4 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Outside_Dir(AlienPower):
-    """Outside_Dir - Exterior. +4 on offense."""
-    name: str = field(default="Outside_Dir", init=False)
+class Wingsuit(AlienPower):
+    """Wingsuit - Flying squirrel. +4 on offense."""
+    name: str = field(default="Wingsuit", init=False)
     description: str = field(default="+4 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -211,9 +91,24 @@ class Outside_Dir(AlienPower):
 
 
 @dataclass
-class Around_Dir(AlienPower):
-    """Around_Dir - Circular Path. +4 always."""
-    name: str = field(default="Around_Dir", init=False)
+class RockClimber(AlienPower):
+    """RockClimber - Scaling power. +4 on offense."""
+    name: str = field(default="RockClimber", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Mountaineer(AlienPower):
+    """Mountaineer - Summit seeker. +4 always."""
+    name: str = field(default="Mountaineer", init=False)
     description: str = field(default="+4 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -226,9 +121,69 @@ class Around_Dir(AlienPower):
 
 
 @dataclass
-class Through_Dir(AlienPower):
-    """Through_Dir - Penetrating. +5 on offense."""
-    name: str = field(default="Through_Dir", init=False)
+class Surfer_Ext(AlienPower):
+    """Surfer_Ext - Wave rider. +3 always."""
+    name: str = field(default="Surfer_Ext", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 3
+        return total
+
+
+@dataclass
+class Snowboarder(AlienPower):
+    """Snowboarder - Snow rider. +4 on offense."""
+    name: str = field(default="Snowboarder", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Skateboarder(AlienPower):
+    """Skateboarder - Street rider. +3 on offense."""
+    name: str = field(default="Skateboarder", init=False)
+    description: str = field(default="+3 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 3
+        return total
+
+
+@dataclass
+class BMXRider(AlienPower):
+    """BMXRider - Trick rider. +4 on offense."""
+    name: str = field(default="BMXRider", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Motorcross(AlienPower):
+    """Motorcross - Dirt biker. +5 on offense."""
+    name: str = field(default="Motorcross", init=False)
     description: str = field(default="+5 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -241,13 +196,12 @@ class Through_Dir(AlienPower):
 
 
 # Register all powers
-DIRECTION_POWERS = [
-    North_Dir, South_Dir, East_Dir, West_Dir, Up_Dir, Down_Dir, Forward_Dir,
-    Backward_Dir, Left_Dir, Right_Dir, Center_Dir, Inside_Dir, Outside_Dir,
-    Around_Dir, Through_Dir,
+EXTREME_SPORTS_POWERS = [
+    Skydiver, Bungee, Basejumper, Paraglider, Wingsuit, RockClimber,
+    Mountaineer, Surfer_Ext, Snowboarder, Skateboarder, BMXRider, Motorcross,
 ]
 
-for power_class in DIRECTION_POWERS:
+for power_class in EXTREME_SPORTS_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

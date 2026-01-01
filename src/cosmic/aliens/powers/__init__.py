@@ -478,3 +478,10 @@ from .body_part_powers import *  # noqa: F401, F403
 from .season_powers import *  # noqa: F401, F403
 from .emotion_powers import *  # noqa: F401, F403
 from .color_powers import *  # noqa: F401, F403
+from .scottish_powers import *
+from .welsh_powers import *
+from .irish_powers import *
+from .brazilian_powers import *
+from .shape_powers import *  # noqa: F401, F403
+from .direction_powers import *  # noqa: F401, F403
+from .texture_powers import *  # noqa: F401, F403

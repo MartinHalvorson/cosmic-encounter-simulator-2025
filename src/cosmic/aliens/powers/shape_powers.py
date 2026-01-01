@@ -1,13 +1,14 @@
 """
-Shape Powers - Geometric shape-themed aliens.
+Shape Powers - Geometric shapes themed aliens.
 """
 
 from dataclasses import dataclass, field
 from typing import Optional, List, Dict, Any, TYPE_CHECKING
+import random
 
 from ..base import AlienPower, PowerCategory
 from ..registry import AlienRegistry
-from ...types import PowerTiming, PowerType, Side, PlayerRole
+from ...types import PowerTiming, PowerType, PlayerRole, Side
 
 if TYPE_CHECKING:
     from ...game import Game
@@ -15,20 +16,55 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Circle(AlienPower):
-    """Circle - Complete shape. Win ties."""
-    name: str = field(default="Circle", init=False)
-    description: str = field(default="Win all ties.", init=False)
+class Circle_Shape(AlienPower):
+    """Circle_Shape - Round Form. +4 always."""
+    name: str = field(default="Circle_Shape", init=False)
+    description: str = field(default="+4 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
 
 @dataclass
-class Square(AlienPower):
-    """Square - Solid shape. +4 when defending."""
-    name: str = field(default="Square", init=False)
-    description: str = field(default="+4 on defense.", init=False)
+class Square_Shape(AlienPower):
+    """Square_Shape - Equal Sides. +4 always."""
+    name: str = field(default="Square_Shape", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Triangle_Shape(AlienPower):
+    """Triangle_Shape - Three Sides. +4 on offense."""
+    name: str = field(default="Triangle_Shape", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Rectangle_Shape(AlienPower):
+    """Rectangle_Shape - Long Form. +4 on defense."""
+    name: str = field(default="Rectangle_Shape", init=False)
+    description: str = field(default="+4 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
@@ -40,175 +76,179 @@ class Square(AlienPower):
 
 
 @dataclass
-class Triangle(AlienPower):
-    """Triangle - Pointed shape. +3 when attacking."""
-    name: str = field(default="Triangle", init=False)
-    description: str = field(default="+3 on offense.", init=False)
+class Pentagon_Shape(AlienPower):
+    """Pentagon_Shape - Five Sides. +5 always."""
+    name: str = field(default="Pentagon_Shape", init=False)
+    description: str = field(default="+5 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 3
-        return total
-
-
-@dataclass
-class Pentagon(AlienPower):
-    """Pentagon - Five-sided. +1 per ship committed."""
-    name: str = field(default="Pentagon", init=False)
-    description: str = field(default="+1 per ship.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Hexagon(AlienPower):
-    """Hexagon - Six-sided. +2 per home colony."""
-    name: str = field(default="Hexagon", init=False)
-    description: str = field(default="+2 per home colony.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            home_count = len([p for p in player.home_planets if player.name in p.ships])
-            return total + (home_count * 2)
+            return total + 5
         return total
 
 
 @dataclass
-class Octagon(AlienPower):
-    """Octagon - Eight-sided. Launch up to 8 ships."""
-    name: str = field(default="Octagon", init=False)
-    description: str = field(default="Launch up to 8 ships.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.LAUNCH, init=False)
+class Hexagon_Shape(AlienPower):
+    """Hexagon_Shape - Six Sides. +5 on defense."""
+    name: str = field(default="Hexagon_Shape", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
 
 
 @dataclass
-class Star_Shape(AlienPower):
-    """Star Shape - Pointed form. +5 on first encounter."""
-    name: str = field(default="StarShape", init=False)
-    description: str = field(default="+5 on first encounter.", init=False)
+class Octagon_Shape(AlienPower):
+    """Octagon_Shape - Eight Sides. +5 on defense."""
+    name: str = field(default="Octagon_Shape", init=False)
+    description: str = field(default="+5 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and game.encounter_number == 1:
+        if player.power_active and side == Side.DEFENSE:
             return total + 5
         return total
 
 
 @dataclass
 class Diamond_Shape(AlienPower):
-    """Diamond Shape - Precious form. +1 per card in hand."""
-    name: str = field(default="DiamondShape", init=False)
-    description: str = field(default="+1 per card in hand.", init=False)
+    """Diamond_Shape - Rotated Square. +5 always."""
+    name: str = field(default="Diamond_Shape", init=False)
+    description: str = field(default="+5 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Star_Shape(AlienPower):
+    """Star_Shape - Pointed Form. +5 on offense."""
+    name: str = field(default="Star_Shape", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Oval_Shape(AlienPower):
+    """Oval_Shape - Elongated Circle. +4 always."""
+    name: str = field(default="Oval_Shape", init=False)
+    description: str = field(default="+4 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + len(player.hand)
+            return total + 4
         return total
 
 
 @dataclass
-class Pyramid(AlienPower):
-    """Pyramid - Ancient form. +3 defending home."""
-    name: str = field(default="Pyramid", init=False)
-    description: str = field(default="+3 defending home.", init=False)
+class Cube_Shape(AlienPower):
+    """Cube_Shape - 3D Square. +5 on defense."""
+    name: str = field(default="Cube_Shape", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Sphere_Shape(AlienPower):
+    """Sphere_Shape - 3D Circle. +5 always."""
+    name: str = field(default="Sphere_Shape", init=False)
+    description: str = field(default="+5 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Pyramid_Shape(AlienPower):
+    """Pyramid_Shape - 3D Triangle. +5 on offense."""
+    name: str = field(default="Pyramid_Shape", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Cylinder_Shape(AlienPower):
+    """Cylinder_Shape - Round Column. +4 always."""
+    name: str = field(default="Cylinder_Shape", init=False)
+    description: str = field(default="+4 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            if game.defense_planet and game.defense_planet.is_home_planet:
-                return total + 3
+        if player.power_active:
+            return total + 4
         return total
 
 
 @dataclass
-class Sphere(AlienPower):
-    """Sphere - Perfect 3D form. Ships count double."""
-    name: str = field(default="Sphere", init=False)
-    description: str = field(default="Ships count double.", init=False)
+class Cone_Shape(AlienPower):
+    """Cone_Shape - Pointed Round. +4 on offense."""
+    name: str = field(default="Cone_Shape", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-
-@dataclass
-class Cube(AlienPower):
-    """Cube - Solid 3D form. Prevent 2 ships from warp."""
-    name: str = field(default="Cube", init=False)
-    description: str = field(default="Save 2 ships from warp.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.SHIPS_TO_WARP, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Cylinder(AlienPower):
-    """Cylinder - Rolling form. Move ships freely."""
-    name: str = field(default="Cylinder", init=False)
-    description: str = field(default="Freely relocate ships.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Cone(AlienPower):
-    """Cone - Pointed 3D form. -2 to opponent's total."""
-    name: str = field(default="Cone", init=False)
-    description: str = field(default="-2 to opponent.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-
-@dataclass
-class Spiral(AlienPower):
-    """Spiral - Winding form. Swap encounter cards."""
-    name: str = field(default="Spiral", init=False)
-    description: str = field(default="Swap cards with opponent.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-
-@dataclass
-class Arrow(AlienPower):
-    """Arrow - Pointing form. Ignore destiny, attack any player."""
-    name: str = field(default="Arrow", init=False)
-    description: str = field(default="Choose attack target.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.DESTINY, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
 
 
 # Register all powers
-AlienRegistry.register(Circle())
-AlienRegistry.register(Square())
-AlienRegistry.register(Triangle())
-AlienRegistry.register(Pentagon())
-AlienRegistry.register(Hexagon())
-AlienRegistry.register(Octagon())
-AlienRegistry.register(Star_Shape())
-AlienRegistry.register(Diamond_Shape())
-AlienRegistry.register(Pyramid())
-AlienRegistry.register(Sphere())
-AlienRegistry.register(Cube())
-AlienRegistry.register(Cylinder())
-AlienRegistry.register(Cone())
-AlienRegistry.register(Spiral())
-AlienRegistry.register(Arrow())
+SHAPE_POWERS = [
+    Circle_Shape, Square_Shape, Triangle_Shape, Rectangle_Shape, Pentagon_Shape,
+    Hexagon_Shape, Octagon_Shape, Diamond_Shape, Star_Shape, Oval_Shape,
+    Cube_Shape, Sphere_Shape, Pyramid_Shape, Cylinder_Shape, Cone_Shape,
+]
+
+for power_class in SHAPE_POWERS:
+    try:
+        AlienRegistry.register(power_class())
+    except ValueError:
+        pass
