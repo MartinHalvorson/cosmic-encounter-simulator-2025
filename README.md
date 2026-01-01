@@ -30872,57 +30872,57 @@ python update_stats.py --sort power --order asc
 
 ## Simulation Results
 
-**Total Games Simulated:** 22,248,357
-**Solo Victories:** 21,627,404
-**Shared Victories:** 367,729
+**Total Games Simulated:** 22,298,330
+**Solo Victories:** 21,676,546
+**Shared Victories:** 368,560
 **Average Game Length:** 5.0 turns
-**Last Updated:** 2025-12-31T21:41:28
+**Last Updated:** 2025-12-31T21:50:48
 
 ### Alien Power Rankings (by ELO)
 
 | Rank | Alien | ELO | Win Rate | Games | Solo Wins | Shared |
 |------|-------|-----|----------|-------|-----------|--------|
 | 1 | Kuiper_Belt | 1436 | 0.0% | 2 | 0 | 0 |
-| 2 | Wok | 818 | 32.4% | 34 | 11 | 0 |
-| 3 | Quasar_Ast | 673 | 34.1% | 41 | 14 | 0 |
-| 4 | Pulsar_Ast | 657 | 41.7% | 48 | 19 | 1 |
-| 5 | SolarWind | 625 | 42.3% | 52 | 22 | 0 |
-| 6 | Nebula_Ast | 621 | 28.6% | 42 | 12 | 0 |
-| 7 | Barbecue | 616 | 26.2% | 42 | 11 | 0 |
-| 8 | Supernova_Ast | 602 | 31.8% | 44 | 14 | 0 |
-| 9 | Pin | 562 | 32.6% | 46 | 14 | 1 |
-| 10 | Asteroid_Ast | 545 | 33.3% | 51 | 17 | 0 |
-| 11 | Fortress_Arch | 540 | 25.0% | 44 | 11 | 0 |
-| 12 | Deep_One | 539 | 24.4% | 41 | 10 | 0 |
-| 13 | Emerald_Alt | 538 | 38.9% | 54 | 20 | 1 |
-| 14 | Curer | 532 | 17.9% | 39 | 7 | 0 |
-| 15 | Ares_Alt | 532 | 36.5% | 52 | 19 | 0 |
-| 16 | All_In | 496 | 27.7% | 47 | 12 | 1 |
-| 17 | Apollo_Alt | 494 | 20.9% | 43 | 8 | 1 |
-| 18 | Mordred | 490 | 31.9% | 47 | 14 | 1 |
-| 19 | Flush | 476 | 20.0% | 45 | 9 | 0 |
-| 20 | Athena_Alt | 457 | 21.3% | 47 | 10 | 0 |
-| 21 | Elite_Achievement | 455 | 40.4% | 57 | 22 | 1 |
-| 22 | Pyramid_Arch | 438 | 23.4% | 47 | 10 | 1 |
-| 23 | Age_Forward | 435 | 19.6% | 46 | 9 | 0 |
-| 24 | Bathala | 435 | 34.0% | 53 | 17 | 1 |
-| 25 | Assembly_Line | 433 | 43.3% | 60 | 23 | 3 |
-| 26 | Poseidon_Alt | 433 | 19.1% | 47 | 9 | 0 |
-| 27 | Turmeric | 430 | 29.4% | 51 | 15 | 0 |
-| 28 | Mantis_Shrimp | 430 | 38.6% | 57 | 20 | 2 |
-| 29 | King_Piece | 426 | 23.5% | 51 | 12 | 0 |
-| 30 | Summit_Achievement | 423 | 37.5% | 56 | 20 | 1 |
-| 31 | Sapphire_Alt | 423 | 25.9% | 54 | 14 | 0 |
-| 32 | Kinnara | 418 | 30.2% | 53 | 16 | 0 |
-| 33 | Prickly_Texture | 408 | 27.5% | 51 | 13 | 1 |
-| 34 | Gambler_Card | 402 | 15.9% | 44 | 6 | 1 |
-| 35 | Pickler | 401 | 31.0% | 58 | 17 | 1 |
-| 36 | Hermes_Alt | 399 | 20.8% | 48 | 10 | 0 |
-| 37 | Hamster | 396 | 37.9% | 58 | 21 | 1 |
-| 38 | Tornado_Alt | 390 | 25.5% | 55 | 14 | 0 |
-| 39 | Hauberk | 388 | 31.5% | 54 | 17 | 0 |
-| 40 | Titanic_Size | 387 | 41.4% | 70 | 29 | 0 |
-| ... | *6325 more aliens* | ... | ... | ... | ... | ... |
+| 2 | Wrestling_Martial | 1195 | 47.4% | 19 | 9 | 0 |
+| 3 | Cross_Shape | 1124 | 40.0% | 20 | 8 | 0 |
+| 4 | Zero_Point | 1116 | 43.5% | 23 | 10 | 0 |
+| 5 | Lumen_Bright | 1113 | 42.9% | 21 | 8 | 1 |
+| 6 | Omega_End | 1099 | 31.6% | 19 | 6 | 0 |
+| 7 | Quadrant_Alpha | 1096 | 35.0% | 20 | 7 | 0 |
+| 8 | Arrow_Shape | 1078 | 45.8% | 24 | 10 | 1 |
+| 9 | Mercury_Element | 1077 | 51.9% | 27 | 13 | 1 |
+| 10 | Septuple_Core | 1074 | 33.3% | 21 | 7 | 0 |
+| 11 | Cubism | 1072 | 33.3% | 21 | 7 | 0 |
+| 12 | Graviton_Field | 1066 | 30.0% | 20 | 6 | 0 |
+| 13 | Manticore_Fantasy | 1062 | 17.6% | 17 | 3 | 0 |
+| 14 | Griffin_Fantasy | 1058 | 36.4% | 22 | 7 | 1 |
+| 15 | Bamboo_Garden | 1045 | 34.8% | 23 | 8 | 0 |
+| 16 | Chi_Force | 1035 | 31.8% | 22 | 7 | 0 |
+| 17 | Spiral_Shape | 1032 | 42.3% | 26 | 10 | 1 |
+| 18 | Chili_Soup | 1030 | 31.8% | 22 | 7 | 0 |
+| 19 | Tomato_Soup | 1024 | 25.0% | 20 | 5 | 0 |
+| 20 | Tug_Of_War | 1023 | 36.0% | 25 | 9 | 0 |
+| 21 | Pianissimo_Music | 1005 | 38.5% | 26 | 10 | 0 |
+| 22 | Omega_Letter | 1004 | 30.4% | 23 | 7 | 0 |
+| 23 | Tau_Echo | 1003 | 33.3% | 24 | 8 | 0 |
+| 24 | Aquarius_Zodiac | 1003 | 36.0% | 25 | 9 | 0 |
+| 25 | Grassland | 1002 | 38.5% | 26 | 9 | 1 |
+| 26 | Squid_Ocean | 1001 | 33.3% | 24 | 8 | 0 |
+| 27 | Gold_Element | 999 | 26.1% | 23 | 6 | 0 |
+| 28 | Jump_Rope | 998 | 20.0% | 20 | 4 | 0 |
+| 29 | Beta_Element | 996 | 27.3% | 22 | 5 | 1 |
+| 30 | Mint_Chip | 996 | 33.3% | 24 | 7 | 1 |
+| 31 | Miso | 995 | 34.8% | 23 | 6 | 2 |
+| 32 | Biochemistry | 994 | 42.9% | 28 | 12 | 0 |
+| 33 | Primate | 992 | 30.8% | 26 | 8 | 0 |
+| 34 | Brutalist_Style | 989 | 43.3% | 30 | 13 | 0 |
+| 35 | Nightingale_Bird | 989 | 41.4% | 29 | 12 | 0 |
+| 36 | Gumbo | 988 | 37.0% | 27 | 10 | 0 |
+| 37 | Rosemary | 985 | 26.1% | 23 | 6 | 0 |
+| 38 | Manta_Ocean | 984 | 37.0% | 27 | 9 | 1 |
+| 39 | Brown_Dwarf | 982 | 43.3% | 30 | 13 | 0 |
+| 40 | Reptilian | 982 | 34.6% | 26 | 9 | 0 |
+| ... | *6751 more aliens* | ... | ... | ... | ... | ... |
 
 <!-- SIMULATION_RESULTS_END -->
 
