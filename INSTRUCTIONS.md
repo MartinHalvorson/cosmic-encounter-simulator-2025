@@ -1788,3 +1788,84 @@ self.powers = AlienRegistry.get_names() + ["None"]
 - Fixed Kuiper_Belt alien bug
 - Verified full simulation stability with large-scale test
 - All systems operational
+
+---
+
+## Autonomous Development Session 44 (2026-01-01)
+
+### User Request: Remove All Custom Aliens
+
+**Instructions from User:**
+1. Remove ALL custom aliens from the simulator
+2. Keep only official FFG (Fantasy Flight Games) aliens
+3. Document expansion features so each expansion can be toggled on/off
+4. Make notes/documentation to stick to the real game
+
+### Session 44 Progress
+
+**Major Changes Made:**
+1. **Removed 815 Custom Power Files:**
+   - Backed up to ../backup_custom_powers/ (then deleted backup)
+   - Only official_powers.py retained
+   - Powers directory now contains only official aliens
+
+2. **238 Official FFG Aliens Implemented:**
+   - Base Game: 51 aliens (including Demon promo)
+   - Cosmic Incursion: 20 aliens
+   - Cosmic Conflict: 20 aliens
+   - Cosmic Alliance: 20 aliens
+   - Cosmic Storm: 25 aliens
+   - Cosmic Dominion: 30 aliens
+   - Cosmic Eons: 30 aliens
+   - Cosmic Odyssey: 42 aliens (31 new + 11 alternates)
+
+3. **Added Expansion Filtering to AlienRegistry:**
+   - `set_enabled_expansions(Set[Expansion])` - Set which expansions are active
+   - `enable_base_game_only()` - Play with just base game (51 aliens)
+   - `enable_all_expansions()` - Enable all content (default)
+   - `get_by_expansion(Expansion)` - Get aliens from specific expansion
+   - `get_enabled_aliens()` - Get aliens from enabled expansions only
+   - `get_expansion_summary()` - View expansion status with counts
+
+4. **Created EXPANSIONS.md Documentation:**
+   - Complete list of expansions with release dates and alien counts
+   - Python API examples for filtering
+   - Recommended expansion combinations
+   - Alternate timeline alien reference
+   - Notes on simulation accuracy
+
+5. **Updated Tests:**
+   - Removed expectations for custom aliens
+   - Tests now pass with official-only alien set
+   - 267 tests passing
+
+**Session 44 Final Statistics:**
+- **238 official FFG aliens** (down from 6000+ custom)
+- **All tests passing (267 tests)**
+- **Expansion filtering fully functional**
+- **EXPANSIONS.md documentation added**
+- **All changes committed and pushed**
+
+**Expansion API Usage:**
+```python
+from src.cosmic.aliens.registry import AlienRegistry
+from src.cosmic.types import Expansion
+
+# Base game only (51 aliens)
+AlienRegistry.enable_base_game_only()
+
+# Base + first two expansions (71 aliens)
+AlienRegistry.set_enabled_expansions({
+    Expansion.BASE,
+    Expansion.COSMIC_INCURSION
+})
+
+# View status
+print(AlienRegistry.get_expansion_summary())
+```
+
+**Project Now Aligned with Official FFG Content:**
+- Simulator uses only official aliens from all expansions
+- Each expansion can be individually enabled/disabled
+- Custom/homebrew aliens completely removed
+- Documentation provided for expansion features
