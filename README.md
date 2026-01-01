@@ -30872,57 +30872,57 @@ python update_stats.py --sort power --order asc
 
 ## Simulation Results
 
-**Total Games Simulated:** 22,148,431
-**Solo Victories:** 21,529,130
-**Shared Victories:** 366,077
+**Total Games Simulated:** 22,148,931
+**Solo Victories:** 21,529,625
+**Shared Victories:** 366,082
 **Average Game Length:** 5.0 turns
-**Last Updated:** 2025-12-31T21:21:00
+**Last Updated:** 2025-12-31T21:39:53
 
 ### Alien Power Rankings (by ELO)
 
 | Rank | Alien | ELO | Win Rate | Games | Solo Wins | Shared |
 |------|-------|-----|----------|-------|-----------|--------|
-| 1 | Brazilian_Food | 942 | 39.3% | 28 | 10 | 1 |
-| 2 | Bicycle_Transport | 926 | 45.5% | 33 | 15 | 0 |
-| 3 | Nephthys | 926 | 25.0% | 24 | 6 | 0 |
-| 4 | Kubera | 914 | 30.8% | 26 | 7 | 1 |
-| 5 | Quarterback_Sport | 907 | 36.7% | 30 | 11 | 0 |
-| 6 | Bus_Transport | 906 | 32.1% | 28 | 9 | 0 |
-| 7 | Krishna | 899 | 24.0% | 25 | 6 | 0 |
-| 8 | AI_SF | 898 | 13.6% | 22 | 3 | 0 |
-| 9 | Boat_Transport | 891 | 32.1% | 28 | 8 | 1 |
-| 10 | Goalkeeper_Sport | 867 | 37.5% | 32 | 12 | 0 |
-| 11 | Surya | 835 | 34.4% | 32 | 11 | 0 |
-| 12 | Wok | 818 | 32.4% | 34 | 11 | 0 |
-| 13 | Noir | 800 | 21.4% | 28 | 6 | 0 |
-| 14 | Aten | 788 | 36.1% | 36 | 13 | 0 |
-| 15 | Cyborg_SF | 780 | 34.3% | 35 | 12 | 0 |
-| 16 | Geb | 779 | 36.1% | 36 | 13 | 0 |
-| 17 | Point_Guard_Sport | 773 | 36.1% | 36 | 13 | 0 |
-| 18 | Alien_SF | 772 | 20.7% | 29 | 6 | 0 |
-| 19 | Marines | 744 | 31.4% | 35 | 11 | 0 |
-| 20 | Vayu | 743 | 25.0% | 32 | 8 | 0 |
-| 21 | Striker_Sport | 742 | 20.0% | 30 | 6 | 0 |
-| 22 | Airplane_Transport | 737 | 29.4% | 34 | 10 | 0 |
-| 23 | Indian_Food | 724 | 35.1% | 37 | 12 | 1 |
-| 24 | Mexican_Food | 708 | 28.6% | 35 | 10 | 0 |
-| 25 | Gunner | 708 | 30.6% | 36 | 11 | 0 |
-| 26 | Musical | 703 | 26.5% | 34 | 8 | 1 |
-| 27 | Greek_Food | 683 | 35.9% | 39 | 12 | 2 |
-| 28 | Psychic_SF | 682 | 25.7% | 35 | 9 | 0 |
-| 29 | Khepri | 681 | 31.6% | 38 | 12 | 0 |
-| 30 | Motorcycle_Transport | 679 | 25.7% | 35 | 9 | 0 |
-| 31 | Ryujin | 675 | 21.2% | 33 | 7 | 0 |
-| 32 | Quasar_Ast | 673 | 34.1% | 41 | 14 | 0 |
-| 33 | Pulsar_Ast | 657 | 41.7% | 48 | 19 | 1 |
-| 34 | Winger_Sport | 657 | 20.6% | 34 | 7 | 0 |
-| 35 | Terraform | 653 | 20.6% | 34 | 7 | 0 |
-| 36 | Tank_Corps | 647 | 18.2% | 33 | 6 | 0 |
-| 37 | Clone_SF | 628 | 28.2% | 39 | 11 | 0 |
-| 38 | Special_Forces | 627 | 20.0% | 35 | 7 | 0 |
-| 39 | Linebacker_Sport | 627 | 22.2% | 36 | 8 | 0 |
-| 40 | SolarWind | 625 | 42.3% | 52 | 22 | 0 |
-| ... | *6048 more aliens* | ... | ... | ... | ... | ... |
+| 1 | Gelato | 1508 | 100.0% | 1 | 1 | 0 |
+| 2 | Heatwave_Weather | 1508 | 100.0% | 1 | 1 | 0 |
+| 3 | Temple_Artemis | 1505 | 100.0% | 1 | 1 | 0 |
+| 4 | Smartphone | 1505 | 100.0% | 1 | 1 | 0 |
+| 5 | Side_Dish | 1504 | 100.0% | 1 | 1 | 0 |
+| 6 | Turquoise_Gem | 1504 | 100.0% | 1 | 1 | 0 |
+| 7 | Threshold | 1500 | 100.0% | 1 | 1 | 0 |
+| 8 | Virtuoso_Achievement | 1500 | 100.0% | 1 | 1 | 0 |
+| 9 | Elder_Thing | 1500 | 100.0% | 1 | 1 | 0 |
+| 10 | Satellite_Space | 1500 | 100.0% | 1 | 1 | 0 |
+| 11 | Glory_Achievement | 1500 | 100.0% | 1 | 1 | 0 |
+| 12 | Theta_Letter | 1500 | 100.0% | 1 | 1 | 0 |
+| 13 | Graviton_Field | 1500 | 100.0% | 1 | 1 | 0 |
+| 14 | Helium_Element | 1500 | 100.0% | 1 | 1 | 0 |
+| 15 | Angkor_Wat | 1500 | 100.0% | 1 | 1 | 0 |
+| 16 | Phoenix_Fantasy | 1500 | 100.0% | 1 | 1 | 0 |
+| 17 | Linen_Textile | 1500 | 100.0% | 1 | 1 | 0 |
+| 18 | Hurricane_Weather | 1500 | 100.0% | 1 | 1 | 0 |
+| 19 | Cat_Pet | 1500 | 100.0% | 1 | 1 | 0 |
+| 20 | Legal_Clerk | 1500 | 100.0% | 1 | 1 | 0 |
+| 21 | Field_Hockey | 1500 | 100.0% | 1 | 1 | 0 |
+| 22 | Social_Network | 1500 | 100.0% | 1 | 1 | 0 |
+| 23 | Dual_Aspect | 1500 | 100.0% | 1 | 1 | 0 |
+| 24 | Realization | 1500 | 100.0% | 1 | 1 | 0 |
+| 25 | Colossus_Rhodes | 1485 | 50.0% | 2 | 1 | 0 |
+| 26 | Merry_Go_Round | 1483 | 0.0% | 1 | 0 | 0 |
+| 27 | Slide_Play | 1476 | 0.0% | 1 | 0 | 0 |
+| 28 | Lavender_Garden | 1476 | 0.0% | 1 | 0 | 0 |
+| 29 | Sage_6K | 1476 | 0.0% | 1 | 0 | 0 |
+| 30 | CTO | 1474 | 50.0% | 2 | 1 | 0 |
+| 31 | Eggs | 1473 | 0.0% | 1 | 0 | 0 |
+| 32 | Cotton_Mill | 1473 | 0.0% | 1 | 0 | 0 |
+| 33 | Serverless | 1473 | 0.0% | 1 | 0 | 0 |
+| 34 | Denim_Textile | 1473 | 0.0% | 1 | 0 | 0 |
+| 35 | Phi_Letter | 1473 | 50.0% | 2 | 1 | 0 |
+| 36 | Thunderstorm_Weather | 1473 | 0.0% | 1 | 0 | 0 |
+| 37 | Rover_Space | 1472 | 0.0% | 1 | 0 | 0 |
+| 38 | Arbitrator_Legal | 1472 | 0.0% | 1 | 0 | 0 |
+| 39 | Search_Engine | 1472 | 0.0% | 1 | 0 | 0 |
+| 40 | Toaster_Kitchen | 1471 | 0.0% | 1 | 0 | 0 |
+| ... | *6175 more aliens* | ... | ... | ... | ... | ... |
 
 <!-- SIMULATION_RESULTS_END -->
 
