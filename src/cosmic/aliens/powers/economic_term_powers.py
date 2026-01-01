@@ -1,5 +1,5 @@
 """
-Pottery Style Powers for Cosmic Encounter.
+Economic Term Powers for Cosmic Encounter.
 """
 
 from dataclasses import dataclass, field
@@ -16,40 +16,25 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Terracotta_Pottery(AlienPower):
-    """Terracotta_Pottery - Power of Earth. +5 always"""
-    name: str = field(default="Terracotta_Pottery", init=False)
-    description: str = field(default="+5 always", init=False)
+class Inflation_Econ(AlienPower):
+    """Inflation_Econ - Power of Rise. +5 on offense."""
+    name: str = field(default="Inflation_Econ", init=False)
+    description: str = field(default="+5 on offense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
+        if player.power_active and side == Side.OFFENSE:
             return total + 5
         return total
 
 
 @dataclass
-class Porcelain_Pottery(AlienPower):
-    """Porcelain_Pottery - Power of Fine. +5 always"""
-    name: str = field(default="Porcelain_Pottery", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Stoneware_Pottery(AlienPower):
-    """Stoneware_Pottery - Power of Sturdy. +5 on defense"""
-    name: str = field(default="Stoneware_Pottery", init=False)
-    description: str = field(default="+5 on defense", init=False)
+class Deflation_Econ(AlienPower):
+    """Deflation_Econ - Power of Fall. +5 on defense."""
+    name: str = field(default="Deflation_Econ", init=False)
+    description: str = field(default="+5 on defense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -61,25 +46,10 @@ class Stoneware_Pottery(AlienPower):
 
 
 @dataclass
-class Earthenware_Pottery(AlienPower):
-    """Earthenware_Pottery - Power of Basic. +4 always"""
-    name: str = field(default="Earthenware_Pottery", init=False)
-    description: str = field(default="+4 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Ceramic_Pottery(AlienPower):
-    """Ceramic_Pottery - Power of Glazed. +5 always"""
-    name: str = field(default="Ceramic_Pottery", init=False)
-    description: str = field(default="+5 always", init=False)
+class GDP_Econ(AlienPower):
+    """GDP_Econ - Power of Output. +5 always."""
+    name: str = field(default="GDP_Econ", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -91,10 +61,25 @@ class Ceramic_Pottery(AlienPower):
 
 
 @dataclass
-class Raku_Pottery(AlienPower):
-    """Raku_Pottery - Power of Fire. +5 on offense"""
-    name: str = field(default="Raku_Pottery", init=False)
-    description: str = field(default="+5 on offense", init=False)
+class Supply_Econ(AlienPower):
+    """Supply_Econ - Power of Provide. +5 always."""
+    name: str = field(default="Supply_Econ", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Demand_Econ(AlienPower):
+    """Demand_Econ - Power of Want. +5 on offense."""
+    name: str = field(default="Demand_Econ", init=False)
+    description: str = field(default="+5 on offense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -106,10 +91,10 @@ class Raku_Pottery(AlienPower):
 
 
 @dataclass
-class Majolica_Pottery(AlienPower):
-    """Majolica_Pottery - Power of Colorful. +5 always"""
-    name: str = field(default="Majolica_Pottery", init=False)
-    description: str = field(default="+5 always", init=False)
+class Equilibrium_Econ(AlienPower):
+    """Equilibrium_Econ - Power of Balance. +5 always."""
+    name: str = field(default="Equilibrium_Econ", init=False)
+    description: str = field(default="+5 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -121,116 +106,131 @@ class Majolica_Pottery(AlienPower):
 
 
 @dataclass
-class Faience_Pottery(AlienPower):
-    """Faience_Pottery - Power of Ancient. +5 always"""
-    name: str = field(default="Faience_Pottery", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Delft_Pottery(AlienPower):
-    """Delft_Pottery - Power of Blue. +5 always"""
-    name: str = field(default="Delft_Pottery", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Sgraffito_Pottery(AlienPower):
-    """Sgraffito_Pottery - Power of Scratch. +5 on offense"""
-    name: str = field(default="Sgraffito_Pottery", init=False)
-    description: str = field(default="+5 on offense", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Slip_Pottery(AlienPower):
-    """Slip_Pottery - Power of Layer. +5 always"""
-    name: str = field(default="Slip_Pottery", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Burnished_Pottery(AlienPower):
-    """Burnished_Pottery - Power of Polish. +5 always"""
-    name: str = field(default="Burnished_Pottery", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Coiled_Pottery(AlienPower):
-    """Coiled_Pottery - Power of Build. +5 always"""
-    name: str = field(default="Coiled_Pottery", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Thrown_Pottery(AlienPower):
-    """Thrown_Pottery - Power of Spin. +6 always"""
-    name: str = field(default="Thrown_Pottery", init=False)
-    description: str = field(default="+6 always", init=False)
+class Monopoly_Econ(AlienPower):
+    """Monopoly_Econ - Power of Control. +6 on offense."""
+    name: str = field(default="Monopoly_Econ", init=False)
+    description: str = field(default="+6 on offense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.RED, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
+        if player.power_active and side == Side.OFFENSE:
             return total + 6
         return total
 
 
-POTTERY_STYLE_POWERS = [
-    Terracotta_Pottery, Porcelain_Pottery, Stoneware_Pottery, Earthenware_Pottery, Ceramic_Pottery, Raku_Pottery, Majolica_Pottery,
-    Faience_Pottery, Delft_Pottery, Sgraffito_Pottery, Slip_Pottery, Burnished_Pottery, Coiled_Pottery, Thrown_Pottery,
+@dataclass
+class Competition_Econ(AlienPower):
+    """Competition_Econ - Power of Rival. +5 always."""
+    name: str = field(default="Competition_Econ", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Recession_Econ(AlienPower):
+    """Recession_Econ - Power of Contract. +5 on defense."""
+    name: str = field(default="Recession_Econ", init=False)
+    description: str = field(default="+5 on defense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Boom_Econ(AlienPower):
+    """Boom_Econ - Power of Expand. +5 on offense."""
+    name: str = field(default="Boom_Econ", init=False)
+    description: str = field(default="+5 on offense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Interest_Econ(AlienPower):
+    """Interest_Econ - Power of Rate. +5 always."""
+    name: str = field(default="Interest_Econ", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Capital_Econ(AlienPower):
+    """Capital_Econ - Power of Invest. +5 always."""
+    name: str = field(default="Capital_Econ", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Labor_Econ(AlienPower):
+    """Labor_Econ - Power of Work. +5 always."""
+    name: str = field(default="Labor_Econ", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Trade_Econ(AlienPower):
+    """Trade_Econ - Power of Exchange. +5 always."""
+    name: str = field(default="Trade_Econ", init=False)
+    description: str = field(default="+5 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+ECONOMIC_TERM_POWERS = [
+    Inflation_Econ, Deflation_Econ, GDP_Econ, Supply_Econ, Demand_Econ, Equilibrium_Econ, Monopoly_Econ,
+    Competition_Econ, Recession_Econ, Boom_Econ, Interest_Econ, Capital_Econ, Labor_Econ, Trade_Econ,
 ]
 
-for power_class in POTTERY_STYLE_POWERS:
+for power_class in ECONOMIC_TERM_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

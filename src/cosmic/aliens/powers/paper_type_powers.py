@@ -1,5 +1,5 @@
 """
-Pottery Style Powers for Cosmic Encounter.
+Paper Type Powers for Cosmic Encounter.
 """
 
 from dataclasses import dataclass, field
@@ -16,9 +16,9 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Terracotta_Pottery(AlienPower):
-    """Terracotta_Pottery - Power of Earth. +5 always"""
-    name: str = field(default="Terracotta_Pottery", init=False)
+class Kraft_Paper(AlienPower):
+    """Kraft_Paper - Power of Strong. +5 always"""
+    name: str = field(default="Kraft_Paper", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -31,39 +31,9 @@ class Terracotta_Pottery(AlienPower):
 
 
 @dataclass
-class Porcelain_Pottery(AlienPower):
-    """Porcelain_Pottery - Power of Fine. +5 always"""
-    name: str = field(default="Porcelain_Pottery", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Stoneware_Pottery(AlienPower):
-    """Stoneware_Pottery - Power of Sturdy. +5 on defense"""
-    name: str = field(default="Stoneware_Pottery", init=False)
-    description: str = field(default="+5 on defense", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Earthenware_Pottery(AlienPower):
-    """Earthenware_Pottery - Power of Basic. +4 always"""
-    name: str = field(default="Earthenware_Pottery", init=False)
+class Tissue_Paper(AlienPower):
+    """Tissue_Paper - Power of Thin. +4 always"""
+    name: str = field(default="Tissue_Paper", init=False)
     description: str = field(default="+4 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -76,9 +46,9 @@ class Earthenware_Pottery(AlienPower):
 
 
 @dataclass
-class Ceramic_Pottery(AlienPower):
-    """Ceramic_Pottery - Power of Glazed. +5 always"""
-    name: str = field(default="Ceramic_Pottery", init=False)
+class Cardstock_Paper(AlienPower):
+    """Cardstock_Paper - Power of Thick. +5 always"""
+    name: str = field(default="Cardstock_Paper", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -91,9 +61,54 @@ class Ceramic_Pottery(AlienPower):
 
 
 @dataclass
-class Raku_Pottery(AlienPower):
-    """Raku_Pottery - Power of Fire. +5 on offense"""
-    name: str = field(default="Raku_Pottery", init=False)
+class Vellum_Paper(AlienPower):
+    """Vellum_Paper - Power of Translucent. +5 always"""
+    name: str = field(default="Vellum_Paper", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Parchment_Paper(AlienPower):
+    """Parchment_Paper - Power of Ancient. +5 always"""
+    name: str = field(default="Parchment_Paper", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Rice_Paper(AlienPower):
+    """Rice_Paper - Power of Delicate. +5 always"""
+    name: str = field(default="Rice_Paper", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Newsprint_Paper(AlienPower):
+    """Newsprint_Paper - Power of Quick. +5 on offense"""
+    name: str = field(default="Newsprint_Paper", init=False)
     description: str = field(default="+5 on offense", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -106,9 +121,9 @@ class Raku_Pottery(AlienPower):
 
 
 @dataclass
-class Majolica_Pottery(AlienPower):
-    """Majolica_Pottery - Power of Colorful. +5 always"""
-    name: str = field(default="Majolica_Pottery", init=False)
+class Bond_Paper(AlienPower):
+    """Bond_Paper - Power of Quality. +5 always"""
+    name: str = field(default="Bond_Paper", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -121,9 +136,24 @@ class Majolica_Pottery(AlienPower):
 
 
 @dataclass
-class Faience_Pottery(AlienPower):
-    """Faience_Pottery - Power of Ancient. +5 always"""
-    name: str = field(default="Faience_Pottery", init=False)
+class Cotton_Paper(AlienPower):
+    """Cotton_Paper - Power of Durable. +5 on defense"""
+    name: str = field(default="Cotton_Paper", init=False)
+    description: str = field(default="+5 on defense", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Glossy_Paper(AlienPower):
+    """Glossy_Paper - Power of Shine. +5 always"""
+    name: str = field(default="Glossy_Paper", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -136,9 +166,9 @@ class Faience_Pottery(AlienPower):
 
 
 @dataclass
-class Delft_Pottery(AlienPower):
-    """Delft_Pottery - Power of Blue. +5 always"""
-    name: str = field(default="Delft_Pottery", init=False)
+class Matte_Paper(AlienPower):
+    """Matte_Paper - Power of Flat. +5 always"""
+    name: str = field(default="Matte_Paper", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -151,24 +181,9 @@ class Delft_Pottery(AlienPower):
 
 
 @dataclass
-class Sgraffito_Pottery(AlienPower):
-    """Sgraffito_Pottery - Power of Scratch. +5 on offense"""
-    name: str = field(default="Sgraffito_Pottery", init=False)
-    description: str = field(default="+5 on offense", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 5
-        return total
-
-
-@dataclass
-class Slip_Pottery(AlienPower):
-    """Slip_Pottery - Power of Layer. +5 always"""
-    name: str = field(default="Slip_Pottery", init=False)
+class Recycled_Paper(AlienPower):
+    """Recycled_Paper - Power of Green. +5 always"""
+    name: str = field(default="Recycled_Paper", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -181,9 +196,9 @@ class Slip_Pottery(AlienPower):
 
 
 @dataclass
-class Burnished_Pottery(AlienPower):
-    """Burnished_Pottery - Power of Polish. +5 always"""
-    name: str = field(default="Burnished_Pottery", init=False)
+class Washi_Paper(AlienPower):
+    """Washi_Paper - Power of Japanese. +5 always"""
+    name: str = field(default="Washi_Paper", init=False)
     description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -196,24 +211,9 @@ class Burnished_Pottery(AlienPower):
 
 
 @dataclass
-class Coiled_Pottery(AlienPower):
-    """Coiled_Pottery - Power of Build. +5 always"""
-    name: str = field(default="Coiled_Pottery", init=False)
-    description: str = field(default="+5 always", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 5
-        return total
-
-
-@dataclass
-class Thrown_Pottery(AlienPower):
-    """Thrown_Pottery - Power of Spin. +6 always"""
-    name: str = field(default="Thrown_Pottery", init=False)
+class Handmade_Paper(AlienPower):
+    """Handmade_Paper - Power of Artisan. +6 always"""
+    name: str = field(default="Handmade_Paper", init=False)
     description: str = field(default="+6 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -225,12 +225,12 @@ class Thrown_Pottery(AlienPower):
         return total
 
 
-POTTERY_STYLE_POWERS = [
-    Terracotta_Pottery, Porcelain_Pottery, Stoneware_Pottery, Earthenware_Pottery, Ceramic_Pottery, Raku_Pottery, Majolica_Pottery,
-    Faience_Pottery, Delft_Pottery, Sgraffito_Pottery, Slip_Pottery, Burnished_Pottery, Coiled_Pottery, Thrown_Pottery,
+PAPER_TYPE_POWERS = [
+    Kraft_Paper, Tissue_Paper, Cardstock_Paper, Vellum_Paper, Parchment_Paper, Rice_Paper, Newsprint_Paper,
+    Bond_Paper, Cotton_Paper, Glossy_Paper, Matte_Paper, Recycled_Paper, Washi_Paper, Handmade_Paper,
 ]
 
-for power_class in POTTERY_STYLE_POWERS:
+for power_class in PAPER_TYPE_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:

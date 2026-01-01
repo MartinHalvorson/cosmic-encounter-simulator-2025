@@ -16,145 +16,55 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Sneaker(AlienPower):
-    """Sneaker - Power of Quick. +4 on offense."""
-    name: str = field(default="Sneaker", init=False)
-    description: str = field(default="+4 when attacking.", init=False)
+class Oxford_Shoe(AlienPower):
+    """Oxford_Shoe - Power of Formal. +5 always"""
+    name: str = field(default="Oxford_Shoe", init=False)
+    description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
+        if player.power_active:
+            return total + 5
         return total
 
 
 @dataclass
-class Boot(AlienPower):
-    """Boot - Power of Tough. +4 on defense."""
-    name: str = field(default="Boot", init=False)
-    description: str = field(default="+4 when defending.", init=False)
+class Loafer_Shoe(AlienPower):
+    """Loafer_Shoe - Power of Slip. +5 always"""
+    name: str = field(default="Loafer_Shoe", init=False)
+    description: str = field(default="+5 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Boot_Shoe(AlienPower):
+    """Boot_Shoe - Power of Tall. +5 on defense"""
+    name: str = field(default="Boot_Shoe", init=False)
+    description: str = field(default="+5 on defense", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.DEFENSE:
-            return total + 4
+            return total + 5
         return total
 
 
 @dataclass
-class Sandal(AlienPower):
-    """Sandal - Power of Freedom. +3 always."""
-    name: str = field(default="Sandal", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Loafer(AlienPower):
-    """Loafer - Power of Ease. +3 always."""
-    name: str = field(default="Loafer", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class HighHeel(AlienPower):
-    """HighHeel - Power of Elevation. +4 always."""
-    name: str = field(default="HighHeel", init=False)
-    description: str = field(default="+4 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 4
-        return total
-
-
-@dataclass
-class Oxford(AlienPower):
-    """Oxford - Power of Classic. +3 always."""
-    name: str = field(default="Oxford", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Slipper(AlienPower):
-    """Slipper - Power of Comfort. +2 always."""
-    name: str = field(default="Slipper", init=False)
-    description: str = field(default="+2 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 2
-        return total
-
-
-@dataclass
-class Clog(AlienPower):
-    """Clog - Power of Wood. +3 always."""
-    name: str = field(default="Clog", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Moccasin(AlienPower):
-    """Moccasin - Power of Soft. +3 always."""
-    name: str = field(default="Moccasin", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Stiletto(AlienPower):
-    """Stiletto - Power of Spike. +5 on offense."""
-    name: str = field(default="Stiletto", init=False)
-    description: str = field(default="+5 when attacking.", init=False)
+class Sneaker_Shoe(AlienPower):
+    """Sneaker_Shoe - Power of Athletic. +5 on offense"""
+    name: str = field(default="Sneaker_Shoe", init=False)
+    description: str = field(default="+5 on offense", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
@@ -166,55 +76,10 @@ class Stiletto(AlienPower):
 
 
 @dataclass
-class FlipFlop(AlienPower):
-    """FlipFlop - Power of Casual. +2 always."""
-    name: str = field(default="FlipFlop", init=False)
-    description: str = field(default="+2 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 2
-        return total
-
-
-@dataclass
-class Brogue(AlienPower):
-    """Brogue - Power of Pattern. +3 always."""
-    name: str = field(default="Brogue", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Espadrille(AlienPower):
-    """Espadrille - Power of Rope. +3 always."""
-    name: str = field(default="Espadrille", init=False)
-    description: str = field(default="+3 constant.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + 3
-        return total
-
-
-@dataclass
-class Platform(AlienPower):
-    """Platform - Power of Rise. +4 always."""
-    name: str = field(default="Platform", init=False)
-    description: str = field(default="+4 constant.", init=False)
+class Sandal_Shoe(AlienPower):
+    """Sandal_Shoe - Power of Open. +4 always"""
+    name: str = field(default="Sandal_Shoe", init=False)
+    description: str = field(default="+4 always", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
@@ -225,10 +90,144 @@ class Platform(AlienPower):
         return total
 
 
+@dataclass
+class Heel_Shoe(AlienPower):
+    """Heel_Shoe - Power of High. +5 always"""
+    name: str = field(default="Heel_Shoe", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Flat_Shoe(AlienPower):
+    """Flat_Shoe - Power of Low. +5 always"""
+    name: str = field(default="Flat_Shoe", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Moccasin_Shoe(AlienPower):
+    """Moccasin_Shoe - Power of Soft. +5 always"""
+    name: str = field(default="Moccasin_Shoe", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Espadrille_Shoe(AlienPower):
+    """Espadrille_Shoe - Power of Rope. +5 always"""
+    name: str = field(default="Espadrille_Shoe", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Clog_Shoe(AlienPower):
+    """Clog_Shoe - Power of Wood. +5 always"""
+    name: str = field(default="Clog_Shoe", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Wedge_Shoe(AlienPower):
+    """Wedge_Shoe - Power of Slope. +5 always"""
+    name: str = field(default="Wedge_Shoe", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Derby_Shoe(AlienPower):
+    """Derby_Shoe - Power of Open. +5 always"""
+    name: str = field(default="Derby_Shoe", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Monk_Strap_Shoe(AlienPower):
+    """Monk_Strap_Shoe - Power of Buckle. +5 always"""
+    name: str = field(default="Monk_Strap_Shoe", init=False)
+    description: str = field(default="+5 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Brogue_Shoe(AlienPower):
+    """Brogue_Shoe - Power of Perforated. +6 always"""
+    name: str = field(default="Brogue_Shoe", init=False)
+    description: str = field(default="+6 always", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 6
+        return total
+
+
 SHOE_TYPE_POWERS = [
-    Sneaker, Boot, Sandal, Loafer, HighHeel,
-    Oxford, Slipper, Clog, Moccasin, Stiletto,
-    FlipFlop, Brogue, Espadrille, Platform,
+    Oxford_Shoe, Loafer_Shoe, Boot_Shoe, Sneaker_Shoe, Sandal_Shoe, Heel_Shoe, Flat_Shoe,
+    Moccasin_Shoe, Espadrille_Shoe, Clog_Shoe, Wedge_Shoe, Derby_Shoe, Monk_Strap_Shoe, Brogue_Shoe,
 ]
 
 for power_class in SHOE_TYPE_POWERS:
