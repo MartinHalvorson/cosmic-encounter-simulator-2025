@@ -1,63 +1,128 @@
 """
-Music Powers - Sound and rhythm-themed aliens.
+Music Powers - Music genre and instrument themed aliens.
 """
 
 from dataclasses import dataclass, field
-from typing import Optional, List, Dict, Any, TYPE_CHECKING
+from typing import TYPE_CHECKING
+import random
 
 from ..base import AlienPower, PowerCategory
 from ..registry import AlienRegistry
-from ...types import PowerTiming, PowerType, Side, PlayerRole
+from ...types import PowerTiming, PowerType, Side
 
 if TYPE_CHECKING:
     from ...game import Game
     from ...player import Player
 
 
+# ============================================================================
+# GENRES
+# ============================================================================
+
 @dataclass
-class Conductor(AlienPower):
-    """Conductor - Orchestra leader. Allies act in your order."""
-    name: str = field(default="Conductor", init=False)
-    description: str = field(default="Control ally ship commitment order.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
+class Jazz(AlienPower):
+    """Jazz - Improvisation. Random +2 to +6."""
+    name: str = field(default="Jazz", init=False)
+    description: str = field(default="Random +2 to +6.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + random.randint(2, 6)
+        return total
+
+
+@dataclass
+class Rock_Music(AlienPower):
+    """Rock_Music - Power. +4 constant."""
+    name: str = field(default="Rock_Music", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
 
 @dataclass
-class Drummer(AlienPower):
-    """Drummer - Keeping time. +1 per turn that has passed."""
-    name: str = field(default="Drummer", init=False)
-    description: str = field(default="+1 per turn in game.", init=False)
+class Classical(AlienPower):
+    """Classical - Refined. +3 on defense."""
+    name: str = field(default="Classical", init=False)
+    description: str = field(default="+3 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 3
+        return total
+
+
+@dataclass
+class Blues(AlienPower):
+    """Blues - Soul. +5 when behind in colonies."""
+    name: str = field(default="Blues", init=False)
+    description: str = field(default="+5 when behind.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
-class Singer(AlienPower):
-    """Singer - Captivating voice. Force one player to ally."""
-    name: str = field(default="Singer", init=False)
-    description: str = field(default="Compel one ally.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+class Metal_Music(AlienPower):
+    """Metal_Music - Heavy. +5 on offense."""
+    name: str = field(default="Metal_Music", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
+        return total
 
 
 @dataclass
-class Composer(AlienPower):
-    """Composer - Creating melody. Rearrange top 5 destiny cards."""
-    name: str = field(default="Composer", init=False)
-    description: str = field(default="Reorder destiny deck.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.DESTINY, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+class Punk(AlienPower):
+    """Punk - Rebellion. +3 vs players with more colonies."""
+    name: str = field(default="Punk", init=False)
+    description: str = field(default="+3 vs leaders.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
-class Harmonist(AlienPower):
-    """Harmonist - Perfect harmony. Allies gain +2 each."""
-    name: str = field(default="Harmonist", init=False)
+class Electronic_Music(AlienPower):
+    """Electronic_Music - Synthetic. Ships count as 1.5."""
+    name: str = field(default="Electronic_Music", init=False)
+    description: str = field(default="Each ship worth 1.5.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Country_Music(AlienPower):
+    """Country_Music - Heartland. +2 defending home."""
+    name: str = field(default="Country_Music", init=False)
+    description: str = field(default="+2 defending home.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Reggae(AlienPower):
+    """Reggae - Chill. +2 per ally."""
+    name: str = field(default="Reggae", init=False)
     description: str = field(default="+2 per ally.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -65,133 +130,244 @@ class Harmonist(AlienPower):
 
 
 @dataclass
-class Soloist(AlienPower):
-    """Soloist - Performing alone. +4 without allies."""
-    name: str = field(default="Soloist", init=False)
-    description: str = field(default="+4 when no allies.", init=False)
+class Disco(AlienPower):
+    """Disco - Dance. +1 per card in hand."""
+    name: str = field(default="Disco", init=False)
+    description: str = field(default="+1 per card.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
-class Pianist(AlienPower):
-    """Pianist - Key player. Use two encounter cards."""
-    name: str = field(default="Pianist", init=False)
-    description: str = field(default="Play two encounter cards.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-
-@dataclass
-class Violinist(AlienPower):
-    """Violinist - Emotional player. +2 when defending."""
-    name: str = field(default="Violinist", init=False)
-    description: str = field(default="+2 on defense.", init=False)
+class Opera(AlienPower):
+    """Opera - Dramatic. +4 on defense."""
+    name: str = field(default="Opera", init=False)
+    description: str = field(default="+4 when defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active and side == Side.DEFENSE:
-            return total + 2
+            return total + 4
         return total
 
 
 @dataclass
-class Trumpeter(AlienPower):
-    """Trumpeter - Loud announcement. Reveal opponent's card."""
-    name: str = field(default="Trumpeter", init=False)
-    description: str = field(default="Force opponent to reveal card.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Cellist(AlienPower):
-    """Cellist - Deep tones. +3 when lowest attack card."""
-    name: str = field(default="Cellist", init=False)
-    description: str = field(default="+3 when playing low card.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Flutist(AlienPower):
-    """Flutist - High notes. +2 when attacking."""
-    name: str = field(default="Flutist", init=False)
-    description: str = field(default="+2 on offense.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 2
-        return total
-
-
-@dataclass
-class Bard(AlienPower):
-    """Bard - Storyteller. Share rewards with allies."""
-    name: str = field(default="Bard", init=False)
-    description: str = field(default="Allies draw cards too.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.WIN_ENCOUNTER, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Rhythm(AlienPower):
-    """Rhythm - Steady beat. +1 per encounter this turn."""
-    name: str = field(default="Rhythm", init=False)
-    description: str = field(default="+1 per encounter this turn.", init=False)
+class Soul(AlienPower):
+    """Soul - Deep. +3 always."""
+    name: str = field(default="Soul", init=False)
+    description: str = field(default="+3 constant.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
     def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
         if player.power_active:
-            return total + game.encounter_number
+            return total + 3
         return total
 
 
 @dataclass
-class Melody(AlienPower):
-    """Melody - Beautiful tune. Opponent must accept deals."""
-    name: str = field(default="Melody", init=False)
-    description: str = field(default="Negotiate deals can't be refused.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+class Funk(AlienPower):
+    """Funk - Groove. Random +2 to +5."""
+    name: str = field(default="Funk", init=False)
+    description: str = field(default="Random +2 to +5.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + random.randint(2, 5)
+        return total
+
+
+@dataclass
+class Gospel(AlienPower):
+    """Gospel - Faithful. Return 2 ships from warp."""
+    name: str = field(default="Gospel", init=False)
+    description: str = field(default="Return 2 ships from warp.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
-class Symphony(AlienPower):
-    """Symphony - Grand performance. Win encounter to gain 2 colonies."""
-    name: str = field(default="Symphony", init=False)
-    description: str = field(default="Win for double colony reward.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.WIN_ENCOUNTER, init=False)
+class Grunge(AlienPower):
+    """Grunge - Raw. +4 on offense."""
+    name: str = field(default="Grunge", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+# ============================================================================
+# INSTRUMENTS
+# ============================================================================
+
+@dataclass
+class Guitar(AlienPower):
+    """Guitar - Lead. +4 on offense."""
+    name: str = field(default="Guitar", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Drums_Music(AlienPower):
+    """Drums_Music - Rhythm. +3 always."""
+    name: str = field(default="Drums_Music", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 3
+        return total
+
+
+@dataclass
+class Piano(AlienPower):
+    """Piano - Harmony. +2 per ally ship."""
+    name: str = field(default="Piano", init=False)
+    description: str = field(default="+2 per ally ship.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
+@dataclass
+class Violin(AlienPower):
+    """Violin - Finesse. +3 on defense."""
+    name: str = field(default="Violin", init=False)
+    description: str = field(default="+3 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 3
+        return total
+
+
+@dataclass
+class Saxophone(AlienPower):
+    """Saxophone - Smooth. Random +1 to +5."""
+    name: str = field(default="Saxophone", init=False)
+    description: str = field(default="Random +1 to +5.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + random.randint(1, 5)
+        return total
+
+
+@dataclass
+class Trumpet(AlienPower):
+    """Trumpet - Fanfare. +5 first encounter."""
+    name: str = field(default="Trumpet", init=False)
+    description: str = field(default="+5 first encounter.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Bass_Music(AlienPower):
+    """Bass_Music - Foundation. +2 always."""
+    name: str = field(default="Bass_Music", init=False)
+    description: str = field(default="+2 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 2
+        return total
+
+
+@dataclass
+class Flute_Music(AlienPower):
+    """Flute_Music - Light. Ships escape to colonies."""
+    name: str = field(default="Flute_Music", init=False)
+    description: str = field(default="Ships go home not warp.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.SHIPS_TO_WARP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Harp(AlienPower):
+    """Harp - Soothing. Return 1 ship from warp."""
+    name: str = field(default="Harp", init=False)
+    description: str = field(default="Return 1 ship from warp.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Cello(AlienPower):
+    """Cello - Deep. +3 on defense."""
+    name: str = field(default="Cello", init=False)
+    description: str = field(default="+3 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 3
+        return total
+
+
+@dataclass
+class Clarinet(AlienPower):
+    """Clarinet - Sweet. +2 always."""
+    name: str = field(default="Clarinet", init=False)
+    description: str = field(default="+2 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 2
+        return total
+
+
 # Register all powers
-AlienRegistry.register(Conductor())
-AlienRegistry.register(Drummer())
-AlienRegistry.register(Singer())
-AlienRegistry.register(Composer())
-AlienRegistry.register(Harmonist())
-AlienRegistry.register(Soloist())
-AlienRegistry.register(Pianist())
-AlienRegistry.register(Violinist())
-AlienRegistry.register(Trumpeter())
-AlienRegistry.register(Cellist())
-AlienRegistry.register(Flutist())
-AlienRegistry.register(Bard())
-AlienRegistry.register(Rhythm())
-AlienRegistry.register(Melody())
-AlienRegistry.register(Symphony())
+MUSIC_POWERS = [
+    Jazz, Rock_Music, Classical, Blues, Metal_Music, Punk, Electronic_Music, 
+    Country_Music, Reggae, Disco, Opera, Soul, Funk, Gospel, Grunge,
+    Guitar, Drums_Music, Piano, Violin, Saxophone, Trumpet, Bass_Music, 
+    Flute_Music, Harp, Cello, Clarinet,
+]
+
+for power_class in MUSIC_POWERS:
+    try:
+        AlienRegistry.register(power_class())
+    except ValueError:
+        pass
