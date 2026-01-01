@@ -71,6 +71,7 @@ from .career_powers import *  # noqa: F401, F403
 from .caribbean_powers import *  # noqa: F401, F403
 from .carnival_powers import *  # noqa: F401, F403
 from .celebration_powers import *  # noqa: F401, F403
+from .celestial_object_powers import *  # noqa: F401, F403
 from .celestial_powers import *  # noqa: F401, F403
 from .celtic_mythology_powers import *  # noqa: F401, F403
 from .celtic_powers import *  # noqa: F401, F403
