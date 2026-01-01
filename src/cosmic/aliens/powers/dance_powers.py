@@ -1,12 +1,15 @@
 """
-Dance and Movement themed alien powers for Cosmic Encounter.
+Dance Powers for Cosmic Encounter.
+
+Aliens inspired by dance styles and movements.
 """
 
 from dataclasses import dataclass, field
-from typing import Optional, List, Dict, Any, TYPE_CHECKING
+from typing import TYPE_CHECKING
+import random
 
 from ..base import AlienPower, PowerCategory
-from ...types import PowerTiming, PowerType, Side, PlayerRole
+from ...types import PowerTiming, PowerType, Side
 
 if TYPE_CHECKING:
     from ...game import Game
@@ -16,143 +19,175 @@ from ..registry import AlienRegistry
 
 
 @dataclass
-class Dancer(AlienPower):
-    """Dancer - Power of Movement."""
-    name: str = field(default="Dancer", init=False)
-    description: str = field(
-        default="Move 2 ships between colonies after each encounter.",
-        init=False
-    )
+class Ballet(AlienPower):
+    """Ballet - Power of Grace."""
+    name: str = field(default="Ballet", init=False)
+    description: str = field(default="+3 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 3
+        return base_total
+
+
+@dataclass
+class HipHop(AlienPower):
+    """HipHop - Power of Rhythm."""
+    name: str = field(default="HipHop", init=False)
+    description: str = field(default="+4 on offense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return base_total + 4
+        return base_total
+
+
+@dataclass
+class Salsa(AlienPower):
+    """Salsa - Power of Passion."""
+    name: str = field(default="Salsa", init=False)
+    description: str = field(default="+2 per ally.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
 class Waltz(AlienPower):
-    """Waltz - Power of Three."""
+    """Waltz - Power of Elegance."""
     name: str = field(default="Waltz", init=False)
-    description: str = field(
-        default="+3 when you have exactly 3 ships in the encounter.",
-        init=False
-    )
+    description: str = field(default="+3 on defense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return base_total + 3
+        return base_total
 
 
 @dataclass
 class Tango(AlienPower):
-    """Tango - Power of Partnership."""
+    """Tango - Power of Drama."""
     name: str = field(default="Tango", init=False)
-    description: str = field(
-        default="Choose 1 ally; you both get +2.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    description: str = field(default="Force 1v1 encounter.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
     power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Ballet(AlienPower):
-    """Ballet - Power of Grace."""
-    name: str = field(default="Ballet", init=False)
-    description: str = field(
-        default="Avoid losing ships when negotiation fails.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
 
 @dataclass
 class Breakdance(AlienPower):
-    """Breakdance - Power of Style."""
+    """Breakdance - Power of Spin."""
     name: str = field(default="Breakdance", init=False)
-    description: str = field(
-        default="+4 when playing attack 10 or lower.",
-        init=False
-    )
+    description: str = field(default="Random +3 to +6.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Salsa(AlienPower):
-    """Salsa - Power of Heat."""
-    name: str = field(default="Salsa", init=False)
-    description: str = field(
-        default="+2 for each card in opponent's hand over 5.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Swing(AlienPower):
-    """Swing - Power of Momentum."""
-    name: str = field(default="Swing", init=False)
-    description: str = field(
-        default="After winning, immediately attack same opponent.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.WIN_ENCOUNTER, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + random.randint(3, 6)
+        return base_total
+
 
 @dataclass
-class HipHop(AlienPower):
-    """HipHop - Power of Flow."""
-    name: str = field(default="HipHop", init=False)
-    description: str = field(
-        default="Draw 1 card for each ally on your side.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.WIN_ENCOUNTER, init=False)
+class Contemporary(AlienPower):
+    """Contemporary - Power of Expression."""
+    name: str = field(default="Contemporary", init=False)
+    description: str = field(default="+4 always.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 4
+        return base_total
 
 
 @dataclass
 class Flamenco(AlienPower):
-    """Flamenco - Power of Passion."""
+    """Flamenco - Power of Fire."""
     name: str = field(default="Flamenco", init=False)
-    description: str = field(
-        default="+5 when you have fewer ships than opponent.",
-        init=False
-    )
+    description: str = field(default="+5 on offense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return base_total + 5
+        return base_total
+
+
+@dataclass
+class Disco(AlienPower):
+    """Disco - Power of Groove."""
+    name: str = field(default="Disco", init=False)
+    description: str = field(default="Draw card each win.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.WIN_ENCOUNTER, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def on_win_encounter(self, game: "Game", player: "Player") -> None:
+        if player.power_active:
+            card = game.cosmic_deck.draw()
+            if card:
+                player.add_card(card)
+
+
+@dataclass
+class Polka(AlienPower):
+    """Polka - Power of Bounce."""
+    name: str = field(default="Polka", init=False)
+    description: str = field(default="+2 always.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active:
+            return base_total + 2
+        return base_total
+
 
 @dataclass
-class Tap(AlienPower):
-    """Tap - Power of Rhythm."""
-    name: str = field(default="Tap", init=False)
-    description: str = field(
-        default="Once per turn, replay a card from discard.",
-        init=False
-    )
-    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+class Capoeira(AlienPower):
+    """Capoeira - Power of Combat."""
+    name: str = field(default="Capoeira", init=False)
+    description: str = field(default="+5 when outnumbered.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
 
-# Register all powers
-AlienRegistry.register(Dancer())
-AlienRegistry.register(Waltz())
-AlienRegistry.register(Tango())
-AlienRegistry.register(Ballet())
-AlienRegistry.register(Breakdance())
-AlienRegistry.register(Salsa())
-AlienRegistry.register(Swing())
-AlienRegistry.register(HipHop())
-AlienRegistry.register(Flamenco())
-AlienRegistry.register(Tap())
+@dataclass
+class Irish_Dance(AlienPower):
+    """Irish_Dance - Power of Precision."""
+    name: str = field(default="Irish_Dance", init=False)
+    description: str = field(default="+3 on defense.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return base_total + 3
+        return base_total
+
+
+# Register all aliens
+for alien_class in [
+    Ballet, HipHop, Salsa, Waltz, Tango,
+    Breakdance, Contemporary, Flamenco, Disco, Polka,
+    Capoeira, Irish_Dance,
+]:
+    AlienRegistry.register(alien_class())

@@ -301,11 +301,11 @@ class TestPlayerCountComparison:
             catch_errors=False
         )
         sim = Simulator(config=sim_config)
-        sim.run()
+        results = sim.run()
 
         # Check that wins are distributed (not all to one player)
         # The statistics track by alien, but we can check the game completed
-        assert sim.statistics.games_completed == 100
+        assert results.games_completed == 100
 
     def test_shared_victory_rates(self):
         """Shared victories should occur across player counts."""
@@ -318,10 +318,10 @@ class TestPlayerCountComparison:
                 catch_errors=False
             )
             sim = Simulator(config=sim_config)
-            sim.run()
+            results = sim.run()
 
             # Games should complete successfully
-            assert sim.statistics.games_completed == 100
+            assert results.games_completed == 100
 
 
 class TestDestinyDeckScaling:

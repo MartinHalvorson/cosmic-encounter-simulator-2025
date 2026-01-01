@@ -295,3 +295,15 @@ from .astronomical_powers import *  # noqa: F401, F403
 from .emotion_final_powers import *  # noqa: F401, F403
 from .garden_extended_powers import *  # noqa: F401, F403
 from .milestone_4000_powers import *  # noqa: F401, F403
+from .beverage_extended_powers import *  # noqa: F401, F403
+from .nature_animal_powers import *  # noqa: F401, F403
+from .space_object_powers import *  # noqa: F401, F403
+from .emotion_core_powers import *  # noqa: F401, F403
+from .literary_powers import *  # noqa: F401, F403
+from .racing_powers import *  # noqa: F401, F403
+from .boardgame_powers import *  # noqa: F401, F403
+from .coding_powers import *  # noqa: F401, F403
+from .social_media_powers import *  # noqa: F401, F403
+from .festival_powers import *  # noqa: F401, F403
+from .artform_powers import *  # noqa: F401, F403
+from .martial_weapon_powers import *  # noqa: F401, F403
