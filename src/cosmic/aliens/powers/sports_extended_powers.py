@@ -1,150 +1,243 @@
 """
-Extended Sports themed alien powers for Cosmic Encounter.
+Sports Extended Powers - Additional sports themed aliens.
 """
 
 from dataclasses import dataclass, field
 from typing import Optional, List, Dict, Any, TYPE_CHECKING
+import random
 
 from ..base import AlienPower, PowerCategory
-from ...types import PowerTiming, PowerType, Side, PlayerRole
+from ..registry import AlienRegistry
+from ...types import PowerTiming, PowerType, PlayerRole, Side
 
 if TYPE_CHECKING:
     from ...game import Game
     from ...player import Player
 
-from ..registry import AlienRegistry
-
 
 @dataclass
-class Quarterback(AlienPower):
-    """Quarterback - Power of Leadership."""
-    name: str = field(default="Quarterback", init=False)
-    description: str = field(default="Choose which ally commits ships first.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Goalie(AlienPower):
-    """Goalie - Power of Defense."""
-    name: str = field(default="Goalie", init=False)
-    description: str = field(default="+5 when defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Striker(AlienPower):
-    """Striker - Power of Offense."""
-    name: str = field(default="Striker", init=False)
+class Hockey(AlienPower):
+    """Hockey - Ice Sport. +5 on offense."""
+    name: str = field(default="Hockey", init=False)
     description: str = field(default="+5 when attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Pitcher(AlienPower):
-    """Pitcher - Power of Throws."""
-    name: str = field(default="Pitcher", init=False)
-    description: str = field(default="Discard to send 1 enemy ship to warp.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.LAUNCH, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-
-@dataclass
-class Batter(AlienPower):
-    """Batter - Power of Hits."""
-    name: str = field(default="Batter", init=False)
-    description: str = field(default="+3 for every 10 on your card.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Referee(AlienPower):
-    """Referee - Power of Rules."""
-    name: str = field(default="Referee", init=False)
-    description: str = field(default="Cancel one power use per encounter.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.RED, init=False)
-
-
-@dataclass
-class Coach(AlienPower):
-    """Coach - Power of Strategy."""
-    name: str = field(default="Coach", init=False)
-    description: str = field(default="See opponent's top 2 cards before planning.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Sprinter(AlienPower):
-    """Sprinter - Power of Speed."""
-    name: str = field(default="Sprinter", init=False)
-    description: str = field(default="Play card before opponent.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-
-@dataclass
-class Marathoner(AlienPower):
-    """Marathoner - Power of Endurance."""
-    name: str = field(default="Marathoner", init=False)
-    description: str = field(default="+1 for each turn beyond 10.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Swimmer(AlienPower):
-    """Swimmer - Power of Flow."""
-    name: str = field(default="Swimmer", init=False)
-    description: str = field(default="Ships return from warp anywhere.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Diver(AlienPower):
-    """Diver - Power of Depth."""
-    name: str = field(default="Diver", init=False)
-    description: str = field(default="Draw from bottom of deck.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.GAIN_CARDS, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Boxer(AlienPower):
-    """Boxer - Power of Punches."""
-    name: str = field(default="Boxer", init=False)
-    description: str = field(default="When winning, remove 2 extra ships.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.WIN_ENCOUNTER, init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Lacrosse(AlienPower):
+    """Lacrosse - Stick Sport. +4 on offense."""
+    name: str = field(default="Lacrosse", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Rugby(AlienPower):
+    """Rugby - Rough Sport. +5 on defense."""
+    name: str = field(default="Rugby", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Cricket(AlienPower):
+    """Cricket - Bat Sport. +4 always."""
+    name: str = field(default="Cricket", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Volleyball(AlienPower):
+    """Volleyball - Net Sport. +4 on defense."""
+    name: str = field(default="Volleyball", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Handball(AlienPower):
+    """Handball - Throwing Sport. +4 on offense."""
+    name: str = field(default="Handball", init=False)
+    description: str = field(default="+4 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Polo(AlienPower):
+    """Polo - Horse Sport. +5 on offense."""
+    name: str = field(default="Polo", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Badminton(AlienPower):
+    """Badminton - Racket Sport. +3 always."""
+    name: str = field(default="Badminton", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 3
+        return total
+
+
+@dataclass
+class Squash(AlienPower):
+    """Squash - Court Sport. +4 always."""
+    name: str = field(default="Squash", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Curling(AlienPower):
+    """Curling - Ice Sliding. +4 on defense."""
+    name: str = field(default="Curling", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Fencing(AlienPower):
+    """Fencing - Sword Sport. +5 on offense."""
+    name: str = field(default="Fencing", init=False)
+    description: str = field(default="+5 when attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 5
+        return total
+
+
+@dataclass
+class Rowing(AlienPower):
+    """Rowing - Water Sport. +2 per ally."""
+    name: str = field(default="Rowing", init=False)
+    description: str = field(default="+2 per ally.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Skiing(AlienPower):
+    """Skiing - Snow Sport. Ships escape."""
+    name: str = field(default="Skiing", init=False)
+    description: str = field(default="Ships go home not warp.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.SHIPS_TO_WARP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Surfing(AlienPower):
+    """Surfing - Wave Sport. Random +2 to +6."""
+    name: str = field(default="Surfing", init=False)
+    description: str = field(default="Random +2 to +6.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + random.randint(2, 6)
+        return total
+
+
+@dataclass
+class Climbing(AlienPower):
+    """Climbing - Height Sport. +5 always."""
+    name: str = field(default="Climbing", init=False)
+    description: str = field(default="+5 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
 
 
 # Register all powers
-AlienRegistry.register(Quarterback())
-AlienRegistry.register(Goalie())
-AlienRegistry.register(Striker())
-AlienRegistry.register(Pitcher())
-AlienRegistry.register(Batter())
-AlienRegistry.register(Referee())
-AlienRegistry.register(Coach())
-AlienRegistry.register(Sprinter())
-AlienRegistry.register(Marathoner())
-AlienRegistry.register(Swimmer())
-AlienRegistry.register(Diver())
-AlienRegistry.register(Boxer())
+SPORTS_EXTENDED_POWERS = [
+    Hockey, Lacrosse, Rugby, Cricket, Volleyball, Handball, Polo, Badminton,
+    Squash, Curling, Fencing, Rowing, Skiing, Surfing, Climbing,
+]
+
+for power_class in SPORTS_EXTENDED_POWERS:
+    try:
+        AlienRegistry.register(power_class())
+    except ValueError:
+        pass

@@ -1,150 +1,243 @@
 """
-Final Nature themed alien powers for Cosmic Encounter.
+Nature Final Powers - Final batch of nature themed aliens.
 """
 
 from dataclasses import dataclass, field
 from typing import Optional, List, Dict, Any, TYPE_CHECKING
+import random
 
 from ..base import AlienPower, PowerCategory
-from ...types import PowerTiming, PowerType, Side, PlayerRole
+from ..registry import AlienRegistry
+from ...types import PowerTiming, PowerType, PlayerRole, Side
 
 if TYPE_CHECKING:
     from ...game import Game
     from ...player import Player
 
-from ..registry import AlienRegistry
+
+@dataclass
+class Reef(AlienPower):
+    """Reef - Coral Formation. +5 on defense."""
+    name: str = field(default="Reef", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
 
 
 @dataclass
-class River_Nature(AlienPower):
-    """River - Power of Flow."""
-    name: str = field(default="River_Nature", init=False)
-    description: str = field(default="Ships move to adjacent colonies when losing.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.LOSE_ENCOUNTER, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+class Wetland(AlienPower):
+    """Wetland - Marshy Area. +4 on defense."""
+    name: str = field(default="Wetland", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Tundra(AlienPower):
+    """Tundra - Frozen Plains. +4 on defense."""
+    name: str = field(default="Tundra", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Savanna(AlienPower):
+    """Savanna - Grassland. +4 always."""
+    name: str = field(default="Savanna", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Rainforest(AlienPower):
+    """Rainforest - Dense Jungle. +5 always."""
+    name: str = field(default="Rainforest", init=False)
+    description: str = field(default="+5 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 5
+        return total
+
+
+@dataclass
+class Prairie(AlienPower):
+    """Prairie - Open Land. +3 always."""
+    name: str = field(default="Prairie", init=False)
+    description: str = field(default="+3 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 3
+        return total
+
+
+@dataclass
+class Taiga(AlienPower):
+    """Taiga - Boreal Forest. +4 always."""
+    name: str = field(default="Taiga", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
+
+@dataclass
+class Dune(AlienPower):
+    """Dune - Sand Formation. +4 on defense."""
+    name: str = field(default="Dune", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Delta(AlienPower):
+    """Delta - River Mouth. Extra card draw."""
+    name: str = field(default="Delta", init=False)
+    description: str = field(default="Draw extra card each turn.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
-class Mountain_Nature(AlienPower):
-    """Mountain - Power of Height."""
-    name: str = field(default="Mountain_Nature", init=False)
-    description: str = field(default="+4 when defending home planets.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
+class Estuary(AlienPower):
+    """Estuary - Sea Meeting. +4 always."""
+    name: str = field(default="Estuary", init=False)
+    description: str = field(default="+4 constant.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + 4
+        return total
+
 
 @dataclass
-class Forest_Nature(AlienPower):
-    """Forest - Power of Concealment."""
-    name: str = field(default="Forest_Nature", init=False)
-    description: str = field(default="Your ship count is hidden.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.LAUNCH, init=False)
+class Fjord(AlienPower):
+    """Fjord - Narrow Inlet. +5 on defense."""
+    name: str = field(default="Fjord", init=False)
+    description: str = field(default="+5 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
-
-@dataclass
-class Desert_Nature(AlienPower):
-    """Desert - Power of Scarcity."""
-    name: str = field(default="Desert_Nature", init=False)
-    description: str = field(default="Opponents draw 1 fewer card.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.CONSTANT, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 5
+        return total
 
 
 @dataclass
-class Valley(AlienPower):
-    """Valley - Power of Gathering."""
-    name: str = field(default="Valley", init=False)
-    description: str = field(default="Invite 2 extra allies.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
+class Atoll(AlienPower):
+    """Atoll - Ring Island. +4 on defense."""
+    name: str = field(default="Atoll", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
 
 @dataclass
-class Volcano_Nature(AlienPower):
-    """Volcano - Power of Eruption."""
-    name: str = field(default="Volcano_Nature", init=False)
-    description: str = field(default="When losing, all ships on planet go to warp.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.LOSE_ENCOUNTER, init=False)
+class Geyser(AlienPower):
+    """Geyser - Hot Spring. Random +2 to +6."""
+    name: str = field(default="Geyser", init=False)
+    description: str = field(default="Random +2 to +6.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.RED, init=False)
-
-
-@dataclass
-class Waterfall(AlienPower):
-    """Waterfall - Power of Cascade."""
-    name: str = field(default="Waterfall", init=False)
-    description: str = field(default="Cards played cascade to next encounter.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
 
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + random.randint(2, 6)
+        return total
+
 
 @dataclass
-class Cave_Nature(AlienPower):
-    """Cave - Power of Shelter."""
-    name: str = field(default="Cave_Nature", init=False)
-    description: str = field(default="Ships survive one extra loss.", init=False)
+class Lagoon(AlienPower):
+    """Lagoon - Shallow Water. Ships escape."""
+    name: str = field(default="Lagoon", init=False)
+    description: str = field(default="Ships go home not warp.", init=False)
     timing: PowerTiming = field(default=PowerTiming.SHIPS_TO_WARP, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Cliff(AlienPower):
-    """Cliff - Power of Edges."""
-    name: str = field(default="Cliff", init=False)
-    description: str = field(default="+3 when winning by exactly 1-3.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
-class Swamp(AlienPower):
-    """Swamp - Power of Trapping."""
-    name: str = field(default="Swamp", init=False)
-    description: str = field(default="Opponent's ships can't retreat.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.LAUNCH, init=False)
+class Mesa(AlienPower):
+    """Mesa - Flat Top Hill. +4 on defense."""
+    name: str = field(default="Mesa", init=False)
+    description: str = field(default="+4 when defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
-
-@dataclass
-class Island_Nature(AlienPower):
-    """Island - Power of Isolation."""
-    name: str = field(default="Island_Nature", init=False)
-    description: str = field(default="Home planets can't be invaded for 2 turns.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.START_TURN, init=False)
-    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
-    category: PowerCategory = field(default=PowerCategory.RED, init=False)
-
-
-@dataclass
-class Glacier(AlienPower):
-    """Glacier - Power of Slowness."""
-    name: str = field(default="Glacier", init=False)
-    description: str = field(default="Slow but inevitable: +1 each turn (no max).", init=False)
-    timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
 
 
 # Register all powers
-AlienRegistry.register(River_Nature())
-AlienRegistry.register(Mountain_Nature())
-AlienRegistry.register(Forest_Nature())
-AlienRegistry.register(Desert_Nature())
-AlienRegistry.register(Valley())
-AlienRegistry.register(Volcano_Nature())
-AlienRegistry.register(Waterfall())
-AlienRegistry.register(Cave_Nature())
-AlienRegistry.register(Cliff())
-AlienRegistry.register(Swamp())
-AlienRegistry.register(Island_Nature())
-AlienRegistry.register(Glacier())
+NATURE_FINAL_POWERS = [
+    Reef, Wetland, Tundra, Savanna, Rainforest, Prairie, Taiga, Dune,
+    Delta, Estuary, Fjord, Atoll, Geyser, Lagoon, Mesa,
+]
+
+for power_class in NATURE_FINAL_POWERS:
+    try:
+        AlienRegistry.register(power_class())
+    except ValueError:
+        pass

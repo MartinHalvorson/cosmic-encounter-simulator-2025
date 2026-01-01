@@ -275,3 +275,6 @@ from .landform_powers import *  # noqa: F401, F403
 from .writing_tool_powers import *  # noqa: F401, F403
 from .playing_piece_powers import *  # noqa: F401, F403
 from .dining_powers import *  # noqa: F401, F403
+from .musical_instrument_powers import *  # noqa: F401, F403
+from .architecture_style_powers import *  # noqa: F401, F403
+from .milestone_3500_powers import *  # noqa: F401, F403
