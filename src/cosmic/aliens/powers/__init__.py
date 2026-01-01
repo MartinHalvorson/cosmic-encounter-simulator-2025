@@ -410,3 +410,5 @@ from .final_push2_powers import *  # noqa: F401, F403
 from .science_field_powers import *  # noqa: F401, F403
 from .sports_extended_new_powers import *  # noqa: F401, F403
 from .final_push3_powers import *  # noqa: F401, F403
+from .school_role_powers import *  # noqa: F401, F403
+from .music_instrument_alt_powers import *  # noqa: F401, F403
