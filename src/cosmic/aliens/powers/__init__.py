@@ -402,3 +402,6 @@ from .cooking_extended_powers import *  # noqa: F401, F403
 from .technology_new_powers import *  # noqa: F401, F403
 from .milestone_5000_powers import *  # noqa: F401, F403
 from .architecture_new_powers import *  # noqa: F401, F403
+from .nature_force_powers import *  # noqa: F401, F403
+from .game_mechanic_powers import *  # noqa: F401, F403
+from .music_genre_powers import *  # noqa: F401, F403
