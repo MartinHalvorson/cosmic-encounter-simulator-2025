@@ -117,6 +117,7 @@ from .crime_powers import *  # noqa: F401, F403
 from .crystal_powers import *  # noqa: F401, F403
 from .cuisine_powers import *  # noqa: F401, F403
 from .cuisine_style_powers import *  # noqa: F401, F403
+from .cuisine_type_powers import *  # noqa: F401, F403
 from .currency_powers import *  # noqa: F401, F403
 from .cyberpunk_powers import *  # noqa: F401, F403
 from .dance_powers import *  # noqa: F401, F403
