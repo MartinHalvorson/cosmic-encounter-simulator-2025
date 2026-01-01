@@ -30872,57 +30872,57 @@ python update_stats.py --sort power --order asc
 
 ## Simulation Results
 
-**Total Games Simulated:** 22,098,355
-**Solo Victories:** 21,479,844
-**Shared Victories:** 365,288
+**Total Games Simulated:** 22,098,455
+**Solo Victories:** 21,479,942
+**Shared Victories:** 365,290
 **Average Game Length:** 5.0 turns
-**Last Updated:** 2025-12-31T21:00:27
+**Last Updated:** 2025-12-31T21:18:11
 
 ### Alien Power Rankings (by ELO)
 
 | Rank | Alien | ELO | Win Rate | Games | Solo Wins | Shared |
 |------|-------|-----|----------|-------|-----------|--------|
-| 1 | Wok | 818 | 32.4% | 34 | 11 | 0 |
-| 2 | Quasar_Ast | 673 | 34.1% | 41 | 14 | 0 |
-| 3 | Pulsar_Ast | 657 | 41.7% | 48 | 19 | 1 |
-| 4 | SolarWind | 625 | 42.3% | 52 | 22 | 0 |
-| 5 | Wrench_New | 625 | 45.1% | 51 | 22 | 1 |
-| 6 | Nebula_Ast | 621 | 28.6% | 42 | 12 | 0 |
-| 7 | Barbecue | 616 | 26.2% | 42 | 11 | 0 |
-| 8 | Supernova_Ast | 602 | 31.8% | 44 | 14 | 0 |
-| 9 | Pin | 562 | 32.6% | 46 | 14 | 1 |
-| 10 | Asteroid_Ast | 545 | 33.3% | 51 | 17 | 0 |
-| 11 | Fortress_Arch | 540 | 25.0% | 44 | 11 | 0 |
-| 12 | Emerald_Alt | 538 | 38.9% | 54 | 20 | 1 |
-| 13 | BrideGoddess | 534 | 43.6% | 55 | 23 | 1 |
-| 14 | Curer | 532 | 17.9% | 39 | 7 | 0 |
-| 15 | Ares_Alt | 532 | 36.5% | 52 | 19 | 0 |
-| 16 | BeanNighe | 500 | 46.0% | 63 | 28 | 1 |
-| 17 | All_In | 496 | 27.7% | 47 | 12 | 1 |
-| 18 | Apollo_Alt | 494 | 20.9% | 43 | 8 | 1 |
-| 19 | Flush | 476 | 20.0% | 45 | 9 | 0 |
-| 20 | Hope_Emotion | 470 | 40.4% | 57 | 22 | 1 |
-| 21 | Sun_5K | 467 | 43.8% | 64 | 28 | 0 |
-| 22 | Athena_Alt | 457 | 21.3% | 47 | 10 | 0 |
-| 23 | Catcher_Position | 449 | 32.1% | 53 | 17 | 0 |
-| 24 | Courageous_5K | 445 | 32.1% | 53 | 17 | 0 |
-| 25 | Pyramid_Arch | 438 | 23.4% | 47 | 10 | 1 |
-| 26 | Fear_Emotion | 438 | 26.5% | 49 | 13 | 0 |
-| 27 | Age_Forward | 435 | 19.6% | 46 | 9 | 0 |
-| 28 | Bathala | 435 | 34.0% | 53 | 17 | 1 |
-| 29 | Poseidon_Alt | 433 | 19.1% | 47 | 9 | 0 |
-| 30 | Turmeric | 430 | 29.4% | 51 | 15 | 0 |
-| 31 | Mantis_Shrimp | 430 | 38.6% | 57 | 20 | 2 |
-| 32 | King_Piece | 426 | 23.5% | 51 | 12 | 0 |
-| 33 | Mango | 425 | 41.3% | 63 | 25 | 1 |
-| 34 | Sapphire_Alt | 423 | 25.9% | 54 | 14 | 0 |
-| 35 | Kinnara | 418 | 30.2% | 53 | 16 | 0 |
-| 36 | Juicer | 412 | 33.9% | 56 | 19 | 0 |
-| 37 | Vanguard_5K | 411 | 41.0% | 61 | 23 | 2 |
-| 38 | Prickly_Texture | 408 | 27.5% | 51 | 13 | 1 |
-| 39 | Tart_Dessert | 403 | 32.1% | 56 | 17 | 1 |
-| 40 | Gambler_Card | 402 | 15.9% | 44 | 6 | 1 |
-| ... | *5988 more aliens* | ... | ... | ... | ... | ... |
+| 1 | Linebacker_Sport | 1468 | 0.0% | 1 | 0 | 0 |
+| 2 | Spaceship_Transport | 1468 | 0.0% | 1 | 0 | 0 |
+| 3 | Wok | 818 | 32.4% | 34 | 11 | 0 |
+| 4 | Quasar_Ast | 673 | 34.1% | 41 | 14 | 0 |
+| 5 | Pulsar_Ast | 657 | 41.7% | 48 | 19 | 1 |
+| 6 | SolarWind | 625 | 42.3% | 52 | 22 | 0 |
+| 7 | Wrench_New | 625 | 45.1% | 51 | 22 | 1 |
+| 8 | Nebula_Ast | 621 | 28.6% | 42 | 12 | 0 |
+| 9 | Barbecue | 616 | 26.2% | 42 | 11 | 0 |
+| 10 | Supernova_Ast | 602 | 31.8% | 44 | 14 | 0 |
+| 11 | Pin | 562 | 32.6% | 46 | 14 | 1 |
+| 12 | Asteroid_Ast | 545 | 33.3% | 51 | 17 | 0 |
+| 13 | Fortress_Arch | 540 | 25.0% | 44 | 11 | 0 |
+| 14 | Emerald_Alt | 538 | 38.9% | 54 | 20 | 1 |
+| 15 | BrideGoddess | 534 | 43.6% | 55 | 23 | 1 |
+| 16 | Curer | 532 | 17.9% | 39 | 7 | 0 |
+| 17 | Ares_Alt | 532 | 36.5% | 52 | 19 | 0 |
+| 18 | BeanNighe | 500 | 46.0% | 63 | 28 | 1 |
+| 19 | All_In | 496 | 27.7% | 47 | 12 | 1 |
+| 20 | Apollo_Alt | 494 | 20.9% | 43 | 8 | 1 |
+| 21 | Flush | 476 | 20.0% | 45 | 9 | 0 |
+| 22 | Hope_Emotion | 470 | 40.4% | 57 | 22 | 1 |
+| 23 | Sun_5K | 467 | 43.8% | 64 | 28 | 0 |
+| 24 | Athena_Alt | 457 | 21.3% | 47 | 10 | 0 |
+| 25 | Catcher_Position | 449 | 32.1% | 53 | 17 | 0 |
+| 26 | Courageous_5K | 445 | 32.1% | 53 | 17 | 0 |
+| 27 | Pyramid_Arch | 438 | 23.4% | 47 | 10 | 1 |
+| 28 | Fear_Emotion | 438 | 26.5% | 49 | 13 | 0 |
+| 29 | Age_Forward | 435 | 19.6% | 46 | 9 | 0 |
+| 30 | Bathala | 435 | 34.0% | 53 | 17 | 1 |
+| 31 | Poseidon_Alt | 433 | 19.1% | 47 | 9 | 0 |
+| 32 | Turmeric | 430 | 29.4% | 51 | 15 | 0 |
+| 33 | Mantis_Shrimp | 430 | 38.6% | 57 | 20 | 2 |
+| 34 | Mango | 429 | 42.2% | 64 | 26 | 1 |
+| 35 | King_Piece | 426 | 23.5% | 51 | 12 | 0 |
+| 36 | Sapphire_Alt | 423 | 25.9% | 54 | 14 | 0 |
+| 37 | Kinnara | 418 | 30.2% | 53 | 16 | 0 |
+| 38 | Juicer | 412 | 33.9% | 56 | 19 | 0 |
+| 39 | Vanguard_5K | 411 | 41.0% | 61 | 23 | 2 |
+| 40 | Prickly_Texture | 408 | 27.5% | 51 | 13 | 1 |
+| ... | *5990 more aliens* | ... | ... | ... | ... | ... |
 
 <!-- SIMULATION_RESULTS_END -->
 

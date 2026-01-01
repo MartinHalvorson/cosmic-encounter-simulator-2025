@@ -187,7 +187,12 @@ class Musical(AlienPower):
 
     def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
         if player.power_active:
-            if game.get_player_ally_count(player) > 0:
+            # Check if player has allies in encounter
+            if side == Side.OFFENSE:
+                has_allies = any(p != player.name and game.offense_ships.get(p, 0) > 0 for p in game.offense_ships)
+            else:
+                has_allies = any(p != player.name and game.defense_ships.get(p, 0) > 0 for p in game.defense_ships)
+            if has_allies:
                 return base_total + 3
         return base_total
 

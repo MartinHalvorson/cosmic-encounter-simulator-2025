@@ -199,7 +199,7 @@ class Locust_Alt(AlienPower):
     """
     name: str = field(default="Locust_Alt", init=False)
     description: str = field(
-        default="At start of your turn, add 1 ship to each of your colonies.",
+        default="When you win, opponent discards a card.",
         init=False
     )
     timing: PowerTiming = field(default=PowerTiming.START_TURN, init=False)
