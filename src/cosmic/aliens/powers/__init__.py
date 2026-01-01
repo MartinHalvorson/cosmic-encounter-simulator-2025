@@ -503,3 +503,14 @@ from .thai_powers import *
 from .hawaiian_powers import *
 from .maori_powers import *
 from .philippine_powers import *
+from .nigerian_powers import *
+from .milestone_6000_powers import *
+from .siberian_powers import *
+from .music_instrument_new_powers import *  # noqa: F401, F403
+from .combat_formation_powers import *  # noqa: F401, F403
+from .milestone_5500_powers import *  # noqa: F401, F403
+from .landscape_feature_powers import *  # noqa: F401, F403
+from .kitchen_utensil_powers import *  # noqa: F401, F403
+from .cleaning_supply_powers import *  # noqa: F401, F403
+from .material_powers import *  # noqa: F401, F403
+from .action_powers import *  # noqa: F401, F403

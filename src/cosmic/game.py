@@ -7,7 +7,7 @@ import copy
 from dataclasses import dataclass, field
 from typing import List, Optional, Dict, Any, Tuple
 
-from .types import GamePhase, GameConfig, Side, PlayerRole, Color, ShipCount, DealType, StationType
+from .types import GamePhase, GameConfig, Side, PlayerRole, Color, ShipCount, DealType, StationType, Expansion, EXPANSION_FEATURES
 from .player import Player
 from .planet import Planet
 from .cards import CosmicDeck, DestinyDeck, RewardsDeck, FlareDeck
@@ -16,6 +16,7 @@ from .cards.tech_deck import TechDeck, TechCard, TECH_EFFECTS
 from .cards.hazard_deck import HazardDeck, HazardCard, apply_hazard_effect, HazardTiming
 from .types import ArtifactType
 from .aliens import AlienRegistry, AlienPower
+from .aliens.official_aliens import get_alien_expansion_enum
 from .ai.basic_ai import BasicAI
 
 
@@ -147,6 +148,79 @@ class Game:
     log: List[str] = field(default_factory=list)
     verbose: bool = False
 
+    # Selected expansions for this game (set during setup)
+    selected_expansions: List[Expansion] = field(default_factory=list)
+
+    def _select_expansions(self) -> List[Expansion]:
+        """
+        Select expansions for this game.
+        Base game is always included. Additional expansions are either
+        specified in config or randomly selected.
+        """
+        # Always start with base game
+        expansions = [Expansion.BASE]
+
+        if self.config.expansions is not None:
+            # Use specified expansions
+            for exp in self.config.expansions:
+                if exp not in expansions:
+                    expansions.append(exp)
+        elif self.config.random_expansions:
+            # Randomly select expansions
+            available = [
+                Expansion.COSMIC_INCURSION,
+                Expansion.COSMIC_CONFLICT,
+                Expansion.COSMIC_ALLIANCE,
+                Expansion.COSMIC_STORM,
+                Expansion.COSMIC_DOMINION,
+                Expansion.COSMIC_EONS,
+                Expansion.COSMIC_ODYSSEY,
+            ]
+            # Determine how many to select
+            num_to_select = self._rng.randint(
+                self.config.min_expansions,
+                self.config.max_expansions
+            )
+            if num_to_select > 0:
+                selected = self._rng.sample(available, min(num_to_select, len(available)))
+                expansions.extend(selected)
+
+        # Optionally include homebrew
+        if self.config.include_homebrew:
+            expansions.append(Expansion.HOMEBREW)
+
+        return expansions
+
+    def _enable_expansion_features(self) -> None:
+        """Enable game features based on selected expansions."""
+        for exp in self.selected_expansions:
+            if exp == Expansion.COSMIC_INCURSION:
+                self.config.use_tech = True
+                self.config.use_flares = True
+            elif exp == Expansion.COSMIC_CONFLICT:
+                self.config.use_hazards = True
+            elif exp == Expansion.COSMIC_STORM:
+                self.config.use_space_stations = True
+            elif exp == Expansion.COSMIC_ODYSSEY:
+                self.config.use_lux = True
+                self.config.use_rifts = True
+
+        # Initialize decks for enabled features
+        if self.config.use_tech and self.tech_deck is None:
+            self.tech_deck = TechDeck()
+            self.tech_deck.set_rng(self._rng)
+
+        if self.config.use_hazards and self.hazard_deck is None:
+            self.hazard_deck = HazardDeck()
+            self.hazard_deck.set_rng(self._rng)
+
+    def _filter_aliens_by_expansion(self, aliens: List[AlienPower]) -> List[AlienPower]:
+        """Filter aliens to only those from selected expansions."""
+        return [
+            alien for alien in aliens
+            if get_alien_expansion_enum(alien.name) in self.selected_expansions
+        ]
+
     def __post_init__(self):
         if self.config.seed is not None:
             self._rng.seed(self.config.seed)
@@ -177,6 +251,12 @@ class Game:
         """
         num_players = self.config.num_players
 
+        # Select expansions for this game (random or specified)
+        self.selected_expansions = self._select_expansions()
+
+        # Enable features based on selected expansions
+        self._enable_expansion_features()
+
         # Auto-enable 2-player mode for 2-player games
         if num_players == 2:
             self.config.two_player_mode = True
@@ -198,6 +278,9 @@ class Game:
         if powers is None:
             all_aliens = AlienRegistry.get_all()
 
+            # Filter aliens by selected expansions
+            all_aliens = self._filter_aliens_by_expansion(all_aliens)
+
             # Check for required aliens from config
             if self.config.required_aliens:
                 selected_powers = []
@@ -206,7 +289,7 @@ class Game:
                     if alien:
                         selected_powers.append(alien)
 
-                # Fill remaining slots with random aliens
+                # Fill remaining slots with random aliens from selected expansions
                 remaining_count = powers_needed - len(selected_powers)
                 if remaining_count > 0:
                     available = [a for a in all_aliens if a not in selected_powers]

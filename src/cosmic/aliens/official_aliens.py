@@ -192,6 +192,14 @@ def get_alien_expansion(name: str) -> Optional[str]:
     return _OFFICIAL_EXPANSION_MAP.get(normalized)
 
 
+def get_alien_expansion_enum(name: str) -> Expansion:
+    """Get the Expansion enum for an alien. Returns HOMEBREW if not official."""
+    expansion_str = get_alien_expansion(name)
+    if expansion_str is None:
+        return Expansion.HOMEBREW
+    return EXPANSION_NAME_TO_ENUM.get(expansion_str, Expansion.HOMEBREW)
+
+
 def get_aliens_by_expansion(expansion: str) -> List[str]:
     """Get all aliens from a specific expansion."""
     return OFFICIAL_ALIENS.get(expansion, [])

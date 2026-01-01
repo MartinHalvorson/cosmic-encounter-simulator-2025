@@ -1,5 +1,5 @@
 """
-Finnish Mythology Powers - Finnish gods and spirits themed aliens.
+Egyptian Extra Powers - More Egyptian mythology themed aliens.
 """
 
 from dataclasses import dataclass, field
@@ -16,9 +16,39 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Ukko(AlienPower):
-    """Ukko - Thunder god. +5 offense, -2 defense."""
-    name: str = field(default="Ukko", init=False)
+class Hathor(AlienPower):
+    """Hathor - Joy goddess. +4 on offense."""
+    name: str = field(default="Hathor", init=False)
+    description: str = field(default="+4 attacking.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.OFFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Nephthys(AlienPower):
+    """Nephthys - Mourning goddess. +4 on defense."""
+    name: str = field(default="Nephthys", init=False)
+    description: str = field(default="+4 defending.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active and side == Side.DEFENSE:
+            return total + 4
+        return total
+
+
+@dataclass
+class Sekhmet(AlienPower):
+    """Sekhmet - War goddess. +5 offense, -2 defense."""
+    name: str = field(default="Sekhmet", init=False)
     description: str = field(default="+5 offense, -2 defense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -33,9 +63,9 @@ class Ukko(AlienPower):
 
 
 @dataclass
-class Vainamoinen(AlienPower):
-    """Vainamoinen - Wise old sage. +2 always."""
-    name: str = field(default="Vainamoinen", init=False)
+class Maat(AlienPower):
+    """Maat - Justice goddess. +2 always."""
+    name: str = field(default="Maat", init=False)
     description: str = field(default="+2 in encounters.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -48,39 +78,9 @@ class Vainamoinen(AlienPower):
 
 
 @dataclass
-class Ilmarinen(AlienPower):
-    """Ilmarinen - Smith god. +4 on defense."""
-    name: str = field(default="Ilmarinen", init=False)
-    description: str = field(default="+4 defending.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.DEFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Lemminkainen(AlienPower):
-    """Lemminkainen - Hero. +4 on offense."""
-    name: str = field(default="Lemminkainen", init=False)
-    description: str = field(default="+4 attacking.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active and side == Side.OFFENSE:
-            return total + 4
-        return total
-
-
-@dataclass
-class Tuoni(AlienPower):
-    """Tuoni - Death god. Retrieve 3 ships."""
-    name: str = field(default="Tuoni", init=False)
+class Ammit(AlienPower):
+    """Ammit - Soul eater. Retrieve 3 ships."""
+    name: str = field(default="Ammit", init=False)
     description: str = field(default="Retrieve 3 ships from warp.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -88,34 +88,19 @@ class Tuoni(AlienPower):
 
 
 @dataclass
-class Louhi(AlienPower):
-    """Louhi - Witch queen. Random +0 to +6."""
-    name: str = field(default="Louhi", init=False)
-    description: str = field(default="Random +0 to +6.", init=False)
+class Ptah(AlienPower):
+    """Ptah - Creator god. Win ties."""
+    name: str = field(default="Ptah", init=False)
+    description: str = field(default="Win all ties.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
-
-    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
-        if player.power_active:
-            return total + random.randint(0, 6)
-        return total
-
-
-@dataclass
-class Ahti(AlienPower):
-    """Ahti - Sea god. Ships go home."""
-    name: str = field(default="Ahti", init=False)
-    description: str = field(default="Ships return home.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.SHIPS_TO_WARP, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
 @dataclass
-class Tapio(AlienPower):
-    """Tapio - Forest god. See opponent card."""
-    name: str = field(default="Tapio", init=False)
+class Khonsu(AlienPower):
+    """Khonsu - Moon god. See opponent card."""
+    name: str = field(default="Khonsu", init=False)
     description: str = field(default="View opponent's card.", init=False)
     timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
     power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
@@ -123,19 +108,9 @@ class Tapio(AlienPower):
 
 
 @dataclass
-class Mielikki(AlienPower):
-    """Mielikki - Forest goddess. +1 per ally."""
-    name: str = field(default="Mielikki", init=False)
-    description: str = field(default="+1 per ally.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Pellervo(AlienPower):
-    """Pellervo - Harvest god. +2 per home colony."""
-    name: str = field(default="Pellervo", init=False)
+class Geb(AlienPower):
+    """Geb - Earth god. +2 per home colony."""
+    name: str = field(default="Geb", init=False)
     description: str = field(default="+2 per home colony.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -149,9 +124,9 @@ class Pellervo(AlienPower):
 
 
 @dataclass
-class Sampsa(AlienPower):
-    """Sampsa - Fertility god. +3 first encounter."""
-    name: str = field(default="Sampsa", init=False)
+class Nut(AlienPower):
+    """Nut - Sky goddess. +3 first encounter."""
+    name: str = field(default="Nut", init=False)
     description: str = field(default="+3 first encounter.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -164,9 +139,24 @@ class Sampsa(AlienPower):
 
 
 @dataclass
-class Akka(AlienPower):
-    """Akka - Earth mother. +3 defending home."""
-    name: str = field(default="Akka", init=False)
+class Apep(AlienPower):
+    """Apep - Chaos serpent. Random +0 to +6."""
+    name: str = field(default="Apep", init=False)
+    description: str = field(default="Random +0 to +6.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+
+    def modify_total(self, game: "Game", player: "Player", total: int, side: Side) -> int:
+        if player.power_active:
+            return total + random.randint(0, 6)
+        return total
+
+
+@dataclass
+class Bes(AlienPower):
+    """Bes - Home protector. +3 defending home."""
+    name: str = field(default="Bes", init=False)
     description: str = field(default="+3 defending home.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -180,19 +170,9 @@ class Akka(AlienPower):
 
 
 @dataclass
-class Paiva(AlienPower):
-    """Paiva - Sun goddess. Win ties."""
-    name: str = field(default="Paiva", init=False)
-    description: str = field(default="Win all ties.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
-
-
-@dataclass
-class Tuuletar(AlienPower):
-    """Tuuletar - Wind spirit. -2 to opponent."""
-    name: str = field(default="Tuuletar", init=False)
+class Serket(AlienPower):
+    """Serket - Scorpion goddess. -2 to opponent."""
+    name: str = field(default="Serket", init=False)
     description: str = field(default="-2 to opponent.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -200,9 +180,19 @@ class Tuuletar(AlienPower):
 
 
 @dataclass
-class Kalma(AlienPower):
-    """Kalma - Death spirit. +1 per card."""
-    name: str = field(default="Kalma", init=False)
+class Wadjet(AlienPower):
+    """Wadjet - Cobra goddess. +1 per ally."""
+    name: str = field(default="Wadjet", init=False)
+    description: str = field(default="+1 per ally.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+@dataclass
+class Thoth_Wisdom(AlienPower):
+    """Thoth_Wisdom - Knowledge god. +1 per card."""
+    name: str = field(default="Thoth_Wisdom", init=False)
     description: str = field(default="+1 per card.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -214,15 +204,23 @@ class Kalma(AlienPower):
         return total
 
 
-# Register all powers
-FINNISH_MYTHOLOGY_POWERS = [
-    Ukko, Vainamoinen, Ilmarinen, Lemminkainen, Tuoni, Louhi,
-    Ahti, Tapio, Mielikki, Pellervo, Sampsa, Akka, Paiva,
-    Tuuletar, Kalma,
+@dataclass
+class Sobek(AlienPower):
+    """Sobek - Crocodile god. Ships go home."""
+    name: str = field(default="Sobek", init=False)
+    description: str = field(default="Ships return home.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.SHIPS_TO_WARP, init=False)
+    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
+    category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
+
+
+EGYPTIAN_EXTRA_POWERS = [
+    Hathor, Nephthys, Sekhmet, Maat, Ammit, Ptah, Khonsu, Geb, Nut, Apep,
+    Bes, Serket, Wadjet, Thoth_Wisdom, Sobek,
 ]
 
-for power_class in FINNISH_MYTHOLOGY_POWERS:
+for power_class in EGYPTIAN_EXTRA_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:
-        pass  # Already registered
+        pass

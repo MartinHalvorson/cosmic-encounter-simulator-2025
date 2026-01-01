@@ -1,5 +1,5 @@
 """
-Mongolian/Central Asian Mythology Powers - Mongolian spirits themed aliens.
+Turkish Mythology Powers - Turkish/Turkic folklore themed aliens.
 """
 
 from dataclasses import dataclass, field
@@ -16,9 +16,9 @@ if TYPE_CHECKING:
 
 
 @dataclass
-class Tengri(AlienPower):
-    """Tengri - Sky god. +4 on offense."""
-    name: str = field(default="Tengri", init=False)
+class GokTengri(AlienPower):
+    """GokTengri - Sky god. +4 on offense."""
+    name: str = field(default="GokTengri", init=False)
     description: str = field(default="+4 attacking.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -31,9 +31,9 @@ class Tengri(AlienPower):
 
 
 @dataclass
-class Etugen(AlienPower):
-    """Etugen - Earth goddess. +4 on defense."""
-    name: str = field(default="Etugen", init=False)
+class Umay(AlienPower):
+    """Umay - Fertility goddess. +4 on defense."""
+    name: str = field(default="Umay", init=False)
     description: str = field(default="+4 defending.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -46,9 +46,9 @@ class Etugen(AlienPower):
 
 
 @dataclass
-class Erlik(AlienPower):
-    """Erlik - Underworld god. +5 offense, -2 defense."""
-    name: str = field(default="Erlik", init=False)
+class Kuara(AlienPower):
+    """Kuara - War spirit. +5 offense, -2 defense."""
+    name: str = field(default="Kuara", init=False)
     description: str = field(default="+5 offense, -2 defense.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -63,9 +63,9 @@ class Erlik(AlienPower):
 
 
 @dataclass
-class Ulgen(AlienPower):
-    """Ulgen - Good spirit. +2 always."""
-    name: str = field(default="Ulgen", init=False)
+class AyAtaAy(AlienPower):
+    """AyAtaAy - Moon mother. +2 always."""
+    name: str = field(default="AyAtaAy", init=False)
     description: str = field(default="+2 in encounters.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -78,9 +78,9 @@ class Ulgen(AlienPower):
 
 
 @dataclass
-class Burkhan(AlienPower):
-    """Burkhan - Mountain spirit. Retrieve 3 ships."""
-    name: str = field(default="Burkhan", init=False)
+class YerAna(AlienPower):
+    """YerAna - Earth mother. Retrieve 3 ships."""
+    name: str = field(default="YerAna", init=False)
     description: str = field(default="Retrieve 3 ships from warp.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REGROUP, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -88,9 +88,9 @@ class Burkhan(AlienPower):
 
 
 @dataclass
-class Naran(AlienPower):
-    """Naran - Sun goddess. Win ties."""
-    name: str = field(default="Naran", init=False)
+class GunAna(AlienPower):
+    """GunAna - Sun mother. Win ties."""
+    name: str = field(default="GunAna", init=False)
     description: str = field(default="Win all ties.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -98,9 +98,9 @@ class Naran(AlienPower):
 
 
 @dataclass
-class Ongon(AlienPower):
-    """Ongon - Ancestor spirit. See opponent card."""
-    name: str = field(default="Ongon", init=False)
+class Albasti(AlienPower):
+    """Albasti - Evil spirit. See opponent card."""
+    name: str = field(default="Albasti", init=False)
     description: str = field(default="View opponent's card.", init=False)
     timing: PowerTiming = field(default=PowerTiming.PLANNING, init=False)
     power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
@@ -108,9 +108,9 @@ class Ongon(AlienPower):
 
 
 @dataclass
-class DayanDeerh(AlienPower):
-    """DayanDeerh - War god. +2 per home colony."""
-    name: str = field(default="DayanDeerh", init=False)
+class OdAna(AlienPower):
+    """OdAna - Fire goddess. +2 per home colony."""
+    name: str = field(default="OdAna", init=False)
     description: str = field(default="+2 per home colony.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -124,9 +124,9 @@ class DayanDeerh(AlienPower):
 
 
 @dataclass
-class SuldeSpirit(AlienPower):
-    """SuldeSpirit - Soul banner. +3 first encounter."""
-    name: str = field(default="SuldeSpirit", init=False)
+class AlpKarakus(AlienPower):
+    """AlpKarakus - Giant bird. +3 first encounter."""
+    name: str = field(default="AlpKarakus", init=False)
     description: str = field(default="+3 first encounter.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -139,9 +139,9 @@ class SuldeSpirit(AlienPower):
 
 
 @dataclass
-class Mangus(AlienPower):
-    """Mangus - Giant demon. Random +0 to +6."""
-    name: str = field(default="Mangus", init=False)
+class Yek(AlienPower):
+    """Yek - Trickster. Random +0 to +6."""
+    name: str = field(default="Yek", init=False)
     description: str = field(default="Random +0 to +6.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -154,9 +154,9 @@ class Mangus(AlienPower):
 
 
 @dataclass
-class GerEzen(AlienPower):
-    """GerEzen - Home spirit. +3 defending home."""
-    name: str = field(default="GerEzen", init=False)
+class EvIyesi(AlienPower):
+    """EvIyesi - House spirit. +3 defending home."""
+    name: str = field(default="EvIyesi", init=False)
     description: str = field(default="+3 defending home.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -170,9 +170,9 @@ class GerEzen(AlienPower):
 
 
 @dataclass
-class Chutgur(AlienPower):
-    """Chutgur - Evil spirit. -2 to opponent."""
-    name: str = field(default="Chutgur", init=False)
+class Shaitan(AlienPower):
+    """Shaitan - Evil being. -2 to opponent."""
+    name: str = field(default="Shaitan", init=False)
     description: str = field(default="-2 to opponent.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -180,9 +180,9 @@ class Chutgur(AlienPower):
 
 
 @dataclass
-class OtukenSpirit(AlienPower):
-    """OtukenSpirit - Sacred forest. +1 per ally."""
-    name: str = field(default="OtukenSpirit", init=False)
+class KorKut(AlienPower):
+    """KorKut - Sage. +1 per ally."""
+    name: str = field(default="KorKut", init=False)
     description: str = field(default="+1 per ally.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -190,9 +190,9 @@ class OtukenSpirit(AlienPower):
 
 
 @dataclass
-class Oiun(AlienPower):
-    """Oiun - Shaman spirit. +1 per card."""
-    name: str = field(default="Oiun", init=False)
+class Kam(AlienPower):
+    """Kam - Shaman. +1 per card."""
+    name: str = field(default="Kam", init=False)
     description: str = field(default="+1 per card.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
@@ -205,23 +205,22 @@ class Oiun(AlienPower):
 
 
 @dataclass
-class Saran(AlienPower):
-    """Saran - Moon god. Ships go home."""
-    name: str = field(default="Saran", init=False)
+class SuAna(AlienPower):
+    """SuAna - Water spirit. Ships go home."""
+    name: str = field(default="SuAna", init=False)
     description: str = field(default="Ships return home.", init=False)
     timing: PowerTiming = field(default=PowerTiming.SHIPS_TO_WARP, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
 
 
-# Register all powers
-MONGOLIAN_POWERS = [
-    Tengri, Etugen, Erlik, Ulgen, Burkhan, Naran, Ongon, DayanDeerh,
-    SuldeSpirit, Mangus, GerEzen, Chutgur, OtukenSpirit, Oiun, Saran,
+TURKISH_POWERS = [
+    GokTengri, Umay, Kuara, AyAtaAy, YerAna, GunAna, Albasti, OdAna,
+    AlpKarakus, Yek, EvIyesi, Shaitan, KorKut, Kam, SuAna,
 ]
 
-for power_class in MONGOLIAN_POWERS:
+for power_class in TURKISH_POWERS:
     try:
         AlienRegistry.register(power_class())
     except ValueError:
-        pass  # Already registered
+        pass
