@@ -335,3 +335,12 @@ from .photography_powers import *  # noqa: F401, F403
 from .milestone_4000_powers import *  # noqa: F401, F403
 from .milestone_4k_celebration_powers import *  # noqa: F401, F403
 from .milestone_4001_powers import *  # noqa: F401, F403
+from .arctic_powers import *  # noqa: F401, F403
+from .volcanic_powers import *  # noqa: F401, F403
+from .magic_school_powers import *  # noqa: F401, F403
+from .prehistoric_powers import *  # noqa: F401, F403
+from .space_station_powers import *  # noqa: F401, F403
+from .underground_powers import *  # noqa: F401, F403
+from .island_powers import *  # noqa: F401, F403
+from .winter_powers import *  # noqa: F401, F403
+from .mythical_beast_powers import *  # noqa: F401, F403

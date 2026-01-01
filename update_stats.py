@@ -166,9 +166,16 @@ def generate_table(stats: dict, sort_by: str = "elo", ascending: bool = False) -
     """Generate HTML table for README."""
     powers = stats["powers"]
 
-    # Build sortable data
-    table_data = []
+    # Deduplicate powers (case-insensitive) - keep the one with most games
+    seen = {}
     for name, data in powers.items():
+        lower_name = name.lower()
+        if lower_name not in seen or data["total_games"] > seen[lower_name][1]["total_games"]:
+            seen[lower_name] = (name, data)
+
+    # Build sortable data from deduplicated powers
+    table_data = []
+    for lower_name, (name, data) in seen.items():
         if data["total_games"] < 5:  # Skip powers with very few games
             continue
         row = {
@@ -187,21 +194,21 @@ def generate_table(stats: dict, sort_by: str = "elo", ascending: bool = False) -
     else:
         table_data.sort(key=lambda x: x.get(sort_by, 0), reverse=not ascending)
 
-    # Generate HTML table
+    # Generate HTML table with sortable headers
     html = """
-<table>
+<table id="rankings">
 <thead>
 <tr>
-<th align="left">Rank</th>
-<th align="left">Power</th>
-<th align="right">ELO</th>
-<th align="right">Overall</th>
-<th align="right">2P</th>
-<th align="right">3P</th>
-<th align="right">4P</th>
-<th align="right">5P</th>
-<th align="right">6P</th>
-<th align="right">Games</th>
+<th align="left" data-sort="rank">Rank</th>
+<th align="left" data-sort="power">Power ⇅</th>
+<th align="right" data-sort="elo">ELO ⇅</th>
+<th align="right" data-sort="overall">Overall ⇅</th>
+<th align="right" data-sort="2p">2P ⇅</th>
+<th align="right" data-sort="3p">3P ⇅</th>
+<th align="right" data-sort="4p">4P ⇅</th>
+<th align="right" data-sort="5p">5P ⇅</th>
+<th align="right" data-sort="6p">6P ⇅</th>
+<th align="right" data-sort="games">Games ⇅</th>
 </tr>
 </thead>
 <tbody>
