@@ -62,8 +62,7 @@ class CosmicDeck:
         for _ in range(15):
             cards.append(NegotiateCard())
 
-        # Morph cards - 1 in base game (optional, adding 2)
-        cards.append(MorphCard())
+        # Morph cards - 1 in base game
         cards.append(MorphCard())
 
         # Reinforcement cards

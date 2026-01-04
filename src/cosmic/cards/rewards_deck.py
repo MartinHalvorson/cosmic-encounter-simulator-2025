@@ -7,7 +7,7 @@ from typing import List
 from dataclasses import dataclass, field
 
 from .base import (
-    Card, AttackCard, NegotiateCard,
+    Card, AttackCard, NegotiateCard, MorphCard,
     ReinforcementCard, ArtifactCard, KickerCard
 )
 from ..types import ArtifactType
@@ -40,6 +40,9 @@ class RewardsDeck:
         # Negotiate cards (can be special negotiates in expansions)
         for _ in range(4):
             cards.append(NegotiateCard(_from_rewards_deck=True))
+
+        # Morph card - 1 in reward deck (same as base game morph)
+        cards.append(MorphCard(_from_rewards_deck=True))
 
         # Reinforcement cards - higher values
         reinforcement_values = [4, 4, 6, 6]
