@@ -67,9 +67,9 @@ DEFENSE TOTAL = Card Value + Ship Count + Kickers + Power Mods + Reinforcements 
 
 | Card Type | Status | Implementation Details |
 |-----------|--------|------------------------|
-| **Attack Cards** | ✅ Full | Values 0-40 per official distribution (49 cards total) |
+| **Attack Cards** | ✅ Full | Values 0-40 per official distribution (39 cards total) |
 | **Negotiate Cards** | ✅ Full | 15 cards; triggers deal phase or compensation |
-| **Morph Cards** | ✅ Full | 2 cards; copies opponent's card value |
+| **Morph Cards** | ✅ Full | 1 card per official FFG rules; copies opponent's card value |
 | **Reinforcement Cards** | ✅ Full | 6 cards (+2, +3, +5); added during resolution |
 | **Kicker Cards** | ✅ Full | Multipliers (×2, ×3, ×4, ×-1) applied to attack value |
 | **Artifact Cards** | ✅ Full | 14 types with one-time special effects |
