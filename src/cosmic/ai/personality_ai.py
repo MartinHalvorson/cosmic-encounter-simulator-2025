@@ -504,7 +504,8 @@ class SocialAI(AIStrategy):
         max_ships: int
     ) -> int:
         """Commit moderate ships."""
-        return max(2, max_ships // 2)
+        # Aim for half of max, minimum of 2, but never exceed max_ships
+        return min(max_ships, max(2, max_ships // 2))
 
     def decide_alliance_invitation(
         self,
@@ -1165,7 +1166,7 @@ class BlufferAI(AIStrategy):
         attack_cards = player.get_attack_cards()
         negotiate_cards = player.get_negotiate_cards()
         morph_cards = [c for c in player.get_encounter_cards()
-                      if hasattr(c, 'card_type') and c.card_type == 'morph']
+                      if hasattr(c, 'card_type') and c.card_type.value == 'morph']
 
         # Bluff chance - play unexpectedly
         if self._rng.random() < 0.3:

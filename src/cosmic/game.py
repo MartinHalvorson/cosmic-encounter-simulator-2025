@@ -1320,8 +1320,8 @@ class Game:
         if count == 0:
             count = 1
 
-        # Check for Hacker power
-        if receiver.alien and receiver.alien.name == "Hacker" and receiver.power_active:
+        # Check for Hacker power (must use is_power_active to respect Cosmic Zap)
+        if receiver.alien and receiver.alien.name == "Hacker" and self.is_power_active(receiver):
             count = receiver.alien.on_compensation(self, receiver, giver, count)
             if count == 0:
                 return  # Hacker handled it
