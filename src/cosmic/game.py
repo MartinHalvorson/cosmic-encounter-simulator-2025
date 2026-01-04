@@ -130,6 +130,7 @@ class Game:
     # Artifact tracking
     zapped_powers: List[Player] = field(default_factory=list)  # Players whose powers are zapped this encounter
     encounter_cancelled: bool = False  # Force Field was played
+    deal_made: bool = False  # Track if a successful deal was made (for second encounter eligibility)
 
     # Combat totals (set during resolution for powers that need them)
     offense_total: int = 0
@@ -1131,10 +1132,7 @@ class Game:
                 ally.return_ships_to_colonies(retrieved, ally.home_planets)
                 self._log(f"{ally.name} retrieves {retrieved} ships from warp")
 
-            # Return ally ships to colonies
-            ally.return_ships_to_colonies(reward_count, ally.home_planets)
-
-        # Defense ships stay on planet (return to planet for allies)
+        # Return defensive ally ships to their colonies (not on planet since defense won)
         for ally in self.defense_allies:
             ally_ships = self.defense_ships.get(ally.name, 0)
             ally.return_ships_to_colonies(ally_ships, ally.home_planets)
@@ -1167,6 +1165,7 @@ class Game:
         if deal:
             deal_type = deal.get("type", "colony_swap")
             self._apply_deal(deal_type, deal)
+            self.deal_made = True  # Track for second encounter eligibility
 
             # Deal success hooks
             for player in [self.offense, self.defense]:
@@ -1373,7 +1372,7 @@ class Game:
 
     def _handle_turn_end(self) -> None:
         """Handle end of encounter, possibly allowing second encounter."""
-        # Check if Machine power or won encounter
+        # Check if offense won encounter (established colony on defense planet)
         won_encounter = (
             self.defense_planet is not None and
             self.offense is not None and
@@ -1393,8 +1392,9 @@ class Game:
             if self.offense.has_encounter_card():
                 can_have_second = True
 
-        # Normal: won first encounter and have encounter card
-        elif self.encounter_number == 1 and won_encounter and self.offense.has_encounter_card():
+        # Normal: won first encounter OR made a successful deal, and have encounter card
+        # Per official rules: "If you won your first encounter or made a deal..."
+        elif self.encounter_number == 1 and (won_encounter or self.deal_made) and self.offense.has_encounter_card():
             can_have_second = True
 
         if can_have_second:
@@ -1445,6 +1445,7 @@ class Game:
         """Reset artifact state at start of encounter."""
         self.zapped_powers = []
         self.encounter_cancelled = False
+        self.deal_made = False
 
     def _check_artifact_opportunity(self, phase: str, context: Dict[str, Any]) -> Optional[ArtifactCard]:
         """

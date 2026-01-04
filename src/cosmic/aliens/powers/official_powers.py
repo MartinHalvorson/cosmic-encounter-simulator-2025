@@ -291,10 +291,10 @@ class Loser(AlienPower):
 
 @dataclass
 class Machine(AlienPower):
-    """You have the power of Continuity. As offense, after winning an encounter,
-    you may have another encounter."""
+    """You have the power of Continuity. As offense, after every encounter,
+    regardless of the outcome, you may have an additional encounter."""
     name: str = field(default="Machine", init=False)
-    description: str = field(default="Extra encounter after winning.", init=False)
+    description: str = field(default="Extra encounter after any encounter, win or lose.", init=False)
     timing: PowerTiming = field(default=PowerTiming.RESOLUTION, init=False)
     power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
@@ -417,10 +417,10 @@ class Oracle(AlienPower):
 
 @dataclass
 class Pacifist(AlienPower):
-    """You have the power of Peace. As a main player, you automatically win if
-    both you and your opponent play negotiate cards."""
+    """You have the power of Peace. As a main player, if you play a negotiate card
+    and your opponent plays an attack card, you win the encounter."""
     name: str = field(default="Pacifist", init=False)
-    description: str = field(default="Win if both players negotiate.", init=False)
+    description: str = field(default="Win when playing negotiate against attack.", init=False)
     timing: PowerTiming = field(default=PowerTiming.REVEAL, init=False)
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
