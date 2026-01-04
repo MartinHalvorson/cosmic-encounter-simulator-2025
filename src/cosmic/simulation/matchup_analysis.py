@@ -253,7 +253,9 @@ class MatchupAnalyzer:
                 self.matrix.record_game(aliens_in_game, winner_aliens, solo_win)
 
             except Exception as e:
-                # Skip failed games
+                # Log failed games for debugging but continue simulation
+                if show_progress:
+                    print(f"  Warning: Game {i + 1} failed: {e}")
                 continue
 
         if self.data_file:

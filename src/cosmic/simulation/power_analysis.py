@@ -209,14 +209,15 @@ class PowerBalanceAnalyzer:
         wr_component = win_rate * 100 * 2  # 0-40 for typical range
         solo_component = solo_rate * 100  # 0-20 for typical range
 
-        # Normalize ELO (assume range -400000 to -390000 based on data)
-        elo_normalized = (elo + 400000) / 10000  # Rough normalization
+        # Normalize ELO (typical range 1000-2000, centered at 1500)
+        # Scale so that 1500 = 0, and each 100 ELO = 2 points
+        elo_normalized = (elo - 1500) / 50  # -10 to +10 for typical range
 
         # Combine
         score = (
             wr_component * 0.5 +
             solo_component * 0.3 +
-            elo_normalized * 20 * 0.2
+            elo_normalized * 0.2 + 10  # Add 10 to center at baseline
         )
 
         return max(0, min(100, score))
