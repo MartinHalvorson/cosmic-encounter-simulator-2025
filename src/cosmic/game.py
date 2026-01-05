@@ -651,7 +651,10 @@ class Game:
         if self.config.two_player_mode and self.config.two_player_choose_target:
             # In 2-player, offense can only attack the other player
             other_players = [p for p in self.players if p != self.offense]
-            self.defense = other_players[0] if other_players else self.offense
+            if not other_players:
+                self._log("Error: No valid defense player")
+                return
+            self.defense = other_players[0]
             self._log(f"Target: {self.defense.name}")
         else:
             # Draw destiny
@@ -692,6 +695,9 @@ class Game:
         # Select planet to attack (aim the gate)
         ai = self.offense.ai_strategy or BasicAI()
         self.defense_planet = ai.select_attack_planet(self, self.offense, self.defense)
+        if self.defense_planet is None:
+            self._log("No valid planet to attack - skipping encounter")
+            return
         self.hyperspace_gate.aim(self.defense_planet)
 
         # Check for powers that affect gate aiming (e.g., Solar Wind artifact already in context)

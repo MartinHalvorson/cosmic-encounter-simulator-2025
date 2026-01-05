@@ -225,9 +225,15 @@ class Game:
         for player in self.players:
             self.planets += [Planet(player, self.players) for i in range(5)]
 
-        # Deal each player a starting hand
+        # Deal each player a starting hand (ensuring at least one encounter card)
         for player in self.players:
             self.deal_hand(player)
+            # Re-deal until we have an encounter card
+            while not player.has_encounter_card():
+                for card in list(player.hand):
+                    self.discard(card)
+                player.hand = []
+                self.deal_hand(player)
 
         # Control of flow variables
         self.phase = "start_turn"
@@ -489,12 +495,22 @@ class Game:
 
             # Provides new hand for offense if he/she needs one
             if len(self.offense.hand) == 0 or not self.offense.has_encounter_card():
-                self.deal_hand(self.offense)
+                # Keep dealing until we have an encounter card
+                while not self.offense.has_encounter_card():
+                    for card in list(self.offense.hand):
+                        self.discard(card)
+                    self.offense.hand = []
+                    self.deal_hand(self.offense)
                 self.output += self.offense.name + " draws a new hand.\n\n"
 
             # Provides new hand for defense if he/she needs one
             if len(self.defense.hand) == 0 or not self.defense.has_encounter_card():
-                self.deal_hand(self.defense)
+                # Keep dealing until we have an encounter card
+                while not self.defense.has_encounter_card():
+                    for card in list(self.defense.hand):
+                        self.discard(card)
+                    self.defense.hand = []
+                    self.deal_hand(self.defense)
                 self.output += self.defense.name + " draws a new hand.\n"
 
             # Trader Alien Power
@@ -502,6 +518,14 @@ class Game:
                 self.offense.hand, self.defense.hand = self.defense.hand, self.offense.hand
             if self.defense.power == "Trader" and self.defense.power_active and len(self.defense.hand) < len(self.offense.hand):
                 self.offense.hand, self.defense.hand = self.defense.hand, self.offense.hand
+
+            # After Trader swap, ensure both players still have encounter cards
+            for player in [self.offense, self.defense]:
+                while not player.has_encounter_card():
+                    for card in list(player.hand):
+                        self.discard(card)
+                    player.hand = []
+                    self.deal_hand(player)
 
             # Kamikazee Alien Power
             for player in [self.offense, self.defense]:
