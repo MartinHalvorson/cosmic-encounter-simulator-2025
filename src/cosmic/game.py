@@ -135,6 +135,9 @@ class Game:
     offense_total: int = 0
     defense_total: int = 0
 
+    # Track if current encounter had a successful deal (for second encounter eligibility)
+    deal_successful: bool = False
+
     # Game result
     is_over: bool = False
     winners: List[Player] = field(default_factory=list)
@@ -564,6 +567,9 @@ class Game:
 
         # Reset artifact state for this encounter
         self._reset_encounter_artifacts()
+
+        # Reset deal tracking for this encounter
+        self.deal_successful = False
 
         # Draw hazard for this encounter (Cosmic Storm expansion)
         self._draw_hazard()
@@ -1167,6 +1173,7 @@ class Game:
         if deal:
             deal_type = deal.get("type", "colony_swap")
             self._apply_deal(deal_type, deal)
+            self.deal_successful = True  # Track for second encounter eligibility
 
             # Deal success hooks
             for player in [self.offense, self.defense]:
@@ -1393,8 +1400,8 @@ class Game:
             if self.offense.has_encounter_card():
                 can_have_second = True
 
-        # Normal: won first encounter and have encounter card
-        elif self.encounter_number == 1 and won_encounter and self.offense.has_encounter_card():
+        # Normal: won first encounter OR made a successful deal, and have encounter card
+        elif self.encounter_number == 1 and (won_encounter or self.deal_successful) and self.offense.has_encounter_card():
             can_have_second = True
 
         if can_have_second:
