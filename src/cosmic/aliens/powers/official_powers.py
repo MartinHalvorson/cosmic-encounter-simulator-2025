@@ -984,14 +984,16 @@ class Glutton(AlienPower):
 
 @dataclass
 class Graviton(AlienPower):
-    """You have the power of Gravity. Ships committed to an encounter cannot retreat
-    even if a negotiate is played."""
+    """You have the power to Pull. As a main player, after alliances are formed,
+    you may use this power. If you do, ships may not retreat this encounter.
+    Ships that would be lost to the warp are instead removed from the game."""
     name: str = field(default="Graviton", init=False)
-    description: str = field(default="Ships cannot retreat from encounter.", init=False)
-    timing: PowerTiming = field(default=PowerTiming.CONSTANT, init=False)
-    power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
-    category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
+    description: str = field(default="Destroys losing ships instead of warping them.", init=False)
+    timing: PowerTiming = field(default=PowerTiming.ALLIANCE, init=False)
+    power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
+    category: PowerCategory = field(default=PowerCategory.RED, init=False)
     expansion: Expansion = field(default=Expansion.COSMIC_CONFLICT, init=False)
+    usable_as: List[PlayerRole] = field(default_factory=lambda: [PlayerRole.OFFENSE, PlayerRole.DEFENSE], init=False)
 
 
 @dataclass

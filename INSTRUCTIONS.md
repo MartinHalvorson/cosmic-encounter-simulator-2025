@@ -360,7 +360,7 @@ From official FFG rules and BoardGameGeek:
   - Plant (Graft): Use opponent's power when colonizing their home
 - **Added all Cosmic Conflict aliens (9 new):**
   - Filth (Reek): Force other ships off shared planets
-  - Graviton (Gravity): Attack cards use only ones digit
+  - Graviton (Pull): Destroys losing ships instead of warping them
   - Lunatic (Insanity): Ally against yourself, get rewards either way
   - Industrialist (Build): Stack lost attack cards as permanent bonus
   - Relic (Awaken): Gain colony when others draw, retrieve ships when you draw

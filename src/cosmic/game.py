@@ -1045,13 +1045,13 @@ class Game:
         self._log(f"Offense total: {off_total} ({off_value} + {sum(self.offense_ships.values())} ships{f' + {off_reinforce_bonus} reinforcement' if off_reinforce_bonus else ''})")
         self._log(f"Defense total: {def_total} ({def_value} + {sum(self.defense_ships.values())} ships{f' + {def_reinforce_bonus} reinforcement' if def_reinforce_bonus else ''})")
 
-        # Check for Loser/Antimatter
+        # Check for Loser/Antimatter - these powers reverse the winner determination
+        # If both are present, the effects cancel out (toggle twice = no change)
         reverse_winner = False
         for player in [self.offense, self.defense]:
             if player.alien and self.is_power_active(player):
                 if player.alien.name in ["Loser", "Antimatter"]:
-                    reverse_winner = True
-                    break
+                    reverse_winner = not reverse_winner  # Toggle instead of set
 
         # Determine winner
         if reverse_winner:
@@ -1069,7 +1069,16 @@ class Game:
         """Handle offense winning the encounter."""
         self._log("Offense wins!")
 
-        # Defense ships go to warp
+        # Check if Graviton's power is active (main player destroys ships instead of warping)
+        graviton_active = False
+        for main_player in [self.offense, self.defense]:
+            if main_player and main_player.alien and main_player.alien.name == "Graviton":
+                if self.is_power_active(main_player):
+                    graviton_active = True
+                    self._log("Graviton's gravity destroys losing ships!")
+                    break
+
+        # Defense ships go to warp (or are destroyed if Graviton is active)
         for name, count in self.defense_ships.items():
             player = self.get_player_by_name(name)
             if player:
@@ -1078,7 +1087,11 @@ class Game:
                     ships_to_warp = player.alien.on_ships_to_warp(
                         self, player, ships_to_warp, "encounter_loss"
                     )
-                player.send_ships_to_warp(ships_to_warp)
+                if graviton_active:
+                    # Ships are destroyed (removed from game) - don't add to warp
+                    self._log(f"{player.name} loses {ships_to_warp} ships permanently!")
+                else:
+                    player.send_ships_to_warp(ships_to_warp)
 
         # Clear defense ships from planet
         self.defense_planet.set_ships(self.defense.name, 0)
@@ -1104,7 +1117,16 @@ class Game:
         """Handle defense winning the encounter."""
         self._log("Defense wins!")
 
-        # Offense ships go to warp
+        # Check if Graviton's power is active (main player destroys ships instead of warping)
+        graviton_active = False
+        for main_player in [self.offense, self.defense]:
+            if main_player and main_player.alien and main_player.alien.name == "Graviton":
+                if self.is_power_active(main_player):
+                    graviton_active = True
+                    self._log("Graviton's gravity destroys losing ships!")
+                    break
+
+        # Offense ships go to warp (or are destroyed if Graviton is active)
         for name, count in self.offense_ships.items():
             player = self.get_player_by_name(name)
             if player:
@@ -1113,7 +1135,11 @@ class Game:
                     ships_to_warp = player.alien.on_ships_to_warp(
                         self, player, ships_to_warp, "encounter_loss"
                     )
-                player.send_ships_to_warp(ships_to_warp)
+                if graviton_active:
+                    # Ships are destroyed (removed from game) - don't add to warp
+                    self._log(f"{player.name} loses {ships_to_warp} ships permanently!")
+                else:
+                    player.send_ships_to_warp(ships_to_warp)
 
         # Defensive allies get rewards (choice: cards OR ships from warp)
         for ally in self.defense_allies:
