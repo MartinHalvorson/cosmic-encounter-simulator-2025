@@ -192,11 +192,15 @@ class ShipCount:
             self.counts[player_name] = count
 
     def add(self, player_name: str, count: int) -> None:
+        if count <= 0:
+            return
         current = self.get(player_name)
         self.set(player_name, current + count)
 
     def remove(self, player_name: str, count: int) -> int:
         """Remove ships, returns actual number removed."""
+        if count <= 0:
+            return 0
         current = self.get(player_name)
         to_remove = min(current, count)
         self.set(player_name, current - to_remove)

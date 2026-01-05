@@ -140,10 +140,13 @@ class Player:
         return min(attacks, key=lambda c: c.value)
 
     def select_nth_highest_attack(self, n: int) -> Optional[AttackCard]:
-        """Select the nth highest attack card (1 = highest)."""
+        """Select the nth highest attack card (1 = highest).
+
+        Returns None if fewer than n attack cards are available.
+        """
         attacks = sorted(self.get_attack_cards(), key=lambda c: c.value, reverse=True)
-        if len(attacks) < n:
-            return attacks[-1] if attacks else None
+        if len(attacks) < n or n < 1:
+            return None
         return attacks[n - 1]
 
     def select_negotiate(self) -> Optional[NegotiateCard]:
@@ -214,29 +217,32 @@ class Player:
         Return ships to home colonies.
         Ships are distributed among planets that already have ships.
         """
-        returned = 0
+        if count <= 0 or not home_planets:
+            return 0
+
         # Prefer planets that already have ships
         valid_planets = [p for p in home_planets if p.get_ships(self.name) > 0]
         if not valid_planets:
             valid_planets = home_planets
 
         for i in range(count):
-            if valid_planets:
-                planet = valid_planets[i % len(valid_planets)]
-                planet.add_ships(self.name, 1)
-                returned += 1
+            planet = valid_planets[i % len(valid_planets)]
+            planet.add_ships(self.name, 1)
 
-        return returned
+        return count
 
     def send_ships_to_warp(self, count: int) -> None:
         """Send ships to the warp."""
-        self.ships_in_warp += count
+        if count > 0:
+            self.ships_in_warp += count
 
     def retrieve_ships_from_warp(self, count: int) -> int:
         """
         Retrieve ships from the warp.
         Returns actual number retrieved.
         """
+        if count <= 0:
+            return 0
         to_retrieve = min(count, self.ships_in_warp)
         self.ships_in_warp -= to_retrieve
         return to_retrieve
