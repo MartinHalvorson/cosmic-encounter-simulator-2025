@@ -494,7 +494,13 @@ class StrategicAI(AIStrategy):
         if attacks:
             return max(attacks, key=lambda c: c.value)
 
-        return negotiates[0] if negotiates else player.get_encounter_cards()[0]
+        if negotiates:
+            return negotiates[0]
+        # Fallback to any encounter card (e.g., Morph)
+        cards = player.get_encounter_cards()
+        if cards:
+            return cards[0]
+        raise ValueError(f"{player.name} has no encounter cards!")
 
     def _select_defense_card(
         self,
@@ -557,7 +563,13 @@ class StrategicAI(AIStrategy):
             idx = min(2, len(sorted_attacks) - 1)
             return sorted_attacks[idx]
 
-        return negotiates[0] if negotiates else player.get_encounter_cards()[0]
+        if negotiates:
+            return negotiates[0]
+        # Fallback to any encounter card (e.g., Morph)
+        cards = player.get_encounter_cards()
+        if cards:
+            return cards[0]
+        raise ValueError(f"{player.name} has no encounter cards!")
 
     def select_ships_for_encounter(
         self,

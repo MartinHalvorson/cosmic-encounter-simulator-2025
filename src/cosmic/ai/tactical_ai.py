@@ -63,8 +63,8 @@ class TacticalAI(AIStrategy):
         """
         cards = player.get_encounter_cards()
         if not cards:
-            # Player needs a new hand - return None to signal this
-            return None
+            # Player needs a new hand - raise error to trigger redraw
+            raise ValueError(f"{player.name} has no encounter cards!")
 
         attack_cards = player.get_attack_cards()
         negotiate_cards = player.get_negotiate_cards()

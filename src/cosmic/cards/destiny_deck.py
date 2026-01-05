@@ -77,30 +77,37 @@ class DestinyDeck:
         Draw a destiny card.
         If offense is provided, will redraw cards pointing to the offense.
         """
-        if not self.draw_pile:
-            self._reshuffle_discard()
+        # Limit attempts to prevent infinite loop if all cards belong to offense
+        max_attempts = len(self.draw_pile) + len(self.discard_pile) + 1
 
-        if not self.draw_pile:
-            raise RuntimeError("No cards available in destiny deck!")
+        for _ in range(max_attempts):
+            if not self.draw_pile:
+                self._reshuffle_discard()
 
-        card = self.draw_pile.pop()
+            if not self.draw_pile:
+                raise RuntimeError("No cards available in destiny deck!")
 
-        # Handle wild cards - offense chooses any other player
-        if card.is_special and card.special_type == "wild":
-            # For simulation, choose player with most colonies (strategic target)
-            if offense is not None and len(self._players) > 1:
-                targets = [p for p in self._players if p != offense]
-                if targets:
-                    # Choose player closest to winning (most foreign colonies)
-                    card.player = self._rng.choice(targets)
+            card = self.draw_pile.pop()
+
+            # Handle wild cards - offense chooses any other player
+            if card.is_special and card.special_type == "wild":
+                # For simulation, choose player with most colonies (strategic target)
+                if offense is not None and len(self._players) > 1:
+                    targets = [p for p in self._players if p != offense]
+                    if targets:
+                        # Choose player closest to winning (most foreign colonies)
+                        card.player = self._rng.choice(targets)
+                return card
+
+            # If we drew the offense's own card, discard and try again
+            if offense is not None and card.player == offense:
+                self.discard(card)
+                continue
+
             return card
 
-        # If we drew the offense's own card, discard and redraw
-        if offense is not None and card.player == offense:
-            self.discard(card)
-            return self.draw(offense)
-
-        return card
+        # All cards belong to offense - return wild card as fallback
+        raise RuntimeError("No valid destiny card available - all cards belong to offense!")
 
     def discard(self, card: DestinyCard) -> None:
         """Add a card to the discard pile."""
