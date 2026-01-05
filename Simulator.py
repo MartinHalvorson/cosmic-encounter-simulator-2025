@@ -870,7 +870,7 @@ class Game:
     def select_offense_encounter_card(self):
 
         # Throw exception if offense doesn't have encounter card
-        if not self.offense.has_encounter_card:
+        if not self.offense.has_encounter_card():
             raise Exception("Offense doesn't have encounter card.")
 
         if self.is_Loser_active:
