@@ -129,6 +129,14 @@ class Clone(AlienPower):
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
     expansion: Expansion = field(default=Expansion.BASE, init=False)
 
+    def on_discard_card(self, game: "Game", player: "Player", card: Any) -> bool:
+        """Retrieve encounter cards instead of discarding them."""
+        from ...cards.base import EncounterCard
+        if isinstance(card, EncounterCard):
+            player.add_cards([card])
+            return False  # Prevent discard
+        return True  # Allow other cards to discard
+
 
 @dataclass
 class Cudgel(AlienPower):
@@ -257,6 +265,13 @@ class Healer(AlienPower):
     power_type: PowerType = field(default=PowerType.OPTIONAL, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
     expansion: Expansion = field(default=Expansion.BASE, init=False)
+
+    def on_ships_to_warp(self, game: "Game", player: "Player", count: int, source: str) -> int:
+        """Save up to 3 ships from going to warp, returning them to colonies."""
+        saved = min(3, count)
+        if saved > 0:
+            player.return_ships_to_colonies(saved, player.home_planets)
+        return count - saved
 
 
 @dataclass
@@ -433,6 +448,13 @@ class Observer(AlienPower):
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
     expansion: Expansion = field(default=Expansion.BASE, init=False)
     usable_as: List[PlayerRole] = field(default_factory=lambda: [PlayerRole.NOT_INVOLVED], init=False)
+
+    def on_resolution(self, game: "Game", player: "Player", role: "PlayerRole") -> None:
+        """Draw a card when not involved in the encounter."""
+        if role == PlayerRole.NOT_INVOLVED:
+            card = game.cosmic_deck.draw()
+            if card:
+                player.add_cards([card])
 
 
 @dataclass
