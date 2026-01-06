@@ -144,6 +144,7 @@ class Game:
     _rng: random.Random = field(default_factory=random.Random)
     _turn_order: List[Player] = field(default_factory=list)
     _player_index: int = 0
+    _player_by_name: Dict[str, Player] = field(default_factory=dict)  # O(1) player lookup cache
 
     # Logging/debugging
     log: List[str] = field(default_factory=list)
@@ -336,6 +337,9 @@ class Game:
                     player.secondary_alien = copy.deepcopy(selected_powers[secondary_idx])
             self.players.append(player)
 
+        # Build player lookup cache for O(1) access
+        self._player_by_name = {player.name: player for player in self.players}
+
         # Randomize turn order
         self._turn_order = list(self.players)
         self._rng.shuffle(self._turn_order)
@@ -524,11 +528,8 @@ class Game:
         return player.get_station_defense_bonus(planet_id)
 
     def get_player_by_name(self, name: str) -> Optional[Player]:
-        """Get player by name."""
-        for player in self.players:
-            if player.name == name:
-                return player
-        return None
+        """Get player by name. Uses cached lookup for O(1) performance."""
+        return self._player_by_name.get(name)
 
     def get_home_planets(self, player: Player) -> List[Planet]:
         """Get home planets for a player."""
