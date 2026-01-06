@@ -51,6 +51,9 @@ class Player:
     # Reference to home planets (set by Game)
     _home_planets: List["Planet"] = field(default_factory=list)
 
+    # Hand strength cache: (hand_length, attack_card_ids, strength_value)
+    _hand_strength_cache: Optional[Tuple[int, int, float]] = field(default=None, init=False)
+
     def __post_init__(self):
         # Intern player name for memory efficiency (names are used as dict keys)
         self.name = sys.intern(self.name)
@@ -121,6 +124,33 @@ class Player:
     def get_negotiate_cards(self) -> List[NegotiateCard]:
         """Get all negotiate cards in hand."""
         return [card for card in self.hand if isinstance(card, NegotiateCard)]
+
+    def get_hand_strength_cached(self) -> float:
+        """
+        Get hand strength with caching. Returns value 0.0 to 1.0.
+        Cache is invalidated when hand length or attack cards change.
+        """
+        attack_cards = self.get_attack_cards()
+        hand_len = len(self.hand)
+        attack_count = len(attack_cards)
+
+        # Check cache validity
+        if self._hand_strength_cache is not None:
+            cached_len, cached_attack_count, cached_strength = self._hand_strength_cache
+            if cached_len == hand_len and cached_attack_count == attack_count:
+                return cached_strength
+
+        # Calculate hand strength
+        if not attack_cards:
+            strength = 0.0
+        else:
+            max_value = max(c.value for c in attack_cards)
+            avg_value = sum(c.value for c in attack_cards) / attack_count
+            strength = min(1.0, (max_value / 40 * 0.5) + (avg_value / 40 * 0.5))
+
+        # Update cache
+        self._hand_strength_cache = (hand_len, attack_count, strength)
+        return strength
 
     def categorize_encounter_cards(self) -> Tuple[List[AttackCard], List[NegotiateCard], List[MorphCard]]:
         """

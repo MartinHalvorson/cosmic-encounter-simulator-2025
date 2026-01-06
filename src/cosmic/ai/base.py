@@ -567,16 +567,9 @@ class AIStrategy(ABC):
     def get_hand_strength(self, player: "Player") -> float:
         """
         Evaluate the strength of a player's hand (0.0 to 1.0).
+        Uses cached calculation from Player for efficiency.
         """
-        attack_cards = player.get_attack_cards()
-        if not attack_cards:
-            return 0.0
-
-        max_value = max(c.value for c in attack_cards)
-        avg_value = sum(c.value for c in attack_cards) / len(attack_cards)
-
-        # Normalize to 0-1 range (40 is max attack value)
-        return min(1.0, (max_value / 40 * 0.5) + (avg_value / 40 * 0.5))
+        return player.get_hand_strength_cached()
 
     def evaluate_position(self, game: "Game", player: "Player") -> float:
         """
