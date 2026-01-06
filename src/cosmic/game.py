@@ -1088,6 +1088,11 @@ class Game:
         self._log(f"Offense total: {off_total} ({off_value} + {sum(self.offense_ships.values())} ships{f' + {off_reinforce_bonus} reinforcement' if off_reinforce_bonus else ''})")
         self._log(f"Defense total: {def_total} ({def_value} + {sum(self.defense_ships.values())} ships{f' + {def_reinforce_bonus} reinforcement' if def_reinforce_bonus else ''})")
 
+        # Validate combat components
+        self._validate_combat_components(
+            off_value, def_value, off_ships, def_ships, off_total, def_total
+        )
+
         # Check for Loser/Antimatter - these powers reverse the winner determination
         # Per official rules:
         #   - Loser: "If you would lose an encounter, you win instead (and vice versa)"
@@ -1558,6 +1563,55 @@ class Game:
         # No valid encounter cards (should not happen after _ensure_encounter_card)
         self._log(f"Error: {player.name} has no encounter cards!")
         return None
+
+    def _validate_combat_components(
+        self,
+        off_value: int,
+        def_value: int,
+        off_ships: int,
+        def_ships: int,
+        off_total: int,
+        def_total: int
+    ) -> bool:
+        """
+        Validate combat calculation components for correctness.
+
+        Returns True if all components are valid, False otherwise.
+        Logs warnings for any invalid values detected.
+        """
+        is_valid = True
+
+        # Validate card values (attack cards range 0-40, negative indicates error)
+        if off_value < 0:
+            self._log(f"Warning: Invalid offense card value: {off_value}")
+            is_valid = False
+        if def_value < 0:
+            self._log(f"Warning: Invalid defense card value: {def_value}")
+            is_valid = False
+
+        # Validate ship counts (must be non-negative)
+        if off_ships < 0:
+            self._log(f"Warning: Invalid offense ship count: {off_ships}")
+            is_valid = False
+        if def_ships < 0:
+            self._log(f"Warning: Invalid defense ship count: {def_ships}")
+            is_valid = False
+
+        # Validate totals are reasonable (not negative, not impossibly high)
+        # Max reasonable total: 40 (card) + 20 (ships) + various bonuses ~= 100
+        MAX_REASONABLE_TOTAL = 200
+        if off_total < 0:
+            self._log(f"Warning: Negative offense total: {off_total}")
+            is_valid = False
+        elif off_total > MAX_REASONABLE_TOTAL:
+            self._log(f"Warning: Extremely high offense total: {off_total}")
+        if def_total < 0:
+            self._log(f"Warning: Negative defense total: {def_total}")
+            is_valid = False
+        elif def_total > MAX_REASONABLE_TOTAL:
+            self._log(f"Warning: Extremely high defense total: {def_total}")
+
+        return is_valid
 
     def _get_player_role(self, player: Player) -> PlayerRole:
         """Get a player's role in the current encounter."""

@@ -721,11 +721,14 @@ class Trader(AlienPower):
         """Swap hands with opponent or another player with more cards."""
         if role not in (PlayerRole.OFFENSE, PlayerRole.DEFENSE):
             return
-        # Find player with most cards (excluding self)
+        # Check if we have encounter cards to give
+        if not player.has_encounter_card():
+            return  # Don't swap if we'd leave target without encounter cards
+        # Find player with most cards (excluding self) who has encounter cards
         best_target = None
         best_count = len(player.hand)
         for p in game.players:
-            if p != player and len(p.hand) > best_count:
+            if p != player and len(p.hand) > best_count and p.has_encounter_card():
                 best_target = p
                 best_count = len(p.hand)
         # Swap hands if we found someone with more cards
