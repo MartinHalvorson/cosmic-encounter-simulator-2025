@@ -14,10 +14,10 @@ Contains all 238 aliens from:
 """
 
 from dataclasses import dataclass, field
-from typing import List, TYPE_CHECKING
+from typing import List, TYPE_CHECKING, Any, Dict
 
 from ..base import AlienPower, PowerCategory
-from ...types import PowerTiming, PowerType, PlayerRole, Expansion
+from ...types import PowerTiming, PowerType, PlayerRole, Expansion, Side
 from ..registry import AlienRegistry
 
 if TYPE_CHECKING:
@@ -106,6 +106,16 @@ class Citadel(AlienPower):
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
     expansion: Expansion = field(default=Expansion.BASE, init=False)
     usable_as: List[PlayerRole] = field(default_factory=lambda: [PlayerRole.DEFENSE], init=False)
+
+    def modify_ship_count(self, game: "Game", player: "Player", base_count: int, side: Side) -> int:
+        """As defense, Citadel's ships count double."""
+        if side != Side.DEFENSE:
+            return base_count
+        # Get Citadel's ship count
+        citadel_ships = game.defense_ships.get(player.name, 0)
+        # Other players' ships count normally, Citadel's ships count double
+        ally_ships = base_count - citadel_ships
+        return ally_ships + (citadel_ships * 2)
 
 
 @dataclass
@@ -261,6 +271,10 @@ class Human(AlienPower):
     expansion: Expansion = field(default=Expansion.BASE, init=False)
     usable_as: List[PlayerRole] = field(default_factory=lambda: [PlayerRole.OFFENSE, PlayerRole.DEFENSE], init=False)
 
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: "Side") -> int:
+        """Add +4 to total as main player."""
+        return base_total + 4
+
 
 @dataclass
 class Kamikaze(AlienPower):
@@ -313,6 +327,17 @@ class Macron(AlienPower):
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
     expansion: Expansion = field(default=Expansion.BASE, init=False)
 
+    def modify_ship_count(self, game: "Game", player: "Player", base_count: int, side: Side) -> int:
+        """Each of Macron's ships counts as 4 instead of 1."""
+        # Get Macron's ship count from the appropriate side
+        if side == Side.OFFENSE:
+            macron_ships = game.offense_ships.get(player.name, 0)
+        else:
+            macron_ships = game.defense_ships.get(player.name, 0)
+        # Other players' ships count normally, Macron's ships count as 4 each
+        ally_ships = base_count - macron_ships
+        return ally_ships + (macron_ships * 4)
+
 
 @dataclass
 class Masochist(AlienPower):
@@ -324,6 +349,14 @@ class Masochist(AlienPower):
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
     expansion: Expansion = field(default=Expansion.BASE, init=False)
+
+    def on_ships_to_warp(self, game: "Game", player: "Player", count: int, source: str) -> int:
+        """Draw a card for each ship going to warp."""
+        if count > 0:
+            cards = game.cosmic_deck.draw_multiple(count)
+            player.add_cards(cards)
+        # Ships still go to warp normally
+        return count
 
 
 @dataclass
@@ -566,6 +599,10 @@ class Tripler(AlienPower):
     expansion: Expansion = field(default=Expansion.BASE, init=False)
     usable_as: List[PlayerRole] = field(default_factory=lambda: [PlayerRole.OFFENSE, PlayerRole.DEFENSE], init=False)
 
+    def modify_attack_value(self, game: "Game", player: "Player", base_value: int, side: Side) -> int:
+        """Triple the encounter card value."""
+        return base_value * 3
+
 
 @dataclass
 class Vacuum(AlienPower):
@@ -590,6 +627,21 @@ class Virus(AlienPower):
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
     expansion: Expansion = field(default=Expansion.BASE, init=False)
     usable_as: List[PlayerRole] = field(default_factory=lambda: [PlayerRole.OFFENSE, PlayerRole.DEFENSE], init=False)
+
+    def modify_ship_count(self, game: "Game", player: "Player", base_count: int, side: Side) -> int:
+        """Ships don't add to total - they multiply the card value instead."""
+        return 0
+
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        """Multiply card value by ship count."""
+        # base_total is just the card value since ships were set to 0
+        # Get original ship count from game state
+        if side == Side.OFFENSE:
+            ship_count = sum(game.offense_ships.values())
+        else:
+            ship_count = sum(game.defense_ships.values())
+        # Multiply instead of add (base_total is card value, multiply by ships)
+        return base_total * ship_count
 
 
 @dataclass
@@ -640,6 +692,10 @@ class Warrior(AlienPower):
     expansion: Expansion = field(default=Expansion.BASE, init=False)
     usable_as: List[PlayerRole] = field(default_factory=lambda: [PlayerRole.OFFENSE, PlayerRole.DEFENSE], init=False)
 
+    def modify_total(self, game: "Game", player: "Player", base_total: int, side: Side) -> int:
+        """Add +1 per ship in warp."""
+        return base_total + player.ships_in_warp
+
 
 @dataclass
 class Will(AlienPower):
@@ -664,6 +720,14 @@ class Zombie(AlienPower):
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
     expansion: Expansion = field(default=Expansion.BASE, init=False)
+
+    def on_ships_to_warp(self, game: "Game", player: "Player", count: int, source: str) -> int:
+        """Ships never go to warp - return them to colonies instead."""
+        # Return ships to colonies instead of warp
+        if count > 0:
+            player.return_ships_to_colonies(count, player.home_planets)
+        # Return 0 to prevent ships from going to warp
+        return 0
 
 
 # =============================================================================
