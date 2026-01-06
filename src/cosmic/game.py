@@ -152,6 +152,10 @@ class Game:
     defensive_alliance_counts: Dict[str, int] = field(default_factory=dict)  # Times joined defense
     alliance_wins: Dict[str, int] = field(default_factory=dict)  # Times won as ally
 
+    # Power usage tracking for statistics
+    power_activations: Dict[str, int] = field(default_factory=dict)  # Player name -> activation count
+    encounters_as_main: Dict[str, int] = field(default_factory=dict)  # Player name -> main player count
+
     # Game result
     is_over: bool = False
     winners: List[Player] = field(default_factory=list)
@@ -597,6 +601,35 @@ class Game:
             }
         return stats
 
+    def record_power_activation(self, player: Player) -> None:
+        """Record that a player's alien power was activated."""
+        self.power_activations[player.name] = (
+            self.power_activations.get(player.name, 0) + 1
+        )
+
+    def record_encounter_as_main(self, player: Player) -> None:
+        """Record that a player participated in an encounter as a main player."""
+        self.encounters_as_main[player.name] = (
+            self.encounters_as_main.get(player.name, 0) + 1
+        )
+
+    def get_power_usage_stats(self) -> Dict[str, Dict[str, int]]:
+        """
+        Get power usage statistics for all players.
+
+        Returns:
+            Dict mapping player names to their power stats:
+            {player_name: {activations, encounters_as_main}}
+        """
+        stats = {}
+        for player in self.players:
+            name = player.name
+            stats[name] = {
+                "activations": self.power_activations.get(name, 0),
+                "encounters_as_main": self.encounters_as_main.get(name, 0),
+            }
+        return stats
+
     # ========== Game Flow ==========
 
     def play(self) -> List[Player]:
@@ -833,6 +866,10 @@ class Game:
         """Handle the alliance phase."""
         self.phase = GamePhase.ALLIANCE
 
+        # Track encounters as main player for statistics
+        self.record_encounter_as_main(self.offense)
+        self.record_encounter_as_main(self.defense)
+
         # Get potential allies (not offense or defense)
         potential = [p for p in self.players if p != self.offense and p != self.defense]
 
@@ -898,6 +935,8 @@ class Game:
             role = self._get_player_role(player)
             if player.alien and self.is_power_active(player):
                 player.alien.on_planning(self, player, role)
+                # Track power activation during planning
+                self.record_power_activation(player)
 
         # Select cards with validation
         off_ai = self.offense.ai_strategy or get_default_ai()
@@ -948,6 +987,8 @@ class Game:
             role = self._get_player_role(player)
             if player.alien and self.is_power_active(player):
                 player.alien.on_reveal(self, player, role)
+                # Track power activation during reveal
+                self.record_power_activation(player)
 
         # Check for flare card plays during reveal
         self._flare_context = {"phase": "reveal", "flare_bonus": 0, "flare_ship_multiplier": 1}
