@@ -245,7 +245,7 @@ DEFENSE TOTAL = Card Value + Ship Count + Kickers + Power Mods + Reinforcements 
 
 ## Alien Power Rankings
 
-> **499,995** games simulated | Last updated: 2026-01-05 20:43
+> **599,994** games simulated | Last updated: 2026-01-05 20:50
 >
 > **Tier Guide:** 🟣 S (1600+) | 🔵 A (1550+) | 🟢 B (1500+) | 🟡 C (1450+) | 🔴 D (<1450)
 
@@ -271,1119 +271,1119 @@ DEFENSE TOTAL = Card Value + Ship Count + Kickers + Power Mods + Reinforcements 
 <td align="left">1</td>
 <td align="left">🟢 Machine</td>
 <td align="left">Base</td>
-<td align="right"><b>1520</b></td>
+<td align="right"><b>1524</b></td>
 <td align="right">52.8%</td>
-<td align="right">70.6%</td>
-<td align="right">62.8%</td>
-<td align="right">57.9%</td>
-<td align="right">49.4%</td>
-<td align="right">40.9%</td>
-<td align="right">25032</td>
+<td align="right">71.1%</td>
+<td align="right">63.0%</td>
+<td align="right">57.7%</td>
+<td align="right">49.6%</td>
+<td align="right">41.0%</td>
+<td align="right">30144</td>
 </tr>
 <tr>
 <td align="left">2</td>
 <td align="left">🟢 Parasite</td>
 <td align="left">Base</td>
-<td align="right"><b>1520</b></td>
-<td align="right">53.8%</td>
-<td align="right">46.4%</td>
-<td align="right">45.3%</td>
-<td align="right">51.9%</td>
-<td align="right">56.6%</td>
-<td align="right">59.5%</td>
-<td align="right">24659</td>
+<td align="right"><b>1524</b></td>
+<td align="right">53.9%</td>
+<td align="right">46.7%</td>
+<td align="right">45.2%</td>
+<td align="right">51.3%</td>
+<td align="right">57.0%</td>
+<td align="right">59.8%</td>
+<td align="right">29557</td>
 </tr>
 <tr>
 <td align="left">3</td>
 <td align="left">🟢 Tripler</td>
 <td align="left">Base</td>
-<td align="right"><b>1512</b></td>
-<td align="right">41.7%</td>
-<td align="right">80.8%</td>
+<td align="right"><b>1515</b></td>
+<td align="right">41.9%</td>
+<td align="right">80.9%</td>
 <td align="right">62.4%</td>
-<td align="right">42.6%</td>
-<td align="right">32.1%</td>
+<td align="right">43.1%</td>
+<td align="right">32.2%</td>
 <td align="right">25.8%</td>
-<td align="right">25074</td>
+<td align="right">30154</td>
 </tr>
 <tr>
 <td align="left">4</td>
 <td align="left">🟢 Pacifist</td>
 <td align="left">Base</td>
-<td align="right"><b>1507</b></td>
-<td align="right">34.3%</td>
-<td align="right">75.5%</td>
-<td align="right">51.8%</td>
-<td align="right">35.6%</td>
+<td align="right"><b>1508</b></td>
+<td align="right">34.4%</td>
+<td align="right">74.5%</td>
+<td align="right">52.7%</td>
+<td align="right">35.5%</td>
 <td align="right">25.3%</td>
-<td align="right">18.7%</td>
-<td align="right">24970</td>
+<td align="right">19.0%</td>
+<td align="right">29908</td>
 </tr>
 <tr>
 <td align="left">5</td>
 <td align="left">🟢 Virus</td>
 <td align="left">Base</td>
-<td align="right"><b>1506</b></td>
-<td align="right">34.0%</td>
+<td align="right"><b>1508</b></td>
+<td align="right">34.1%</td>
 <td align="right">68.7%</td>
-<td align="right">45.4%</td>
-<td align="right">33.1%</td>
-<td align="right">26.5%</td>
-<td align="right">23.6%</td>
-<td align="right">24998</td>
+<td align="right">45.6%</td>
+<td align="right">33.3%</td>
+<td align="right">26.6%</td>
+<td align="right">23.8%</td>
+<td align="right">29884</td>
 </tr>
 <tr>
 <td align="left">6</td>
 <td align="left">🟢 Macron</td>
 <td align="left">Base</td>
-<td align="right"><b>1506</b></td>
+<td align="right"><b>1507</b></td>
 <td align="right">32.7%</td>
-<td align="right">68.6%</td>
+<td align="right">69.0%</td>
 <td align="right">46.6%</td>
 <td align="right">31.8%</td>
-<td align="right">24.6%</td>
-<td align="right">21.3%</td>
-<td align="right">25091</td>
+<td align="right">24.8%</td>
+<td align="right">21.1%</td>
+<td align="right">30255</td>
 </tr>
 <tr>
 <td align="left">7</td>
 <td align="left">🟢 Fury</td>
 <td align="left">Incursion</td>
-<td align="right"><b>1503</b></td>
+<td align="right"><b>1504</b></td>
 <td align="right">27.6%</td>
-<td align="right">52.7%</td>
-<td align="right">40.6%</td>
-<td align="right">26.9%</td>
-<td align="right">22.1%</td>
-<td align="right">17.0%</td>
-<td align="right">4129</td>
+<td align="right">53.0%</td>
+<td align="right">41.4%</td>
+<td align="right">27.0%</td>
+<td align="right">21.9%</td>
+<td align="right">17.3%</td>
+<td align="right">5029</td>
 </tr>
 <tr>
 <td align="left">8</td>
 <td align="left">🟢 Masochist</td>
 <td align="left">Base</td>
-<td align="right"><b>1503</b></td>
-<td align="right">29.6%</td>
-<td align="right">67.1%</td>
+<td align="right"><b>1504</b></td>
+<td align="right">29.4%</td>
+<td align="right">65.9%</td>
 <td align="right">40.5%</td>
-<td align="right">29.1%</td>
-<td align="right">22.5%</td>
-<td align="right">18.0%</td>
-<td align="right">25072</td>
+<td align="right">28.8%</td>
+<td align="right">22.6%</td>
+<td align="right">17.9%</td>
+<td align="right">30021</td>
 </tr>
 <tr>
 <td align="left">9</td>
 <td align="left">🟢 Human</td>
 <td align="left">Base</td>
-<td align="right"><b>1502</b></td>
+<td align="right"><b>1503</b></td>
 <td align="right">29.0%</td>
-<td align="right">59.7%</td>
-<td align="right">39.5%</td>
+<td align="right">59.6%</td>
+<td align="right">40.1%</td>
 <td align="right">28.2%</td>
-<td align="right">23.1%</td>
-<td align="right">19.1%</td>
-<td align="right">25058</td>
+<td align="right">22.9%</td>
+<td align="right">18.7%</td>
+<td align="right">30168</td>
 </tr>
 <tr>
 <td align="left">10</td>
-<td align="left">🟢 Visionary</td>
-<td align="left">Conflict</td>
-<td align="right"><b>1502</b></td>
-<td align="right">25.3%</td>
-<td align="right">42.2%</td>
-<td align="right">33.4%</td>
-<td align="right">24.7%</td>
-<td align="right">21.5%</td>
-<td align="right">18.7%</td>
-<td align="right">4147</td>
-</tr>
-<tr>
-<td align="left">11</td>
 <td align="left">🟢 Schizoid_Alt</td>
 <td align="left">Odyssey</td>
 <td align="right"><b>1502</b></td>
 <td align="right">26.1%</td>
-<td align="right">50.7%</td>
-<td align="right">34.8%</td>
-<td align="right">25.5%</td>
-<td align="right">22.1%</td>
-<td align="right">17.2%</td>
-<td align="right">3544</td>
+<td align="right">48.8%</td>
+<td align="right">33.5%</td>
+<td align="right">25.4%</td>
+<td align="right">23.0%</td>
+<td align="right">17.6%</td>
+<td align="right">4209</td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left">🟢 Visionary</td>
+<td align="left">Conflict</td>
+<td align="right"><b>1502</b></td>
+<td align="right">25.2%</td>
+<td align="right">44.0%</td>
+<td align="right">32.6%</td>
+<td align="right">24.9%</td>
+<td align="right">21.6%</td>
+<td align="right">17.8%</td>
+<td align="right">4978</td>
 </tr>
 <tr>
 <td align="left">12</td>
 <td align="left">🟢 Symbiote</td>
 <td align="left">Incursion</td>
 <td align="right"><b>1501</b></td>
-<td align="right">27.0%</td>
-<td align="right">56.9%</td>
-<td align="right">34.3%</td>
-<td align="right">25.2%</td>
-<td align="right">21.2%</td>
-<td align="right">17.9%</td>
-<td align="right">3976</td>
+<td align="right">27.3%</td>
+<td align="right">57.2%</td>
+<td align="right">34.6%</td>
+<td align="right">25.4%</td>
+<td align="right">22.0%</td>
+<td align="right">18.2%</td>
+<td align="right">4838</td>
 </tr>
 <tr>
 <td align="left">13</td>
-<td align="left">🟢 Perfectionist_Alt</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1501</b></td>
-<td align="right">25.2%</td>
-<td align="right">52.0%</td>
-<td align="right">32.5%</td>
-<td align="right">23.1%</td>
-<td align="right">20.4%</td>
-<td align="right">18.1%</td>
-<td align="right">3511</td>
-</tr>
-<tr>
-<td align="left">14</td>
-<td align="left">🟢 Neighbor</td>
-<td align="left">Storm</td>
-<td align="right"><b>1501</b></td>
-<td align="right">25.0%</td>
-<td align="right">48.4%</td>
-<td align="right">34.1%</td>
-<td align="right">25.6%</td>
-<td align="right">20.4%</td>
-<td align="right">16.6%</td>
-<td align="right">3965</td>
-</tr>
-<tr>
-<td align="left">15</td>
 <td align="left">🟢 Warrior</td>
 <td align="left">Base</td>
 <td align="right"><b>1501</b></td>
 <td align="right">27.1%</td>
-<td align="right">55.3%</td>
-<td align="right">37.8%</td>
-<td align="right">26.7%</td>
-<td align="right">21.4%</td>
-<td align="right">17.5%</td>
-<td align="right">24886</td>
+<td align="right">55.4%</td>
+<td align="right">38.2%</td>
+<td align="right">26.9%</td>
+<td align="right">21.0%</td>
+<td align="right">17.3%</td>
+<td align="right">29859</td>
 </tr>
 <tr>
-<td align="left">16</td>
+<td align="left">14</td>
 <td align="left">🟢 Usurper</td>
 <td align="left">Dominion</td>
 <td align="right"><b>1501</b></td>
-<td align="right">26.4%</td>
-<td align="right">52.6%</td>
-<td align="right">35.9%</td>
-<td align="right">24.2%</td>
-<td align="right">22.7%</td>
-<td align="right">17.5%</td>
-<td align="right">3897</td>
+<td align="right">26.1%</td>
+<td align="right">51.2%</td>
+<td align="right">34.6%</td>
+<td align="right">25.1%</td>
+<td align="right">22.0%</td>
+<td align="right">17.8%</td>
+<td align="right">4668</td>
 </tr>
 <tr>
-<td align="left">17</td>
+<td align="left">15</td>
+<td align="left">🟢 Perfectionist_Alt</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1501</b></td>
+<td align="right">24.9%</td>
+<td align="right">51.3%</td>
+<td align="right">31.4%</td>
+<td align="right">22.6%</td>
+<td align="right">20.1%</td>
+<td align="right">17.8%</td>
+<td align="right">4194</td>
+</tr>
+<tr>
+<td align="left">16</td>
 <td align="left">🟢 Patriot</td>
 <td align="left">Storm</td>
 <td align="right"><b>1501</b></td>
-<td align="right">25.1%</td>
-<td align="right">51.0%</td>
-<td align="right">33.9%</td>
-<td align="right">25.0%</td>
-<td align="right">21.3%</td>
+<td align="right">25.6%</td>
+<td align="right">52.6%</td>
+<td align="right">34.5%</td>
+<td align="right">25.3%</td>
+<td align="right">21.6%</td>
 <td align="right">15.6%</td>
-<td align="right">4005</td>
+<td align="right">4786</td>
+</tr>
+<tr>
+<td align="left">17</td>
+<td align="left">🟢 Neighbor</td>
+<td align="left">Storm</td>
+<td align="right"><b>1501</b></td>
+<td align="right">25.1%</td>
+<td align="right">49.9%</td>
+<td align="right">32.5%</td>
+<td align="right">25.7%</td>
+<td align="right">20.7%</td>
+<td align="right">16.7%</td>
+<td align="right">4767</td>
 </tr>
 <tr>
 <td align="left">18</td>
 <td align="left">🟢 Pentaform</td>
 <td align="left">Dominion</td>
 <td align="right"><b>1501</b></td>
-<td align="right">25.6%</td>
-<td align="right">49.6%</td>
-<td align="right">34.6%</td>
-<td align="right">25.7%</td>
-<td align="right">20.4%</td>
-<td align="right">16.8%</td>
-<td align="right">3922</td>
+<td align="right">26.0%</td>
+<td align="right">51.4%</td>
+<td align="right">35.3%</td>
+<td align="right">26.1%</td>
+<td align="right">20.0%</td>
+<td align="right">17.1%</td>
+<td align="right">4662</td>
 </tr>
 <tr>
 <td align="left">19</td>
 <td align="left">🟢 TheCult</td>
 <td align="left">Eons</td>
 <td align="right"><b>1501</b></td>
-<td align="right">25.7%</td>
-<td align="right">49.9%</td>
-<td align="right">35.5%</td>
-<td align="right">26.4%</td>
+<td align="right">25.5%</td>
+<td align="right">51.5%</td>
+<td align="right">35.4%</td>
+<td align="right">25.4%</td>
 <td align="right">20.4%</td>
-<td align="right">16.5%</td>
-<td align="right">3855</td>
+<td align="right">16.1%</td>
+<td align="right">4620</td>
 </tr>
 <tr>
 <td align="left">20</td>
 <td align="left">🟢 Force</td>
 <td align="left">Odyssey</td>
 <td align="right"><b>1501</b></td>
-<td align="right">26.1%</td>
-<td align="right">52.2%</td>
-<td align="right">34.2%</td>
-<td align="right">24.5%</td>
-<td align="right">22.7%</td>
-<td align="right">17.6%</td>
-<td align="right">3571</td>
+<td align="right">25.6%</td>
+<td align="right">52.8%</td>
+<td align="right">33.6%</td>
+<td align="right">25.1%</td>
+<td align="right">21.0%</td>
+<td align="right">16.9%</td>
+<td align="right">4293</td>
 </tr>
 <tr>
 <td align="left">21</td>
 <td align="left">🟢 Plant</td>
 <td align="left">Incursion</td>
-<td align="right"><b>1501</b></td>
-<td align="right">24.9%</td>
-<td align="right">51.5%</td>
-<td align="right">34.7%</td>
-<td align="right">24.2%</td>
-<td align="right">20.2%</td>
-<td align="right">15.2%</td>
-<td align="right">4203</td>
+<td align="right"><b>1500</b></td>
+<td align="right">24.6%</td>
+<td align="right">51.9%</td>
+<td align="right">34.4%</td>
+<td align="right">23.6%</td>
+<td align="right">20.0%</td>
+<td align="right">14.9%</td>
+<td align="right">5027</td>
 </tr>
 <tr>
 <td align="left">22</td>
 <td align="left">🟢 Scavenger</td>
 <td align="left">Storm</td>
-<td align="right"><b>1501</b></td>
-<td align="right">25.8%</td>
-<td align="right">50.0%</td>
-<td align="right">33.4%</td>
-<td align="right">25.9%</td>
-<td align="right">20.8%</td>
-<td align="right">18.1%</td>
-<td align="right">3969</td>
+<td align="right"><b>1500</b></td>
+<td align="right">25.1%</td>
+<td align="right">47.8%</td>
+<td align="right">32.3%</td>
+<td align="right">25.5%</td>
+<td align="right">20.9%</td>
+<td align="right">17.2%</td>
+<td align="right">4757</td>
 </tr>
 <tr>
 <td align="left">23</td>
-<td align="left">🟢 Pretender</td>
-<td align="left">Eons</td>
-<td align="right"><b>1501</b></td>
-<td align="right">24.6%</td>
-<td align="right">53.0%</td>
-<td align="right">31.4%</td>
-<td align="right">23.9%</td>
-<td align="right">21.4%</td>
-<td align="right">14.8%</td>
-<td align="right">3903</td>
-</tr>
-<tr>
-<td align="left">24</td>
-<td align="left">🟢 Mouth</td>
-<td align="left">Storm</td>
-<td align="right"><b>1500</b></td>
-<td align="right">25.4%</td>
-<td align="right">49.3%</td>
-<td align="right">34.0%</td>
-<td align="right">25.6%</td>
-<td align="right">20.2%</td>
-<td align="right">16.9%</td>
-<td align="right">3918</td>
-</tr>
-<tr>
-<td align="left">25</td>
 <td align="left">🟢 Zilch</td>
 <td align="left">Odyssey</td>
 <td align="right"><b>1500</b></td>
-<td align="right">25.6%</td>
-<td align="right">49.7%</td>
-<td align="right">33.6%</td>
-<td align="right">25.5%</td>
-<td align="right">21.2%</td>
+<td align="right">25.3%</td>
+<td align="right">49.6%</td>
+<td align="right">33.5%</td>
+<td align="right">24.6%</td>
+<td align="right">20.9%</td>
 <td align="right">16.5%</td>
-<td align="right">3425</td>
+<td align="right">4086</td>
+</tr>
+<tr>
+<td align="left">24</td>
+<td align="left">🟢 Pretender</td>
+<td align="left">Eons</td>
+<td align="right"><b>1500</b></td>
+<td align="right">24.7%</td>
+<td align="right">52.2%</td>
+<td align="right">30.7%</td>
+<td align="right">24.9%</td>
+<td align="right">21.7%</td>
+<td align="right">14.9%</td>
+<td align="right">4661</td>
+</tr>
+<tr>
+<td align="left">25</td>
+<td align="left">🟢 Mouth</td>
+<td align="left">Storm</td>
+<td align="right"><b>1500</b></td>
+<td align="right">25.2%</td>
+<td align="right">49.1%</td>
+<td align="right">34.4%</td>
+<td align="right">24.9%</td>
+<td align="right">20.2%</td>
+<td align="right">16.5%</td>
+<td align="right">4761</td>
 </tr>
 <tr>
 <td align="left">26</td>
-<td align="left">🟢 Diplomat</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1500</b></td>
-<td align="right">25.3%</td>
-<td align="right">49.9%</td>
-<td align="right">32.0%</td>
-<td align="right">25.9%</td>
-<td align="right">19.9%</td>
-<td align="right">18.1%</td>
-<td align="right">3731</td>
-</tr>
-<tr>
-<td align="left">27</td>
 <td align="left">🟢 Bulwark</td>
 <td align="left">Storm</td>
 <td align="right"><b>1500</b></td>
-<td align="right">25.8%</td>
-<td align="right">53.3%</td>
-<td align="right">34.7%</td>
-<td align="right">26.9%</td>
-<td align="right">20.5%</td>
-<td align="right">16.8%</td>
-<td align="right">3962</td>
+<td align="right">25.4%</td>
+<td align="right">53.7%</td>
+<td align="right">33.0%</td>
+<td align="right">26.4%</td>
+<td align="right">20.2%</td>
+<td align="right">16.6%</td>
+<td align="right">4790</td>
+</tr>
+<tr>
+<td align="left">27</td>
+<td align="left">🟢 Wrack</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1500</b></td>
+<td align="right">25.7%</td>
+<td align="right">50.3%</td>
+<td align="right">35.7%</td>
+<td align="right">22.3%</td>
+<td align="right">21.1%</td>
+<td align="right">17.7%</td>
+<td align="right">4198</td>
 </tr>
 <tr>
 <td align="left">28</td>
-<td align="left">🟢 Voyager</td>
+<td align="left">🟢 Diplomat</td>
 <td align="left">Dominion</td>
 <td align="right"><b>1500</b></td>
-<td align="right">25.2%</td>
-<td align="right">53.7%</td>
-<td align="right">30.5%</td>
-<td align="right">24.9%</td>
-<td align="right">20.3%</td>
-<td align="right">16.6%</td>
-<td align="right">3946</td>
+<td align="right">24.6%</td>
+<td align="right">48.6%</td>
+<td align="right">31.9%</td>
+<td align="right">24.8%</td>
+<td align="right">19.5%</td>
+<td align="right">17.4%</td>
+<td align="right">4507</td>
 </tr>
 <tr>
 <td align="left">29</td>
-<td align="left">🟢 Demon_Alt</td>
-<td align="left">Odyssey</td>
+<td align="left">🟢 Voyager</td>
+<td align="left">Dominion</td>
 <td align="right"><b>1500</b></td>
+<td align="right">24.7%</td>
+<td align="right">53.2%</td>
+<td align="right">29.4%</td>
 <td align="right">23.8%</td>
-<td align="right">47.8%</td>
-<td align="right">30.1%</td>
-<td align="right">24.6%</td>
-<td align="right">17.9%</td>
-<td align="right">16.9%</td>
-<td align="right">3536</td>
+<td align="right">19.7%</td>
+<td align="right">17.4%</td>
+<td align="right">4749</td>
 </tr>
 <tr>
 <td align="left">30</td>
+<td align="left">🟢 Loser</td>
+<td align="left">Base</td>
+<td align="right"><b>1500</b></td>
+<td align="right">26.1%</td>
+<td align="right">50.2%</td>
+<td align="right">36.3%</td>
+<td align="right">29.5%</td>
+<td align="right">21.0%</td>
+<td align="right">14.9%</td>
+<td align="right">30283</td>
+</tr>
+<tr>
+<td align="left">31</td>
 <td align="left">🟢 Masochist_Alt</td>
 <td align="left">Odyssey</td>
 <td align="right"><b>1500</b></td>
 <td align="right">24.7%</td>
-<td align="right">48.8%</td>
-<td align="right">34.2%</td>
-<td align="right">23.4%</td>
-<td align="right">18.6%</td>
+<td align="right">47.7%</td>
+<td align="right">34.6%</td>
+<td align="right">22.5%</td>
+<td align="right">19.8%</td>
 <td align="right">17.0%</td>
-<td align="right">3495</td>
-</tr>
-<tr>
-<td align="left">31</td>
-<td align="left">🟢 Wrack</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1500</b></td>
-<td align="right">25.6%</td>
-<td align="right">48.9%</td>
-<td align="right">35.8%</td>
-<td align="right">22.3%</td>
-<td align="right">19.7%</td>
-<td align="right">18.7%</td>
-<td align="right">3531</td>
+<td align="right">4194</td>
 </tr>
 <tr>
 <td align="left">32</td>
 <td align="left">🟢 Lightning</td>
 <td align="left">Alliance</td>
 <td align="right"><b>1500</b></td>
-<td align="right">24.7%</td>
-<td align="right">48.1%</td>
-<td align="right">34.2%</td>
-<td align="right">25.6%</td>
-<td align="right">19.7%</td>
-<td align="right">14.8%</td>
-<td align="right">4155</td>
+<td align="right">25.0%</td>
+<td align="right">49.1%</td>
+<td align="right">35.3%</td>
+<td align="right">25.7%</td>
+<td align="right">19.3%</td>
+<td align="right">15.2%</td>
+<td align="right">4990</td>
 </tr>
 <tr>
 <td align="left">33</td>
 <td align="left">🟢 Guardian</td>
 <td align="left">Odyssey</td>
 <td align="right"><b>1500</b></td>
-<td align="right">25.6%</td>
-<td align="right">46.0%</td>
-<td align="right">36.1%</td>
-<td align="right">28.9%</td>
-<td align="right">19.4%</td>
-<td align="right">16.4%</td>
-<td align="right">3586</td>
+<td align="right">25.2%</td>
+<td align="right">47.0%</td>
+<td align="right">35.5%</td>
+<td align="right">27.7%</td>
+<td align="right">18.6%</td>
+<td align="right">16.6%</td>
+<td align="right">4267</td>
 </tr>
 <tr>
 <td align="left">34</td>
 <td align="left">🟢 Horde</td>
 <td align="left">Alliance</td>
 <td align="right"><b>1500</b></td>
+<td align="right">25.3%</td>
+<td align="right">52.4%</td>
+<td align="right">32.7%</td>
 <td align="right">26.0%</td>
-<td align="right">52.2%</td>
-<td align="right">33.9%</td>
-<td align="right">27.3%</td>
-<td align="right">20.5%</td>
-<td align="right">17.1%</td>
-<td align="right">4203</td>
+<td align="right">19.5%</td>
+<td align="right">16.8%</td>
+<td align="right">5011</td>
 </tr>
 <tr>
 <td align="left">35</td>
-<td align="left">🟢 Loser</td>
+<td align="left">🟡 Antimatter</td>
 <td align="left">Base</td>
 <td align="right"><b>1500</b></td>
-<td align="right">26.0%</td>
-<td align="right">50.1%</td>
+<td align="right">26.1%</td>
+<td align="right">51.6%</td>
 <td align="right">36.2%</td>
 <td align="right">29.3%</td>
-<td align="right">21.0%</td>
+<td align="right">21.2%</td>
 <td align="right">14.6%</td>
-<td align="right">25337</td>
+<td align="right">29614</td>
 </tr>
 <tr>
 <td align="left">36</td>
-<td align="left">🟢 Vox</td>
-<td align="left">Storm</td>
+<td align="left">🟡 Demon_Alt</td>
+<td align="left">Odyssey</td>
 <td align="right"><b>1500</b></td>
-<td align="right">25.2%</td>
-<td align="right">47.0%</td>
-<td align="right">36.4%</td>
-<td align="right">24.1%</td>
-<td align="right">21.8%</td>
-<td align="right">16.7%</td>
-<td align="right">3910</td>
+<td align="right">23.8%</td>
+<td align="right">46.8%</td>
+<td align="right">29.1%</td>
+<td align="right">25.6%</td>
+<td align="right">18.1%</td>
+<td align="right">16.8%</td>
+<td align="right">4285</td>
 </tr>
 <tr>
 <td align="left">37</td>
+<td align="left">🟡 Vox</td>
+<td align="left">Storm</td>
+<td align="right"><b>1500</b></td>
+<td align="right">25.1%</td>
+<td align="right">47.4%</td>
+<td align="right">35.9%</td>
+<td align="right">24.4%</td>
+<td align="right">21.7%</td>
+<td align="right">16.4%</td>
+<td align="right">4697</td>
+</tr>
+<tr>
+<td align="left">38</td>
 <td align="left">🟡 Coordinator</td>
 <td align="left">Storm</td>
 <td align="right"><b>1500</b></td>
 <td align="right">25.3%</td>
-<td align="right">48.8%</td>
-<td align="right">34.2%</td>
-<td align="right">25.9%</td>
+<td align="right">49.5%</td>
+<td align="right">33.9%</td>
+<td align="right">24.5%</td>
 <td align="right">21.7%</td>
-<td align="right">15.2%</td>
-<td align="right">4097</td>
-</tr>
-<tr>
-<td align="left">38</td>
-<td align="left">🟡 Nightmare</td>
-<td align="left">Eons</td>
-<td align="right"><b>1500</b></td>
-<td align="right">25.0%</td>
-<td align="right">53.5%</td>
-<td align="right">35.0%</td>
-<td align="right">21.9%</td>
-<td align="right">21.5%</td>
-<td align="right">16.7%</td>
-<td align="right">3881</td>
+<td align="right">16.1%</td>
+<td align="right">4920</td>
 </tr>
 <tr>
 <td align="left">39</td>
-<td align="left">🟡 Antimatter</td>
-<td align="left">Base</td>
+<td align="left">🟡 Nightmare</td>
+<td align="left">Eons</td>
 <td align="right"><b>1500</b></td>
-<td align="right">25.9%</td>
-<td align="right">51.5%</td>
-<td align="right">36.2%</td>
-<td align="right">29.2%</td>
-<td align="right">21.2%</td>
-<td align="right">14.3%</td>
-<td align="right">24624</td>
+<td align="right">24.9%</td>
+<td align="right">52.3%</td>
+<td align="right">33.9%</td>
+<td align="right">23.1%</td>
+<td align="right">21.1%</td>
+<td align="right">16.3%</td>
+<td align="right">4676</td>
 </tr>
 <tr>
 <td align="left">40</td>
 <td align="left">🟡 Tyrant</td>
 <td align="left">Storm</td>
 <td align="right"><b>1500</b></td>
-<td align="right">25.6%</td>
-<td align="right">48.0%</td>
-<td align="right">37.8%</td>
-<td align="right">24.1%</td>
-<td align="right">21.6%</td>
-<td align="right">16.9%</td>
-<td align="right">3910</td>
+<td align="right">25.3%</td>
+<td align="right">47.7%</td>
+<td align="right">36.1%</td>
+<td align="right">24.6%</td>
+<td align="right">21.5%</td>
+<td align="right">16.4%</td>
+<td align="right">4753</td>
 </tr>
 <tr>
 <td align="left">41</td>
-<td align="left">🟡 Micron</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1500</b></td>
-<td align="right">24.3%</td>
-<td align="right">46.7%</td>
-<td align="right">31.6%</td>
-<td align="right">25.2%</td>
-<td align="right">19.2%</td>
-<td align="right">16.5%</td>
-<td align="right">3533</td>
-</tr>
-<tr>
-<td align="left">42</td>
 <td align="left">🟡 Mesmer</td>
 <td align="left">Dominion</td>
 <td align="right"><b>1500</b></td>
 <td align="right">24.9%</td>
-<td align="right">49.6%</td>
-<td align="right">34.8%</td>
-<td align="right">23.5%</td>
-<td align="right">20.7%</td>
-<td align="right">16.4%</td>
-<td align="right">3816</td>
+<td align="right">49.4%</td>
+<td align="right">35.2%</td>
+<td align="right">23.2%</td>
+<td align="right">19.8%</td>
+<td align="right">16.9%</td>
+<td align="right">4568</td>
+</tr>
+<tr>
+<td align="left">42</td>
+<td align="left">🟡 Citadel</td>
+<td align="left">Base</td>
+<td align="right"><b>1500</b></td>
+<td align="right">25.2%</td>
+<td align="right">52.0%</td>
+<td align="right">32.5%</td>
+<td align="right">25.4%</td>
+<td align="right">19.7%</td>
+<td align="right">17.1%</td>
+<td align="right">30018</td>
 </tr>
 <tr>
 <td align="left">43</td>
 <td align="left">🟡 Oligarch</td>
 <td align="left">Eons</td>
 <td align="right"><b>1500</b></td>
-<td align="right">25.0%</td>
-<td align="right">49.8%</td>
-<td align="right">34.0%</td>
-<td align="right">22.4%</td>
-<td align="right">21.3%</td>
-<td align="right">16.4%</td>
-<td align="right">3885</td>
+<td align="right">24.7%</td>
+<td align="right">49.9%</td>
+<td align="right">32.9%</td>
+<td align="right">22.7%</td>
+<td align="right">21.6%</td>
+<td align="right">15.8%</td>
+<td align="right">4653</td>
 </tr>
 <tr>
 <td align="left">44</td>
-<td align="left">🟡 Arcade</td>
-<td align="left">Storm</td>
+<td align="left">🟡 Micron</td>
+<td align="left">Odyssey</td>
 <td align="right"><b>1500</b></td>
-<td align="right">25.2%</td>
-<td align="right">52.0%</td>
-<td align="right">33.3%</td>
-<td align="right">25.0%</td>
-<td align="right">18.8%</td>
-<td align="right">17.6%</td>
-<td align="right">3967</td>
+<td align="right">24.3%</td>
+<td align="right">46.7%</td>
+<td align="right">31.1%</td>
+<td align="right">24.7%</td>
+<td align="right">19.8%</td>
+<td align="right">16.3%</td>
+<td align="right">4267</td>
 </tr>
 <tr>
 <td align="left">45</td>
-<td align="left">🟡 Sadist</td>
-<td align="left">Conflict</td>
-<td align="right"><b>1500</b></td>
-<td align="right">24.4%</td>
-<td align="right">45.9%</td>
-<td align="right">31.4%</td>
-<td align="right">24.6%</td>
-<td align="right">21.1%</td>
-<td align="right">16.4%</td>
-<td align="right">4134</td>
-</tr>
-<tr>
-<td align="left">46</td>
-<td align="left">🟡 Brute_Alt</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1500</b></td>
-<td align="right">25.1%</td>
-<td align="right">50.7%</td>
-<td align="right">33.9%</td>
-<td align="right">25.8%</td>
-<td align="right">18.3%</td>
-<td align="right">17.8%</td>
-<td align="right">3515</td>
-</tr>
-<tr>
-<td align="left">47</td>
-<td align="left">🟡 Citadel</td>
-<td align="left">Base</td>
-<td align="right"><b>1500</b></td>
-<td align="right">25.1%</td>
-<td align="right">51.6%</td>
-<td align="right">32.1%</td>
-<td align="right">25.2%</td>
-<td align="right">19.7%</td>
-<td align="right">17.4%</td>
-<td align="right">25027</td>
-</tr>
-<tr>
-<td align="left">48</td>
 <td align="left">🟡 Graviton</td>
 <td align="left">Conflict</td>
 <td align="right"><b>1500</b></td>
-<td align="right">25.4%</td>
-<td align="right">51.2%</td>
-<td align="right">32.6%</td>
-<td align="right">22.7%</td>
-<td align="right">22.4%</td>
-<td align="right">17.8%</td>
-<td align="right">4068</td>
+<td align="right">25.0%</td>
+<td align="right">50.6%</td>
+<td align="right">31.7%</td>
+<td align="right">22.2%</td>
+<td align="right">22.3%</td>
+<td align="right">17.4%</td>
+<td align="right">4890</td>
 </tr>
 <tr>
-<td align="left">49</td>
-<td align="left">🟡 Grumpus</td>
-<td align="left">Storm</td>
-<td align="right"><b>1500</b></td>
-<td align="right">24.5%</td>
-<td align="right">46.8%</td>
-<td align="right">33.6%</td>
-<td align="right">24.7%</td>
-<td align="right">19.8%</td>
-<td align="right">17.1%</td>
-<td align="right">3977</td>
-</tr>
-<tr>
-<td align="left">50</td>
-<td align="left">🟡 Vector</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1500</b></td>
-<td align="right">24.4%</td>
-<td align="right">48.7%</td>
-<td align="right">32.1%</td>
-<td align="right">27.0%</td>
-<td align="right">17.6%</td>
-<td align="right">16.7%</td>
-<td align="right">3580</td>
-</tr>
-<tr>
-<td align="left">51</td>
+<td align="left">46</td>
 <td align="left">🟡 Hate</td>
 <td align="left">Base</td>
 <td align="right"><b>1500</b></td>
-<td align="right">25.3%</td>
-<td align="right">58.0%</td>
-<td align="right">35.5%</td>
+<td align="right">25.4%</td>
+<td align="right">58.4%</td>
+<td align="right">35.6%</td>
 <td align="right">24.2%</td>
-<td align="right">19.3%</td>
-<td align="right">15.0%</td>
-<td align="right">24875</td>
+<td align="right">19.4%</td>
+<td align="right">15.2%</td>
+<td align="right">29844</td>
+</tr>
+<tr>
+<td align="left">47</td>
+<td align="left">🟡 Arcade</td>
+<td align="left">Storm</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.3%</td>
+<td align="right">52.0%</td>
+<td align="right">32.0%</td>
+<td align="right">23.7%</td>
+<td align="right">18.6%</td>
+<td align="right">16.6%</td>
+<td align="right">4810</td>
+</tr>
+<tr>
+<td align="left">48</td>
+<td align="left">🟡 Grumpus</td>
+<td align="left">Storm</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.7%</td>
+<td align="right">47.8%</td>
+<td align="right">34.1%</td>
+<td align="right">24.5%</td>
+<td align="right">19.8%</td>
+<td align="right">17.4%</td>
+<td align="right">4761</td>
+</tr>
+<tr>
+<td align="left">49</td>
+<td align="left">🟡 Brute_Alt</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.4%</td>
+<td align="right">48.0%</td>
+<td align="right">33.2%</td>
+<td align="right">24.5%</td>
+<td align="right">18.4%</td>
+<td align="right">17.6%</td>
+<td align="right">4195</td>
+</tr>
+<tr>
+<td align="left">50</td>
+<td align="left">🟡 Grudge</td>
+<td align="left">Base</td>
+<td align="right"><b>1499</b></td>
+<td align="right">25.4%</td>
+<td align="right">55.7%</td>
+<td align="right">35.4%</td>
+<td align="right">24.7%</td>
+<td align="right">18.8%</td>
+<td align="right">16.0%</td>
+<td align="right">29991</td>
+</tr>
+<tr>
+<td align="left">51</td>
+<td align="left">🟡 Sadist</td>
+<td align="left">Conflict</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.1%</td>
+<td align="right">46.7%</td>
+<td align="right">31.4%</td>
+<td align="right">23.7%</td>
+<td align="right">20.5%</td>
+<td align="right">16.1%</td>
+<td align="right">4976</td>
 </tr>
 <tr>
 <td align="left">52</td>
-<td align="left">🟡 Grudge</td>
+<td align="left">🟡 Warpish</td>
 <td align="left">Base</td>
-<td align="right"><b>1500</b></td>
+<td align="right"><b>1499</b></td>
 <td align="right">25.4%</td>
-<td align="right">56.0%</td>
-<td align="right">35.9%</td>
-<td align="right">24.0%</td>
-<td align="right">18.7%</td>
-<td align="right">16.1%</td>
-<td align="right">25014</td>
+<td align="right">49.1%</td>
+<td align="right">34.8%</td>
+<td align="right">25.7%</td>
+<td align="right">19.9%</td>
+<td align="right">16.9%</td>
+<td align="right">30027</td>
 </tr>
 <tr>
 <td align="left">53</td>
-<td align="left">🟡 Poison</td>
-<td align="left">Alliance</td>
-<td align="right"><b>1500</b></td>
-<td align="right">24.5%</td>
-<td align="right">48.2%</td>
-<td align="right">34.8%</td>
-<td align="right">22.6%</td>
-<td align="right">20.7%</td>
-<td align="right">16.3%</td>
-<td align="right">4294</td>
-</tr>
-<tr>
-<td align="left">54</td>
-<td align="left">🟡 Bandit</td>
-<td align="left">Alliance</td>
-<td align="right"><b>1500</b></td>
-<td align="right">24.2%</td>
-<td align="right">49.8%</td>
-<td align="right">32.3%</td>
-<td align="right">22.7%</td>
-<td align="right">20.5%</td>
-<td align="right">15.5%</td>
-<td align="right">4145</td>
-</tr>
-<tr>
-<td align="left">55</td>
-<td align="left">🟡 Laser</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.9%</td>
-<td align="right">48.0%</td>
-<td align="right">32.9%</td>
-<td align="right">25.3%</td>
-<td align="right">20.3%</td>
-<td align="right">18.1%</td>
-<td align="right">3869</td>
-</tr>
-<tr>
-<td align="left">56</td>
-<td align="left">🟡 FireDancer</td>
-<td align="left">Eons</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.2%</td>
-<td align="right">51.2%</td>
-<td align="right">29.7%</td>
-<td align="right">24.8%</td>
-<td align="right">18.2%</td>
-<td align="right">15.9%</td>
-<td align="right">3871</td>
-</tr>
-<tr>
-<td align="left">57</td>
 <td align="left">🟡 Empath</td>
 <td align="left">Conflict</td>
 <td align="right"><b>1499</b></td>
-<td align="right">25.0%</td>
-<td align="right">53.3%</td>
-<td align="right">30.3%</td>
+<td align="right">25.1%</td>
+<td align="right">51.8%</td>
+<td align="right">31.1%</td>
 <td align="right">25.8%</td>
-<td align="right">18.4%</td>
+<td align="right">19.6%</td>
+<td align="right">17.1%</td>
+<td align="right">5036</td>
+</tr>
+<tr>
+<td align="left">54</td>
+<td align="left">🟡 Vector</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.3%</td>
+<td align="right">49.5%</td>
+<td align="right">32.5%</td>
+<td align="right">25.1%</td>
+<td align="right">18.2%</td>
+<td align="right">16.4%</td>
+<td align="right">4311</td>
+</tr>
+<tr>
+<td align="left">55</td>
+<td align="left">🟡 Particle</td>
+<td align="left">Eons</td>
+<td align="right"><b>1499</b></td>
+<td align="right">25.2%</td>
+<td align="right">43.8%</td>
+<td align="right">32.4%</td>
+<td align="right">25.7%</td>
+<td align="right">21.0%</td>
+<td align="right">17.9%</td>
+<td align="right">4725</td>
+</tr>
+<tr>
+<td align="left">56</td>
+<td align="left">🟡 Poison</td>
+<td align="left">Alliance</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.5%</td>
+<td align="right">48.5%</td>
+<td align="right">34.1%</td>
+<td align="right">22.5%</td>
+<td align="right">20.4%</td>
+<td align="right">16.6%</td>
+<td align="right">5115</td>
+</tr>
+<tr>
+<td align="left">57</td>
+<td align="left">🟡 Assessor</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.9%</td>
+<td align="right">47.8%</td>
+<td align="right">35.0%</td>
+<td align="right">26.3%</td>
+<td align="right">16.9%</td>
 <td align="right">17.6%</td>
-<td align="right">4229</td>
+<td align="right">4242</td>
 </tr>
 <tr>
 <td align="left">58</td>
 <td align="left">🟡 Chrysalis</td>
 <td align="left">Alliance</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.6%</td>
+<td align="right">24.7%</td>
 <td align="right">51.0%</td>
-<td align="right">32.1%</td>
-<td align="right">23.1%</td>
-<td align="right">20.5%</td>
-<td align="right">16.6%</td>
-<td align="right">4218</td>
+<td align="right">32.8%</td>
+<td align="right">23.8%</td>
+<td align="right">20.0%</td>
+<td align="right">16.5%</td>
+<td align="right">5023</td>
 </tr>
 <tr>
 <td align="left">59</td>
-<td align="left">🟡 Warpish</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">25.1%</td>
-<td align="right">47.8%</td>
-<td align="right">34.3%</td>
-<td align="right">25.6%</td>
-<td align="right">19.6%</td>
-<td align="right">17.1%</td>
-<td align="right">24946</td>
-</tr>
-<tr>
-<td align="left">60</td>
-<td align="left">🟡 Particle</td>
+<td align="left">🟡 Hypochondriac</td>
 <td align="left">Eons</td>
 <td align="right"><b>1499</b></td>
 <td align="right">25.0%</td>
-<td align="right">44.2%</td>
-<td align="right">30.2%</td>
-<td align="right">25.3%</td>
-<td align="right">21.5%</td>
-<td align="right">18.4%</td>
-<td align="right">3895</td>
+<td align="right">46.2%</td>
+<td align="right">32.9%</td>
+<td align="right">24.6%</td>
+<td align="right">19.8%</td>
+<td align="right">18.8%</td>
+<td align="right">4598</td>
+</tr>
+<tr>
+<td align="left">60</td>
+<td align="left">🟡 Cosmos</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1499</b></td>
+<td align="right">25.0%</td>
+<td align="right">51.0%</td>
+<td align="right">30.6%</td>
+<td align="right">25.2%</td>
+<td align="right">19.7%</td>
+<td align="right">16.9%</td>
+<td align="right">4181</td>
 </tr>
 <tr>
 <td align="left">61</td>
-<td align="left">🟡 Assessor</td>
-<td align="left">Odyssey</td>
+<td align="left">🟡 Skeptic</td>
+<td align="left">Alliance</td>
 <td align="right"><b>1499</b></td>
-<td align="right">25.3%</td>
-<td align="right">47.9%</td>
-<td align="right">36.6%</td>
-<td align="right">26.6%</td>
-<td align="right">17.3%</td>
-<td align="right">17.5%</td>
-<td align="right">3530</td>
+<td align="right">25.2%</td>
+<td align="right">51.1%</td>
+<td align="right">35.2%</td>
+<td align="right">23.8%</td>
+<td align="right">21.2%</td>
+<td align="right">16.1%</td>
+<td align="right">5092</td>
 </tr>
 <tr>
 <td align="left">62</td>
+<td align="left">🟡 Bandit</td>
+<td align="left">Alliance</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.2%</td>
+<td align="right">49.2%</td>
+<td align="right">32.4%</td>
+<td align="right">23.1%</td>
+<td align="right">20.5%</td>
+<td align="right">15.2%</td>
+<td align="right">5020</td>
+</tr>
+<tr>
+<td align="left">63</td>
+<td align="left">🟡 Laser</td>
+<td align="left">Dominion</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.2%</td>
+<td align="right">47.4%</td>
+<td align="right">31.2%</td>
+<td align="right">24.3%</td>
+<td align="right">20.6%</td>
+<td align="right">17.3%</td>
+<td align="right">4616</td>
+</tr>
+<tr>
+<td align="left">64</td>
+<td align="left">🟡 Klutz</td>
+<td align="left">Eons</td>
+<td align="right"><b>1499</b></td>
+<td align="right">25.8%</td>
+<td align="right">50.4%</td>
+<td align="right">35.0%</td>
+<td align="right">25.2%</td>
+<td align="right">19.8%</td>
+<td align="right">18.2%</td>
+<td align="right">4612</td>
+</tr>
+<tr>
+<td align="left">65</td>
+<td align="left">🟡 Void</td>
+<td align="left">Base</td>
+<td align="right"><b>1499</b></td>
+<td align="right">25.2%</td>
+<td align="right">52.2%</td>
+<td align="right">33.6%</td>
+<td align="right">25.1%</td>
+<td align="right">19.4%</td>
+<td align="right">16.9%</td>
+<td align="right">29965</td>
+</tr>
+<tr>
+<td align="left">66</td>
+<td align="left">🟡 Industrialist</td>
+<td align="left">Conflict</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.5%</td>
+<td align="right">49.2%</td>
+<td align="right">32.6%</td>
+<td align="right">24.5%</td>
+<td align="right">19.4%</td>
+<td align="right">16.9%</td>
+<td align="right">4920</td>
+</tr>
+<tr>
+<td align="left">67</td>
+<td align="left">🟡 FireDancer</td>
+<td align="left">Eons</td>
+<td align="right"><b>1499</b></td>
+<td align="right">23.9%</td>
+<td align="right">50.6%</td>
+<td align="right">30.1%</td>
+<td align="right">23.8%</td>
+<td align="right">17.8%</td>
+<td align="right">16.6%</td>
+<td align="right">4622</td>
+</tr>
+<tr>
+<td align="left">68</td>
+<td align="left">🟡 Claw</td>
+<td align="left">Conflict</td>
+<td align="right"><b>1499</b></td>
+<td align="right">25.4%</td>
+<td align="right">49.7%</td>
+<td align="right">33.6%</td>
+<td align="right">26.0%</td>
+<td align="right">20.0%</td>
+<td align="right">16.6%</td>
+<td align="right">5116</td>
+</tr>
+<tr>
+<td align="left">69</td>
+<td align="left">🟡 Healer</td>
+<td align="left">Base</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.7%</td>
+<td align="right">48.4%</td>
+<td align="right">32.8%</td>
+<td align="right">24.7%</td>
+<td align="right">20.6%</td>
+<td align="right">16.4%</td>
+<td align="right">30024</td>
+</tr>
+<tr>
+<td align="left">70</td>
 <td align="left">🟡 BleedingHeart</td>
 <td align="left">Eons</td>
 <td align="right"><b>1499</b></td>
 <td align="right">24.1%</td>
-<td align="right">50.1%</td>
-<td align="right">29.1%</td>
-<td align="right">27.1%</td>
-<td align="right">18.3%</td>
-<td align="right">16.1%</td>
-<td align="right">3881</td>
-</tr>
-<tr>
-<td align="left">63</td>
-<td align="left">🟡 Hypochondriac</td>
-<td align="left">Eons</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.9%</td>
-<td align="right">47.8%</td>
-<td align="right">33.3%</td>
-<td align="right">24.3%</td>
-<td align="right">19.5%</td>
-<td align="right">18.3%</td>
-<td align="right">3819</td>
-</tr>
-<tr>
-<td align="left">64</td>
-<td align="left">🟡 Industrialist</td>
-<td align="left">Conflict</td>
-<td align="right"><b>1499</b></td>
-<td align="right">25.0%</td>
-<td align="right">48.1%</td>
-<td align="right">33.5%</td>
-<td align="right">25.3%</td>
-<td align="right">19.5%</td>
-<td align="right">17.7%</td>
-<td align="right">4088</td>
-</tr>
-<tr>
-<td align="left">65</td>
-<td align="left">🟡 Cosmos</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1499</b></td>
-<td align="right">25.4%</td>
-<td align="right">52.9%</td>
-<td align="right">31.6%</td>
-<td align="right">26.2%</td>
-<td align="right">19.7%</td>
-<td align="right">16.9%</td>
-<td align="right">3510</td>
-</tr>
-<tr>
-<td align="left">66</td>
-<td align="left">🟡 Skeptic</td>
-<td align="left">Alliance</td>
-<td align="right"><b>1499</b></td>
-<td align="right">25.3%</td>
-<td align="right">53.1%</td>
-<td align="right">35.2%</td>
-<td align="right">24.1%</td>
-<td align="right">21.7%</td>
-<td align="right">15.3%</td>
-<td align="right">4226</td>
-</tr>
-<tr>
-<td align="left">67</td>
-<td align="left">🟡 Void</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">25.1%</td>
-<td align="right">52.0%</td>
-<td align="right">34.0%</td>
-<td align="right">24.7%</td>
-<td align="right">19.6%</td>
-<td align="right">16.6%</td>
-<td align="right">25064</td>
-</tr>
-<tr>
-<td align="left">68</td>
-<td align="left">🟡 Healer</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.8%</td>
 <td align="right">48.8%</td>
-<td align="right">33.0%</td>
-<td align="right">24.7%</td>
-<td align="right">20.9%</td>
+<td align="right">28.9%</td>
+<td align="right">27.6%</td>
+<td align="right">18.2%</td>
 <td align="right">16.2%</td>
-<td align="right">25068</td>
-</tr>
-<tr>
-<td align="left">69</td>
-<td align="left">🟡 Remote</td>
-<td align="left">Alliance</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.6%</td>
-<td align="right">47.4%</td>
-<td align="right">32.8%</td>
-<td align="right">24.6%</td>
-<td align="right">20.1%</td>
-<td align="right">16.6%</td>
-<td align="right">4239</td>
-</tr>
-<tr>
-<td align="left">70</td>
-<td align="left">🟡 Silencer</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.5%</td>
-<td align="right">50.8%</td>
-<td align="right">33.7%</td>
-<td align="right">25.2%</td>
-<td align="right">19.3%</td>
-<td align="right">15.4%</td>
-<td align="right">3496</td>
+<td align="right">4671</td>
 </tr>
 <tr>
 <td align="left">71</td>
-<td align="left">🟡 Klutz</td>
-<td align="left">Eons</td>
+<td align="left">🟡 Remote</td>
+<td align="left">Alliance</td>
 <td align="right"><b>1499</b></td>
-<td align="right">25.5%</td>
-<td align="right">51.3%</td>
-<td align="right">33.7%</td>
-<td align="right">24.7%</td>
-<td align="right">20.3%</td>
-<td align="right">17.5%</td>
-<td align="right">3833</td>
+<td align="right">24.2%</td>
+<td align="right">47.0%</td>
+<td align="right">33.0%</td>
+<td align="right">24.2%</td>
+<td align="right">19.5%</td>
+<td align="right">16.5%</td>
+<td align="right">5118</td>
 </tr>
 <tr>
 <td align="left">72</td>
-<td align="left">🟡 Claw</td>
-<td align="left">Conflict</td>
+<td align="left">🟡 Zombie</td>
+<td align="left">Base</td>
 <td align="right"><b>1499</b></td>
-<td align="right">25.1%</td>
-<td align="right">50.7%</td>
-<td align="right">33.5%</td>
-<td align="right">25.5%</td>
-<td align="right">18.9%</td>
-<td align="right">16.5%</td>
-<td align="right">4284</td>
+<td align="right">24.8%</td>
+<td align="right">50.1%</td>
+<td align="right">33.6%</td>
+<td align="right">24.2%</td>
+<td align="right">20.2%</td>
+<td align="right">16.4%</td>
+<td align="right">29844</td>
 </tr>
 <tr>
 <td align="left">73</td>
+<td align="left">🟡 Silencer</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.1%</td>
+<td align="right">51.0%</td>
+<td align="right">32.8%</td>
+<td align="right">25.3%</td>
+<td align="right">18.9%</td>
+<td align="right">15.3%</td>
+<td align="right">4212</td>
+</tr>
+<tr>
+<td align="left">74</td>
 <td align="left">🟡 Miser</td>
 <td align="left">Base</td>
 <td align="right"><b>1499</b></td>
 <td align="right">24.4%</td>
 <td align="right">48.2%</td>
-<td align="right">32.4%</td>
-<td align="right">23.5%</td>
+<td align="right">32.7%</td>
+<td align="right">23.8%</td>
 <td align="right">19.6%</td>
 <td align="right">16.3%</td>
-<td align="right">24925</td>
-</tr>
-<tr>
-<td align="left">74</td>
-<td align="left">🟡 Zombie</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.7%</td>
-<td align="right">50.0%</td>
-<td align="right">33.7%</td>
-<td align="right">24.6%</td>
-<td align="right">19.7%</td>
-<td align="right">16.1%</td>
-<td align="right">24742</td>
+<td align="right">29810</td>
 </tr>
 <tr>
 <td align="left">75</td>
 <td align="left">🟡 Emperor</td>
 <td align="left">Eons</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.8%</td>
-<td align="right">44.2%</td>
-<td align="right">31.5%</td>
-<td align="right">23.9%</td>
+<td align="right">24.7%</td>
+<td align="right">44.1%</td>
+<td align="right">31.1%</td>
+<td align="right">24.5%</td>
 <td align="right">20.6%</td>
-<td align="right">19.0%</td>
-<td align="right">3808</td>
+<td align="right">18.7%</td>
+<td align="right">4563</td>
 </tr>
 <tr>
 <td align="left">76</td>
 <td align="left">🟡 Gremlin</td>
 <td align="left">Odyssey</td>
 <td align="right"><b>1499</b></td>
-<td align="right">25.0%</td>
-<td align="right">46.6%</td>
-<td align="right">36.3%</td>
-<td align="right">26.0%</td>
-<td align="right">18.9%</td>
-<td align="right">16.2%</td>
-<td align="right">3494</td>
+<td align="right">24.7%</td>
+<td align="right">46.0%</td>
+<td align="right">33.8%</td>
+<td align="right">25.9%</td>
+<td align="right">19.5%</td>
+<td align="right">16.1%</td>
+<td align="right">4247</td>
 </tr>
 <tr>
 <td align="left">77</td>
-<td align="left">🟡 Mind</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.4%</td>
-<td align="right">48.8%</td>
-<td align="right">32.8%</td>
-<td align="right">24.0%</td>
-<td align="right">18.6%</td>
-<td align="right">17.5%</td>
-<td align="right">24696</td>
-</tr>
-<tr>
-<td align="left">78</td>
 <td align="left">🟡 Cryo</td>
 <td align="left">Incursion</td>
 <td align="right"><b>1499</b></td>
 <td align="right">24.7%</td>
-<td align="right">48.4%</td>
-<td align="right">35.4%</td>
-<td align="right">23.7%</td>
-<td align="right">19.1%</td>
-<td align="right">16.6%</td>
-<td align="right">4117</td>
+<td align="right">48.0%</td>
+<td align="right">35.8%</td>
+<td align="right">24.0%</td>
+<td align="right">19.6%</td>
+<td align="right">16.3%</td>
+<td align="right">4919</td>
 </tr>
 <tr>
-<td align="left">79</td>
+<td align="left">78</td>
 <td align="left">🟡 Relic</td>
 <td align="left">Conflict</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.7%</td>
-<td align="right">47.2%</td>
-<td align="right">34.0%</td>
+<td align="right">25.0%</td>
+<td align="right">48.5%</td>
+<td align="right">34.2%</td>
 <td align="right">25.9%</td>
-<td align="right">18.9%</td>
-<td align="right">16.4%</td>
-<td align="right">4122</td>
+<td align="right">19.3%</td>
+<td align="right">16.6%</td>
+<td align="right">4987</td>
+</tr>
+<tr>
+<td align="left">79</td>
+<td align="left">🟡 Prophet</td>
+<td align="left">Conflict</td>
+<td align="right"><b>1499</b></td>
+<td align="right">25.4%</td>
+<td align="right">51.3%</td>
+<td align="right">32.6%</td>
+<td align="right">26.5%</td>
+<td align="right">20.1%</td>
+<td align="right">17.0%</td>
+<td align="right">4907</td>
 </tr>
 <tr>
 <td align="left">80</td>
-<td align="left">🟡 Shadow</td>
+<td align="left">🟡 Mind</td>
 <td align="left">Base</td>
 <td align="right"><b>1499</b></td>
 <td align="right">24.3%</td>
-<td align="right">47.8%</td>
-<td align="right">32.1%</td>
+<td align="right">49.3%</td>
+<td align="right">32.8%</td>
 <td align="right">24.0%</td>
-<td align="right">20.0%</td>
-<td align="right">16.2%</td>
-<td align="right">25022</td>
+<td align="right">18.1%</td>
+<td align="right">17.2%</td>
+<td align="right">29718</td>
 </tr>
 <tr>
 <td align="left">81</td>
-<td align="left">🟡 Mutant</td>
-<td align="left">Base</td>
+<td align="left">🟡 Dragon</td>
+<td align="left">Odyssey</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.3%</td>
-<td align="right">48.3%</td>
-<td align="right">31.8%</td>
-<td align="right">24.5%</td>
-<td align="right">20.2%</td>
-<td align="right">15.7%</td>
-<td align="right">24831</td>
+<td align="right">25.4%</td>
+<td align="right">54.2%</td>
+<td align="right">34.1%</td>
+<td align="right">24.9%</td>
+<td align="right">20.5%</td>
+<td align="right">15.8%</td>
+<td align="right">4181</td>
 </tr>
 <tr>
 <td align="left">82</td>
-<td align="left">🟡 Inferno</td>
-<td align="left">Odyssey</td>
+<td align="left">🟡 Perfectionist</td>
+<td align="left">Eons</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.1%</td>
-<td align="right">51.4%</td>
-<td align="right">30.7%</td>
-<td align="right">23.7%</td>
-<td align="right">16.7%</td>
-<td align="right">17.9%</td>
-<td align="right">3541</td>
+<td align="right">25.0%</td>
+<td align="right">47.2%</td>
+<td align="right">35.5%</td>
+<td align="right">24.7%</td>
+<td align="right">18.8%</td>
+<td align="right">16.9%</td>
+<td align="right">4615</td>
 </tr>
 <tr>
 <td align="left">83</td>
 <td align="left">🟡 Multitude</td>
 <td align="left">Eons</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.7%</td>
-<td align="right">51.1%</td>
-<td align="right">32.7%</td>
+<td align="right">24.6%</td>
+<td align="right">49.1%</td>
+<td align="right">33.7%</td>
 <td align="right">23.3%</td>
-<td align="right">19.4%</td>
-<td align="right">16.3%</td>
-<td align="right">3814</td>
+<td align="right">20.0%</td>
+<td align="right">15.3%</td>
+<td align="right">4643</td>
 </tr>
 <tr>
 <td align="left">84</td>
-<td align="left">🟡 Observer</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.3%</td>
-<td align="right">48.4%</td>
-<td align="right">33.1%</td>
-<td align="right">23.9%</td>
-<td align="right">19.6%</td>
-<td align="right">15.7%</td>
-<td align="right">25038</td>
-</tr>
-<tr>
-<td align="left">85</td>
-<td align="left">🟡 Spiff</td>
+<td align="left">🟡 Mutant</td>
 <td align="left">Base</td>
 <td align="right"><b>1499</b></td>
 <td align="right">24.4%</td>
-<td align="right">48.1%</td>
-<td align="right">32.5%</td>
-<td align="right">24.7%</td>
-<td align="right">18.7%</td>
-<td align="right">16.9%</td>
-<td align="right">24701</td>
+<td align="right">48.4%</td>
+<td align="right">32.2%</td>
+<td align="right">24.3%</td>
+<td align="right">20.3%</td>
+<td align="right">15.9%</td>
+<td align="right">29708</td>
+</tr>
+<tr>
+<td align="left">85</td>
+<td align="left">🟡 Inferno</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.4%</td>
+<td align="right">52.6%</td>
+<td align="right">30.9%</td>
+<td align="right">23.9%</td>
+<td align="right">17.2%</td>
+<td align="right">17.8%</td>
+<td align="right">4233</td>
 </tr>
 <tr>
 <td align="left">86</td>
-<td align="left">🟡 Prophet</td>
-<td align="left">Conflict</td>
+<td align="left">🟡 Shadow</td>
+<td align="left">Base</td>
 <td align="right"><b>1499</b></td>
-<td align="right">25.2%</td>
-<td align="right">49.9%</td>
-<td align="right">32.4%</td>
-<td align="right">25.6%</td>
-<td align="right">20.0%</td>
-<td align="right">17.2%</td>
-<td align="right">4110</td>
+<td align="right">24.0%</td>
+<td align="right">47.3%</td>
+<td align="right">32.0%</td>
+<td align="right">23.5%</td>
+<td align="right">19.7%</td>
+<td align="right">16.2%</td>
+<td align="right">30041</td>
 </tr>
 <tr>
 <td align="left">87</td>
@@ -1391,831 +1391,831 @@ DEFENSE TOTAL = Card Value + Ship Count + Kickers + Power Mods + Reinforcements 
 <td align="left">Base</td>
 <td align="right"><b>1499</b></td>
 <td align="right">24.6%</td>
-<td align="right">49.8%</td>
+<td align="right">49.6%</td>
 <td align="right">32.3%</td>
-<td align="right">24.5%</td>
-<td align="right">19.8%</td>
-<td align="right">16.5%</td>
-<td align="right">24769</td>
+<td align="right">25.0%</td>
+<td align="right">19.6%</td>
+<td align="right">16.3%</td>
+<td align="right">29921</td>
 </tr>
 <tr>
 <td align="left">88</td>
-<td align="left">🟡 Perfectionist</td>
-<td align="left">Eons</td>
+<td align="left">🟡 Spiff</td>
+<td align="left">Base</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.8%</td>
-<td align="right">46.1%</td>
-<td align="right">35.6%</td>
-<td align="right">24.5%</td>
-<td align="right">18.8%</td>
+<td align="right">24.4%</td>
+<td align="right">48.3%</td>
+<td align="right">32.1%</td>
+<td align="right">24.7%</td>
+<td align="right">18.7%</td>
 <td align="right">16.7%</td>
-<td align="right">3853</td>
+<td align="right">29662</td>
 </tr>
 <tr>
 <td align="left">89</td>
-<td align="left">🟡 Dragon</td>
-<td align="left">Odyssey</td>
+<td align="left">🟡 Observer</td>
+<td align="left">Base</td>
 <td align="right"><b>1499</b></td>
-<td align="right">25.4%</td>
-<td align="right">55.0%</td>
-<td align="right">34.3%</td>
-<td align="right">24.1%</td>
-<td align="right">20.2%</td>
-<td align="right">16.4%</td>
-<td align="right">3493</td>
+<td align="right">24.2%</td>
+<td align="right">47.8%</td>
+<td align="right">33.5%</td>
+<td align="right">23.8%</td>
+<td align="right">19.5%</td>
+<td align="right">15.7%</td>
+<td align="right">30005</td>
 </tr>
 <tr>
 <td align="left">90</td>
 <td align="left">🟡 Ghoul</td>
 <td align="left">Incursion</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.7%</td>
-<td align="right">46.1%</td>
-<td align="right">33.1%</td>
-<td align="right">25.5%</td>
-<td align="right">21.8%</td>
+<td align="right">24.5%</td>
+<td align="right">44.5%</td>
+<td align="right">33.9%</td>
+<td align="right">25.3%</td>
+<td align="right">21.6%</td>
 <td align="right">14.7%</td>
-<td align="right">4166</td>
+<td align="right">4975</td>
 </tr>
 <tr>
 <td align="left">91</td>
 <td align="left">🟡 Siren</td>
 <td align="left">Conflict</td>
 <td align="right"><b>1499</b></td>
-<td align="right">23.7%</td>
-<td align="right">52.3%</td>
-<td align="right">31.2%</td>
-<td align="right">22.4%</td>
-<td align="right">18.8%</td>
-<td align="right">16.0%</td>
-<td align="right">4148</td>
+<td align="right">24.1%</td>
+<td align="right">51.4%</td>
+<td align="right">32.3%</td>
+<td align="right">23.2%</td>
+<td align="right">19.1%</td>
+<td align="right">16.1%</td>
+<td align="right">5044</td>
 </tr>
 <tr>
 <td align="left">92</td>
-<td align="left">🟡 Philanthropist</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.0%</td>
-<td align="right">49.1%</td>
-<td align="right">31.6%</td>
-<td align="right">23.6%</td>
-<td align="right">18.5%</td>
-<td align="right">17.0%</td>
-<td align="right">24879</td>
-</tr>
-<tr>
-<td align="left">93</td>
 <td align="left">🟡 Remora</td>
 <td align="left">Base</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.2%</td>
-<td align="right">48.5%</td>
-<td align="right">31.7%</td>
-<td align="right">24.2%</td>
-<td align="right">19.6%</td>
-<td align="right">16.0%</td>
-<td align="right">24947</td>
+<td align="right">24.3%</td>
+<td align="right">48.2%</td>
+<td align="right">31.8%</td>
+<td align="right">24.7%</td>
+<td align="right">19.7%</td>
+<td align="right">16.1%</td>
+<td align="right">29804</td>
+</tr>
+<tr>
+<td align="left">93</td>
+<td align="left">🟡 Locust_Alt</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.7%</td>
+<td align="right">52.3%</td>
+<td align="right">32.8%</td>
+<td align="right">26.4%</td>
+<td align="right">17.8%</td>
+<td align="right">15.6%</td>
+<td align="right">4153</td>
 </tr>
 <tr>
 <td align="left">94</td>
-<td align="left">🟡 Gambler</td>
-<td align="left">Base</td>
+<td align="left">🟡 Tortoise</td>
+<td align="left">Eons</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.2%</td>
+<td align="right">25.2%</td>
 <td align="right">48.1%</td>
-<td align="right">32.8%</td>
-<td align="right">24.9%</td>
+<td align="right">32.5%</td>
+<td align="right">26.6%</td>
 <td align="right">19.1%</td>
-<td align="right">15.7%</td>
-<td align="right">25120</td>
+<td align="right">18.0%</td>
+<td align="right">4629</td>
 </tr>
 <tr>
 <td align="left">95</td>
-<td align="left">🟡 Disease</td>
-<td align="left">Incursion</td>
+<td align="left">🟡 Alchemist</td>
+<td align="left">Dominion</td>
 <td align="right"><b>1499</b></td>
-<td align="right">23.7%</td>
-<td align="right">48.2%</td>
-<td align="right">33.1%</td>
-<td align="right">23.2%</td>
-<td align="right">19.7%</td>
-<td align="right">15.0%</td>
-<td align="right">4084</td>
+<td align="right">25.0%</td>
+<td align="right">50.9%</td>
+<td align="right">33.5%</td>
+<td align="right">25.8%</td>
+<td align="right">18.5%</td>
+<td align="right">16.9%</td>
+<td align="right">4664</td>
 </tr>
 <tr>
 <td align="left">96</td>
 <td align="left">🟡 Fido</td>
 <td align="left">Base</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.2%</td>
-<td align="right">49.5%</td>
-<td align="right">32.5%</td>
 <td align="right">24.3%</td>
-<td align="right">19.4%</td>
-<td align="right">15.8%</td>
-<td align="right">24954</td>
+<td align="right">49.5%</td>
+<td align="right">32.4%</td>
+<td align="right">24.5%</td>
+<td align="right">19.3%</td>
+<td align="right">16.0%</td>
+<td align="right">30005</td>
 </tr>
 <tr>
 <td align="left">97</td>
-<td align="left">🟡 Locust_Alt</td>
-<td align="left">Odyssey</td>
+<td align="left">🟡 Philanthropist</td>
+<td align="left">Base</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.8%</td>
-<td align="right">52.1%</td>
-<td align="right">31.7%</td>
-<td align="right">26.9%</td>
-<td align="right">18.9%</td>
-<td align="right">15.1%</td>
-<td align="right">3497</td>
+<td align="right">24.0%</td>
+<td align="right">48.5%</td>
+<td align="right">31.4%</td>
+<td align="right">23.5%</td>
+<td align="right">18.5%</td>
+<td align="right">16.9%</td>
+<td align="right">29988</td>
 </tr>
 <tr>
 <td align="left">98</td>
-<td align="left">🟡 Tide</td>
-<td align="left">Storm</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.7%</td>
-<td align="right">46.5%</td>
-<td align="right">35.5%</td>
-<td align="right">25.7%</td>
-<td align="right">19.5%</td>
-<td align="right">16.1%</td>
-<td align="right">4016</td>
-</tr>
-<tr>
-<td align="left">99</td>
-<td align="left">🟡 Clone</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.1%</td>
-<td align="right">50.6%</td>
-<td align="right">31.9%</td>
-<td align="right">24.0%</td>
-<td align="right">18.8%</td>
-<td align="right">16.1%</td>
-<td align="right">25035</td>
-</tr>
-<tr>
-<td align="left">100</td>
 <td align="left">🟡 Joker</td>
 <td align="left">Dominion</td>
 <td align="right"><b>1499</b></td>
-<td align="right">24.4%</td>
+<td align="right">24.7%</td>
 <td align="right">52.0%</td>
-<td align="right">31.1%</td>
-<td align="right">23.3%</td>
-<td align="right">19.0%</td>
-<td align="right">17.1%</td>
-<td align="right">3860</td>
+<td align="right">32.3%</td>
+<td align="right">24.1%</td>
+<td align="right">19.3%</td>
+<td align="right">16.7%</td>
+<td align="right">4648</td>
+</tr>
+<tr>
+<td align="left">99</td>
+<td align="left">🟡 Tide</td>
+<td align="left">Storm</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.4%</td>
+<td align="right">46.5%</td>
+<td align="right">34.7%</td>
+<td align="right">25.6%</td>
+<td align="right">19.5%</td>
+<td align="right">15.5%</td>
+<td align="right">4882</td>
+</tr>
+<tr>
+<td align="left">100</td>
+<td align="left">🟡 Gambler</td>
+<td align="left">Base</td>
+<td align="right"><b>1499</b></td>
+<td align="right">24.0%</td>
+<td align="right">48.0%</td>
+<td align="right">32.1%</td>
+<td align="right">24.5%</td>
+<td align="right">18.9%</td>
+<td align="right">15.8%</td>
+<td align="right">30095</td>
 </tr>
 <tr>
 <td align="left">101</td>
-<td align="left">🟡 Alchemist</td>
-<td align="left">Dominion</td>
+<td align="left">🟡 Disease</td>
+<td align="left">Incursion</td>
 <td align="right"><b>1499</b></td>
-<td align="right">25.0%</td>
-<td align="right">49.6%</td>
-<td align="right">33.3%</td>
-<td align="right">25.7%</td>
-<td align="right">19.0%</td>
-<td align="right">17.2%</td>
-<td align="right">3872</td>
+<td align="right">24.0%</td>
+<td align="right">49.9%</td>
+<td align="right">32.9%</td>
+<td align="right">24.1%</td>
+<td align="right">18.8%</td>
+<td align="right">15.4%</td>
+<td align="right">4968</td>
 </tr>
 <tr>
 <td align="left">102</td>
-<td align="left">🟡 Whirligig</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1499</b></td>
-<td align="right">23.8%</td>
-<td align="right">45.9%</td>
-<td align="right">32.6%</td>
-<td align="right">22.8%</td>
-<td align="right">19.4%</td>
-<td align="right">17.5%</td>
-<td align="right">3834</td>
+<td align="left">🟡 Clone</td>
+<td align="left">Base</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.2%</td>
+<td align="right">50.8%</td>
+<td align="right">31.8%</td>
+<td align="right">24.3%</td>
+<td align="right">18.9%</td>
+<td align="right">16.1%</td>
+<td align="right">29965</td>
 </tr>
 <tr>
 <td align="left">103</td>
-<td align="left">🟡 Sting</td>
-<td align="left">Alliance</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.1%</td>
-<td align="right">47.3%</td>
-<td align="right">32.2%</td>
-<td align="right">22.8%</td>
-<td align="right">20.4%</td>
-<td align="right">16.5%</td>
-<td align="right">4221</td>
+<td align="left">🟡 Magician</td>
+<td align="left">Incursion</td>
+<td align="right"><b>1498</b></td>
+<td align="right">25.1%</td>
+<td align="right">48.0%</td>
+<td align="right">33.5%</td>
+<td align="right">25.3%</td>
+<td align="right">19.8%</td>
+<td align="right">17.2%</td>
+<td align="right">5120</td>
 </tr>
 <tr>
 <td align="left">104</td>
 <td align="left">🟡 Changeling</td>
 <td align="left">Conflict</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.2%</td>
-<td align="right">48.1%</td>
-<td align="right">33.4%</td>
-<td align="right">22.9%</td>
-<td align="right">17.8%</td>
-<td align="right">16.7%</td>
-<td align="right">4191</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.3%</td>
+<td align="right">47.2%</td>
+<td align="right">33.9%</td>
+<td align="right">23.5%</td>
+<td align="right">18.3%</td>
+<td align="right">16.2%</td>
+<td align="right">5071</td>
 </tr>
 <tr>
 <td align="left">105</td>
-<td align="left">🟡 Tortoise</td>
-<td align="left">Eons</td>
-<td align="right"><b>1499</b></td>
-<td align="right">25.2%</td>
-<td align="right">47.0%</td>
-<td align="right">32.0%</td>
-<td align="right">27.5%</td>
-<td align="right">19.1%</td>
-<td align="right">18.2%</td>
-<td align="right">3863</td>
+<td align="left">🟡 Mirror</td>
+<td align="left">Base</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.2%</td>
+<td align="right">47.4%</td>
+<td align="right">33.4%</td>
+<td align="right">25.3%</td>
+<td align="right">19.6%</td>
+<td align="right">14.9%</td>
+<td align="right">29745</td>
 </tr>
 <tr>
 <td align="left">106</td>
-<td align="left">🟡 Mirror</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
+<td align="left">🟡 Sting</td>
+<td align="left">Alliance</td>
+<td align="right"><b>1498</b></td>
 <td align="right">24.0%</td>
-<td align="right">47.2%</td>
-<td align="right">33.5%</td>
-<td align="right">25.3%</td>
-<td align="right">19.0%</td>
-<td align="right">15.1%</td>
-<td align="right">24806</td>
+<td align="right">46.7%</td>
+<td align="right">32.9%</td>
+<td align="right">23.4%</td>
+<td align="right">20.1%</td>
+<td align="right">15.6%</td>
+<td align="right">5055</td>
 </tr>
 <tr>
 <td align="left">107</td>
-<td align="left">🟡 Genius</td>
-<td align="left">Incursion</td>
-<td align="right"><b>1499</b></td>
+<td align="left">🟡 Vacuum</td>
+<td align="left">Base</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.3%</td>
+<td align="right">49.1%</td>
+<td align="right">32.6%</td>
 <td align="right">24.2%</td>
-<td align="right">50.1%</td>
-<td align="right">33.0%</td>
-<td align="right">23.0%</td>
-<td align="right">18.2%</td>
-<td align="right">16.7%</td>
-<td align="right">4057</td>
+<td align="right">19.5%</td>
+<td align="right">15.8%</td>
+<td align="right">29975</td>
 </tr>
 <tr>
 <td align="left">108</td>
-<td align="left">🟡 Filch</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">23.9%</td>
-<td align="right">48.3%</td>
-<td align="right">32.3%</td>
-<td align="right">23.9%</td>
-<td align="right">18.6%</td>
-<td align="right">16.0%</td>
-<td align="right">25113</td>
+<td align="left">🟡 Decoy</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.4%</td>
+<td align="right">46.6%</td>
+<td align="right">29.7%</td>
+<td align="right">25.6%</td>
+<td align="right">21.0%</td>
+<td align="right">16.1%</td>
+<td align="right">4248</td>
 </tr>
 <tr>
 <td align="left">109</td>
-<td align="left">🟡 Reincarnator</td>
+<td align="left">🟡 Filch</td>
 <td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.0%</td>
-<td align="right">49.6%</td>
-<td align="right">31.5%</td>
-<td align="right">23.9%</td>
-<td align="right">19.4%</td>
-<td align="right">15.2%</td>
-<td align="right">24979</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.1%</td>
+<td align="right">48.6%</td>
+<td align="right">31.8%</td>
+<td align="right">24.3%</td>
+<td align="right">18.8%</td>
+<td align="right">16.1%</td>
+<td align="right">30110</td>
 </tr>
 <tr>
 <td align="left">110</td>
-<td align="left">🟡 Vacuum</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.2%</td>
-<td align="right">50.2%</td>
-<td align="right">32.1%</td>
-<td align="right">24.1%</td>
-<td align="right">19.6%</td>
-<td align="right">15.5%</td>
-<td align="right">24983</td>
+<td align="left">🟡 Locust</td>
+<td align="left">Incursion</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.7%</td>
+<td align="right">47.3%</td>
+<td align="right">33.7%</td>
+<td align="right">26.4%</td>
+<td align="right">19.1%</td>
+<td align="right">16.1%</td>
+<td align="right">4960</td>
 </tr>
 <tr>
 <td align="left">111</td>
-<td align="left">🟡 Sorcerer</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">23.7%</td>
-<td align="right">48.2%</td>
-<td align="right">31.5%</td>
-<td align="right">23.7%</td>
-<td align="right">18.7%</td>
-<td align="right">15.8%</td>
-<td align="right">25048</td>
+<td align="left">🟡 Whirligig</td>
+<td align="left">Dominion</td>
+<td align="right"><b>1498</b></td>
+<td align="right">23.5%</td>
+<td align="right">45.8%</td>
+<td align="right">31.8%</td>
+<td align="right">22.4%</td>
+<td align="right">19.8%</td>
+<td align="right">16.4%</td>
+<td align="right">4580</td>
 </tr>
 <tr>
 <td align="left">112</td>
-<td align="left">🟡 Decoy</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1499</b></td>
+<td align="left">🟡 Reincarnator</td>
+<td align="left">Base</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.0%</td>
+<td align="right">49.7%</td>
+<td align="right">31.6%</td>
 <td align="right">24.2%</td>
-<td align="right">47.0%</td>
-<td align="right">27.6%</td>
-<td align="right">25.0%</td>
-<td align="right">20.7%</td>
-<td align="right">16.6%</td>
-<td align="right">3581</td>
+<td align="right">19.1%</td>
+<td align="right">15.4%</td>
+<td align="right">29902</td>
 </tr>
 <tr>
 <td align="left">113</td>
-<td align="left">🟡 Hacker</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.2%</td>
+<td align="left">🟡 Genius</td>
+<td align="left">Incursion</td>
+<td align="right"><b>1498</b></td>
+<td align="right">23.8%</td>
 <td align="right">49.9%</td>
 <td align="right">32.3%</td>
-<td align="right">24.3%</td>
-<td align="right">18.9%</td>
-<td align="right">16.0%</td>
-<td align="right">24749</td>
+<td align="right">23.0%</td>
+<td align="right">18.1%</td>
+<td align="right">16.1%</td>
+<td align="right">4890</td>
 </tr>
 <tr>
 <td align="left">114</td>
-<td align="left">🟡 Magician</td>
-<td align="left">Incursion</td>
-<td align="right"><b>1499</b></td>
-<td align="right">25.2%</td>
-<td align="right">47.6%</td>
-<td align="right">33.0%</td>
-<td align="right">26.1%</td>
-<td align="right">20.5%</td>
-<td align="right">16.7%</td>
-<td align="right">4316</td>
+<td align="left">🟡 Trickster</td>
+<td align="left">Conflict</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.6%</td>
+<td align="right">46.1%</td>
+<td align="right">33.8%</td>
+<td align="right">24.0%</td>
+<td align="right">19.3%</td>
+<td align="right">16.5%</td>
+<td align="right">4886</td>
 </tr>
 <tr>
 <td align="left">115</td>
-<td align="left">🟡 Vulch</td>
+<td align="left">🟡 Hacker</td>
 <td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.0%</td>
-<td align="right">47.1%</td>
-<td align="right">32.5%</td>
-<td align="right">24.2%</td>
-<td align="right">18.7%</td>
-<td align="right">16.4%</td>
-<td align="right">24967</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.1%</td>
+<td align="right">49.4%</td>
+<td align="right">32.1%</td>
+<td align="right">24.1%</td>
+<td align="right">18.9%</td>
+<td align="right">16.0%</td>
+<td align="right">29568</td>
 </tr>
 <tr>
 <td align="left">116</td>
-<td align="left">🟡 Dictator</td>
-<td align="left">Base</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.0%</td>
-<td align="right">47.7%</td>
-<td align="right">32.3%</td>
-<td align="right">24.1%</td>
-<td align="right">18.6%</td>
-<td align="right">16.5%</td>
-<td align="right">25099</td>
-</tr>
-<tr>
-<td align="left">117</td>
-<td align="left">🟡 Locust</td>
-<td align="left">Incursion</td>
-<td align="right"><b>1499</b></td>
-<td align="right">25.0%</td>
-<td align="right">47.0%</td>
-<td align="right">33.9%</td>
-<td align="right">27.0%</td>
-<td align="right">19.8%</td>
-<td align="right">16.3%</td>
-<td align="right">4174</td>
-</tr>
-<tr>
-<td align="left">118</td>
-<td align="left">🟡 Demon</td>
-<td align="left">Custom</td>
-<td align="right"><b>1499</b></td>
-<td align="right">23.8%</td>
-<td align="right">46.6%</td>
-<td align="right">33.2%</td>
-<td align="right">22.7%</td>
-<td align="right">18.9%</td>
-<td align="right">16.5%</td>
-<td align="right">24839</td>
-</tr>
-<tr>
-<td align="left">119</td>
-<td align="left">🟡 Fungus</td>
-<td align="left">Incursion</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.2%</td>
-<td align="right">47.4%</td>
-<td align="right">33.0%</td>
-<td align="right">26.8%</td>
-<td align="right">18.8%</td>
-<td align="right">15.2%</td>
-<td align="right">4052</td>
-</tr>
-<tr>
-<td align="left">120</td>
-<td align="left">🟡 Trickster</td>
-<td align="left">Conflict</td>
-<td align="right"><b>1499</b></td>
-<td align="right">24.7%</td>
-<td align="right">46.3%</td>
-<td align="right">34.5%</td>
-<td align="right">23.1%</td>
-<td align="right">20.0%</td>
-<td align="right">16.4%</td>
-<td align="right">4054</td>
-</tr>
-<tr>
-<td align="left">121</td>
-<td align="left">🟡 Xenophile</td>
-<td align="left">Conflict</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.4%</td>
-<td align="right">46.9%</td>
-<td align="right">33.2%</td>
-<td align="right">25.2%</td>
-<td align="right">20.1%</td>
-<td align="right">15.0%</td>
-<td align="right">4096</td>
-</tr>
-<tr>
-<td align="left">122</td>
-<td align="left">🟡 Chosen</td>
-<td align="left">Base</td>
-<td align="right"><b>1498</b></td>
-<td align="right">23.9%</td>
-<td align="right">47.8%</td>
-<td align="right">32.5%</td>
-<td align="right">23.5%</td>
-<td align="right">19.3%</td>
-<td align="right">15.8%</td>
-<td align="right">25045</td>
-</tr>
-<tr>
-<td align="left">123</td>
-<td align="left">🟡 Will</td>
-<td align="left">Base</td>
-<td align="right"><b>1498</b></td>
-<td align="right">23.9%</td>
-<td align="right">47.0%</td>
-<td align="right">32.1%</td>
-<td align="right">23.8%</td>
-<td align="right">19.0%</td>
-<td align="right">16.4%</td>
-<td align="right">25052</td>
-</tr>
-<tr>
-<td align="left">124</td>
 <td align="left">🟡 Pygmy</td>
 <td align="left">Alliance</td>
 <td align="right"><b>1498</b></td>
-<td align="right">24.7%</td>
-<td align="right">53.0%</td>
+<td align="right">25.0%</td>
+<td align="right">53.5%</td>
 <td align="right">35.9%</td>
-<td align="right">25.2%</td>
-<td align="right">19.5%</td>
-<td align="right">14.2%</td>
-<td align="right">4078</td>
-</tr>
-<tr>
-<td align="left">125</td>
-<td align="left">🟡 Cavalry</td>
-<td align="left">Conflict</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.7%</td>
-<td align="right">47.1%</td>
-<td align="right">31.4%</td>
-<td align="right">26.1%</td>
-<td align="right">21.3%</td>
-<td align="right">16.3%</td>
-<td align="right">4203</td>
-</tr>
-<tr>
-<td align="left">126</td>
-<td align="left">🟡 Grumpus_Alt</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1498</b></td>
 <td align="right">25.1%</td>
-<td align="right">47.2%</td>
-<td align="right">33.5%</td>
-<td align="right">22.8%</td>
-<td align="right">22.4%</td>
-<td align="right">16.4%</td>
-<td align="right">3503</td>
+<td align="right">19.9%</td>
+<td align="right">14.8%</td>
+<td align="right">4965</td>
 </tr>
 <tr>
-<td align="left">127</td>
-<td align="left">🟡 Mite</td>
-<td align="left">Base</td>
+<td align="left">117</td>
+<td align="left">🟡 Fungus</td>
+<td align="left">Incursion</td>
 <td align="right"><b>1498</b></td>
-<td align="right">24.0%</td>
-<td align="right">47.0%</td>
-<td align="right">32.3%</td>
-<td align="right">24.1%</td>
-<td align="right">19.4%</td>
-<td align="right">16.5%</td>
-<td align="right">24978</td>
+<td align="right">24.4%</td>
+<td align="right">48.4%</td>
+<td align="right">32.8%</td>
+<td align="right">26.4%</td>
+<td align="right">18.9%</td>
+<td align="right">15.6%</td>
+<td align="right">4850</td>
 </tr>
 <tr>
-<td align="left">128</td>
-<td align="left">🟡 Calculator</td>
+<td align="left">118</td>
+<td align="left">🟡 Sorcerer</td>
 <td align="left">Base</td>
 <td align="right"><b>1498</b></td>
+<td align="right">23.8%</td>
+<td align="right">48.5%</td>
+<td align="right">32.2%</td>
 <td align="right">23.7%</td>
-<td align="right">46.9%</td>
-<td align="right">31.9%</td>
-<td align="right">23.9%</td>
 <td align="right">18.6%</td>
-<td align="right">16.3%</td>
-<td align="right">24787</td>
+<td align="right">15.6%</td>
+<td align="right">30093</td>
 </tr>
 <tr>
-<td align="left">129</td>
-<td align="left">🟡 Roach</td>
-<td align="left">Storm</td>
+<td align="left">119</td>
+<td align="left">🟡 Butler</td>
+<td align="left">Alliance</td>
 <td align="right"><b>1498</b></td>
-<td align="right">25.1%</td>
-<td align="right">49.6%</td>
-<td align="right">36.2%</td>
-<td align="right">22.3%</td>
-<td align="right">20.2%</td>
-<td align="right">16.9%</td>
-<td align="right">4039</td>
+<td align="right">25.5%</td>
+<td align="right">55.5%</td>
+<td align="right">32.5%</td>
+<td align="right">24.6%</td>
+<td align="right">19.7%</td>
+<td align="right">17.3%</td>
+<td align="right">5022</td>
 </tr>
 <tr>
-<td align="left">130</td>
+<td align="left">120</td>
 <td align="left">🟡 Seeker</td>
 <td align="left">Incursion</td>
 <td align="right"><b>1498</b></td>
-<td align="right">25.3%</td>
-<td align="right">50.6%</td>
-<td align="right">32.8%</td>
+<td align="right">25.1%</td>
+<td align="right">50.2%</td>
+<td align="right">32.2%</td>
+<td align="right">24.6%</td>
+<td align="right">20.5%</td>
+<td align="right">17.0%</td>
+<td align="right">4970</td>
+</tr>
+<tr>
+<td align="left">121</td>
+<td align="left">🟡 Dictator</td>
+<td align="left">Base</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.0%</td>
+<td align="right">47.4%</td>
+<td align="right">32.2%</td>
+<td align="right">23.8%</td>
+<td align="right">18.8%</td>
+<td align="right">16.7%</td>
+<td align="right">30058</td>
+</tr>
+<tr>
+<td align="left">122</td>
+<td align="left">🟡 Roach</td>
+<td align="left">Storm</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.9%</td>
+<td align="right">48.3%</td>
+<td align="right">35.0%</td>
+<td align="right">22.8%</td>
+<td align="right">20.2%</td>
+<td align="right">17.4%</td>
+<td align="right">4846</td>
+</tr>
+<tr>
+<td align="left">123</td>
+<td align="left">🟡 Vulch</td>
+<td align="left">Base</td>
+<td align="right"><b>1498</b></td>
+<td align="right">23.8%</td>
+<td align="right">47.4%</td>
+<td align="right">31.7%</td>
+<td align="right">23.8%</td>
+<td align="right">18.8%</td>
+<td align="right">16.3%</td>
+<td align="right">29969</td>
+</tr>
+<tr>
+<td align="left">124</td>
+<td align="left">🟡 Grumpus_Alt</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.7%</td>
+<td align="right">48.0%</td>
+<td align="right">32.1%</td>
+<td align="right">22.6%</td>
+<td align="right">22.0%</td>
+<td align="right">15.9%</td>
+<td align="right">4218</td>
+</tr>
+<tr>
+<td align="left">125</td>
+<td align="left">🟡 Xenophile</td>
+<td align="left">Conflict</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.2%</td>
+<td align="right">47.0%</td>
+<td align="right">32.9%</td>
+<td align="right">24.6%</td>
+<td align="right">19.8%</td>
+<td align="right">15.3%</td>
+<td align="right">4938</td>
+</tr>
+<tr>
+<td align="left">126</td>
+<td align="left">🟡 Cavalry</td>
+<td align="left">Conflict</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.6%</td>
+<td align="right">45.5%</td>
+<td align="right">31.9%</td>
+<td align="right">25.8%</td>
+<td align="right">20.6%</td>
+<td align="right">16.7%</td>
+<td align="right">5067</td>
+</tr>
+<tr>
+<td align="left">127</td>
+<td align="left">🟡 Pirate</td>
+<td align="left">Dominion</td>
+<td align="right"><b>1498</b></td>
 <td align="right">25.0%</td>
+<td align="right">50.9%</td>
+<td align="right">31.9%</td>
+<td align="right">24.2%</td>
+<td align="right">20.7%</td>
+<td align="right">16.8%</td>
+<td align="right">4560</td>
+</tr>
+<tr>
+<td align="left">128</td>
+<td align="left">🟡 Boomerang</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1498</b></td>
+<td align="right">25.0%</td>
+<td align="right">49.4%</td>
+<td align="right">34.3%</td>
+<td align="right">24.5%</td>
 <td align="right">20.4%</td>
-<td align="right">16.9%</td>
-<td align="right">4143</td>
+<td align="right">16.6%</td>
+<td align="right">4216</td>
+</tr>
+<tr>
+<td align="left">129</td>
+<td align="left">🟡 Pickpocket</td>
+<td align="left">Dominion</td>
+<td align="right"><b>1498</b></td>
+<td align="right">25.0%</td>
+<td align="right">48.1%</td>
+<td align="right">34.1%</td>
+<td align="right">24.5%</td>
+<td align="right">21.8%</td>
+<td align="right">15.7%</td>
+<td align="right">4659</td>
+</tr>
+<tr>
+<td align="left">130</td>
+<td align="left">🟡 Demon</td>
+<td align="left">Custom</td>
+<td align="right"><b>1498</b></td>
+<td align="right">23.6%</td>
+<td align="right">47.0%</td>
+<td align="right">32.6%</td>
+<td align="right">22.5%</td>
+<td align="right">18.9%</td>
+<td align="right">16.4%</td>
+<td align="right">29883</td>
 </tr>
 <tr>
 <td align="left">131</td>
-<td align="left">🟡 Void_Alt</td>
-<td align="left">Odyssey</td>
+<td align="left">🟡 Chosen</td>
+<td align="left">Base</td>
 <td align="right"><b>1498</b></td>
-<td align="right">23.9%</td>
-<td align="right">48.2%</td>
-<td align="right">33.7%</td>
+<td align="right">24.0%</td>
+<td align="right">46.9%</td>
+<td align="right">32.4%</td>
 <td align="right">23.7%</td>
-<td align="right">17.6%</td>
-<td align="right">16.2%</td>
-<td align="right">3396</td>
+<td align="right">19.3%</td>
+<td align="right">16.1%</td>
+<td align="right">29983</td>
 </tr>
 <tr>
 <td align="left">132</td>
+<td align="left">🟡 Mite</td>
+<td align="left">Base</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.1%</td>
+<td align="right">47.6%</td>
+<td align="right">31.7%</td>
+<td align="right">24.2%</td>
+<td align="right">19.6%</td>
+<td align="right">16.7%</td>
+<td align="right">30005</td>
+</tr>
+<tr>
+<td align="left">133</td>
+<td align="left">🟡 Will</td>
+<td align="left">Base</td>
+<td align="right"><b>1498</b></td>
+<td align="right">23.8%</td>
+<td align="right">46.9%</td>
+<td align="right">31.8%</td>
+<td align="right">24.1%</td>
+<td align="right">18.9%</td>
+<td align="right">16.2%</td>
+<td align="right">30075</td>
+</tr>
+<tr>
+<td align="left">134</td>
+<td align="left">🟡 Brute</td>
+<td align="left">Storm</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.9%</td>
+<td align="right">49.4%</td>
+<td align="right">33.9%</td>
+<td align="right">24.5%</td>
+<td align="right">19.9%</td>
+<td align="right">16.6%</td>
+<td align="right">4857</td>
+</tr>
+<tr>
+<td align="left">135</td>
+<td align="left">🟡 Extortionist</td>
+<td align="left">Alliance</td>
+<td align="right"><b>1498</b></td>
+<td align="right">25.1%</td>
+<td align="right">50.0%</td>
+<td align="right">33.4%</td>
+<td align="right">25.4%</td>
+<td align="right">19.8%</td>
+<td align="right">16.6%</td>
+<td align="right">4973</td>
+</tr>
+<tr>
+<td align="left">136</td>
+<td align="left">🟡 Animal</td>
+<td align="left">Alliance</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.8%</td>
+<td align="right">55.9%</td>
+<td align="right">30.0%</td>
+<td align="right">22.6%</td>
+<td align="right">19.4%</td>
+<td align="right">18.4%</td>
+<td align="right">5066</td>
+</tr>
+<tr>
+<td align="left">137</td>
+<td align="left">🟡 Void_Alt</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.1%</td>
+<td align="right">47.5%</td>
+<td align="right">33.2%</td>
+<td align="right">23.9%</td>
+<td align="right">17.8%</td>
+<td align="right">17.1%</td>
+<td align="right">4079</td>
+</tr>
+<tr>
+<td align="left">138</td>
 <td align="left">🟡 Reserve</td>
 <td align="left">Base</td>
 <td align="right"><b>1498</b></td>
 <td align="right">24.0%</td>
 <td align="right">48.4%</td>
-<td align="right">31.5%</td>
-<td align="right">23.9%</td>
-<td align="right">18.8%</td>
-<td align="right">16.4%</td>
-<td align="right">24922</td>
-</tr>
-<tr>
-<td align="left">133</td>
-<td align="left">🟡 Saboteur</td>
-<td align="left">Conflict</td>
-<td align="right"><b>1498</b></td>
-<td align="right">23.9%</td>
-<td align="right">47.2%</td>
-<td align="right">30.3%</td>
-<td align="right">22.9%</td>
-<td align="right">20.5%</td>
-<td align="right">16.8%</td>
-<td align="right">4076</td>
-</tr>
-<tr>
-<td align="left">134</td>
-<td align="left">🟡 Pirate</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.8%</td>
-<td align="right">52.3%</td>
-<td align="right">30.6%</td>
-<td align="right">24.0%</td>
-<td align="right">21.3%</td>
-<td align="right">16.4%</td>
-<td align="right">3804</td>
-</tr>
-<tr>
-<td align="left">135</td>
-<td align="left">🟡 Boomerang</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.9%</td>
-<td align="right">49.3%</td>
-<td align="right">33.3%</td>
-<td align="right">23.9%</td>
-<td align="right">20.7%</td>
-<td align="right">16.9%</td>
-<td align="right">3493</td>
-</tr>
-<tr>
-<td align="left">136</td>
-<td align="left">🟡 Sneak</td>
-<td align="left">Storm</td>
-<td align="right"><b>1498</b></td>
-<td align="right">23.2%</td>
-<td align="right">47.7%</td>
-<td align="right">30.8%</td>
-<td align="right">24.1%</td>
-<td align="right">17.1%</td>
-<td align="right">15.3%</td>
-<td align="right">3895</td>
-</tr>
-<tr>
-<td align="left">137</td>
-<td align="left">🟡 Pickpocket</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.8%</td>
-<td align="right">49.2%</td>
-<td align="right">32.9%</td>
-<td align="right">24.3%</td>
-<td align="right">21.4%</td>
-<td align="right">15.3%</td>
-<td align="right">3935</td>
-</tr>
-<tr>
-<td align="left">138</td>
-<td align="left">🟡 Butler</td>
-<td align="left">Alliance</td>
-<td align="right"><b>1498</b></td>
-<td align="right">25.8%</td>
-<td align="right">55.6%</td>
 <td align="right">32.1%</td>
-<td align="right">25.1%</td>
-<td align="right">20.3%</td>
-<td align="right">17.5%</td>
-<td align="right">4142</td>
+<td align="right">23.8%</td>
+<td align="right">18.8%</td>
+<td align="right">16.1%</td>
+<td align="right">29954</td>
 </tr>
 <tr>
 <td align="left">139</td>
-<td align="left">🟡 Lunatic</td>
-<td align="left">Conflict</td>
+<td align="left">🟡 Angler</td>
+<td align="left">Dominion</td>
 <td align="right"><b>1498</b></td>
-<td align="right">24.4%</td>
-<td align="right">50.0%</td>
-<td align="right">33.4%</td>
-<td align="right">24.1%</td>
-<td align="right">17.8%</td>
-<td align="right">16.0%</td>
-<td align="right">4176</td>
+<td align="right">25.0%</td>
+<td align="right">49.4%</td>
+<td align="right">34.4%</td>
+<td align="right">25.8%</td>
+<td align="right">18.3%</td>
+<td align="right">16.9%</td>
+<td align="right">4571</td>
 </tr>
 <tr>
 <td align="left">140</td>
-<td align="left">🟡 Negator</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.0%</td>
-<td align="right">44.9%</td>
-<td align="right">31.7%</td>
-<td align="right">24.6%</td>
-<td align="right">18.4%</td>
-<td align="right">16.9%</td>
-<td align="right">3461</td>
-</tr>
-<tr>
-<td align="left">141</td>
-<td align="left">🟡 Trader</td>
+<td align="left">🟡 Calculator</td>
 <td align="left">Base</td>
 <td align="right"><b>1498</b></td>
 <td align="right">23.7%</td>
-<td align="right">47.3%</td>
-<td align="right">32.3%</td>
-<td align="right">24.6%</td>
-<td align="right">17.8%</td>
-<td align="right">16.0%</td>
-<td align="right">24932</td>
+<td align="right">46.7%</td>
+<td align="right">32.0%</td>
+<td align="right">23.8%</td>
+<td align="right">18.8%</td>
+<td align="right">16.1%</td>
+<td align="right">29703</td>
+</tr>
+<tr>
+<td align="left">141</td>
+<td align="left">🟡 Phantasm</td>
+<td align="left">Storm</td>
+<td align="right"><b>1498</b></td>
+<td align="right">25.3%</td>
+<td align="right">47.4%</td>
+<td align="right">32.6%</td>
+<td align="right">25.4%</td>
+<td align="right">21.7%</td>
+<td align="right">16.7%</td>
+<td align="right">4769</td>
 </tr>
 <tr>
 <td align="left">142</td>
-<td align="left">🟡 Brute</td>
-<td align="left">Storm</td>
+<td align="left">🟡 Lunatic</td>
+<td align="left">Conflict</td>
 <td align="right"><b>1498</b></td>
-<td align="right">24.9%</td>
-<td align="right">52.0%</td>
-<td align="right">34.3%</td>
-<td align="right">23.6%</td>
-<td align="right">19.6%</td>
-<td align="right">16.5%</td>
-<td align="right">4030</td>
+<td align="right">24.2%</td>
+<td align="right">48.5%</td>
+<td align="right">33.2%</td>
+<td align="right">23.7%</td>
+<td align="right">18.0%</td>
+<td align="right">16.3%</td>
+<td align="right">4978</td>
 </tr>
 <tr>
 <td align="left">143</td>
-<td align="left">🟡 Animal</td>
-<td align="left">Alliance</td>
+<td align="left">🟡 Saboteur</td>
+<td align="left">Conflict</td>
 <td align="right"><b>1498</b></td>
-<td align="right">24.5%</td>
-<td align="right">56.0%</td>
-<td align="right">30.6%</td>
-<td align="right">22.8%</td>
-<td align="right">18.9%</td>
-<td align="right">17.6%</td>
-<td align="right">4197</td>
+<td align="right">23.8%</td>
+<td align="right">48.1%</td>
+<td align="right">30.1%</td>
+<td align="right">22.6%</td>
+<td align="right">20.6%</td>
+<td align="right">16.2%</td>
+<td align="right">4921</td>
 </tr>
 <tr>
 <td align="left">144</td>
 <td align="left">🟡 Warhawk</td>
 <td align="left">Conflict</td>
 <td align="right"><b>1498</b></td>
-<td align="right">24.4%</td>
-<td align="right">47.6%</td>
-<td align="right">30.0%</td>
-<td align="right">25.2%</td>
-<td align="right">19.1%</td>
-<td align="right">17.9%</td>
-<td align="right">4099</td>
+<td align="right">24.3%</td>
+<td align="right">47.7%</td>
+<td align="right">30.6%</td>
+<td align="right">25.5%</td>
+<td align="right">18.9%</td>
+<td align="right">17.1%</td>
+<td align="right">4897</td>
 </tr>
 <tr>
 <td align="left">145</td>
-<td align="left">🟡 Cudgel</td>
-<td align="left">Base</td>
+<td align="left">🟡 Negator</td>
+<td align="left">Odyssey</td>
 <td align="right"><b>1498</b></td>
-<td align="right">23.7%</td>
-<td align="right">47.2%</td>
-<td align="right">31.9%</td>
-<td align="right">23.0%</td>
-<td align="right">19.0%</td>
-<td align="right">16.0%</td>
-<td align="right">24679</td>
+<td align="right">23.9%</td>
+<td align="right">45.8%</td>
+<td align="right">32.2%</td>
+<td align="right">24.4%</td>
+<td align="right">18.6%</td>
+<td align="right">15.8%</td>
+<td align="right">4141</td>
 </tr>
 <tr>
 <td align="left">146</td>
-<td align="left">🟡 Extortionist</td>
-<td align="left">Alliance</td>
+<td align="left">🟡 Trader</td>
+<td align="left">Base</td>
 <td align="right"><b>1498</b></td>
-<td align="right">25.1%</td>
-<td align="right">47.8%</td>
-<td align="right">33.3%</td>
-<td align="right">25.4%</td>
-<td align="right">20.2%</td>
-<td align="right">16.7%</td>
-<td align="right">4160</td>
+<td align="right">23.8%</td>
+<td align="right">47.7%</td>
+<td align="right">32.2%</td>
+<td align="right">24.3%</td>
+<td align="right">18.3%</td>
+<td align="right">16.0%</td>
+<td align="right">29963</td>
 </tr>
 <tr>
 <td align="left">147</td>
-<td align="left">🟡 Angler</td>
-<td align="left">Dominion</td>
+<td align="left">🟡 Sneak</td>
+<td align="left">Storm</td>
 <td align="right"><b>1498</b></td>
-<td align="right">25.1%</td>
-<td align="right">49.6%</td>
-<td align="right">34.5%</td>
-<td align="right">26.8%</td>
-<td align="right">17.8%</td>
-<td align="right">16.4%</td>
-<td align="right">3795</td>
+<td align="right">23.4%</td>
+<td align="right">49.7%</td>
+<td align="right">31.3%</td>
+<td align="right">24.2%</td>
+<td align="right">16.5%</td>
+<td align="right">15.5%</td>
+<td align="right">4691</td>
 </tr>
 <tr>
 <td align="left">148</td>
-<td align="left">🟡 Judge</td>
-<td align="left">Dominion</td>
+<td align="left">🟡 Bully</td>
+<td align="left">Incursion</td>
 <td align="right"><b>1498</b></td>
-<td align="right">24.7%</td>
-<td align="right">47.4%</td>
-<td align="right">31.5%</td>
-<td align="right">24.0%</td>
+<td align="right">25.5%</td>
+<td align="right">48.6%</td>
+<td align="right">34.5%</td>
+<td align="right">24.5%</td>
 <td align="right">21.2%</td>
-<td align="right">16.8%</td>
-<td align="right">3793</td>
+<td align="right">18.3%</td>
+<td align="right">4994</td>
 </tr>
 <tr>
 <td align="left">149</td>
 <td align="left">🟡 Geek</td>
 <td align="left">Odyssey</td>
 <td align="right"><b>1498</b></td>
-<td align="right">24.5%</td>
-<td align="right">48.4%</td>
-<td align="right">33.2%</td>
-<td align="right">24.3%</td>
+<td align="right">24.4%</td>
+<td align="right">48.2%</td>
+<td align="right">33.4%</td>
+<td align="right">23.8%</td>
 <td align="right">17.6%</td>
-<td align="right">17.2%</td>
-<td align="right">3499</td>
+<td align="right">16.7%</td>
+<td align="right">4187</td>
 </tr>
 <tr>
 <td align="left">150</td>
-<td align="left">🟡 Oracle</td>
-<td align="left">Base</td>
+<td align="left">🟡 Judge</td>
+<td align="left">Dominion</td>
 <td align="right"><b>1498</b></td>
-<td align="right">23.7%</td>
-<td align="right">48.2%</td>
-<td align="right">32.0%</td>
-<td align="right">23.8%</td>
-<td align="right">18.5%</td>
-<td align="right">15.8%</td>
-<td align="right">24719</td>
+<td align="right">24.2%</td>
+<td align="right">46.2%</td>
+<td align="right">31.5%</td>
+<td align="right">24.5%</td>
+<td align="right">20.4%</td>
+<td align="right">16.1%</td>
+<td align="right">4549</td>
 </tr>
 <tr>
 <td align="left">151</td>
@@ -2223,129 +2223,129 @@ DEFENSE TOTAL = Card Value + Ship Count + Kickers + Power Mods + Reinforcements 
 <td align="left">Eons</td>
 <td align="right"><b>1498</b></td>
 <td align="right">24.3%</td>
-<td align="right">47.9%</td>
-<td align="right">32.3%</td>
-<td align="right">24.4%</td>
-<td align="right">18.3%</td>
-<td align="right">16.9%</td>
-<td align="right">3885</td>
+<td align="right">47.5%</td>
+<td align="right">31.6%</td>
+<td align="right">25.3%</td>
+<td align="right">18.4%</td>
+<td align="right">16.8%</td>
+<td align="right">4629</td>
 </tr>
 <tr>
 <td align="left">152</td>
+<td align="left">🟡 Cudgel</td>
+<td align="left">Base</td>
+<td align="right"><b>1498</b></td>
+<td align="right">23.7%</td>
+<td align="right">47.0%</td>
+<td align="right">32.1%</td>
+<td align="right">23.0%</td>
+<td align="right">19.2%</td>
+<td align="right">15.9%</td>
+<td align="right">29776</td>
+</tr>
+<tr>
+<td align="left">153</td>
+<td align="left">🟡 Throwback</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.0%</td>
+<td align="right">49.0%</td>
+<td align="right">33.6%</td>
+<td align="right">23.2%</td>
+<td align="right">18.9%</td>
+<td align="right">15.1%</td>
+<td align="right">4213</td>
+</tr>
+<tr>
+<td align="left">154</td>
+<td align="left">🟡 Oracle</td>
+<td align="left">Base</td>
+<td align="right"><b>1498</b></td>
+<td align="right">23.7%</td>
+<td align="right">49.0%</td>
+<td align="right">31.9%</td>
+<td align="right">23.7%</td>
+<td align="right">18.4%</td>
+<td align="right">15.8%</td>
+<td align="right">29720</td>
+</tr>
+<tr>
+<td align="left">155</td>
+<td align="left">🟡 Doppelganger</td>
+<td align="left">Dominion</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.7%</td>
+<td align="right">46.7%</td>
+<td align="right">31.7%</td>
+<td align="right">26.6%</td>
+<td align="right">19.7%</td>
+<td align="right">16.8%</td>
+<td align="right">4473</td>
+</tr>
+<tr>
+<td align="left">156</td>
+<td align="left">🟡 Maven</td>
+<td align="left">Eons</td>
+<td align="right"><b>1498</b></td>
+<td align="right">25.0%</td>
+<td align="right">48.5%</td>
+<td align="right">34.1%</td>
+<td align="right">26.2%</td>
+<td align="right">18.8%</td>
+<td align="right">16.7%</td>
+<td align="right">4626</td>
+</tr>
+<tr>
+<td align="left">157</td>
 <td align="left">🟡 TickTock</td>
 <td align="left">Base</td>
 <td align="right"><b>1498</b></td>
 <td align="right">23.6%</td>
-<td align="right">48.6%</td>
-<td align="right">31.2%</td>
-<td align="right">23.4%</td>
+<td align="right">48.2%</td>
+<td align="right">31.9%</td>
+<td align="right">23.2%</td>
 <td align="right">18.5%</td>
 <td align="right">15.7%</td>
-<td align="right">24877</td>
+<td align="right">29816</td>
 </tr>
 <tr>
-<td align="left">153</td>
-<td align="left">🟡 Phantasm</td>
-<td align="left">Storm</td>
-<td align="right"><b>1498</b></td>
-<td align="right">25.0%</td>
-<td align="right">47.5%</td>
-<td align="right">31.5%</td>
-<td align="right">25.7%</td>
-<td align="right">21.2%</td>
-<td align="right">16.5%</td>
-<td align="right">3965</td>
-</tr>
-<tr>
-<td align="left">154</td>
-<td align="left">🟡 Throwback</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.2%</td>
-<td align="right">50.5%</td>
-<td align="right">33.8%</td>
-<td align="right">23.0%</td>
-<td align="right">19.3%</td>
-<td align="right">15.3%</td>
-<td align="right">3519</td>
-</tr>
-<tr>
-<td align="left">155</td>
+<td align="left">158</td>
 <td align="left">🟡 Extractor</td>
 <td align="left">Odyssey</td>
 <td align="right"><b>1498</b></td>
 <td align="right">24.0%</td>
-<td align="right">45.1%</td>
-<td align="right">30.6%</td>
-<td align="right">22.0%</td>
-<td align="right">21.4%</td>
-<td align="right">16.5%</td>
-<td align="right">3492</td>
-</tr>
-<tr>
-<td align="left">156</td>
-<td align="left">🟡 Bully</td>
-<td align="left">Incursion</td>
-<td align="right"><b>1498</b></td>
-<td align="right">25.2%</td>
-<td align="right">48.6%</td>
-<td align="right">35.3%</td>
-<td align="right">23.6%</td>
-<td align="right">20.7%</td>
-<td align="right">18.1%</td>
-<td align="right">4195</td>
-</tr>
-<tr>
-<td align="left">157</td>
-<td align="left">🟡 Doppelganger</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.6%</td>
-<td align="right">48.1%</td>
+<td align="right">45.0%</td>
 <td align="right">30.7%</td>
-<td align="right">27.2%</td>
-<td align="right">19.3%</td>
-<td align="right">17.0%</td>
-<td align="right">3721</td>
-</tr>
-<tr>
-<td align="left">158</td>
-<td align="left">🟡 Alien</td>
-<td align="left">Eons</td>
-<td align="right"><b>1498</b></td>
-<td align="right">23.9%</td>
-<td align="right">48.2%</td>
-<td align="right">31.6%</td>
-<td align="right">25.2%</td>
-<td align="right">18.2%</td>
-<td align="right">16.1%</td>
-<td align="right">3841</td>
+<td align="right">22.2%</td>
+<td align="right">21.4%</td>
+<td align="right">16.6%</td>
+<td align="right">4170</td>
 </tr>
 <tr>
 <td align="left">159</td>
-<td align="left">🟡 Reactor</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.7%</td>
-<td align="right">48.6%</td>
-<td align="right">32.0%</td>
-<td align="right">23.3%</td>
-<td align="right">23.3%</td>
-<td align="right">15.3%</td>
-<td align="right">3820</td>
-</tr>
-<tr>
-<td align="left">160</td>
 <td align="left">🟡 Glutton</td>
 <td align="left">Conflict</td>
 <td align="right"><b>1498</b></td>
 <td align="right">24.5%</td>
-<td align="right">50.7%</td>
-<td align="right">33.2%</td>
-<td align="right">24.6%</td>
-<td align="right">18.9%</td>
-<td align="right">16.2%</td>
-<td align="right">4165</td>
+<td align="right">49.8%</td>
+<td align="right">32.8%</td>
+<td align="right">24.5%</td>
+<td align="right">19.3%</td>
+<td align="right">16.4%</td>
+<td align="right">4997</td>
+</tr>
+<tr>
+<td align="left">160</td>
+<td align="left">🟡 Alien</td>
+<td align="left">Eons</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.3%</td>
+<td align="right">48.5%</td>
+<td align="right">32.7%</td>
+<td align="right">24.7%</td>
+<td align="right">18.8%</td>
+<td align="right">17.0%</td>
+<td align="right">4629</td>
 </tr>
 <tr>
 <td align="left">161</td>
@@ -2353,935 +2353,935 @@ DEFENSE TOTAL = Card Value + Ship Count + Kickers + Power Mods + Reinforcements 
 <td align="left">Alliance</td>
 <td align="right"><b>1498</b></td>
 <td align="right">24.5%</td>
-<td align="right">53.1%</td>
-<td align="right">31.1%</td>
-<td align="right">23.1%</td>
+<td align="right">53.8%</td>
+<td align="right">31.7%</td>
+<td align="right">22.6%</td>
 <td align="right">19.0%</td>
-<td align="right">16.9%</td>
-<td align="right">4122</td>
+<td align="right">16.6%</td>
+<td align="right">4945</td>
 </tr>
 <tr>
 <td align="left">162</td>
-<td align="left">🟡 Aristocrat</td>
+<td align="left">🟡 Reactor</td>
 <td align="left">Dominion</td>
 <td align="right"><b>1498</b></td>
-<td align="right">23.7%</td>
-<td align="right">48.1%</td>
-<td align="right">31.4%</td>
-<td align="right">23.9%</td>
-<td align="right">20.3%</td>
+<td align="right">24.2%</td>
+<td align="right">48.2%</td>
+<td align="right">32.3%</td>
+<td align="right">23.2%</td>
+<td align="right">22.3%</td>
 <td align="right">15.2%</td>
-<td align="right">3887</td>
+<td align="right">4583</td>
 </tr>
 <tr>
 <td align="left">163</td>
-<td align="left">🟡 Maven</td>
-<td align="left">Eons</td>
+<td align="left">🟡 Explorer</td>
+<td align="left">Dominion</td>
 <td align="right"><b>1498</b></td>
-<td align="right">24.9%</td>
-<td align="right">48.2%</td>
-<td align="right">33.7%</td>
-<td align="right">26.4%</td>
-<td align="right">18.7%</td>
-<td align="right">16.6%</td>
-<td align="right">3879</td>
+<td align="right">25.2%</td>
+<td align="right">50.3%</td>
+<td align="right">33.5%</td>
+<td align="right">25.2%</td>
+<td align="right">20.5%</td>
+<td align="right">17.0%</td>
+<td align="right">4610</td>
 </tr>
 <tr>
 <td align="left">164</td>
-<td align="left">🟡 Mercenary</td>
+<td align="left">🟡 Merchant</td>
 <td align="left">Incursion</td>
 <td align="right"><b>1498</b></td>
-<td align="right">23.7%</td>
-<td align="right">48.1%</td>
-<td align="right">32.8%</td>
-<td align="right">23.3%</td>
-<td align="right">16.4%</td>
-<td align="right">17.1%</td>
-<td align="right">4180</td>
+<td align="right">25.1%</td>
+<td align="right">48.6%</td>
+<td align="right">32.6%</td>
+<td align="right">25.1%</td>
+<td align="right">20.3%</td>
+<td align="right">17.3%</td>
+<td align="right">5113</td>
 </tr>
 <tr>
 <td align="left">165</td>
+<td align="left">🟡 Sapient</td>
+<td align="left">Alliance</td>
+<td align="right"><b>1498</b></td>
+<td align="right">25.2%</td>
+<td align="right">46.8%</td>
+<td align="right">35.0%</td>
+<td align="right">25.3%</td>
+<td align="right">21.5%</td>
+<td align="right">17.0%</td>
+<td align="right">5074</td>
+</tr>
+<tr>
+<td align="left">166</td>
 <td align="left">🟡 Cyborg</td>
 <td align="left">Alliance</td>
 <td align="right"><b>1498</b></td>
 <td align="right">24.3%</td>
-<td align="right">51.4%</td>
-<td align="right">32.0%</td>
-<td align="right">25.2%</td>
-<td align="right">20.2%</td>
-<td align="right">15.7%</td>
-<td align="right">4277</td>
-</tr>
-<tr>
-<td align="left">166</td>
-<td align="left">🟡 Surgeon</td>
-<td align="left">Eons</td>
-<td align="right"><b>1498</b></td>
-<td align="right">23.7%</td>
-<td align="right">50.3%</td>
-<td align="right">29.2%</td>
-<td align="right">22.7%</td>
-<td align="right">20.0%</td>
-<td align="right">16.2%</td>
-<td align="right">3902</td>
+<td align="right">51.6%</td>
+<td align="right">31.9%</td>
+<td align="right">24.7%</td>
+<td align="right">19.9%</td>
+<td align="right">15.5%</td>
+<td align="right">5074</td>
 </tr>
 <tr>
 <td align="left">167</td>
 <td align="left">🟡 Guerrilla</td>
 <td align="left">Incursion</td>
 <td align="right"><b>1498</b></td>
-<td align="right">23.9%</td>
-<td align="right">48.7%</td>
-<td align="right">34.3%</td>
-<td align="right">21.9%</td>
-<td align="right">18.8%</td>
-<td align="right">16.0%</td>
-<td align="right">4232</td>
+<td align="right">24.1%</td>
+<td align="right">49.4%</td>
+<td align="right">34.0%</td>
+<td align="right">22.6%</td>
+<td align="right">19.1%</td>
+<td align="right">16.4%</td>
+<td align="right">5021</td>
 </tr>
 <tr>
 <td align="left">168</td>
-<td align="left">🟡 Crystal</td>
-<td align="left">Alliance</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.0%</td>
-<td align="right">45.0%</td>
-<td align="right">35.5%</td>
-<td align="right">24.4%</td>
-<td align="right">19.1%</td>
-<td align="right">15.8%</td>
-<td align="right">4186</td>
-</tr>
-<tr>
-<td align="left">169</td>
 <td align="left">🟡 Mirage</td>
 <td align="left">Dominion</td>
 <td align="right"><b>1498</b></td>
-<td align="right">24.5%</td>
-<td align="right">51.4%</td>
-<td align="right">30.9%</td>
 <td align="right">24.2%</td>
-<td align="right">19.5%</td>
-<td align="right">16.7%</td>
-<td align="right">3915</td>
-</tr>
-<tr>
-<td align="left">170</td>
-<td align="left">🟡 Tourist</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.5%</td>
-<td align="right">48.7%</td>
+<td align="right">51.1%</td>
 <td align="right">30.6%</td>
-<td align="right">26.0%</td>
-<td align="right">20.0%</td>
+<td align="right">23.9%</td>
+<td align="right">19.6%</td>
 <td align="right">16.6%</td>
-<td align="right">3922</td>
+<td align="right">4732</td>
 </tr>
 <tr>
-<td align="left">171</td>
+<td align="left">169</td>
 <td align="left">🟡 Host</td>
 <td align="left">Dominion</td>
 <td align="right"><b>1498</b></td>
-<td align="right">24.2%</td>
-<td align="right">52.5%</td>
-<td align="right">33.5%</td>
-<td align="right">24.9%</td>
-<td align="right">17.5%</td>
-<td align="right">15.6%</td>
-<td align="right">3865</td>
+<td align="right">24.3%</td>
+<td align="right">52.2%</td>
+<td align="right">33.4%</td>
+<td align="right">24.4%</td>
+<td align="right">17.6%</td>
+<td align="right">16.2%</td>
+<td align="right">4657</td>
+</tr>
+<tr>
+<td align="left">170</td>
+<td align="left">🟡 Sadist_Alt</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1498</b></td>
+<td align="right">25.2%</td>
+<td align="right">46.0%</td>
+<td align="right">33.6%</td>
+<td align="right">27.7%</td>
+<td align="right">19.4%</td>
+<td align="right">17.4%</td>
+<td align="right">4231</td>
+</tr>
+<tr>
+<td align="left">171</td>
+<td align="left">🟡 Crystal</td>
+<td align="left">Alliance</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.1%</td>
+<td align="right">46.1%</td>
+<td align="right">35.0%</td>
+<td align="right">23.8%</td>
+<td align="right">19.7%</td>
+<td align="right">15.8%</td>
+<td align="right">5053</td>
 </tr>
 <tr>
 <td align="left">172</td>
-<td align="left">🟡 Witch</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.4%</td>
-<td align="right">45.8%</td>
-<td align="right">32.3%</td>
-<td align="right">23.7%</td>
-<td align="right">20.7%</td>
-<td align="right">17.3%</td>
-<td align="right">3509</td>
-</tr>
-<tr>
-<td align="left">173</td>
-<td align="left">🟡 PackRat</td>
+<td align="left">🟡 Surgeon</td>
 <td align="left">Eons</td>
 <td align="right"><b>1498</b></td>
 <td align="right">23.9%</td>
-<td align="right">49.2%</td>
-<td align="right">31.2%</td>
-<td align="right">21.5%</td>
-<td align="right">20.6%</td>
-<td align="right">16.6%</td>
-<td align="right">3779</td>
+<td align="right">51.1%</td>
+<td align="right">30.1%</td>
+<td align="right">22.7%</td>
+<td align="right">21.0%</td>
+<td align="right">15.4%</td>
+<td align="right">4656</td>
+</tr>
+<tr>
+<td align="left">173</td>
+<td align="left">🟡 Witch</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.2%</td>
+<td align="right">46.1%</td>
+<td align="right">32.0%</td>
+<td align="right">23.8%</td>
+<td align="right">20.5%</td>
+<td align="right">16.4%</td>
+<td align="right">4225</td>
 </tr>
 <tr>
 <td align="left">174</td>
+<td align="left">🟡 Mercenary</td>
+<td align="left">Incursion</td>
+<td align="right"><b>1498</b></td>
+<td align="right">23.7%</td>
+<td align="right">47.7%</td>
+<td align="right">32.5%</td>
+<td align="right">23.0%</td>
+<td align="right">17.0%</td>
+<td align="right">16.9%</td>
+<td align="right">5021</td>
+</tr>
+<tr>
+<td align="left">175</td>
+<td align="left">🟡 Aristocrat</td>
+<td align="left">Dominion</td>
+<td align="right"><b>1498</b></td>
+<td align="right">23.6%</td>
+<td align="right">47.8%</td>
+<td align="right">30.8%</td>
+<td align="right">24.2%</td>
+<td align="right">20.1%</td>
+<td align="right">15.1%</td>
+<td align="right">4641</td>
+</tr>
+<tr>
+<td align="left">176</td>
+<td align="left">🟡 Tourist</td>
+<td align="left">Dominion</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.0%</td>
+<td align="right">49.4%</td>
+<td align="right">29.2%</td>
+<td align="right">25.8%</td>
+<td align="right">19.9%</td>
+<td align="right">16.0%</td>
+<td align="right">4721</td>
+</tr>
+<tr>
+<td align="left">177</td>
+<td align="left">🟡 PackRat</td>
+<td align="left">Eons</td>
+<td align="right"><b>1498</b></td>
+<td align="right">24.1%</td>
+<td align="right">49.9%</td>
+<td align="right">31.7%</td>
+<td align="right">23.0%</td>
+<td align="right">19.5%</td>
+<td align="right">16.7%</td>
+<td align="right">4508</td>
+</tr>
+<tr>
+<td align="left">178</td>
+<td align="left">🟡 Converter</td>
+<td align="left">Storm</td>
+<td align="right"><b>1498</b></td>
+<td align="right">25.1%</td>
+<td align="right">47.6%</td>
+<td align="right">32.1%</td>
+<td align="right">25.7%</td>
+<td align="right">21.2%</td>
+<td align="right">17.2%</td>
+<td align="right">4714</td>
+</tr>
+<tr>
+<td align="left">179</td>
+<td align="left">🟡 Love</td>
+<td align="left">Dominion</td>
+<td align="right"><b>1498</b></td>
+<td align="right">25.0%</td>
+<td align="right">46.2%</td>
+<td align="right">33.1%</td>
+<td align="right">25.3%</td>
+<td align="right">20.6%</td>
+<td align="right">17.3%</td>
+<td align="right">4654</td>
+</tr>
+<tr>
+<td align="left">180</td>
 <td align="left">🟡 Swindler</td>
 <td align="left">Storm</td>
 <td align="right"><b>1498</b></td>
 <td align="right">23.9%</td>
-<td align="right">49.8%</td>
-<td align="right">33.6%</td>
+<td align="right">49.4%</td>
+<td align="right">33.9%</td>
 <td align="right">22.6%</td>
 <td align="right">18.3%</td>
-<td align="right">15.8%</td>
-<td align="right">4007</td>
-</tr>
-<tr>
-<td align="left">175</td>
-<td align="left">🟡 Merchant</td>
-<td align="left">Incursion</td>
-<td align="right"><b>1498</b></td>
-<td align="right">25.1%</td>
-<td align="right">50.3%</td>
-<td align="right">32.9%</td>
-<td align="right">25.2%</td>
-<td align="right">19.7%</td>
-<td align="right">16.8%</td>
-<td align="right">4235</td>
-</tr>
-<tr>
-<td align="left">176</td>
-<td align="left">🟡 Barbarian</td>
-<td align="left">Base</td>
-<td align="right"><b>1498</b></td>
-<td align="right">23.2%</td>
-<td align="right">41.0%</td>
-<td align="right">31.0%</td>
-<td align="right">23.4%</td>
-<td align="right">19.2%</td>
-<td align="right">16.6%</td>
-<td align="right">25012</td>
-</tr>
-<tr>
-<td align="left">177</td>
-<td align="left">🟡 Explorer</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1498</b></td>
-<td align="right">25.3%</td>
-<td align="right">51.3%</td>
-<td align="right">34.0%</td>
-<td align="right">25.1%</td>
-<td align="right">20.5%</td>
-<td align="right">16.8%</td>
-<td align="right">3842</td>
-</tr>
-<tr>
-<td align="left">178</td>
-<td align="left">🟡 Kamikaze</td>
-<td align="left">Base</td>
-<td align="right"><b>1498</b></td>
-<td align="right">23.1%</td>
-<td align="right">46.5%</td>
-<td align="right">30.6%</td>
-<td align="right">24.3%</td>
-<td align="right">18.5%</td>
-<td align="right">14.8%</td>
-<td align="right">24909</td>
-</tr>
-<tr>
-<td align="left">179</td>
-<td align="left">🟡 Sapient</td>
-<td align="left">Alliance</td>
-<td align="right"><b>1498</b></td>
-<td align="right">25.5%</td>
-<td align="right">46.1%</td>
-<td align="right">34.7%</td>
-<td align="right">25.7%</td>
-<td align="right">22.1%</td>
-<td align="right">17.1%</td>
-<td align="right">4203</td>
-</tr>
-<tr>
-<td align="left">180</td>
-<td align="left">🟡 Bride</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.1%</td>
-<td align="right">47.5%</td>
-<td align="right">37.1%</td>
-<td align="right">22.0%</td>
-<td align="right">20.0%</td>
-<td align="right">14.5%</td>
-<td align="right">3954</td>
+<td align="right">16.0%</td>
+<td align="right">4778</td>
 </tr>
 <tr>
 <td align="left">181</td>
-<td align="left">🟡 Aura</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.1%</td>
-<td align="right">48.7%</td>
+<td align="left">🟡 Muckraker</td>
+<td align="left">Dominion</td>
+<td align="right"><b>1497</b></td>
+<td align="right">24.9%</td>
+<td align="right">50.7%</td>
 <td align="right">32.8%</td>
-<td align="right">24.7%</td>
-<td align="right">18.7%</td>
-<td align="right">15.3%</td>
-<td align="right">3465</td>
+<td align="right">25.3%</td>
+<td align="right">19.4%</td>
+<td align="right">16.2%</td>
+<td align="right">4632</td>
 </tr>
 <tr>
 <td align="left">182</td>
-<td align="left">🟡 Sadist_Alt</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1498</b></td>
-<td align="right">25.4%</td>
-<td align="right">45.5%</td>
-<td align="right">33.9%</td>
-<td align="right">27.7%</td>
-<td align="right">19.4%</td>
-<td align="right">18.0%</td>
-<td align="right">3543</td>
+<td align="left">🟡 Sycophant</td>
+<td align="left">Storm</td>
+<td align="right"><b>1497</b></td>
+<td align="right">24.5%</td>
+<td align="right">51.6%</td>
+<td align="right">34.5%</td>
+<td align="right">21.5%</td>
+<td align="right">20.1%</td>
+<td align="right">16.4%</td>
+<td align="right">4788</td>
 </tr>
 <tr>
 <td align="left">183</td>
-<td align="left">🟡 Sycophant</td>
-<td align="left">Storm</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.4%</td>
-<td align="right">52.2%</td>
-<td align="right">34.2%</td>
-<td align="right">21.4%</td>
-<td align="right">20.2%</td>
-<td align="right">16.1%</td>
-<td align="right">3947</td>
+<td align="left">🟡 Bubble</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1497</b></td>
+<td align="right">24.5%</td>
+<td align="right">53.4%</td>
+<td align="right">34.1%</td>
+<td align="right">25.5%</td>
+<td align="right">19.3%</td>
+<td align="right">14.8%</td>
+<td align="right">4262</td>
 </tr>
 <tr>
 <td align="left">184</td>
-<td align="left">🟡 Love</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.9%</td>
-<td align="right">47.7%</td>
-<td align="right">33.8%</td>
-<td align="right">25.2%</td>
-<td align="right">20.0%</td>
-<td align="right">16.8%</td>
-<td align="right">3888</td>
+<td align="left">🟡 Cloak</td>
+<td align="left">Eons</td>
+<td align="right"><b>1497</b></td>
+<td align="right">24.7%</td>
+<td align="right">51.7%</td>
+<td align="right">32.8%</td>
+<td align="right">24.7%</td>
+<td align="right">20.4%</td>
+<td align="right">15.7%</td>
+<td align="right">4577</td>
 </tr>
 <tr>
 <td align="left">185</td>
-<td align="left">🟡 Bubble</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1498</b></td>
-<td align="right">25.0%</td>
-<td align="right">52.8%</td>
-<td align="right">33.0%</td>
-<td align="right">26.5%</td>
-<td align="right">20.9%</td>
-<td align="right">15.0%</td>
-<td align="right">3537</td>
+<td align="left">🟡 Bride</td>
+<td align="left">Dominion</td>
+<td align="right"><b>1497</b></td>
+<td align="right">23.9%</td>
+<td align="right">48.7%</td>
+<td align="right">36.0%</td>
+<td align="right">22.3%</td>
+<td align="right">19.5%</td>
+<td align="right">14.7%</td>
+<td align="right">4727</td>
 </tr>
 <tr>
 <td align="left">186</td>
-<td align="left">🟡 Converter</td>
-<td align="left">Storm</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.7%</td>
-<td align="right">47.1%</td>
-<td align="right">32.0%</td>
-<td align="right">25.8%</td>
-<td align="right">20.2%</td>
-<td align="right">16.8%</td>
-<td align="right">3881</td>
+<td align="left">🟡 Deuce</td>
+<td align="left">Incursion</td>
+<td align="right"><b>1497</b></td>
+<td align="right">24.5%</td>
+<td align="right">47.3%</td>
+<td align="right">32.3%</td>
+<td align="right">25.5%</td>
+<td align="right">19.2%</td>
+<td align="right">17.4%</td>
+<td align="right">5141</td>
 </tr>
 <tr>
 <td align="left">187</td>
-<td align="left">🟡 Mimic</td>
-<td align="left">Conflict</td>
-<td align="right"><b>1498</b></td>
-<td align="right">23.5%</td>
-<td align="right">46.5%</td>
-<td align="right">31.8%</td>
-<td align="right">22.3%</td>
-<td align="right">19.2%</td>
-<td align="right">15.1%</td>
-<td align="right">4224</td>
+<td align="left">🟡 Aura</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1497</b></td>
+<td align="right">23.8%</td>
+<td align="right">48.6%</td>
+<td align="right">32.4%</td>
+<td align="right">25.3%</td>
+<td align="right">17.6%</td>
+<td align="right">14.9%</td>
+<td align="right">4155</td>
 </tr>
 <tr>
 <td align="left">188</td>
-<td align="left">🟡 Muckraker</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.7%</td>
-<td align="right">50.2%</td>
-<td align="right">32.5%</td>
-<td align="right">23.7%</td>
+<td align="left">🟡 Barbarian</td>
+<td align="left">Base</td>
+<td align="right"><b>1497</b></td>
+<td align="right">23.2%</td>
+<td align="right">42.0%</td>
+<td align="right">30.9%</td>
+<td align="right">23.1%</td>
 <td align="right">19.2%</td>
-<td align="right">16.5%</td>
-<td align="right">3893</td>
+<td align="right">16.6%</td>
+<td align="right">29966</td>
 </tr>
 <tr>
 <td align="left">189</td>
-<td align="left">🟡 Cloak</td>
-<td align="left">Eons</td>
-<td align="right"><b>1498</b></td>
-<td align="right">25.0%</td>
-<td align="right">54.0%</td>
-<td align="right">32.5%</td>
-<td align="right">25.0%</td>
-<td align="right">20.9%</td>
-<td align="right">15.8%</td>
-<td align="right">3811</td>
+<td align="left">🟡 Kamikaze</td>
+<td align="left">Base</td>
+<td align="right"><b>1497</b></td>
+<td align="right">23.1%</td>
+<td align="right">46.5%</td>
+<td align="right">30.6%</td>
+<td align="right">24.4%</td>
+<td align="right">18.2%</td>
+<td align="right">15.2%</td>
+<td align="right">29793</td>
 </tr>
 <tr>
 <td align="left">190</td>
-<td align="left">🟡 Deuce</td>
-<td align="left">Incursion</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.5%</td>
-<td align="right">45.8%</td>
-<td align="right">31.1%</td>
-<td align="right">25.8%</td>
-<td align="right">19.4%</td>
-<td align="right">17.6%</td>
-<td align="right">4294</td>
+<td align="left">🟡 Filth</td>
+<td align="left">Conflict</td>
+<td align="right"><b>1497</b></td>
+<td align="right">24.6%</td>
+<td align="right">47.5%</td>
+<td align="right">31.2%</td>
+<td align="right">25.4%</td>
+<td align="right">19.7%</td>
+<td align="right">17.3%</td>
+<td align="right">5038</td>
 </tr>
 <tr>
 <td align="left">191</td>
 <td align="left">🟡 Wormhole</td>
 <td align="left">Storm</td>
-<td align="right"><b>1498</b></td>
+<td align="right"><b>1497</b></td>
 <td align="right">24.3%</td>
-<td align="right">47.0%</td>
-<td align="right">34.6%</td>
-<td align="right">23.2%</td>
-<td align="right">17.7%</td>
-<td align="right">17.7%</td>
-<td align="right">3921</td>
+<td align="right">47.3%</td>
+<td align="right">34.5%</td>
+<td align="right">24.2%</td>
+<td align="right">16.9%</td>
+<td align="right">17.6%</td>
+<td align="right">4791</td>
 </tr>
 <tr>
 <td align="left">192</td>
-<td align="left">🟡 Filth</td>
-<td align="left">Conflict</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.8%</td>
-<td align="right">48.4%</td>
-<td align="right">30.9%</td>
-<td align="right">26.4%</td>
-<td align="right">19.8%</td>
-<td align="right">17.4%</td>
-<td align="right">4217</td>
+<td align="left">🟡 Hurtz</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1497</b></td>
+<td align="right">25.6%</td>
+<td align="right">44.1%</td>
+<td align="right">37.7%</td>
+<td align="right">26.7%</td>
+<td align="right">20.5%</td>
+<td align="right">17.1%</td>
+<td align="right">4159</td>
 </tr>
 <tr>
 <td align="left">193</td>
-<td align="left">🟡 Assistant</td>
-<td align="left">Eons</td>
-<td align="right"><b>1498</b></td>
-<td align="right">24.3%</td>
-<td align="right">44.3%</td>
-<td align="right">32.9%</td>
-<td align="right">24.6%</td>
-<td align="right">19.8%</td>
-<td align="right">16.2%</td>
-<td align="right">3918</td>
+<td align="left">🟡 Mimic</td>
+<td align="left">Conflict</td>
+<td align="right"><b>1497</b></td>
+<td align="right">23.5%</td>
+<td align="right">46.2%</td>
+<td align="right">31.4%</td>
+<td align="right">22.5%</td>
+<td align="right">19.2%</td>
+<td align="right">15.6%</td>
+<td align="right">5068</td>
 </tr>
 <tr>
 <td align="left">194</td>
-<td align="left">🟡 Worm</td>
-<td align="left">Storm</td>
+<td align="left">🟡 Assistant</td>
+<td align="left">Eons</td>
 <td align="right"><b>1497</b></td>
-<td align="right">23.6%</td>
-<td align="right">49.2%</td>
-<td align="right">33.2%</td>
-<td align="right">24.8%</td>
-<td align="right">17.9%</td>
-<td align="right">14.3%</td>
-<td align="right">4061</td>
+<td align="right">24.2%</td>
+<td align="right">45.1%</td>
+<td align="right">32.6%</td>
+<td align="right">24.7%</td>
+<td align="right">19.0%</td>
+<td align="right">16.5%</td>
+<td align="right">4717</td>
 </tr>
 <tr>
 <td align="left">195</td>
 <td align="left">🟡 Quartermaster</td>
 <td align="left">Dominion</td>
 <td align="right"><b>1497</b></td>
-<td align="right">24.1%</td>
+<td align="right">24.2%</td>
 <td align="right">56.2%</td>
-<td align="right">28.9%</td>
-<td align="right">25.2%</td>
+<td align="right">29.0%</td>
+<td align="right">24.8%</td>
 <td align="right">17.8%</td>
-<td align="right">15.5%</td>
-<td align="right">3807</td>
+<td align="right">15.9%</td>
+<td align="right">4616</td>
 </tr>
 <tr>
 <td align="left">196</td>
-<td align="left">🟡 Booster</td>
-<td align="left">Odyssey</td>
+<td align="left">🟡 Lizard</td>
+<td align="left">Dominion</td>
 <td align="right"><b>1497</b></td>
-<td align="right">24.3%</td>
-<td align="right">53.9%</td>
-<td align="right">32.5%</td>
 <td align="right">24.6%</td>
-<td align="right">19.3%</td>
-<td align="right">14.4%</td>
-<td align="right">3532</td>
+<td align="right">47.1%</td>
+<td align="right">33.1%</td>
+<td align="right">27.1%</td>
+<td align="right">19.9%</td>
+<td align="right">15.0%</td>
+<td align="right">4573</td>
 </tr>
 <tr>
 <td align="left">197</td>
+<td align="left">🟡 Booster</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1497</b></td>
+<td align="right">24.1%</td>
+<td align="right">52.5%</td>
+<td align="right">31.7%</td>
+<td align="right">24.5%</td>
+<td align="right">19.9%</td>
+<td align="right">14.7%</td>
+<td align="right">4192</td>
+</tr>
+<tr>
+<td align="left">198</td>
 <td align="left">🟡 Peddler</td>
 <td align="left">Eons</td>
 <td align="right"><b>1497</b></td>
 <td align="right">24.2%</td>
-<td align="right">47.6%</td>
-<td align="right">31.4%</td>
-<td align="right">24.5%</td>
-<td align="right">19.0%</td>
-<td align="right">16.7%</td>
-<td align="right">3877</td>
-</tr>
-<tr>
-<td align="left">198</td>
-<td align="left">🟡 Moocher</td>
-<td align="left">Eons</td>
-<td align="right"><b>1497</b></td>
-<td align="right">24.0%</td>
-<td align="right">45.8%</td>
-<td align="right">32.6%</td>
-<td align="right">21.3%</td>
-<td align="right">22.7%</td>
-<td align="right">15.8%</td>
-<td align="right">3814</td>
+<td align="right">48.9%</td>
+<td align="right">32.7%</td>
+<td align="right">25.3%</td>
+<td align="right">18.1%</td>
+<td align="right">16.1%</td>
+<td align="right">4597</td>
 </tr>
 <tr>
 <td align="left">199</td>
-<td align="left">🟡 Lizard</td>
-<td align="left">Dominion</td>
+<td align="left">🟡 Worm</td>
+<td align="left">Storm</td>
 <td align="right"><b>1497</b></td>
-<td align="right">24.5%</td>
-<td align="right">46.9%</td>
-<td align="right">31.9%</td>
-<td align="right">26.5%</td>
-<td align="right">19.4%</td>
-<td align="right">15.8%</td>
-<td align="right">3810</td>
+<td align="right">23.7%</td>
+<td align="right">50.0%</td>
+<td align="right">33.5%</td>
+<td align="right">23.9%</td>
+<td align="right">18.1%</td>
+<td align="right">14.5%</td>
+<td align="right">4872</td>
 </tr>
 <tr>
 <td align="left">200</td>
+<td align="left">🟡 Squee</td>
+<td align="left">Storm</td>
+<td align="right"><b>1497</b></td>
+<td align="right">24.9%</td>
+<td align="right">51.3%</td>
+<td align="right">31.3%</td>
+<td align="right">24.6%</td>
+<td align="right">19.5%</td>
+<td align="right">17.7%</td>
+<td align="right">4812</td>
+</tr>
+<tr>
+<td align="left">201</td>
+<td align="left">🟡 Lloyd</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1497</b></td>
+<td align="right">24.8%</td>
+<td align="right">49.8%</td>
+<td align="right">30.9%</td>
+<td align="right">24.3%</td>
+<td align="right">21.8%</td>
+<td align="right">15.4%</td>
+<td align="right">4134</td>
+</tr>
+<tr>
+<td align="left">202</td>
 <td align="left">🟡 Magnet</td>
 <td align="left">Odyssey</td>
 <td align="right"><b>1497</b></td>
 <td align="right">23.8%</td>
-<td align="right">45.8%</td>
-<td align="right">30.8%</td>
-<td align="right">23.0%</td>
-<td align="right">21.1%</td>
-<td align="right">15.5%</td>
-<td align="right">3543</td>
-</tr>
-<tr>
-<td align="left">201</td>
-<td align="left">🟡 Daredevil</td>
-<td align="left">Dominion</td>
-<td align="right"><b>1497</b></td>
-<td align="right">23.8%</td>
-<td align="right">50.3%</td>
-<td align="right">28.5%</td>
-<td align="right">23.7%</td>
-<td align="right">20.0%</td>
-<td align="right">16.0%</td>
-<td align="right">3906</td>
-</tr>
-<tr>
-<td align="left">202</td>
-<td align="left">🟡 Hurtz</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1497</b></td>
-<td align="right">25.6%</td>
-<td align="right">44.5%</td>
-<td align="right">37.6%</td>
-<td align="right">27.8%</td>
-<td align="right">20.0%</td>
-<td align="right">16.7%</td>
-<td align="right">3515</td>
+<td align="right">44.7%</td>
+<td align="right">31.5%</td>
+<td align="right">22.7%</td>
+<td align="right">21.0%</td>
+<td align="right">15.8%</td>
+<td align="right">4190</td>
 </tr>
 <tr>
 <td align="left">203</td>
-<td align="left">🟡 Squee</td>
-<td align="left">Storm</td>
+<td align="left">🟡 Moocher</td>
+<td align="left">Eons</td>
 <td align="right"><b>1497</b></td>
-<td align="right">24.4%</td>
-<td align="right">52.0%</td>
-<td align="right">31.2%</td>
-<td align="right">23.5%</td>
-<td align="right">18.8%</td>
-<td align="right">17.4%</td>
-<td align="right">4011</td>
+<td align="right">23.4%</td>
+<td align="right">47.3%</td>
+<td align="right">31.5%</td>
+<td align="right">21.1%</td>
+<td align="right">21.7%</td>
+<td align="right">15.3%</td>
+<td align="right">4599</td>
 </tr>
 <tr>
 <td align="left">204</td>
-<td align="left">🟡 Lloyd</td>
-<td align="left">Odyssey</td>
+<td align="left">🟡 Daredevil</td>
+<td align="left">Dominion</td>
 <td align="right"><b>1497</b></td>
-<td align="right">24.9%</td>
-<td align="right">48.9%</td>
-<td align="right">31.8%</td>
-<td align="right">23.9%</td>
-<td align="right">22.0%</td>
-<td align="right">15.8%</td>
-<td align="right">3462</td>
+<td align="right">23.7%</td>
+<td align="right">50.4%</td>
+<td align="right">28.7%</td>
+<td align="right">23.5%</td>
+<td align="right">19.4%</td>
+<td align="right">16.0%</td>
+<td align="right">4686</td>
 </tr>
 <tr>
 <td align="left">205</td>
-<td align="left">🟡 AI</td>
-<td align="left">Eons</td>
-<td align="right"><b>1497</b></td>
-<td align="right">23.6%</td>
-<td align="right">46.6%</td>
-<td align="right">32.2%</td>
-<td align="right">21.7%</td>
-<td align="right">19.4%</td>
-<td align="right">16.3%</td>
-<td align="right">3901</td>
-</tr>
-<tr>
-<td align="left">206</td>
 <td align="left">🟡 Dervish</td>
 <td align="left">Storm</td>
 <td align="right"><b>1497</b></td>
-<td align="right">24.6%</td>
-<td align="right">50.7%</td>
-<td align="right">31.2%</td>
-<td align="right">25.8%</td>
-<td align="right">20.7%</td>
-<td align="right">15.6%</td>
-<td align="right">4064</td>
+<td align="right">24.1%</td>
+<td align="right">48.8%</td>
+<td align="right">30.8%</td>
+<td align="right">25.9%</td>
+<td align="right">20.3%</td>
+<td align="right">14.9%</td>
+<td align="right">4837</td>
+</tr>
+<tr>
+<td align="left">206</td>
+<td align="left">🟡 Insect</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1497</b></td>
+<td align="right">24.7%</td>
+<td align="right">49.2%</td>
+<td align="right">33.7%</td>
+<td align="right">24.3%</td>
+<td align="right">20.5%</td>
+<td align="right">16.3%</td>
+<td align="right">4204</td>
 </tr>
 <tr>
 <td align="left">207</td>
 <td align="left">🟡 Sheriff</td>
 <td align="left">Eons</td>
 <td align="right"><b>1497</b></td>
-<td align="right">23.9%</td>
-<td align="right">44.5%</td>
-<td align="right">33.8%</td>
-<td align="right">24.1%</td>
+<td align="right">24.2%</td>
+<td align="right">46.6%</td>
+<td align="right">33.2%</td>
+<td align="right">24.4%</td>
 <td align="right">19.0%</td>
-<td align="right">16.6%</td>
-<td align="right">3757</td>
+<td align="right">17.0%</td>
+<td align="right">4460</td>
 </tr>
 <tr>
 <td align="left">208</td>
-<td align="left">🟡 Invader</td>
-<td align="left">Conflict</td>
+<td align="left">🟡 AI</td>
+<td align="left">Eons</td>
 <td align="right"><b>1497</b></td>
-<td align="right">23.6%</td>
-<td align="right">43.4%</td>
-<td align="right">32.4%</td>
-<td align="right">24.1%</td>
-<td align="right">20.2%</td>
-<td align="right">15.1%</td>
-<td align="right">4123</td>
+<td align="right">23.4%</td>
+<td align="right">46.5%</td>
+<td align="right">31.7%</td>
+<td align="right">21.9%</td>
+<td align="right">19.2%</td>
+<td align="right">15.9%</td>
+<td align="right">4591</td>
 </tr>
 <tr>
 <td align="left">209</td>
-<td align="left">🟡 Insect</td>
-<td align="left">Odyssey</td>
+<td align="left">🟡 Invader</td>
+<td align="left">Conflict</td>
 <td align="right"><b>1497</b></td>
-<td align="right">24.6%</td>
-<td align="right">47.7%</td>
-<td align="right">34.2%</td>
-<td align="right">24.3%</td>
-<td align="right">20.0%</td>
-<td align="right">16.7%</td>
-<td align="right">3478</td>
+<td align="right">23.7%</td>
+<td align="right">44.5%</td>
+<td align="right">31.7%</td>
+<td align="right">24.4%</td>
+<td align="right">19.7%</td>
+<td align="right">15.4%</td>
+<td align="right">4986</td>
 </tr>
 <tr>
 <td align="left">210</td>
-<td align="left">🟡 Winner</td>
-<td align="left">Alliance</td>
-<td align="right"><b>1497</b></td>
-<td align="right">23.4%</td>
-<td align="right">47.8%</td>
-<td align="right">32.5%</td>
-<td align="right">24.2%</td>
-<td align="right">18.7%</td>
-<td align="right">14.0%</td>
-<td align="right">4267</td>
-</tr>
-<tr>
-<td align="left">211</td>
 <td align="left">🟡 Reborn</td>
 <td align="left">Alliance</td>
 <td align="right"><b>1497</b></td>
-<td align="right">24.6%</td>
-<td align="right">51.0%</td>
-<td align="right">32.4%</td>
-<td align="right">25.8%</td>
-<td align="right">17.2%</td>
-<td align="right">17.9%</td>
-<td align="right">4136</td>
+<td align="right">24.2%</td>
+<td align="right">49.0%</td>
+<td align="right">31.4%</td>
+<td align="right">25.5%</td>
+<td align="right">17.6%</td>
+<td align="right">17.6%</td>
+<td align="right">5008</td>
+</tr>
+<tr>
+<td align="left">211</td>
+<td align="left">🟡 Winner</td>
+<td align="left">Alliance</td>
+<td align="right"><b>1497</b></td>
+<td align="right">23.6%</td>
+<td align="right">47.2%</td>
+<td align="right">33.1%</td>
+<td align="right">23.3%</td>
+<td align="right">19.4%</td>
+<td align="right">14.6%</td>
+<td align="right">5105</td>
 </tr>
 <tr>
 <td align="left">212</td>
 <td align="left">🟡 Engineer</td>
 <td align="left">Dominion</td>
 <td align="right"><b>1497</b></td>
-<td align="right">24.0%</td>
-<td align="right">48.1%</td>
-<td align="right">32.7%</td>
-<td align="right">24.2%</td>
-<td align="right">19.0%</td>
-<td align="right">15.9%</td>
-<td align="right">3770</td>
+<td align="right">23.8%</td>
+<td align="right">48.4%</td>
+<td align="right">31.9%</td>
+<td align="right">24.8%</td>
+<td align="right">18.9%</td>
+<td align="right">15.2%</td>
+<td align="right">4537</td>
 </tr>
 <tr>
 <td align="left">213</td>
 <td align="left">🟡 Leviathan</td>
 <td align="left">Incursion</td>
 <td align="right"><b>1497</b></td>
-<td align="right">24.5%</td>
-<td align="right">45.3%</td>
-<td align="right">31.6%</td>
+<td align="right">24.7%</td>
+<td align="right">46.5%</td>
+<td align="right">32.2%</td>
 <td align="right">25.3%</td>
-<td align="right">21.2%</td>
-<td align="right">16.1%</td>
-<td align="right">4102</td>
+<td align="right">21.4%</td>
+<td align="right">15.9%</td>
+<td align="right">4948</td>
 </tr>
 <tr>
 <td align="left">214</td>
-<td align="left">🟡 Outlaw</td>
-<td align="left">Storm</td>
+<td align="left">🟡 Tentacle</td>
+<td align="left">Odyssey</td>
 <td align="right"><b>1497</b></td>
-<td align="right">23.5%</td>
-<td align="right">41.3%</td>
-<td align="right">31.6%</td>
-<td align="right">25.8%</td>
-<td align="right">19.1%</td>
-<td align="right">15.4%</td>
-<td align="right">4076</td>
+<td align="right">24.9%</td>
+<td align="right">49.0%</td>
+<td align="right">33.2%</td>
+<td align="right">24.5%</td>
+<td align="right">20.6%</td>
+<td align="right">15.9%</td>
+<td align="right">4216</td>
 </tr>
 <tr>
 <td align="left">215</td>
-<td align="left">🟡 Sniveler</td>
-<td align="left">Incursion</td>
-<td align="right"><b>1497</b></td>
-<td align="right">23.9%</td>
-<td align="right">49.3%</td>
-<td align="right">30.5%</td>
-<td align="right">24.4%</td>
-<td align="right">19.5%</td>
-<td align="right">15.8%</td>
-<td align="right">4110</td>
-</tr>
-<tr>
-<td align="left">216</td>
 <td align="left">🟡 Chronos</td>
 <td align="left">Incursion</td>
 <td align="right"><b>1497</b></td>
 <td align="right">24.3%</td>
-<td align="right">47.1%</td>
-<td align="right">34.8%</td>
-<td align="right">23.9%</td>
-<td align="right">20.4%</td>
-<td align="right">15.6%</td>
-<td align="right">4054</td>
+<td align="right">47.3%</td>
+<td align="right">34.0%</td>
+<td align="right">24.6%</td>
+<td align="right">19.7%</td>
+<td align="right">15.9%</td>
+<td align="right">4831</td>
+</tr>
+<tr>
+<td align="left">216</td>
+<td align="left">🟡 Sniveler</td>
+<td align="left">Incursion</td>
+<td align="right"><b>1496</b></td>
+<td align="right">24.1%</td>
+<td align="right">49.7%</td>
+<td align="right">30.7%</td>
+<td align="right">25.2%</td>
+<td align="right">19.6%</td>
+<td align="right">15.3%</td>
+<td align="right">4937</td>
 </tr>
 <tr>
 <td align="left">217</td>
-<td align="left">🟡 Tentacle</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1497</b></td>
-<td align="right">24.6%</td>
-<td align="right">47.7%</td>
-<td align="right">33.8%</td>
-<td align="right">25.3%</td>
-<td align="right">19.8%</td>
-<td align="right">15.3%</td>
-<td align="right">3507</td>
+<td align="left">🟡 Sloth</td>
+<td align="left">Storm</td>
+<td align="right"><b>1496</b></td>
+<td align="right">24.7%</td>
+<td align="right">51.7%</td>
+<td align="right">34.3%</td>
+<td align="right">24.7%</td>
+<td align="right">18.6%</td>
+<td align="right">15.5%</td>
+<td align="right">4740</td>
 </tr>
 <tr>
 <td align="left">218</td>
 <td align="left">🟡 The Meek</td>
 <td align="left">Odyssey</td>
-<td align="right"><b>1497</b></td>
-<td align="right">24.0%</td>
-<td align="right">49.6%</td>
-<td align="right">29.2%</td>
-<td align="right">26.2%</td>
-<td align="right">19.8%</td>
-<td align="right">15.2%</td>
-<td align="right">3523</td>
+<td align="right"><b>1496</b></td>
+<td align="right">24.1%</td>
+<td align="right">49.3%</td>
+<td align="right">30.0%</td>
+<td align="right">26.3%</td>
+<td align="right">19.6%</td>
+<td align="right">15.6%</td>
+<td align="right">4256</td>
 </tr>
 <tr>
 <td align="left">219</td>
-<td align="left">🟡 Crusher</td>
-<td align="left">Eons</td>
-<td align="right"><b>1497</b></td>
-<td align="right">24.2%</td>
-<td align="right">48.1%</td>
-<td align="right">29.9%</td>
-<td align="right">26.3%</td>
-<td align="right">19.0%</td>
-<td align="right">16.6%</td>
-<td align="right">3818</td>
+<td align="left">🟡 Outlaw</td>
+<td align="left">Storm</td>
+<td align="right"><b>1496</b></td>
+<td align="right">23.5%</td>
+<td align="right">42.0%</td>
+<td align="right">32.3%</td>
+<td align="right">25.9%</td>
+<td align="right">18.8%</td>
+<td align="right">15.6%</td>
+<td align="right">4856</td>
 </tr>
 <tr>
 <td align="left">220</td>
-<td align="left">🟡 Sloth</td>
-<td align="left">Storm</td>
-<td align="right"><b>1497</b></td>
-<td align="right">24.3%</td>
-<td align="right">52.1%</td>
-<td align="right">33.6%</td>
-<td align="right">25.1%</td>
-<td align="right">18.1%</td>
-<td align="right">14.8%</td>
-<td align="right">3925</td>
+<td align="left">🟡 Crusher</td>
+<td align="left">Eons</td>
+<td align="right"><b>1496</b></td>
+<td align="right">24.1%</td>
+<td align="right">47.1%</td>
+<td align="right">30.2%</td>
+<td align="right">25.3%</td>
+<td align="right">19.5%</td>
+<td align="right">16.8%</td>
+<td align="right">4537</td>
 </tr>
 <tr>
 <td align="left">221</td>
-<td align="left">🟡 Porcupine</td>
-<td align="left">Storm</td>
-<td align="right"><b>1497</b></td>
-<td align="right">23.7%</td>
-<td align="right">48.0%</td>
-<td align="right">30.2%</td>
-<td align="right">24.1%</td>
-<td align="right">19.1%</td>
-<td align="right">16.1%</td>
-<td align="right">4052</td>
+<td align="left">🟡 Phantom</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1496</b></td>
+<td align="right">25.0%</td>
+<td align="right">50.5%</td>
+<td align="right">32.1%</td>
+<td align="right">25.6%</td>
+<td align="right">18.6%</td>
+<td align="right">17.7%</td>
+<td align="right">4205</td>
 </tr>
 <tr>
 <td align="left">222</td>
-<td align="left">🟡 Amoeba</td>
-<td align="left">Base</td>
-<td align="right"><b>1497</b></td>
-<td align="right">21.5%</td>
-<td align="right">47.8%</td>
-<td align="right">22.9%</td>
-<td align="right">20.2%</td>
-<td align="right">17.3%</td>
-<td align="right">16.3%</td>
-<td align="right">25224</td>
+<td align="left">🟡 Porcupine</td>
+<td align="left">Storm</td>
+<td align="right"><b>1496</b></td>
+<td align="right">23.7%</td>
+<td align="right">46.8%</td>
+<td align="right">30.5%</td>
+<td align="right">25.0%</td>
+<td align="right">18.6%</td>
+<td align="right">16.2%</td>
+<td align="right">4892</td>
 </tr>
 <tr>
 <td align="left">223</td>
-<td align="left">🟡 General</td>
-<td align="left">Alliance</td>
-<td align="right"><b>1497</b></td>
-<td align="right">23.3%</td>
-<td align="right">47.2%</td>
-<td align="right">35.3%</td>
-<td align="right">22.6%</td>
-<td align="right">18.6%</td>
-<td align="right">14.7%</td>
-<td align="right">4226</td>
+<td align="left">🟡 EvilTwin</td>
+<td align="left">Eons</td>
+<td align="right"><b>1496</b></td>
+<td align="right">23.8%</td>
+<td align="right">44.7%</td>
+<td align="right">33.3%</td>
+<td align="right">24.1%</td>
+<td align="right">17.4%</td>
+<td align="right">16.8%</td>
+<td align="right">4509</td>
 </tr>
 <tr>
 <td align="left">224</td>
-<td align="left">🟡 EvilTwin</td>
-<td align="left">Eons</td>
-<td align="right"><b>1497</b></td>
-<td align="right">23.8%</td>
-<td align="right">45.8%</td>
-<td align="right">32.8%</td>
+<td align="left">🟡 General</td>
+<td align="left">Alliance</td>
+<td align="right"><b>1496</b></td>
 <td align="right">23.5%</td>
-<td align="right">17.2%</td>
-<td align="right">17.1%</td>
-<td align="right">3785</td>
+<td align="right">47.7%</td>
+<td align="right">33.7%</td>
+<td align="right">23.2%</td>
+<td align="right">18.9%</td>
+<td align="right">15.3%</td>
+<td align="right">5060</td>
 </tr>
 <tr>
 <td align="left">225</td>
 <td align="left">🟡 Greenhorn</td>
 <td align="left">Dominion</td>
-<td align="right"><b>1497</b></td>
-<td align="right">23.7%</td>
-<td align="right">46.6%</td>
-<td align="right">32.1%</td>
-<td align="right">23.2%</td>
-<td align="right">19.9%</td>
-<td align="right">15.6%</td>
-<td align="right">3883</td>
+<td align="right"><b>1496</b></td>
+<td align="right">24.0%</td>
+<td align="right">46.0%</td>
+<td align="right">33.0%</td>
+<td align="right">22.3%</td>
+<td align="right">20.6%</td>
+<td align="right">16.0%</td>
+<td align="right">4669</td>
 </tr>
 <tr>
 <td align="left">226</td>
-<td align="left">🟡 Phantom</td>
-<td align="left">Odyssey</td>
+<td align="left">🟡 Architect</td>
+<td align="left">Eons</td>
 <td align="right"><b>1496</b></td>
-<td align="right">24.6%</td>
-<td align="right">49.7%</td>
-<td align="right">31.6%</td>
-<td align="right">24.7%</td>
-<td align="right">18.7%</td>
-<td align="right">17.4%</td>
-<td align="right">3528</td>
+<td align="right">24.4%</td>
+<td align="right">45.8%</td>
+<td align="right">33.5%</td>
+<td align="right">26.3%</td>
+<td align="right">18.5%</td>
+<td align="right">15.7%</td>
+<td align="right">4562</td>
 </tr>
 <tr>
 <td align="left">227</td>
 <td align="left">🟡 Ace</td>
 <td align="left">Dominion</td>
 <td align="right"><b>1496</b></td>
-<td align="right">22.9%</td>
-<td align="right">43.9%</td>
-<td align="right">31.1%</td>
-<td align="right">25.4%</td>
-<td align="right">17.7%</td>
-<td align="right">15.3%</td>
-<td align="right">3927</td>
+<td align="right">23.0%</td>
+<td align="right">46.8%</td>
+<td align="right">30.3%</td>
+<td align="right">24.6%</td>
+<td align="right">17.6%</td>
+<td align="right">15.2%</td>
+<td align="right">4668</td>
 </tr>
 <tr>
 <td align="left">228</td>
-<td align="left">🟡 Architect</td>
-<td align="left">Eons</td>
-<td align="right"><b>1496</b></td>
-<td align="right">23.7%</td>
-<td align="right">44.2%</td>
-<td align="right">32.7%</td>
-<td align="right">25.6%</td>
-<td align="right">17.4%</td>
-<td align="right">15.7%</td>
-<td align="right">3744</td>
-</tr>
-<tr>
-<td align="left">229</td>
 <td align="left">🟡 Schizoid</td>
 <td align="left">Alliance</td>
 <td align="right"><b>1496</b></td>
-<td align="right">24.1%</td>
-<td align="right">41.8%</td>
-<td align="right">32.8%</td>
-<td align="right">24.7%</td>
+<td align="right">24.3%</td>
+<td align="right">43.3%</td>
+<td align="right">32.9%</td>
+<td align="right">25.7%</td>
+<td align="right">19.3%</td>
+<td align="right">16.8%</td>
+<td align="right">5012</td>
+</tr>
+<tr>
+<td align="left">229</td>
+<td align="left">🟡 Amoeba</td>
+<td align="left">Base</td>
+<td align="right"><b>1496</b></td>
+<td align="right">21.4%</td>
+<td align="right">47.4%</td>
+<td align="right">22.9%</td>
 <td align="right">19.8%</td>
-<td align="right">16.7%</td>
-<td align="right">4148</td>
+<td align="right">17.3%</td>
+<td align="right">16.3%</td>
+<td align="right">30071</td>
 </tr>
 <tr>
 <td align="left">230</td>
 <td align="left">🟡 Hunger</td>
 <td align="left">Eons</td>
 <td align="right"><b>1496</b></td>
-<td align="right">23.2%</td>
-<td align="right">49.1%</td>
-<td align="right">31.9%</td>
-<td align="right">24.0%</td>
-<td align="right">16.9%</td>
-<td align="right">15.3%</td>
-<td align="right">3870</td>
+<td align="right">23.5%</td>
+<td align="right">48.5%</td>
+<td align="right">31.3%</td>
+<td align="right">24.9%</td>
+<td align="right">17.7%</td>
+<td align="right">15.2%</td>
+<td align="right">4626</td>
 </tr>
 <tr>
 <td align="left">231</td>
 <td align="left">🟡 Daredevil_Alt</td>
 <td align="left">Odyssey</td>
 <td align="right"><b>1496</b></td>
-<td align="right">23.8%</td>
-<td align="right">43.5%</td>
+<td align="right">23.5%</td>
+<td align="right">44.9%</td>
 <td align="right">29.4%</td>
-<td align="right">19.9%</td>
-<td align="right">20.3%</td>
-<td align="right">19.0%</td>
-<td align="right">3540</td>
+<td align="right">19.4%</td>
+<td align="right">19.3%</td>
+<td align="right">18.8%</td>
+<td align="right">4229</td>
 </tr>
 <tr>
 <td align="left">232</td>
 <td align="left">🟡 Lemming</td>
 <td align="left">Odyssey</td>
 <td align="right"><b>1496</b></td>
-<td align="right">24.1%</td>
-<td align="right">49.6%</td>
+<td align="right">24.0%</td>
+<td align="right">48.4%</td>
 <td align="right">32.4%</td>
-<td align="right">23.2%</td>
-<td align="right">19.1%</td>
-<td align="right">16.0%</td>
-<td align="right">3420</td>
+<td align="right">23.0%</td>
+<td align="right">19.0%</td>
+<td align="right">16.1%</td>
+<td align="right">4126</td>
 </tr>
 <tr>
 <td align="left">233</td>
@@ -3289,77 +3289,77 @@ DEFENSE TOTAL = Card Value + Ship Count + Kickers + Power Mods + Reinforcements 
 <td align="left">Dominion</td>
 <td align="right"><b>1496</b></td>
 <td align="right">23.6%</td>
-<td align="right">47.3%</td>
-<td align="right">30.8%</td>
-<td align="right">25.3%</td>
-<td align="right">18.3%</td>
-<td align="right">16.5%</td>
-<td align="right">3790</td>
+<td align="right">49.3%</td>
+<td align="right">31.0%</td>
+<td align="right">24.6%</td>
+<td align="right">18.2%</td>
+<td align="right">16.3%</td>
+<td align="right">4571</td>
 </tr>
 <tr>
 <td align="left">234</td>
-<td align="left">🟡 Ethic</td>
-<td align="left">Incursion</td>
-<td align="right"><b>1496</b></td>
-<td align="right">23.8%</td>
-<td align="right">50.1%</td>
-<td align="right">33.3%</td>
-<td align="right">22.4%</td>
-<td align="right">19.2%</td>
-<td align="right">14.9%</td>
-<td align="right">4146</td>
+<td align="left">🟡 Nanny</td>
+<td align="left">Eons</td>
+<td align="right"><b>1495</b></td>
+<td align="right">24.3%</td>
+<td align="right">52.8%</td>
+<td align="right">31.4%</td>
+<td align="right">25.0%</td>
+<td align="right">19.5%</td>
+<td align="right">15.1%</td>
+<td align="right">4580</td>
 </tr>
 <tr>
 <td align="left">235</td>
-<td align="left">🟡 Nanny</td>
-<td align="left">Eons</td>
-<td align="right"><b>1496</b></td>
-<td align="right">24.3%</td>
-<td align="right">52.9%</td>
-<td align="right">31.0%</td>
-<td align="right">25.1%</td>
-<td align="right">19.8%</td>
-<td align="right">14.5%</td>
-<td align="right">3786</td>
+<td align="left">🟡 Ethic</td>
+<td align="left">Incursion</td>
+<td align="right"><b>1495</b></td>
+<td align="right">23.7%</td>
+<td align="right">50.0%</td>
+<td align="right">32.2%</td>
+<td align="right">23.5%</td>
+<td align="right">18.7%</td>
+<td align="right">15.3%</td>
+<td align="right">4963</td>
 </tr>
 <tr>
 <td align="left">236</td>
-<td align="left">🟡 Delegator</td>
-<td align="left">Odyssey</td>
-<td align="right"><b>1496</b></td>
-<td align="right">23.5%</td>
-<td align="right">45.4%</td>
-<td align="right">30.9%</td>
-<td align="right">24.1%</td>
-<td align="right">17.5%</td>
-<td align="right">16.9%</td>
-<td align="right">3533</td>
+<td align="left">🟡 Coward</td>
+<td align="left">Eons</td>
+<td align="right"><b>1495</b></td>
+<td align="right">24.6%</td>
+<td align="right">50.4%</td>
+<td align="right">35.4%</td>
+<td align="right">22.5%</td>
+<td align="right">19.2%</td>
+<td align="right">15.7%</td>
+<td align="right">4539</td>
 </tr>
 <tr>
 <td align="left">237</td>
-<td align="left">🟡 Coward</td>
-<td align="left">Eons</td>
-<td align="right"><b>1496</b></td>
-<td align="right">24.6%</td>
-<td align="right">49.6%</td>
-<td align="right">35.8%</td>
-<td align="right">23.3%</td>
-<td align="right">18.7%</td>
-<td align="right">15.8%</td>
-<td align="right">3754</td>
+<td align="left">🟡 Delegator</td>
+<td align="left">Odyssey</td>
+<td align="right"><b>1495</b></td>
+<td align="right">24.0%</td>
+<td align="right">46.2%</td>
+<td align="right">31.0%</td>
+<td align="right">25.2%</td>
+<td align="right">18.3%</td>
+<td align="right">16.7%</td>
+<td align="right">4255</td>
 </tr>
 <tr>
 <td align="left">238</td>
 <td align="left">🟡 Zombie_Alt</td>
 <td align="left">Odyssey</td>
-<td align="right"><b>1495</b></td>
-<td align="right">23.8%</td>
-<td align="right">45.1%</td>
-<td align="right">33.9%</td>
-<td align="right">24.6%</td>
+<td align="right"><b>1494</b></td>
+<td align="right">24.0%</td>
+<td align="right">45.9%</td>
+<td align="right">33.8%</td>
+<td align="right">25.5%</td>
 <td align="right">19.8%</td>
 <td align="right">14.5%</td>
-<td align="right">3555</td>
+<td align="right">4205</td>
 </tr>
 </tbody>
 </table>

@@ -551,6 +551,16 @@ class Pacifist(AlienPower):
     expansion: Expansion = field(default=Expansion.BASE, init=False)
     usable_as: List[PlayerRole] = field(default_factory=lambda: [PlayerRole.OFFENSE, PlayerRole.DEFENSE], init=False)
 
+    def check_pacifist_win(self, game: "Game", player: "Player") -> bool:
+        """Check if Pacifist wins by playing negotiate against attack."""
+        from ...cards.base import NegotiateCard, AttackCard
+        # Get our card and opponent's card
+        is_offense = game.offense == player
+        our_card = game.offense_card if is_offense else game.defense_card
+        opp_card = game.defense_card if is_offense else game.offense_card
+        # Pacifist wins if we play negotiate and opponent plays attack
+        return isinstance(our_card, NegotiateCard) and isinstance(opp_card, AttackCard)
+
 
 @dataclass
 class Parasite(AlienPower):
@@ -649,6 +659,15 @@ class Sorcerer(AlienPower):
     expansion: Expansion = field(default=Expansion.BASE, init=False)
     usable_as: List[PlayerRole] = field(default_factory=lambda: [PlayerRole.OFFENSE, PlayerRole.DEFENSE], init=False)
 
+    def on_planning(self, game: "Game", player: "Player", role: PlayerRole) -> None:
+        """Switch encounter cards with opponent after they're selected."""
+        if role not in (PlayerRole.OFFENSE, PlayerRole.DEFENSE):
+            return
+        # AI decides to switch only if we probably played a low card
+        if game.offense_card and game.defense_card:
+            # Swap the cards
+            game.offense_card, game.defense_card = game.defense_card, game.offense_card
+
 
 @dataclass
 class Spiff(AlienPower):
@@ -661,6 +680,15 @@ class Spiff(AlienPower):
     category: PowerCategory = field(default=PowerCategory.GREEN, init=False)
     expansion: Expansion = field(default=Expansion.BASE, init=False)
     usable_as: List[PlayerRole] = field(default_factory=lambda: [PlayerRole.OFFENSE], init=False)
+
+    def on_lose_encounter(self, game: "Game", player: "Player", as_main_player: bool) -> None:
+        """Land one ship on target planet even when losing as offense."""
+        if as_main_player and game.offense == player and game.defense_planet:
+            # One ship crash lands instead of going to warp
+            ships_in_encounter = game.offense_ships.get(player.name, 0)
+            if ships_in_encounter >= 1:
+                game.defense_planet.add_ships(player.name, 1)
+                player.ships_in_warp = max(0, player.ships_in_warp - 1)
 
 
 @dataclass
@@ -688,6 +716,21 @@ class Trader(AlienPower):
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
     expansion: Expansion = field(default=Expansion.BASE, init=False)
     usable_as: List[PlayerRole] = field(default_factory=lambda: [PlayerRole.OFFENSE, PlayerRole.DEFENSE], init=False)
+
+    def on_planning(self, game: "Game", player: "Player", role: PlayerRole) -> None:
+        """Swap hands with opponent or another player with more cards."""
+        if role not in (PlayerRole.OFFENSE, PlayerRole.DEFENSE):
+            return
+        # Find player with most cards (excluding self)
+        best_target = None
+        best_count = len(player.hand)
+        for p in game.players:
+            if p != player and len(p.hand) > best_count:
+                best_target = p
+                best_count = len(p.hand)
+        # Swap hands if we found someone with more cards
+        if best_target:
+            player.hand, best_target.hand = best_target.hand, player.hand
 
 
 @dataclass
@@ -717,6 +760,28 @@ class Vacuum(AlienPower):
     power_type: PowerType = field(default=PowerType.MANDATORY, init=False)
     category: PowerCategory = field(default=PowerCategory.YELLOW, init=False)
     expansion: Expansion = field(default=Expansion.BASE, init=False)
+
+    def on_win_encounter(self, game: "Game", player: "Player", as_main_player: bool) -> None:
+        """Capture losing ships as prisoners on Vacuum's colonies."""
+        if not as_main_player:
+            return
+        # Get the losing side's ships
+        is_offense = game.offense == player
+        if is_offense:
+            # We won as offense, capture defense ships
+            losing_ships = game.defense_ships.copy()
+        else:
+            # We won as defense, capture offense ships
+            losing_ships = game.offense_ships.copy()
+        # Add prisoners to Vacuum's first home planet
+        if player.home_planets and losing_ships:
+            target_planet = player.home_planets[0]
+            for loser_name, count in losing_ships.items():
+                if count > 0 and loser_name != player.name:
+                    # Store as prisoners (mark with special key)
+                    if not hasattr(target_planet, 'prisoners'):
+                        target_planet.prisoners = {}
+                    target_planet.prisoners[loser_name] = target_planet.prisoners.get(loser_name, 0) + count
 
 
 @dataclass
