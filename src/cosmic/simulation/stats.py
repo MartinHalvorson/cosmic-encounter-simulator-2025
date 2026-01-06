@@ -10,6 +10,26 @@ import math
 from io import StringIO
 
 
+@dataclass(slots=True)
+class GameRecord:
+    """
+    Record of a completed game for batch statistics recording.
+
+    Using slots for memory efficiency when buffering many records.
+    """
+    num_players: int
+    winners: List[str]
+    alien_map: Dict[str, str]
+    turn_count: int
+    final_colonies: Dict[str, int]
+    alternate_win: bool = False
+    timed_out: bool = False
+    errored: bool = False
+    power_activations: Optional[Dict[str, int]] = None
+    encounters_as_main: Optional[Dict[str, int]] = None
+    encounter_stats: Optional[Dict[str, Dict[str, int]]] = None
+
+
 def wilson_score_interval(wins: int, n: int, z: float = 1.96) -> Tuple[float, float]:
     """
     Calculate Wilson score interval for a proportion.
@@ -358,6 +378,147 @@ class Statistics:
 
                 if alternate_win:
                     stats.alternate_wins += 1
+
+    def record_games_batch(self, records: List[GameRecord]) -> None:
+        """
+        Record statistics from multiple games at once.
+
+        More efficient than calling record_game() for each game,
+        as it batches dictionary lookups and reduces method call overhead.
+
+        Args:
+            records: List of GameRecord objects to record
+        """
+        if not records:
+            return
+
+        # Process all records
+        for record in records:
+            self.total_games += 1
+            self.turn_counts.append(record.turn_count)
+
+            # Track player count
+            num_players = record.num_players
+            self.games_by_player_count[num_players] = (
+                self.games_by_player_count.get(num_players, 0) + 1
+            )
+
+            if num_players not in self.wins_by_player_count:
+                self.wins_by_player_count[num_players] = {}
+
+            # Track timeouts/errors
+            if record.timed_out:
+                self.timeout_count += 1
+            if record.errored:
+                self.error_count += 1
+                continue
+
+            # Track shared vs solo victories
+            winners = record.winners
+            num_winners = len(winners)
+            if num_winners > 1:
+                self.shared_victory_count += 1
+            elif num_winners == 1:
+                self.solo_victory_count += 1
+
+            # Pre-convert to set for faster lookup
+            winner_set = set(winners)
+
+            # Update alien statistics
+            for player_name, alien_name in record.alien_map.items():
+                if alien_name not in self.alien_stats:
+                    self.alien_stats[alien_name] = AlienStats(name=alien_name)
+
+                stats = self.alien_stats[alien_name]
+                stats.games_played += 1
+                stats.total_turns += record.turn_count
+                stats.total_colonies_at_end += record.final_colonies.get(player_name, 0)
+
+                # Track power activations
+                if record.power_activations and player_name in record.power_activations:
+                    stats.total_power_activations += record.power_activations[player_name]
+                if record.encounters_as_main and player_name in record.encounters_as_main:
+                    stats.total_encounters_as_main += record.encounters_as_main[player_name]
+
+                # Track encounter statistics
+                if record.encounter_stats and player_name in record.encounter_stats:
+                    player_enc = record.encounter_stats[player_name]
+                    stats.encounters_as_offense += player_enc.get("as_offense", 0)
+                    stats.encounters_as_defense += player_enc.get("as_defense", 0)
+                    stats.encounters_won_as_offense += player_enc.get("won_as_offense", 0)
+                    stats.encounters_won_as_defense += player_enc.get("won_as_defense", 0)
+                    stats.encounters_with_deal += player_enc.get("deals", 0)
+                    stats.encounters_with_allies += player_enc.get("with_allies", 0)
+
+                if player_name in winner_set:
+                    stats.games_won += 1
+
+                    # Track win by player count
+                    wins_dict = self.wins_by_player_count[num_players]
+                    wins_dict[alien_name] = wins_dict.get(alien_name, 0) + 1
+
+                    if num_winners == 1:
+                        stats.solo_wins += 1
+                    else:
+                        stats.shared_wins += 1
+
+                    if record.alternate_win:
+                        stats.alternate_wins += 1
+
+    def merge(self, other: "Statistics") -> None:
+        """
+        Merge statistics from another Statistics instance.
+
+        Useful for combining results from parallel simulation runs.
+
+        Args:
+            other: Statistics instance to merge in
+        """
+        # Merge totals
+        self.total_games += other.total_games
+        self.shared_victory_count += other.shared_victory_count
+        self.solo_victory_count += other.solo_victory_count
+        self.timeout_count += other.timeout_count
+        self.error_count += other.error_count
+
+        # Merge turn counts
+        self.turn_counts.extend(other.turn_counts)
+
+        # Merge games by player count
+        for count, games in other.games_by_player_count.items():
+            self.games_by_player_count[count] = (
+                self.games_by_player_count.get(count, 0) + games
+            )
+
+        # Merge wins by player count
+        for count, wins_dict in other.wins_by_player_count.items():
+            if count not in self.wins_by_player_count:
+                self.wins_by_player_count[count] = {}
+            my_wins = self.wins_by_player_count[count]
+            for alien, wins in wins_dict.items():
+                my_wins[alien] = my_wins.get(alien, 0) + wins
+
+        # Merge alien stats
+        for alien_name, other_stats in other.alien_stats.items():
+            if alien_name not in self.alien_stats:
+                self.alien_stats[alien_name] = AlienStats(name=alien_name)
+
+            stats = self.alien_stats[alien_name]
+            stats.games_played += other_stats.games_played
+            stats.games_won += other_stats.games_won
+            stats.shared_wins += other_stats.shared_wins
+            stats.solo_wins += other_stats.solo_wins
+            stats.alternate_wins += other_stats.alternate_wins
+            stats.total_turns += other_stats.total_turns
+            stats.total_colonies_at_end += other_stats.total_colonies_at_end
+            stats.total_power_activations += other_stats.total_power_activations
+            stats.total_encounters_as_main += other_stats.total_encounters_as_main
+            stats.encounters_as_offense += other_stats.encounters_as_offense
+            stats.encounters_as_defense += other_stats.encounters_as_defense
+            stats.encounters_won_as_offense += other_stats.encounters_won_as_offense
+            stats.encounters_won_as_defense += other_stats.encounters_won_as_defense
+            stats.encounters_with_deal += other_stats.encounters_with_deal
+            stats.encounters_with_allies += other_stats.encounters_with_allies
 
     @property
     def avg_game_length(self) -> float:

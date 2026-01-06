@@ -3,7 +3,7 @@ Simulation runner and statistics for Cosmic Encounter.
 """
 
 from .runner import Simulator, SimulationResult
-from .stats import Statistics
+from .stats import Statistics, GameRecord
 from .cumulative_stats import CumulativeStats, AlienEloStats, EloCalculator
 from .power_analysis import PowerBalanceAnalyzer, BalanceReport, PowerTier, run_analysis
 from .matchup_analysis import (
@@ -59,6 +59,7 @@ __all__ = [
     "Simulator",
     "SimulationResult",
     "Statistics",
+    "GameRecord",
     "CumulativeStats",
     "AlienEloStats",
     "EloCalculator",
