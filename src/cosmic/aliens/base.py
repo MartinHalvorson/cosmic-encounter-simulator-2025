@@ -55,6 +55,15 @@ class AlienPower(ABC):
         """Check if power can be used in the given role."""
         return role in self.usable_as
 
+    def copy(self) -> "AlienPower":
+        """
+        Create a fresh copy of this alien power.
+
+        More efficient than deepcopy for dataclasses since all values
+        are set via field defaults with init=False.
+        """
+        return type(self)()
+
     def should_use(
         self,
         game: "Game",

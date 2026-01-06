@@ -3,7 +3,6 @@ Main Game class for Cosmic Encounter simulator.
 """
 
 import random
-import copy
 from dataclasses import dataclass, field
 from typing import List, Optional, Dict, Any, Tuple
 
@@ -319,10 +318,10 @@ class Game:
         default_ai = BasicAI()
         self.players = []
         for i in range(num_players):
-            # Deep copy alien to avoid state pollution between games
+            # Copy alien to avoid state pollution between games (faster than deepcopy)
             alien_copy = None
             if i < len(selected_powers) and selected_powers[i] is not None:
-                alien_copy = copy.deepcopy(selected_powers[i])
+                alien_copy = selected_powers[i].copy()
 
             player = Player(
                 name=player_names[i],
@@ -334,7 +333,7 @@ class Game:
             if self.config.dual_powers:
                 secondary_idx = num_players + i
                 if secondary_idx < len(selected_powers) and selected_powers[secondary_idx] is not None:
-                    player.secondary_alien = copy.deepcopy(selected_powers[secondary_idx])
+                    player.secondary_alien = selected_powers[secondary_idx].copy()
             self.players.append(player)
 
         # Build player lookup cache for O(1) access
