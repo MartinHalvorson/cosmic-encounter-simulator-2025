@@ -91,25 +91,54 @@ class BasicAI(AIStrategy):
         as_offense: bool
     ) -> List["Player"]:
         """
-        Invite allies based on their position.
-        - Don't invite players close to winning
+        Invite allies based on strategic position.
+        - Don't invite players close to winning unless necessary
         - Prefer players who are behind
+        - Consider overall game state (who's leading)
         """
         my_colonies = player.count_foreign_colonies(game.planets)
         invited = []
 
-        for ally in potential_allies:
-            ally_colonies = ally.count_foreign_colonies(game.planets)
+        # Get colony counts for all players
+        colony_counts = {
+            p.name: p.count_foreign_colonies(game.planets)
+            for p in game.players
+        }
+        max_colonies = max(colony_counts.values())
+        leader_count = sum(1 for c in colony_counts.values() if c == max_colonies)
 
-            # Going for win (4 colonies) - be selective
+        for ally in potential_allies:
+            ally_colonies = colony_counts[ally.name]
+            should_invite = False
+
+            # Going for win (4 colonies) - be very selective
             if my_colonies == 4:
-                # Only invite if they're well behind
-                if ally_colonies <= 2 and self._rng.random() < 0.3:
-                    invited.append(ally)
+                # Only invite if they're well behind (won't share win)
+                if ally_colonies <= 2:
+                    # Low chance to invite - don't want shared victory
+                    if self._rng.random() < 0.2:
+                        should_invite = True
+            # Close to winning (3 colonies)
+            elif my_colonies == 3:
+                # Don't invite players at 4 (they'd win)
+                if ally_colonies < 4:
+                    # Prefer players who won't share in the win
+                    if ally_colonies < 3:
+                        should_invite = True
+                    elif self._rng.random() < 0.5:
+                        should_invite = True
             else:
-                # Invite players with equal or fewer colonies
-                if ally_colonies <= my_colonies:
-                    invited.append(ally)
+                # Earlier game - be more liberal
+                # Don't help the leader unless we're also leading
+                if ally_colonies == max_colonies and my_colonies < max_colonies:
+                    should_invite = self._rng.random() < 0.3  # Sometimes still invite
+                elif ally_colonies >= 4:
+                    should_invite = False  # Never help someone at 4
+                else:
+                    should_invite = True
+
+            if should_invite:
+                invited.append(ally)
 
         return invited
 
@@ -124,9 +153,10 @@ class BasicAI(AIStrategy):
     ) -> Optional["Side"]:
         """
         Join based on strategic considerations:
-        - Don't help someone win (4+ colonies)
-        - Prefer offense (colony opportunity)
-        - Consider own position
+        - Don't help someone win (4+ colonies) unless we also win
+        - Avoid kingmaking (helping others win when we can't)
+        - Prefer offense (colony opportunity) but consider risk
+        - Consider overall game state and who's leading
         """
         from ..types import Side
 
@@ -137,26 +167,82 @@ class BasicAI(AIStrategy):
         off_colonies = offense.count_foreign_colonies(game.planets)
         def_colonies = defense.count_foreign_colonies(game.planets)
 
-        # Don't help someone win unless we're also close
-        if invited_by_offense and off_colonies >= 4 and my_colonies < 4:
+        # Get colony counts for all players to understand game state
+        colony_counts = {
+            p.name: p.count_foreign_colonies(game.planets)
+            for p in game.players
+        }
+        max_colonies = max(colony_counts.values())
+
+        # Calculate if joining would create a winner
+        off_would_win = off_colonies >= 4
+        def_would_win = def_colonies >= 4
+        i_would_win = my_colonies >= 4
+
+        # Kingmaking prevention: Don't help someone win if we can't share
+        if invited_by_offense and off_would_win and not i_would_win:
             invited_by_offense = False
-        if invited_by_defense and def_colonies >= 4 and my_colonies < 4:
+        if invited_by_defense and def_would_win and not i_would_win:
             invited_by_defense = False
 
-        # If only one option, take it (if reasonable)
-        if invited_by_offense and not invited_by_defense:
+        # If we can win by helping offense, definitely do it
+        if invited_by_offense and i_would_win and off_colonies >= 4:
             return Side.OFFENSE
-        if invited_by_defense and not invited_by_offense:
+
+        # Evaluate offense vs defense options
+        offense_value = 0
+        defense_value = 0
+
+        if invited_by_offense:
+            # Value of joining offense: potential colony gain
+            offense_value = 1.0  # Base value for colony opportunity
+
+            # Reduce value if offense is leading (don't help leader unless we're close)
+            if off_colonies == max_colonies and my_colonies < max_colonies - 1:
+                offense_value *= 0.5
+
+            # Increase value if we're close to winning
+            if my_colonies >= 3:
+                offense_value *= 1.5
+
+            # Reduce value if offense would win and we wouldn't
+            if off_would_win and my_colonies < 4:
+                offense_value = 0
+
+        if invited_by_defense:
+            # Value of joining defense: prevent offense from winning/gaining
+            defense_value = 0.5  # Lower base (no colony gain for us)
+
+            # Increase value if offense would win and we don't want that
+            if off_would_win and not i_would_win:
+                defense_value = 2.0  # Very important to stop them
+
+            # Increase value if offense is the leader
+            if off_colonies == max_colonies and off_colonies > my_colonies:
+                defense_value *= 1.5
+
+            # Reduce value if defense is also close to winning
+            if def_colonies >= 4 and my_colonies < 4:
+                defense_value = 0
+
+        # Make decision with some randomness for variety
+        if offense_value <= 0 and defense_value <= 0:
+            return None
+
+        if offense_value > 0 and defense_value <= 0:
+            return Side.OFFENSE
+
+        if defense_value > 0 and offense_value <= 0:
             return Side.DEFENSE
 
-        # Both invited - prefer offense for colony chance
-        if invited_by_offense and invited_by_defense:
-            # Join defense if offense is about to win
-            if off_colonies >= 4:
-                return Side.DEFENSE
+        # Both options valid - choose based on values with some randomness
+        if offense_value > defense_value * 1.5:
             return Side.OFFENSE
-
-        return None
+        elif defense_value > offense_value * 1.5:
+            return Side.DEFENSE
+        else:
+            # Close values - slightly prefer offense for colony opportunity
+            return Side.OFFENSE if self._rng.random() < 0.6 else Side.DEFENSE
 
     def select_ally_ships(
         self,
@@ -164,7 +250,22 @@ class BasicAI(AIStrategy):
         player: "Player",
         max_ships: int
     ) -> int:
-        """Select ships as ally - usually 2."""
+        """
+        Select ships as ally based on stake in the outcome.
+        - Send more if this encounter is important (close to winning)
+        - Send fewer if just helping out
+        """
+        my_colonies = player.count_foreign_colonies(game.planets)
+
+        # If we're at 4 colonies and offense wins, we win too - go all in
+        if my_colonies >= 4:
+            return min(4, max_ships)
+
+        # If we're close (3 colonies), commit more
+        if my_colonies == 3:
+            return min(3, max_ships)
+
+        # Default: commit 2 ships
         return min(2, max_ships)
 
     def select_attack_planet(
