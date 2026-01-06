@@ -18,6 +18,17 @@ from .aliens import AlienRegistry, AlienPower
 from .aliens.official_aliens import get_alien_expansion_enum
 from .ai.basic_ai import BasicAI
 
+# Lazy singleton for default AI strategy (avoids creating new instance each time)
+_default_ai: Optional[BasicAI] = None
+
+
+def get_default_ai() -> BasicAI:
+    """Get or create the default AI strategy singleton."""
+    global _default_ai
+    if _default_ai is None:
+        _default_ai = BasicAI()
+    return _default_ai
+
 
 @dataclass
 class HyperspaceGate:
@@ -315,7 +326,7 @@ class Game:
                     selected_powers.append(None)
 
         # Create players
-        default_ai = BasicAI()
+        default_ai = get_default_ai()
         self.players = []
         for i in range(num_players):
             # Copy alien to avoid state pollution between games (faster than deepcopy)
@@ -696,7 +707,7 @@ class Game:
         self.hyperspace_gate.clear()
 
         # Select planet to attack (aim the gate)
-        ai = self.offense.ai_strategy or BasicAI()
+        ai = self.offense.ai_strategy or get_default_ai()
         self.defense_planet = ai.select_attack_planet(self, self.offense, self.defense)
         self.hyperspace_gate.aim(self.defense_planet)
 
@@ -784,11 +795,11 @@ class Game:
         potential = [p for p in self.players if p != self.offense and p != self.defense]
 
         # Offense invites allies
-        off_ai = self.offense.ai_strategy or BasicAI()
+        off_ai = self.offense.ai_strategy or get_default_ai()
         off_invites = off_ai.decide_alliance_invitation(self, self.offense, potential, True)
 
         # Defense invites allies
-        def_ai = self.defense.ai_strategy or BasicAI()
+        def_ai = self.defense.ai_strategy or get_default_ai()
         def_invites = def_ai.decide_alliance_invitation(self, self.defense, potential, False)
 
         # Players respond to invitations
@@ -804,7 +815,7 @@ class Game:
             if not invited_off and not invited_def:
                 continue
 
-            player_ai = player.ai_strategy or BasicAI()
+            player_ai = player.ai_strategy or get_default_ai()
             choice = player_ai.decide_alliance_response(
                 self, player, self.offense, self.defense,
                 invited_off, invited_def
@@ -843,14 +854,14 @@ class Game:
                 player.alien.on_planning(self, player, role)
 
         # Select cards with validation
-        off_ai = self.offense.ai_strategy or BasicAI()
+        off_ai = self.offense.ai_strategy or get_default_ai()
         self.offense_card = self._validate_and_select_card(
             off_ai.select_encounter_card(self, self.offense, True),
             self.offense,
             "offense"
         )
 
-        def_ai = self.defense.ai_strategy or BasicAI()
+        def_ai = self.defense.ai_strategy or get_default_ai()
         self.defense_card = self._validate_and_select_card(
             def_ai.select_encounter_card(self, self.defense, False),
             self.defense,
@@ -1228,7 +1239,7 @@ class Game:
         # Defensive allies get rewards (choice: cards OR ships from warp)
         for ally in self.defense_allies:
             reward_count = self.defense_ships.get(ally.name, 0)
-            ally_ai = ally.ai_strategy or BasicAI()
+            ally_ai = ally.ai_strategy or get_default_ai()
             reward_choice = ally_ai.choose_ally_reward(self, ally, reward_count)
 
             if reward_choice == "cards":
@@ -1298,8 +1309,8 @@ class Game:
         self._log("Deal phase!")
 
         # Get proposals from both players
-        off_ai = self.offense.ai_strategy or BasicAI()
-        def_ai = self.defense.ai_strategy or BasicAI()
+        off_ai = self.offense.ai_strategy or get_default_ai()
+        def_ai = self.defense.ai_strategy or get_default_ai()
 
         off_proposal = off_ai.negotiate_deal(self, self.offense, self.defense)
         def_proposal = def_ai.negotiate_deal(self, self.defense, self.offense)
@@ -1431,7 +1442,7 @@ class Game:
         all_reinforcements = []
 
         # Main player selects reinforcements
-        ai = main_player.ai_strategy or BasicAI()
+        ai = main_player.ai_strategy or get_default_ai()
         main_reinforcements = ai.select_reinforcement_cards(
             self, main_player, is_offense, current_total, opponent_total
         )
@@ -1445,7 +1456,7 @@ class Game:
         updated_total = current_total + sum(c.value for c in all_reinforcements)
 
         for ally in allies:
-            ally_ai = ally.ai_strategy or BasicAI()
+            ally_ai = ally.ai_strategy or get_default_ai()
             ally_reinforcements = ally_ai.select_reinforcement_cards(
                 self, ally, is_offense, updated_total, opponent_total
             )
@@ -1653,7 +1664,7 @@ class Game:
             can_have_second = True
 
         if can_have_second:
-            ai = self.offense.ai_strategy or BasicAI()
+            ai = self.offense.ai_strategy or get_default_ai()
             if ai.want_second_encounter(self, self.offense):
                 self.encounter_number = 2
                 self._log(f"{self.offense.name} takes a second encounter")
@@ -1722,7 +1733,7 @@ class Game:
             if player is None:
                 continue
 
-            ai = player.ai_strategy or BasicAI()
+            ai = player.ai_strategy or get_default_ai()
             artifact = ai.select_artifact_to_play(self, player, phase, context)
 
             if artifact and artifact in player.hand:
@@ -1959,7 +1970,7 @@ class Game:
             if player is None:
                 continue
 
-            ai = player.ai_strategy or BasicAI()
+            ai = player.ai_strategy or get_default_ai()
             flare = ai.select_flare_to_play(self, player, phase, context)
 
             if flare and flare in player.hand:
