@@ -215,6 +215,20 @@ class Statistics:
     # Total games
     total_games: int = 0
 
+    def preallocate_aliens(self, alien_names: List[str]) -> None:
+        """
+        Pre-allocate AlienStats for a list of alien names.
+
+        This avoids dictionary lookup + conditional allocation on every game,
+        improving performance when running many simulations.
+
+        Args:
+            alien_names: List of alien names to pre-allocate stats for
+        """
+        for name in alien_names:
+            if name not in self.alien_stats:
+                self.alien_stats[name] = AlienStats(name=name)
+
     def record_game(
         self,
         num_players: int,
