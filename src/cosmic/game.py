@@ -146,6 +146,12 @@ class Game:
     offense_total: int = 0
     defense_total: int = 0
 
+    # Alliance tracking for statistics
+    alliance_counts: Dict[str, int] = field(default_factory=dict)  # Player name -> times allied
+    offensive_alliance_counts: Dict[str, int] = field(default_factory=dict)  # Times joined offense
+    defensive_alliance_counts: Dict[str, int] = field(default_factory=dict)  # Times joined defense
+    alliance_wins: Dict[str, int] = field(default_factory=dict)  # Times won as ally
+
     # Game result
     is_over: bool = False
     winners: List[Player] = field(default_factory=list)
@@ -555,6 +561,42 @@ class Game:
         if self.verbose:
             print(message)
 
+    def _record_alliance(self, player_name: str, side: str) -> None:
+        """Record that a player joined an alliance."""
+        self.alliance_counts[player_name] = self.alliance_counts.get(player_name, 0) + 1
+        if side == "offense":
+            self.offensive_alliance_counts[player_name] = (
+                self.offensive_alliance_counts.get(player_name, 0) + 1
+            )
+        else:
+            self.defensive_alliance_counts[player_name] = (
+                self.defensive_alliance_counts.get(player_name, 0) + 1
+            )
+
+    def _record_alliance_wins(self, allies: List["Player"]) -> None:
+        """Record wins for allies."""
+        for ally in allies:
+            self.alliance_wins[ally.name] = self.alliance_wins.get(ally.name, 0) + 1
+
+    def get_alliance_stats(self) -> Dict[str, Dict[str, int]]:
+        """
+        Get alliance statistics for all players.
+
+        Returns:
+            Dict mapping player names to their alliance stats:
+            {player_name: {total, offense, defense, wins}}
+        """
+        stats = {}
+        for player in self.players:
+            name = player.name
+            stats[name] = {
+                "total": self.alliance_counts.get(name, 0),
+                "offense": self.offensive_alliance_counts.get(name, 0),
+                "defense": self.defensive_alliance_counts.get(name, 0),
+                "wins": self.alliance_wins.get(name, 0),
+            }
+        return stats
+
     # ========== Game Flow ==========
 
     def play(self) -> List[Player]:
@@ -829,6 +871,8 @@ class Game:
                 taken = player.get_ships_from_colonies(ships, self.planets)
                 self.offense_ships[player.name] = taken
                 self._log(f"{player.name} joins offense with {taken} ships")
+                # Track alliance
+                self._record_alliance(player.name, "offense")
 
             elif choice == Side.DEFENSE:
                 self.defense_allies.append(player)
@@ -838,6 +882,8 @@ class Game:
                 taken = player.get_ships_from_colonies(ships, self.planets)
                 self.defense_ships[player.name] = taken
                 self._log(f"{player.name} joins defense with {taken} ships")
+                # Track alliance
+                self._record_alliance(player.name, "defense")
 
     def _planning_phase(self) -> None:
         """Handle the planning phase."""
@@ -1152,6 +1198,9 @@ class Game:
         """Handle offense winning the encounter."""
         self._log("Offense wins!")
 
+        # Track alliance wins
+        self._record_alliance_wins(self.offense_allies)
+
         # Check if Graviton's power is active (main player destroys ships instead of warping)
         # Also check for Void (winner destroys losing ships)
         graviton_active = False
@@ -1205,6 +1254,9 @@ class Game:
     def _resolve_defense_wins(self) -> None:
         """Handle defense winning the encounter."""
         self._log("Defense wins!")
+
+        # Track alliance wins
+        self._record_alliance_wins(self.defense_allies)
 
         # Check if Graviton's power is active (main player destroys ships instead of warping)
         # Also check for Void (winner destroys losing ships)

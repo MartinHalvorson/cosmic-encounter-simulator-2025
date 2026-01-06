@@ -28,6 +28,7 @@ class GameRecord:
     power_activations: Optional[Dict[str, int]] = None
     encounters_as_main: Optional[Dict[str, int]] = None
     encounter_stats: Optional[Dict[str, Dict[str, int]]] = None
+    alliance_stats: Optional[Dict[str, Dict[str, int]]] = None  # {player: {total, offense, defense, wins}}
 
 
 def wilson_score_interval(wins: int, n: int, z: float = 1.96) -> Tuple[float, float]:
@@ -88,6 +89,11 @@ class AlienStats:
     encounters_won_as_defense: int = 0
     encounters_with_deal: int = 0  # Times a deal was made
     encounters_with_allies: int = 0  # Times allies joined
+    # Alliance statistics
+    times_allied: int = 0  # Total times joined as ally
+    times_allied_offense: int = 0  # Times joined offensive side
+    times_allied_defense: int = 0  # Times joined defensive side
+    alliance_wins: int = 0  # Times won as ally
 
     @property
     def win_rate(self) -> float:
@@ -148,6 +154,27 @@ class AlienStats:
         if total_encounters == 0:
             return 0.0
         return self.encounters_with_deal / total_encounters
+
+    @property
+    def alliance_win_rate(self) -> float:
+        """Win rate when joining as an ally."""
+        if self.times_allied == 0:
+            return 0.0
+        return self.alliance_wins / self.times_allied
+
+    @property
+    def avg_alliances_per_game(self) -> float:
+        """Average number of times allied per game."""
+        if self.games_played == 0:
+            return 0.0
+        return self.times_allied / self.games_played
+
+    @property
+    def offense_alliance_preference(self) -> float:
+        """Preference for joining offense (0 = all defense, 1 = all offense)."""
+        if self.times_allied == 0:
+            return 0.5
+        return self.times_allied_offense / self.times_allied
 
     def confidence_interval(self, confidence: float = 0.95) -> Tuple[float, float]:
         """
@@ -296,7 +323,8 @@ class Statistics:
         errored: bool = False,
         power_activations: Optional[Dict[str, int]] = None,
         encounters_as_main: Optional[Dict[str, int]] = None,
-        encounter_stats: Optional[Dict[str, Dict[str, int]]] = None
+        encounter_stats: Optional[Dict[str, Dict[str, int]]] = None,
+        alliance_stats: Optional[Dict[str, Dict[str, int]]] = None
     ) -> None:
         """
         Record statistics from a completed game.
@@ -313,6 +341,7 @@ class Statistics:
             power_activations: Mapping of player name to power activation count
             encounters_as_main: Mapping of player name to encounters as main player
             encounter_stats: Per-player encounter statistics (offense/defense/wins/deals)
+            alliance_stats: Per-player alliance statistics (total/offense/defense/wins)
         """
         self.total_games += 1
         self.turn_counts.append(turn_count)
@@ -363,6 +392,14 @@ class Statistics:
                 stats.encounters_won_as_defense += player_enc.get("won_as_defense", 0)
                 stats.encounters_with_deal += player_enc.get("deals", 0)
                 stats.encounters_with_allies += player_enc.get("with_allies", 0)
+
+            # Track alliance statistics if provided
+            if alliance_stats and player_name in alliance_stats:
+                player_ally = alliance_stats[player_name]
+                stats.times_allied += player_ally.get("total", 0)
+                stats.times_allied_offense += player_ally.get("offense", 0)
+                stats.times_allied_defense += player_ally.get("defense", 0)
+                stats.alliance_wins += player_ally.get("wins", 0)
 
             if player_name in winners:
                 stats.games_won += 1
@@ -450,6 +487,14 @@ class Statistics:
                     stats.encounters_with_deal += player_enc.get("deals", 0)
                     stats.encounters_with_allies += player_enc.get("with_allies", 0)
 
+                # Track alliance statistics
+                if record.alliance_stats and player_name in record.alliance_stats:
+                    player_ally = record.alliance_stats[player_name]
+                    stats.times_allied += player_ally.get("total", 0)
+                    stats.times_allied_offense += player_ally.get("offense", 0)
+                    stats.times_allied_defense += player_ally.get("defense", 0)
+                    stats.alliance_wins += player_ally.get("wins", 0)
+
                 if player_name in winner_set:
                     stats.games_won += 1
 
@@ -519,6 +564,11 @@ class Statistics:
             stats.encounters_won_as_defense += other_stats.encounters_won_as_defense
             stats.encounters_with_deal += other_stats.encounters_with_deal
             stats.encounters_with_allies += other_stats.encounters_with_allies
+            # Alliance statistics
+            stats.times_allied += other_stats.times_allied
+            stats.times_allied_offense += other_stats.times_allied_offense
+            stats.times_allied_defense += other_stats.times_allied_defense
+            stats.alliance_wins += other_stats.alliance_wins
 
     @property
     def avg_game_length(self) -> float:
