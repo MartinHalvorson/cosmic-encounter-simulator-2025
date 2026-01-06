@@ -54,6 +54,13 @@ from .player_count_analysis import (
     run_player_count_analysis,
     compare_player_counts,
 )
+from .benchmark import (
+    Benchmark,
+    BenchmarkResult,
+    run_quick_benchmark,
+    compare_player_counts as benchmark_player_counts,
+    print_comparison_table,
+)
 
 __all__ = [
     "Simulator",
@@ -107,4 +114,10 @@ __all__ = [
     "PlayerCountStats",
     "run_player_count_analysis",
     "compare_player_counts",
+    # Benchmark
+    "Benchmark",
+    "BenchmarkResult",
+    "run_quick_benchmark",
+    "benchmark_player_counts",
+    "print_comparison_table",
 ]
